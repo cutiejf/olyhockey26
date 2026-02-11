@@ -28,14 +28,14 @@
 
         /* --- Print Grid --- */
         .print-container {
-            width: 10.5in;
+            width: 11in; /* Standard paper width */
             background: white;
-            padding: 0.2in;
+            padding: 0.2in 0;
             box-sizing: border-box;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-            justify-items: center;
+            display: flex;
+            justify-content: center; /* Ensures equal trim/margins on left and right */
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         /* --- Panel --- */
@@ -149,7 +149,7 @@
         /* --- PRINT SPECIFIC FIXES --- */
         @media print {
             body { background: none; margin: 0; padding: 0; }
-            .print-container { width: 100%; grid-gap: 0; padding: 0; display: block; }
+            .print-container { width: 100%; gap: 0; padding: 0; display: block; }
             .panel { margin: 0; border: 0.2pt solid #eee; float: left; page-break-inside: avoid; }
             @page { size: letter landscape; margin: 0.25in; }
         }
@@ -167,7 +167,7 @@
                 <!-- Title Group at Top -->
                 <div style="text-align:center; width: 100%; margin-top: 10px;">
                     <div style="font-size:17px; font-weight:900; color:#fff; text-shadow: 0 0 12px #000; letter-spacing:0.5px; text-transform: uppercase; white-space: nowrap;">MILANO CORTINA</div>
-                    <div style="font-size:28px; font-weight:900; color:#fff; text-shadow: 0 0 12px #000; margin-top: -6px;">2026</div>
+                    <div style="font-size:28px; font-weight:900; color:#fff; text-shadow: 0 0 12px #000; margin-top: -4px;">2026</div>
                 </div>
 
                 <!-- Rings Lowered above footer -->
@@ -327,9 +327,9 @@
 
     <!-- 8. BACK COVER -->
     <div class="panel back-cover-full">
-        <!-- Enlarged and Centered Image -->
+        <!-- Enlarged by 10% and anchored left center to remove partially cut figure -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg/1280px-IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg" 
-             style="width:110%; height:110%; object-fit:cover; object-position: center;" alt="Historical Hockey">
+             style="width:110%; height:110%; object-fit:cover; object-position: left center;" alt="Historical Hockey">
             <div class="back-overlay">
                 <!-- Black Logo on Back (Top) -->
                 <svg class="oly-logo" style="filter: brightness(0); width: 60px; height: 30px;" viewBox="0 0 100 50">
@@ -409,9 +409,8 @@
         const isPrelims = targetId === 'sched-prelims';
         
         // Exact calibration:
-        // Prelims: 18 rows + header + footer. 
-        // Reduced padding significantly to prevent bottom cutoff.
-        const rowPadding = isPrelims ? 1.4 : 3.4; 
+        // Reduced padding for Prelims to prevent bottom cutoff and accommodate footer
+        const rowPadding = isPrelims ? 1.0 : 3.4; 
 
         games.forEach(g => {
             if (g.header) {
