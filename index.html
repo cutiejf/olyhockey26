@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v1 Men's Olympic Hockey 2026 - Micro Guide</title>
+    <title>Men's Olympic Hockey 2026 - Guide</title>
     <style>
         :root {
-            /* Micro Sizing - 2.5in x 3in */
-            --panel-width: 2.5in;
-            --panel-height: 3in; 
+            /* Doubled Sizing - 5in x 6in */
+            --panel-width: 5in;
+            --panel-height: 6in; 
             --header-bg: #1a1a1a;
             --header-text: #fff;
             --accent-red: #c0392b;
             --accent-blue: #2980b9;
             --accent-green: #27ae60;
-            --font-base: 7px;
+            --font-base: 14px;
             --page-bg: #fff;
         }
 
         body {
             font-family: 'Arial Narrow', 'Roboto Condensed', sans-serif;
-            background-color: #333; /* Darker background to make the book pop */
+            background-color: #111;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -28,71 +28,63 @@
             min-height: 100vh;
             justify-content: center;
             color: #fff;
+            overflow-x: hidden;
         }
 
-        /* --- Book UI Layout --- */
         .book-viewer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .book-spread {
             display: flex;
             background: #222;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
             position: relative;
-            transition: all 0.4s ease;
         }
 
-        /* Page Spines and Edges */
-        .book-spread::before {
+        .book-spread::after {
             content: '';
             position: absolute;
-            left: 50%;
-            top: 10px;
-            bottom: 10px;
-            width: 2px;
-            background: rgba(0,0,0,0.2);
-            z-index: 10;
+            left: 50%; top: 20px; bottom: 20px;
+            width: 40px;
+            background: linear-gradient(to right, transparent, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.15) 60%, transparent);
+            z-index: 100;
             transform: translateX(-50%);
+            pointer-events: none;
         }
 
         .controls {
             display: flex;
             gap: 15px;
             align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 12px 24px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .btn {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-            text-transform: uppercase;
+            background: #fff; color: #000; border: none;
+            padding: 8px 24px; border-radius: 20px;
+            cursor: pointer; font-weight: 900; font-size: 11px;
+            text-transform: uppercase; transition: all 0.2s;
         }
+        
+        .btn:hover:not(:disabled) { background: #eee; transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.1; cursor: not-allowed; }
+        .page-num { font-size: 18px; font-weight: 900; letter-spacing: 2px; color: #aaa; min-width: 100px; text-align: center; }
 
-        .btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .page-num { font-size: 12px; font-weight: bold; }
-
-        /* --- Panel Styles (Preserved) --- */
+        /* --- Panel Content Styles --- */
         .panel {
             width: var(--panel-width);
             height: var(--panel-height);
-            border: 0.5pt solid #ddd;
             box-sizing: border-box;
-            padding: 4px;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             background: var(--page-bg);
@@ -101,161 +93,131 @@
             color: #000;
         }
 
-        .panel-hidden { display: none !important; }
-        .panel-placeholder { width: var(--panel-width); height: var(--panel-height); background: transparent; border: none; }
-        
+        .panel.blank {
+            background: #fafafa;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(#ddd 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+
         h2 {
-            margin: 0 0 2px 0;
-            font-size: 8.5px;
-            text-transform: uppercase;
-            background: var(--header-bg);
-            color: var(--header-text);
-            padding: 2px 4px;
-            font-weight: 900;
-            display: flex; 
-            justify-content: space-between;
-            border-radius: 1px;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
+            margin: 0 0 5px 0; font-size: 17px; text-transform: uppercase;
+            background: var(--header-bg); color: var(--header-text);
+            padding: 5px 10px; font-weight: 900; display: flex; 
+            justify-content: space-between; border-radius: 2px; flex-shrink: 0;
         }
 
-        .flex-table-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
+        .flex-table-container { flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; line-height: 1.1; }
+        th { background: #f0f0f0; border-bottom: 2px solid #000; padding: 3px 0; font-weight: bold; text-align: center; font-size: 11px; }
+        td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; }
+        
+        .c-grp { width: 35px; text-align: center; font-weight: 900; font-size: 12px; }
+        .c-ven { width: 18px; text-align: center; color: #777; font-size: 10px; }
+        .c-date { width: 95px; color: #000; font-weight: bold; font-size: 11px; text-align: left; padding-left: 5px; white-space: nowrap; }
+        .c-time { width: 55px; text-align: center; font-weight: normal; font-size: 11px; }
+        
+        /* 1px Pad between team and box */
+        .team-home { display: inline-block; width: 38%; text-align: right; font-weight: bold; font-size: inherit; overflow:hidden; white-space:nowrap; vertical-align: middle; padding-right: 1px; }
+        .team-away { display: inline-block; width: 38%; text-align: left; font-weight: bold; font-size: inherit; overflow:hidden; white-space:nowrap; vertical-align: middle; padding-left: 1px;}
+        .score-area { display: inline-block; width: 22%; text-align: center; white-space: nowrap; vertical-align: middle; font-size: 0;}
+        
+        .flag-icon { width: 14px; height: 10px; display: inline-block; vertical-align: middle; border: 0.5px solid #333; margin: 0 2px; }
+        
+        /* Score Boxes (Static for this version) */
+        .sb { 
+            display: inline-block; width: 16px; height: 16px; border: 1px solid #444; 
+            background: #fff; margin: 0 1px; vertical-align: middle; text-align: center; 
+            font-size: 12px; font-weight: 900; line-height: 16px;
+        }
+        .sb-ot { 
+            display: inline-block; width: 18px; height: 12px; border: 0.5px solid #ccc; 
+            margin-left: 4px; font-size: 7.5px; font-weight: bold; color: #999; 
+            text-align: center; line-height: 12px; vertical-align: middle;
         }
 
-        table { width: 100%; border-collapse: collapse; font-size: var(--font-base); table-layout: fixed; line-height: 1; }
-        th { background: #f0f0f0; border-bottom: 1px solid #000; padding: 1px 0; font-weight: bold; text-align: center; font-size: 6px; }
-        td { border-bottom: 0.1pt solid #eee; padding: 0; vertical-align: middle; }
-        
-        .c-grp { width: 9px; text-align: center; font-weight: bold; font-size: 6.5px; }
-        .c-date { width: 34px; color: #000; font-weight: bold; font-size: 5.2px; text-align:center; white-space: nowrap; }
-        .c-ven { width: 8px; text-align: center; color: #777; font-size: 5px; }
-        .c-time { width: 26px; text-align: center; font-weight: normal; font-size: 5.5px; }
-        
-        .c-match { text-align: center; font-size: 0; }
-        .team-home { display: inline-block; width: 36%; text-align: right; font-weight: bold; font-size: 6.2px; overflow:hidden; white-space:nowrap; vertical-align: middle; }
-        .team-away { display: inline-block; width: 36%; text-align: left; font-weight: bold; font-size: 6.2px; overflow:hidden; white-space:nowrap; vertical-align: middle; }
-        .score-area { display: inline-block; width: 20%; text-align: center; white-space: nowrap; vertical-align: middle; }
-        
-        .flag-icon { width: 10px; height: 7px; display: inline-block; vertical-align: middle; border: 0.5px solid #ddd; margin: 0 1px; }
-        .sb { display: inline-block; width: 6px; height: 6px; border: 0.5pt solid #444; background: #fff; margin: 0 0.5px; vertical-align: middle; }
-
-        .std-table td { border: 0.5pt solid #ddd; text-align: center; font-size: 6.8px; height: 13.5px; } 
-        .std-table td:first-child { text-align: left; padding-left: 2px; font-weight: bold; width: 45%; }
+        .std-table td { border: 1px solid #ddd; text-align: center; font-size: 13px; height: 28px; } 
+        .std-table td:first-child { text-align: left; padding-left: 5px; font-weight: bold; width: 45%; }
         .th-A { background: var(--accent-red) !important; }
         .th-B { background: var(--accent-blue) !important; }
         .th-C { background: var(--accent-green) !important; }
 
-        .seeding-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .seed-row { display: flex; align-items: flex-end; font-size: 7.5px; margin-bottom: 0px; flex-grow: 1; } 
-        .seed-num { width: 12px; font-weight: bold; color: #666; }
-        .seed-name { flex-grow: 1; border-bottom: 0.5pt solid #bbb; margin-right: 3px; height: 10px; }
-        .seed-stat { width: 14px; border-bottom: 0.5pt solid #bbb; margin-right: 1px; height: 10px; }
+        .seed-row { display: flex; align-items: flex-end; font-size: 15px; margin-bottom: 2px; flex-grow: 1; } 
+        .seed-num { width: 25px; font-weight: bold; color: #666; }
+        .seed-name { flex-grow: 1; border-bottom: 1px solid #bbb; margin-right: 5px; height: 23px; }
+        .seed-stat { width: 30px; border-bottom: 1px solid #bbb; margin-right: 2px; height: 23px; }
         
-        .vert-label {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            font-size: 4.8px;
-            font-weight: bold;
-            text-align: center;
-            background: #f0f0f0;
-            width: 10px;
-            letter-spacing: 0.2px;
+        .vert-label { 
+            writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); 
+            font-size: 10px; font-weight: bold; text-align: center; 
+            background: #f0f0f0; width: 22px; text-transform: uppercase;
+            flex-shrink: 0; margin-left: 2px;
         }
 
-        .full-img-holder { width: 100%; height: 100%; position: relative; background: #000; overflow: hidden; }
+        .full-img-holder { width: 100%; height: 100%; position: relative; background: #fff; overflow: hidden; }
         .full-img { width: 100%; height: 100%; object-fit: cover; }
+        .front-overlay, .back-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .front-overlay { background: rgba(0,0,0,0.35); padding: 25px 10px 10px 10px; box-sizing: border-box; justify-content: flex-start; }
+        .back-overlay { padding: 20px 10px 15px 10px; box-sizing: border-box; justify-content: flex-start; pointer-events: none; }
         
-        .front-overlay, .back-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center;
-            pointer-events: none;
-        }
-        
-        .front-overlay { background: rgba(0,0,0,0.35); padding: 12px 5px 5px 5px; box-sizing: border-box; justify-content: flex-start; }
-        .back-overlay { background: rgba(0,0,0,0.4); padding: 10px 5px 8px 5px; box-sizing: border-box; justify-content: flex-start; }
+        .oly-logo { width: 100px; height: 50px; margin: 0 auto; }
+        .medals-table { font-size: 13px; }
+        .medals-table th { background: #222; color: #fff; font-size: 12px; height: 21px; text-align: center; }
+        .medals-table td { height: 23px; border-bottom: 1px solid #eee; text-align: center; }
 
-        .oly-logo { width: 48px; height: 24px; margin: 0 auto; }
-        .oly-logo circle { fill: none; stroke-width: 3; }
-
-        .medals-table { font-size: 6.5px; }
-        .medals-table th { background: #222; color: #fff; font-size: 6px; height: 9px; text-align: center; }
-        .medals-table td { height: 11px; border-bottom: 0.5pt solid #eee; text-align: center; }
-        .medals-table tr:nth-child(even) { background: #fcfcfc; }
-
-        /* --- PRINT FIXES --- */
-        @media print {
-            body { background: none; margin: 0; padding: 0; color: #000; display: block; }
-            .book-spread::before, .controls { display: none !important; }
-            .book-viewer { display: block; width: 100%; }
-            .book-spread { display: flex; flex-wrap: wrap; background: transparent; padding: 0; box-shadow: none; width: 11in; margin: 0 auto; justify-content: center; gap: 10px; }
-            .panel { display: block !important; border: 0.2pt solid #eee; float: left; page-break-inside: avoid; margin: 0.05in; }
-            .panel-placeholder { display: none !important; }
-            @page { size: letter landscape; margin: 0.25in; }
-        }
     </style>
 </head>
 <body>
 
 <div class="book-viewer">
-    <div class="book-spread" id="spread-container">
-        <!-- Panels are rendered here by JS -->
-    </div>
-
+    <div class="book-spread" id="spread-container"></div>
     <div class="controls">
-        <button class="btn" id="prev-btn" onclick="prevPage()">Prev</button>
-        <div class="page-num" id="page-display">Cover</div>
-        <button class="btn" id="next-btn" onclick="nextPage()">Next</button>
+        <button class="btn" onclick="prevSpread()">BACK</button>
+        <div class="page-num" id="page-display">1 | 2</div>
+        <button class="btn" onclick="nextSpread()">NEXT</button>
     </div>
 </div>
 
-<!-- DATA REPOSITORY (Hidden containers for JS to pick up) -->
 <div id="panel-source" style="display:none;">
     
     <!-- P1: COVER -->
     <div class="panel" id="p1" style="padding:0;">
         <div class="full-img-holder">
-            <img src="https://i.postimg.cc/bJVNFD1f/Capt1ure.png" class="full-img" alt="Cover">
+            <img src="https://i.postimg.cc/bJVNFD1f/Capt1ure.png" class="full-img">
             <div class="front-overlay">
-                <div style="text-align:center; width: 100%; margin-top: 10px;">
-                    <div style="font-size:17px; font-weight:900; color:#fff; text-shadow: 0 0 12px #000; letter-spacing:0.5px; text-transform: uppercase; white-space: nowrap;">MILANO CORTINA</div>
-                    <div style="font-size:28px; font-weight:900; color:#fff; text-shadow: 0 0 12px #000; margin-top: -4px;">2026</div>
+                <div style="text-align:center; width: 100%; margin-top: 25px;">
+                    <div style="font-size:32px; font-weight:900; color:#fff; text-shadow: 0 0 25px #000; letter-spacing:1px; text-transform: uppercase;">MILANO CORTINA</div>
+                    <div style="font-size:52px; font-weight:900; color:#fff; text-shadow: 0 0 25px #000; margin-top: -10px;">2026</div>
                 </div>
-                <div style="margin-top: auto; margin-bottom: 2px;">
-                    <svg class="oly-logo" viewBox="0 0 100 50">
-                        <circle cx="20" cy="18" r="14" stroke="white" />
-                        <circle cx="50" cy="18" r="14" stroke="white" />
-                        <circle cx="80" cy="18" r="14" stroke="white" />
-                        <circle cx="35" cy="32" r="14" stroke="white" />
-                        <circle cx="65" cy="32" r="14" stroke="white" />
-                    </svg>
+                <div style="margin-top: auto; margin-bottom: 15px;">
+                    <svg class="oly-logo" viewBox="0 0 100 50"><circle cx="20" cy="18" r="14" stroke="white" fill="none" stroke-width="3"/><circle cx="50" cy="18" r="14" stroke="white" fill="none" stroke-width="3"/><circle cx="80" cy="18" r="14" stroke="white" fill="none" stroke-width="3"/><circle cx="35" cy="32" r="14" stroke="white" fill="none" stroke-width="3"/><circle cx="65" cy="32" r="14" stroke="white" fill="none" stroke-width="3"/></svg>
                 </div>
-                <div style="width: 100%; padding-bottom: 5px;">
-                    <div style="font-size:8px; font-weight:900; color:#fff; text-shadow: 0 0 5px #000; letter-spacing:1px; text-transform: uppercase;">OLYMPIC MEN'S HOCKEY</div>
-                    <div style="font-size:5px; color:#ddd; text-shadow: 0 0 3px #000; letter-spacing:2.5px; text-transform: uppercase;">POCKET GUIDE</div>
+                <div style="width: 100%; padding-bottom: 20px;">
+                    <div style="font-size:16px; font-weight:900; color:#fff; text-shadow: 0 0 10px #000; letter-spacing:2px;">OLYMPIC MEN'S HOCKEY</div>
+                    <div style="font-size:11px; color:#ddd; text-shadow: 0 0 5px #000; letter-spacing:5px;">POCKET GUIDE</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- P2: ROSTER -->
-    <div class="panel" id="p2" style="padding:0; background:#000;">
-        <div style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
-            <img src="https://i0.wp.com/www.rawcharge.com/wp-content/uploads/sites/5/2025/12/team-canada-roster.jpg?resize=819%2C1024&ssl=1" 
-                 alt="Team Canada Roster" 
-                 style="width:100%; height:100%; object-fit:fill;">
-        </div>
+    <!-- P2: BLANK NOTES -->
+    <div class="panel blank" id="p2">
+        <div style="font-size: 16px; color: #ccc; border: 2px dashed #eee; padding: 40px; font-weight: bold;">NOTES</div>
     </div>
 
-    <!-- P3: STANDINGS -->
-    <div class="panel" id="p3">
+    <!-- P3: AUTOGRAPHS -->
+    <div class="panel blank" id="p9">
+        <div style="font-size: 16px; color: #ccc; border: 2px dashed #eee; padding: 40px; font-weight: bold;">AUTOGRAPHS</div>
+    </div>
+
+    <!-- P4: ROSTER -->
+    <div class="panel" id="p3" style="padding:0; background:#000;">
+        <img src="https://i0.wp.com/www.rawcharge.com/wp-content/uploads/sites/5/2025/12/team-canada-roster.jpg?resize=819%2C1024&ssl=1" style="width:100%; height:100%; object-fit:fill;">
+    </div>
+
+    <!-- P5: STANDINGS -->
+    <div class="panel" id="p4">
         <h2>Group Standings</h2>
         <div class="flex-table-container">
             <table class="std-table">
@@ -271,275 +233,196 @@
                 <tbody><tr><td><img src="https://flagcdn.com/w20/us.png" class="flag-icon"> USA</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td><img src="https://flagcdn.com/w20/de.png" class="flag-icon"> GER</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td><img src="https://flagcdn.com/w20/lv.png" class="flag-icon"> LAT</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td><img src="https://flagcdn.com/w20/dk.png" class="flag-icon"> DEN</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>
             </table>
         </div>
-        <div style="margin-top:auto; font-size:4.8px; border-top:0.5pt solid #ddd; padding-top:1px; line-height:1.1;">
-            W=3, OTW=2, OTL=1, L=0. <strong>Tie:</strong> H2H > GD > GF.
+        <div style="margin-top:auto; font-size:10px; border-top:1px solid #ddd; padding-top:4px;">
+            $Pts = (W \times 3) + (OTW \times 2) + (OTL \times 1)$. Tie: H2H > GD.
         </div>
     </div>
 
-    <!-- P4: PRELIMS -->
-    <div class="panel" id="p4">
+    <!-- P6: PRELIMS -->
+    <div class="panel" id="p5">
         <h2>Preliminaries</h2>
         <div class="flex-table-container">
-            <table id="table-prelims">
-                <thead><tr><th class="c-grp">G</th><th class="c-date">Date</th><th class="c-ven">V</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
-                <tbody id="sched-prelims"></tbody>
+            <table id="table-prelims" style="font-size: 14.5px;">
+                <thead><tr><th class="c-grp">G</th><th class="c-ven">V</th><th class="c-date">Date</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
+                <tbody id="sched-prelims-v"></tbody>
             </table>
         </div>
-        <div style="margin-top:auto; font-size:4.5px; color:#888; border-top:0.5pt solid #eee; padding-top:2px; display:flex; justify-content:space-between; flex-shrink: 0;">
-            <span>S: Santagiulia (M1)</span>
-            <span>R: Rho Fiera (M2)</span>
-        </div>
+        <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:4px; display:flex; justify-content:space-between;"><span>S: Santagiulia</span><span>R: Rho Fiera</span></div>
     </div>
 
-    <!-- P5: SEEDING -->
-    <div class="panel" id="p5">
-        <h2>Seeding (1-12)</h2>
-        <div class="seeding-content">
-            <div style="display:flex; font-size:5px; font-weight:bold; margin-bottom:1px; padding:0 15px 0 12px;">
-                <span style="flex-grow:1;">Team Name</span><span style="width:14px; text-align:center;">GD</span><span style="width:14px; text-align:center;">Pts</span>
-            </div>
-            
-            <div style="display:flex; border-bottom:1.5pt solid #000; flex-grow: 4;">
-                <div style="flex-grow:1; display:flex; flex-direction:column;">
-                    <div class="seed-row"><div class="seed-num">1</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">2</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">3</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">4</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                </div>
-                <div class="vert-label">BYE TO QF</div>
-            </div>
-
-            <div style="display:flex; border-bottom:1.5pt solid #000; flex-grow: 8; margin-top:1px;">
-                <div style="flex-grow:1; display:flex; flex-direction:column;">
-                    <div class="seed-row"><div class="seed-num">5</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">6</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">7</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">8</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">9</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">10</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">11</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                    <div class="seed-row"><div class="seed-num">12</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                </div>
-                <div class="vert-label">QUALIFICATION</div>
-            </div>
-
-            <div style="margin-top:2px; flex-grow:4;">
-                <div style="text-align:center; font-weight:900; font-size:6px; background:#eee; margin-bottom:1px; letter-spacing:1px;">RESEED (Qual Winners)</div>
-                <div style="display:flex; flex-direction: column;">
-                    <div class="seed-row" style="margin-bottom:1px;"><div class="seed-num">1</div><div class="seed-name"></div></div>
-                    <div class="seed-row" style="margin-bottom:1px;"><div class="seed-num">2</div><div class="seed-name"></div></div>
-                    <div class="seed-row" style="margin-bottom:1px;"><div class="seed-num">3</div><div class="seed-name"></div></div>
-                    <div class="seed-row" style="margin-bottom:0;"><div class="seed-num">4</div><div class="seed-name"></div></div>
-                </div>
-            </div>
-        </div>
-        <div style="margin-top:auto; font-size:4.5px; color:#888; border-top:0.5pt solid #eee; padding-top:2px;">
-            Tie-Break: 1. Group Rank, 2. Points, 3. Goal Diff, 4. Goals For.
-        </div>
-    </div>
-
-    <!-- P6: KNOCKOUT -->
+    <!-- P7: SEEDING -->
     <div class="panel" id="p6">
+        <h2>Seeding (1-12)</h2>
+        <div style="display:flex; font-size:10px; font-weight:bold; margin-bottom:5px; padding:0 30px 0 24px;">
+            <span style="flex-grow:1;">Team Name</span><span style="width:30px; text-align:center;">GD</span><span style="width:30px; text-align:center;">Pts</span>
+        </div>
+        <div style="display:flex; border-bottom:3px solid #000; flex-grow:2.0;">
+            <div style="flex-grow:1;"><div class="seed-row"><div class="seed-num">1</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div><div class="seed-row"><div class="seed-num">2</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div><div class="seed-row"><div class="seed-num">3</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div><div class="seed-row"><div class="seed-num">4</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div></div>
+            <div class="vert-label">BYE TO QF</div>
+        </div>
+        <div style="display:flex; border-bottom:3px solid #000; flex-grow:1.0; margin-top:2px;">
+            <div style="flex-grow:1; padding-top: 8px;">
+                <div class="seed-row"><div class="seed-num">5</div><div class="seed-name"></div></div><div class="seed-row"><div class="seed-num">6</div><div class="seed-name"></div></div><div class="seed-row"><div class="seed-num">7</div><div class="seed-name"></div></div><div class="seed-row"><div class="seed-num">8</div><div class="seed-name"></div></div><div class="seed-row"><div class="seed-num">9</div><div class="seed-name"></div></div><div class="seed-row"><div class="seed-num">10</div><div class="seed-name"></div></div><div class="seed-row"><div class="seed-num">11</div><div class="seed-name"></div></div><div class="seed-row"><div class="seed-num">12</div><div class="seed-name"></div></div>
+            </div>
+            <div class="vert-label">QUALIFICATION</div>
+        </div>
+        <div style="display:flex; flex-grow:1.8; margin-top:2px;">
+            <div style="flex-grow:1; padding-top: 8px;">
+                <div class="seed-row"><div class="seed-num">1</div><div class="seed-name"></div></div>
+                <div class="seed-row"><div class="seed-num">2</div><div class="seed-name"></div></div>
+                <div class="seed-row"><div class="seed-num">3</div><div class="seed-name"></div></div>
+                <div class="seed-row" style="margin-bottom:0;"><div class="seed-num">4</div><div class="seed-name"></div></div>
+            </div>
+            <div class="vert-label">RESEED</div>
+        </div>
+        <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:5px;">Tie-Break: Rank > Pts > GD.</div>
+    </div>
+
+    <!-- P8: KNOCKOUT -->
+    <div class="panel" id="p7">
         <h2>Knockout Stage</h2>
         <div class="flex-table-container">
-            <table>
-                <thead><tr><th class="c-grp">Rd</th><th class="c-date">Date</th><th class="c-ven">V</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
-                <tbody id="sched-ko"></tbody>
+            <table id="table-ko" style="font-size: 13.5px;">
+                <thead><tr><th class="c-grp">Rd</th><th class="c-ven">V</th><th class="c-date" style="width:95px;">Date</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
+                <tbody id="sched-ko-v"></tbody>
             </table>
         </div>
-        <div style="margin-top:auto; background:#f9f9f9; padding:2px; border:0.5pt solid #ddd; font-size:5px; line-height:1.2; flex-shrink: 0;">
-            Bracket reseeds after Qual Round. Highest seed plays Lowest seed. OT: 3v3 (20m) then SO.
-        </div>
+        <div style="margin-top:auto; background:#f9f9f9; padding:5px; font-size:10px; border: 1px solid #ddd;">Highest seed plays Lowest. OT: 3v3 then SO.</div>
     </div>
 
-    <!-- P7: HISTORY -->
-    <div class="panel" id="p7">
+    <!-- P9: HISTORY -->
+    <div class="panel" id="p8">
         <h2>Olympic History</h2>
         <table class="medals-table">
-            <thead>
-                <tr><th width="15%">Year</th><th>🥇 Gold</th><th>🥈 Silver</th><th>🥉 Bronze</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>2022</td><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td><td><img src="https://flagcdn.com/w20/ru.png" class="flag-icon"> ROC</td><td><img src="https://flagcdn.com/w20/sk.png" class="flag-icon"> SVK</td></tr>
-                <tr><td>2018</td><td><img src="https://flagcdn.com/w20/ru.png" class="flag-icon"> OAR</td><td><img src="https://flagcdn.com/w20/de.png" class="flag-icon"> GER</td><td><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</td></tr>
-                <tr><td>2014</td><td><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</td><td><img src="https://flagcdn.com/w20/se.png" class="flag-icon"> SWE</td><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td></tr>
-                <tr><td>2010</td><td><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</td><td><img src="https://flagcdn.com/w20/us.png" class="flag-icon"> USA</td><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td></tr>
-                <tr><td>2006</td><td><img src="https://flagcdn.com/w20/se.png" class="flag-icon"> SWE</td><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td><td><img src="https://flagcdn.com/w20/cz.png" class="flag-icon"> CZE</td></tr>
-                <tr><td>2002</td><td><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</td><td><img src="https://flagcdn.com/w20/us.png" class="flag-icon"> USA</td><td><img src="https://flagcdn.com/w20/ru.png" class="flag-icon"> RUS</td></tr>
-                <tr><td>1998</td><td><img src="https://flagcdn.com/w20/cz.png" class="flag-icon"> CZE</td><td><img src="https://flagcdn.com/w20/ru.png" class="flag-icon"> RUS</td><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td></tr>
-                <tr><td>1994</td><td><img src="https://flagcdn.com/w20/se.png" class="flag-icon"> SWE</td><td><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</td><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td></tr>
-            </tbody>
+            <thead><tr><th>Year</th><th>🥇 Gold</th><th>🥈 Silver</th><th>🥉 Bronze</th></tr></thead>
+            <tbody id="history-v"></tbody>
         </table>
-        
-        <div style="margin: 3px auto; width: 95%; display: flex; justify-content: center; align-items: center; border-top: 0.5pt solid #eee; padding-top: 3px;">
-            <img src="https://i.postimg.cc/xT5YsbQy/wq.png" alt="Graphic" style="width: 100%; height: auto; border-radius: 2px;">
-        </div>
-
-        <div style="margin-top:auto; font-size:5px; color:#999; text-align:center; padding-bottom:1px;">
-            Professional participation since 1998
-        </div>
+        <div style="margin: 8px auto; width: 95%; border-top: 1px solid #eee; padding-top: 8px;"><img src="https://i.postimg.cc/xT5YsbQy/wq.png" style="width: 100%;"></div>
     </div>
 
-    <!-- P8: BACK COVER -->
-    <div class="panel back-cover-full" id="p8">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg/1280px-IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg" 
-             style="width:110%; height:110%; object-fit:cover; object-position: left center;" alt="Historical Hockey">
-            <div class="back-overlay">
-                <svg class="oly-logo large" style="filter: brightness(0); width: 60px; height: 30px;" viewBox="0 0 100 50">
-                    <circle cx="20" cy="18" r="14" stroke="black" />
-                    <circle cx="50" cy="18" r="14" stroke="black" />
-                    <circle cx="80" cy="18" r="14" stroke="black" />
-                    <circle cx="35" cy="32" r="14" stroke="black" />
-                    <circle cx="65" cy="32" r="14" stroke="black" />
-                </svg>
-                <div style="margin-top: auto; font-size: 5px; color: #000; font-weight: bold; padding-bottom: 5px;">© 2026 Hockey Fan Micro-Press</div>
-            </div>
+    <!-- P10: BACK COVER -->
+    <div class="panel" id="p10" style="padding:0; background:#fff; justify-content: center; align-items: center;">
+        <div style="width:100%; height:auto; overflow:hidden; position:relative; display:flex; justify-content:center; align-items:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg/1280px-IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg" 
+                 style="width:calc(100% + 20px); height:auto; object-fit: contain; margin-top: -20px; margin-right: -20px; margin-left: 20px; margin-bottom: 20px;">
+        </div>
+        <div class="back-overlay">
+            <svg class="oly-logo" style="margin-top:20px; filter: brightness(0);" viewBox="0 0 100 50"><circle cx="20" cy="18" r="14" stroke="black" fill="none" stroke-width="3"/><circle cx="50" cy="18" r="14" stroke="black" fill="none" stroke-width="3"/><circle cx="80" cy="18" r="14" stroke="black" fill="none" stroke-width="3"/><circle cx="35" cy="32" r="14" stroke="black" fill="none" stroke-width="3"/><circle cx="65" cy="32" r="14" stroke="black" fill="none" stroke-width="3"/></svg>
+            <div style="margin-top: auto; font-size: 10px; color: #000; font-weight: bold; padding-bottom: 15px;">© 2026 Hockey Fan Micro-Press</div>
+        </div>
     </div>
 </div>
 
 <script>
+    let spreadIdx = 0;
     const spreads = [
-        [null, 'p1'], // Front cover
-        ['p2', 'p3'], // Roster + Standings
-        ['p4', 'p5'], // Prelims + Seeding
-        ['p6', 'p7'], // Knockout + History
-        ['p8', null]  // Back cover
+        ['p1', 'p2'], ['p9', 'p3'], ['p4', 'p5'], ['p6', 'p7'], ['p8', 'p10']
     ];
-    let currentSpread = 0;
 
-    function renderBook() {
-        const container = document.getElementById('spread-container');
-        const [leftId, rightId] = spreads[currentSpread];
-        
-        container.innerHTML = '';
-        
-        // Left Page
-        if (leftId) {
-            const leftNode = document.getElementById(leftId).cloneNode(true);
-            leftNode.classList.remove('panel-hidden');
-            container.appendChild(leftNode);
-        } else {
-            const spacer = document.createElement('div');
-            spacer.className = 'panel-placeholder';
-            container.appendChild(spacer);
-        }
-
-        // Right Page
-        if (rightId) {
-            const rightNode = document.getElementById(rightId).cloneNode(true);
-            rightNode.classList.remove('panel-hidden');
-            container.appendChild(rightNode);
-        } else {
-            const spacer = document.createElement('div');
-            spacer.className = 'panel-placeholder';
-            container.appendChild(spacer);
-        }
-
-        // Display update
-        const display = document.getElementById('page-display');
-        if(currentSpread === 0) display.innerText = "Front Cover";
-        else if(currentSpread === spreads.length - 1) display.innerText = "Back Cover";
-        else display.innerText = `Spread ${currentSpread} / ${spreads.length - 2}`;
-
-        document.getElementById('prev-btn').disabled = currentSpread === 0;
-        document.getElementById('next-btn').disabled = currentSpread === spreads.length - 1;
-
-        // Re-render the dynamic tables if we are on those pages
-        if(currentSpread === 2) renderSchedules('sched-prelims', prelims, 1.0);
-        if(currentSpread === 3) renderSchedules('sched-ko', knockouts, 3.4);
-    }
-
-    function nextPage() { if(currentSpread < spreads.length - 1) { currentSpread++; renderBook(); } }
-    function prevPage() { if(currentSpread > 0) { currentSpread--; renderBook(); } }
-
-    /* --- Preserved Data and Render Logic --- */
     const flagMap = { 'Canada': 'ca', 'Czechia': 'cz', 'Switzerland': 'ch', 'France': 'fr', 'Finland': 'fi', 'Sweden': 'se', 'Slovakia': 'sk', 'Italy': 'it', 'USA': 'us', 'Germany': 'de', 'Latvia': 'lv', 'Denmark': 'dk' };
 
     function getFlagImg(name) {
         let code = 'xk'; 
         for(let key in flagMap) { if(name.includes(key)) { code = flagMap[key]; break; } }
-        if(code === 'xk') return `<span style="display:inline-block; width:9px;"></span>`;
+        if(code === 'xk') return `<span style="display:inline-block; width:14px;"></span>`;
         return `<img src="https://flagcdn.com/w20/${code}.png" class="flag-icon">`;
     }
 
+    function getGrpColor(grp) {
+        if (grp === 'A') return 'var(--accent-red)';
+        if (grp === 'B') return 'var(--accent-blue)';
+        if (grp === 'C') return 'var(--accent-green)';
+        return 'inherit';
+    }
+
     const prelims = [
-        { g:'B', d:'Wed Feb 11', t:'10:40', h:'Slovakia', a:'Finland', v:'R' },
-        { g:'B', d:'Wed Feb 11', t:'15:10', h:'Sweden', a:'Italy', v:'S' },
-        { g:'A', d:'Thu Feb 12', t:'06:10', h:'Switzerland', a:'France', v:'R' },
-        { g:'A', d:'Thu Feb 12', t:'10:40', h:'Czechia', a:'Canada', v:'S' },
-        { g:'C', d:'Thu Feb 12', t:'15:10', h:'Latvia', a:'USA', v:'R' },
-        { g:'C', d:'Thu Feb 12', t:'15:10', h:'Germany', a:'Denmark', v:'R' },
-        { g:'B', d:'Fri Feb 13', t:'06:10', h:'Finland', a:'Sweden', v:'S' },
-        { g:'B', d:'Fri Feb 13', t:'06:10', h:'Italy', a:'Slovakia', v:'R' },
-        { g:'A', d:'Fri Feb 13', t:'10:40', h:'France', a:'Czechia', v:'R' },
-        { g:'A', d:'Fri Feb 13', t:'15:10', h:'Canada', a:'Switzerland', v:'S' },
-        { g:'B', d:'Sat Feb 14', t:'06:10', h:'Sweden', a:'Slovakia', v:'R' },
-        { g:'C', d:'Sat Feb 14', t:'06:10', h:'Germany', a:'Latvia', v:'S' },
-        { g:'B', d:'Sat Feb 14', t:'10:40', h:'Finland', a:'Italy', v:'R' },
-        { g:'C', d:'Sat Feb 14', t:'15:10', h:'USA', a:'Denmark', v:'S' },
-        { g:'A', d:'Sun Feb 15', t:'06:10', h:'Switzerland', a:'Czechia', v:'S' },
-        { g:'A', d:'Sun Feb 15', t:'10:40', h:'Canada', a:'France', v:'R' },
-        { g:'C', d:'Sun Feb 15', t:'13:10', h:'Denmark', a:'Latvia', v:'R' },
-        { g:'C', d:'Sun Feb 15', t:'15:10', h:'USA', a:'Germany', v:'S' }
+        { g:'B', d:'Wednesday, Feb 11', t:'10:40a', h:'Slovakia', a:'Finland', v:'R' },
+        { g:'B', d:'Wednesday, Feb 11', t:'03:10p', h:'Sweden', a:'Italy', v:'S' },
+        { g:'A', d:'Thursday, Feb 12', t:'06:10a', h:'Switzerland', a:'France', v:'R' },
+        { g:'A', d:'Thursday, Feb 12', t:'10:40a', h:'Czechia', a:'Canada', v:'S' },
+        { g:'C', d:'Thursday, Feb 12', t:'03:10p', h:'Latvia', a:'USA', v:'R' },
+        { g:'C', d:'Thursday, Feb 12', t:'03:10p', h:'Germany', a:'Denmark', v:'R' },
+        { g:'B', d:'Friday, Feb 13', t:'06:10a', h:'Finland', a:'Sweden', v:'S' },
+        { g:'B', d:'Friday, Feb 13', t:'06:10a', h:'Italy', a:'Slovakia', v:'R' },
+        { g:'A', d:'Friday, Feb 13', t:'10:40a', h:'France', a:'Czechia', v:'R' },
+        { g:'A', d:'Friday, Feb 13', t:'03:10p', h:'Canada', a:'Switzerland', v:'S' },
+        { g:'B', d:'Saturday, Feb 14', t:'06:10a', h:'Sweden', a:'Slovakia', v:'R' },
+        { g:'C', d:'Saturday, Feb 14', t:'06:10a', h:'Germany', a:'Latvia', v:'S' },
+        { g:'B', d:'Saturday, Feb 14', t:'10:40a', h:'Finland', a:'Italy', v:'R' },
+        { g:'C', d:'Saturday, Feb 14', t:'03:10p', h:'USA', a:'Denmark', v:'S' },
+        { g:'A', d:'Sunday, Feb 15', t:'06:10a', h:'Switzerland', a:'Czechia', v:'S' },
+        { g:'A', d:'Sunday, Feb 15', t:'10:40a', h:'Canada', a:'France', v:'R' },
+        { g:'C', d:'Sunday, Feb 15', t:'01:10p', h:'Denmark', a:'Latvia', v:'R' },
+        { g:'C', d:'Sunday, Feb 15', t:'03:10p', h:'USA', a:'Germany', v:'S' }
     ];
 
     const knockouts = [
         { header: 'QUALIFICATION ROUND' },
-        { g:'Q', d:'Tue Feb 17', t:'06:10', h:'Seed 8', a:'Seed 9', v:'R' },
-        { g:'Q', d:'Tue Feb 17', t:'10:40', h:'Seed 5', a:'Seed 12', v:'S' },
-        { g:'Q', d:'Tue Feb 17', t:'12:10', h:'Seed 6', a:'Seed 11', v:'R' },
-        { g:'Q', d:'Tue Feb 17', t:'15:10', h:'Seed 7', a:'Seed 10', v:'S' },
+        { g:'Q', d:'Tuesday, Feb 17', t:'06:10a', h:'Seed 8', a:'Seed 9', v:'R' },
+        { g:'Q', d:'Tuesday, Feb 17', t:'10:40a', h:'Seed 5', a:'Seed 12', v:'S' },
+        { g:'Q', d:'Tuesday, Feb 17', t:'12:10p', h:'Seed 6', a:'Seed 11', v:'R' },
+        { g:'Q', d:'Tuesday, Feb 17', t:'03:10p', h:'Seed 7', a:'Seed 10', v:'S' },
         { header: 'QUARTERFINALS' },
-        { g:'QF', d:'Wed Feb 18', t:'10:40', h:'Seed 1', a:'Reseed 4', v:'S' },
-        { g:'QF', d:'Wed Feb 18', t:'10:40', h:'Seed 2', a:'Reseed 3', v:'R' },
-        { g:'QF', d:'Wed Feb 18', t:'15:10', h:'Seed 3', a:'Reseed 2', v:'S' },
-        { g:'QF', d:'Wed Feb 18', t:'15:10', h:'Seed 4', a:'Reseed 1', v:'R' },
+        { g:'QF', d:'Wednesday, Feb 18', t:'10:40a', h:'Seed 1', a:'Reseed 4', v:'S' },
+        { g:'QF', d:'Wednesday, Feb 18', t:'10:40a', h:'Seed 2', a:'Reseed 3', v:'R' },
+        { g:'QF', d:'Wednesday, Feb 18', t:'03:10p', h:'Seed 3', a:'Reseed 2', v:'S' },
+        { g:'QF', d:'Wednesday, Feb 18', t:'03:10p', h:'Seed 4', a:'Reseed 1', v:'R' },
         { header: 'SEMIFINALS' },
-        { g:'SF', d:'Fri Feb 20', t:'10:40', h:'Win QF', a:'Win QF', v:'S' },
-        { g:'SF', d:'Fri Feb 20', t:'15:10', h:'Win QF', a:'Win QF', v:'S' },
+        { g:'SF', d:'Friday, Feb 20', t:'10:40a', h:'Win QF', a:'Win QF', v:'S' },
+        { g:'SF', d:'Friday, Feb 20', t:'03:10p', h:'Win QF', a:'Win QF', v:'S' },
         { header: 'MEDAL GAMES' },
-        { g:'🥉', d:'Sat Feb 21', t:'14:40', h:'Lose SF1', a:'Lose SF2', v:'S' },
-        { g:'🥇', d:'Sun Feb 22', t:'08:10', h:'Win SF1', a:'Win SF2', v:'S' }
+        { g:'🥉', d:'Saturday, Feb 21', t:'02:40p', h:'Lose SF1', a:'Lose SF2', v:'S' },
+        { g:'🥇🥈', d:'Sunday, Feb 22', t:'08:10a', h:'Win SF1', a:'Win SF2', v:'S' }
     ];
 
-    function renderSchedules(targetId, games, rowPadding) {
-        const target = document.querySelector(`#spread-container #${targetId}`);
-        if(!target) return;
-        target.innerHTML = '';
-        games.forEach(g => {
-            if (g.header) {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td colspan="5" style="background:#f4f4f4; color:#333; font-weight:bold; text-align:center; font-size:5.5px; padding:1px; border-top:0.5pt solid #bbb; border-bottom:0.5pt solid #ddd;">${g.header}</td>`;
-                target.appendChild(tr);
-                return;
-            }
+    const historyData = [['2022', 'fi', 'FIN', 'ru', 'ROC', 'sk', 'SVK'], ['2018', 'ru', 'OAR', 'de', 'GER', 'ca', 'CAN'], ['2014', 'ca', 'CAN', 'se', 'SWE', 'fi', 'FIN'], ['2010', 'ca', 'CAN', 'us', 'USA', 'fi', 'FIN'], ['2006', 'se', 'SWE', 'fi', 'FIN', 'cz', 'CZE'], ['2002', 'ca', 'CAN', 'us', 'USA', 'ru', 'RUS'], ['1998', 'cz', 'CZE', 'ru', 'RUS', 'fi', 'FIN']];
 
-            let [h, m] = g.t.split(':').map(Number);
-            let ampm = h >= 12 ? 'p' : 'a';
-            let showH = h % 12 || 12;
-            let finalTime = `${showH}:${m.toString().padStart(2,'0')}${ampm}`;
-
-            const tr = document.createElement('tr');
-            if(g.g === 'A') tr.className = 'row-A';
-            else if(g.g === 'B') tr.className = 'row-B';
-            else if(g.g === 'C') tr.className = 'row-C';
-
-            tr.innerHTML = `
-                <td class="c-grp" style="padding:${rowPadding}px 0">${g.g}</td>
-                <td class="c-date" style="padding:${rowPadding}px 0">${g.d}</td>
-                <td class="c-ven" style="padding:${rowPadding}px 0">${g.v || 'S'}</td>
-                <td class="c-time" style="padding:${rowPadding}px 0">${finalTime}</td>
-                <td class="c-match" style="padding:${rowPadding}px 0">
-                    <span class="team-home">${g.h} ${getFlagImg(g.h)}</span>
-                    <div class="score-area"><span class="sb"></span><span class="sb"></span></div>
-                    <span class="team-away">${getFlagImg(g.a)} ${g.a}</span>
-                </td>
-            `;
-            target.appendChild(tr);
-        });
+    function renderBook() {
+        const container = document.getElementById('spread-container');
+        const [leftId, rightId] = spreads[spreadIdx];
+        container.innerHTML = '';
+        const leftPage = document.getElementById(leftId).cloneNode(true);
+        const rightPage = document.getElementById(rightId).cloneNode(true);
+        container.appendChild(leftPage);
+        container.appendChild(rightPage);
+        document.getElementById('page-display').innerText = `${spreadIdx * 2 + 1} | ${spreadIdx * 2 + 2}`;
+        injectTables();
     }
 
-    // Initial render
+    function injectTables() {
+        const pBody = document.querySelector('#spread-container #sched-prelims-v');
+        if (pBody) {
+            prelims.forEach(g => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="c-grp" style="padding:6.2px 0; color:${getGrpColor(g.g)}">${g.g}</td><td class="c-ven">${g.v}</td><td class="c-date">${g.d}</td><td class="c-time">${g.t}</td><td class="c-match"><span class="team-home">${getFlagImg(g.h)} ${g.h}</span><span class="score-area"><span class="sb"></span><span class="sb"></span><span class="sb-ot"></span></span><span class="team-away">${g.a} ${getFlagImg(g.a)}</span></td>`;
+                pBody.appendChild(tr);
+            });
+        }
+        const kBody = document.querySelector('#spread-container #sched-ko-v');
+        if (kBody) {
+            knockouts.forEach(g => {
+                const tr = document.createElement('tr');
+                if (g.header) {
+                    tr.innerHTML = `<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:3.2px;">${g.header}</td>`;
+                } else {
+                    tr.innerHTML = `<td class="c-grp" style="padding:8.8px 0">${g.g}</td><td class="c-ven">${g.v}</td><td class="c-date" style="width:95px;">${g.d}</td><td class="c-time">${g.t}</td><td class="c-match"><span class="team-home">${getFlagImg(g.h)} ${g.h}</span><span class="score-area"><span class="sb"></span><span class="sb"></span><span class="sb-ot"></span></span><span class="team-away">${g.a} ${getFlagImg(g.a)}</span></td>`;
+                }
+                kBody.appendChild(tr);
+            });
+        }
+        const hBody = document.querySelector('#spread-container #history-v');
+        if (hBody) {
+            historyData.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${r[0]}</td><td><img src="https://flagcdn.com/w20/${r[1]}.png" class="flag-icon"> ${r[2]}</td><td><img src="https://flagcdn.com/w20/${r[3]}.png" class="flag-icon"> ${r[4]}</td><td><img src="https://flagcdn.com/w20/${r[5]}.png" class="flag-icon"> ${r[6]}</td>`;
+                hBody.appendChild(tr);
+            });
+        }
+    }
+
+    window.nextSpread = function() { if (spreadIdx < spreads.length - 1) { spreadIdx++; renderBook(); } }
+    window.prevSpread = function() { if (spreadIdx > 0) { spreadIdx--; renderBook(); } }
+
     window.onload = renderBook;
 </script>
 </body>
