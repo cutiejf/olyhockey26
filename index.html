@@ -904,8 +904,12 @@ function updateSeeds(results, flagMap, teamGroups) {
             const row = seedRows[i];
             const nameEl = row.querySelector('.seed-name');
             const grpEl = row.querySelector('.seed-grp');
+            const gpEl = row.querySelector('.seed-gp');
             const recEl = row.querySelector('.seed-record');
             const statEls = row.querySelectorAll('.seed-stat');
+            
+            // Calculate games played
+            const gamesPlayed = team.w + team.otw + team.otl + team.l;
             
             // Set team name with flag for all seeds
             if (nameEl) {
@@ -924,12 +928,26 @@ function updateSeeds(results, flagMap, teamGroups) {
                 }
             }
             
-            // For top 4 seeds (i = 0-3), show group and record
-            if (i < 4 && grpEl && recEl) {
-                const grp = teamGroups[team.name];
-                grpEl.textContent = grp || '';
-                grpEl.style.color = getGrpColor(grp);
-                recEl.textContent = team.w + '-' + team.otw + '-' + team.otl + '-' + team.l;
+            // For top 4 seeds (i = 0-3), show group, GP, and record
+            if (i < 4) {
+                if (grpEl) {
+                    const grp = teamGroups[team.name];
+                    grpEl.textContent = grp || '';
+                    grpEl.style.color = getGrpColor(grp);
+                }
+                if (gpEl) {
+                    gpEl.textContent = gamesPlayed;
+                    gpEl.style.textAlign = 'center';
+                }
+                if (recEl) {
+                    recEl.textContent = team.w + '-' + team.otw + '-' + team.otl + '-' + team.l;
+                }
+            } else {
+                // For seeds 5-12, show GP
+                if (gpEl) {
+                    gpEl.textContent = gamesPlayed;
+                    gpEl.style.textAlign = 'center';
+                }
             }
             
             // For all seeds, show GD and Pts
