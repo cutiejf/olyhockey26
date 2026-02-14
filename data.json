@@ -1,0 +1,89 @@
+{
+  "storedScores": {
+    "p1-h": "4",
+    "p1-a": "1",
+    "p2-h": "5",
+    "p2-a": "2",
+    "p3-h": "4",
+    "p3-a": "0",
+    "p4-a": "5",
+    "p4-h": "0",
+    "p5-a": "5",
+    "p5-h": "1",
+    "p6-h": "3",
+    "p6-a": "1",
+    "p8-h": "2",
+    "p8-a": "3",
+    "p7-h": "4",
+    "p7-a": "1",
+    "p10-h": "5",
+    "p10-a": "1",
+    "p9-h": "3",
+    "p9-a": "6",
+    "p11-h": "5",
+    "p11-a": "3",
+    "p12-h": "3",
+    "p12-a": "4"
+  },
+  "storedESPNStats": {
+    "scorers": [
+      {
+        "rank": "1.",
+        "name": "Connor McDavid",
+        "team": "CAN",
+        "gp": "2",
+        "goals": "1",
+        "assists": "5",
+        "points": "6"
+      },
+      {
+        "rank": "T2.",
+        "name": "Nathan MacKinnon",
+        "team": "CAN",
+        "gp": "2",
+        "goals": "2",
+        "assists": "2",
+        "points": "4"
+      },
+      {
+        "rank": "T2.",
+        "name": "Juraj Slafkovsky",
+        "team": "SVK",
+        "gp": "2",
+        "goals": "2",
+        "assists": "2",
+        "points": "4"
+      }
+    ],
+    "goalies": [
+      {
+        "rank": "1.",
+        "name": "Jordan Binnington",
+        "team": "CAN",
+        "gp": "1",
+        "wins": "1",
+        "gaa": "0.00",
+        "svp": "1.000"
+      },
+      {
+        "rank": "2.",
+        "name": "Leonardo Genoni",
+        "team": "SWI",
+        "gp": "1",
+        "wins": "1",
+        "gaa": "0.00",
+        "svp": "1.000"
+      },
+      {
+        "rank": "3.",
+        "name": "Samuel Hlavaj",
+        "team": "SVK",
+        "gp": "1",
+        "wins": "1",
+        "gaa": "1.00",
+        "svp": ".975"
+      }
+    ],
+    "lastFetch": "2026-02-14T13:49:47.430Z"
+  }
+}

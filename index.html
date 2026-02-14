@@ -1,1716 +1,1119 @@
 <!DOCTYPE html>
-<html lang="en"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
-        window.__firebase_config = firebaseConfig;
-        window.__initial_auth_token = initialAuthToken;
-        window.__app_id = appId;
-            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ1OTQzZDdlNWZhYTIxZjcyOTJjMzI3MGY3ZDBjNWJmNDE5MjJmOTciLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwODYxNjA3Nzc4MjY5MDI4NDYwOCIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjX2ViMzVkMWY5YzlhZDJhM2FfaW5kZXguaHRtbC01OTMifSwiZXhwIjoxNzcwOTQyMTAzLCJpYXQiOjE3NzA5Mzg1MDMsImFsZyI6IlJTMjU2In0.P_huEM0r40I5bko644QfPiqD53qSfSWSNoG4clupEWrgAMEX_gynLH6Z9aqVbvfby7qJKuGV5zmz9W3P3bl6sjiuF_jMNxjqedcbY4wYEp6l7CNGcgKHOD5bW6EcjKyE0M-WrgBPycPp5l-5UzNW7vy0q4qepHN2dTXGGUVE2i6532OidyzXKQeK41BLKc5BR2lB-FJ3IPJ8hwdyIGZ827uYp5uQazZC3WysvVrSMkq1pTv54a6_u4HT9EUq6LA3GCquksjTiGh8qjx2-bgzUCKJGINyecYuPVxnBjUa_tfd4tjgdEjUkqq3B7haMn3LxDMNrY-nErvXvwLT-4wqAw","c_eb35d1f9c9ad2a3a_index.html-593")</script><script>'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
-function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
-p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
-
- MIT License
-
- Copyright (c) 2017-2023 W.Y.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
-*/
-function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
-function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
-function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
-function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
-var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
-function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
-function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
-function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
-function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
-return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
-function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
-function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
-c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
-function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
-function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
-function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
-function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
-function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
-function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
-d.lastIndex;b.push(e[0])}return b}
-function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
-{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
-function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
-function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
-function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
-16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
-function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
-function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
-window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
-</script><script>(function() {
-  // Ensure this script is executed only once
-  if (window.firebaseAuthBridgeScriptLoaded) {
-    return;
-  }
-  window.firebaseAuthBridgeScriptLoaded = true;
-
-  let nextTokenPromiseId = 0;
-
-  // Stores { resolve, reject } for ongoing token requests
-  const pendingTokenPromises = {};
-
-  // Listen for messages from the Host Application
-  window.addEventListener('message', function(event) {
-
-    const messageData = event.data;
-
-  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
-      const { success, token, error, promiseId } = messageData ?? {};
-      if (pendingTokenPromises[promiseId]) {
-        if (success) {
-          pendingTokenPromises[promiseId].resolve(token);
-        } else {
-          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
-        }
-        delete pendingTokenPromises[promiseId];
-      }
-    }
-  });
-
-  // Expose a function for the Generated App to request a new Firebase token
-  window.requestNewFirebaseToken = function() {
-    const currentPromiseId = nextTokenPromiseId++;
-    const promise = new Promise((resolve, reject) => {
-      pendingTokenPromises[currentPromiseId] = { resolve, reject };
-    });
-    if (window.parent && window.parent !== window) {
-      window.parent.postMessage({
-        type: 'REQUEST_NEW_FIREBASE_TOKEN',
-        promiseId: currentPromiseId
-      }, '*');
-    } else {
-      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
-      delete pendingTokenPromises[currentPromiseId];
-    }
-    return promise;
-  };
-})();</script><script>
-let realOriginalGetUserMedia = null;
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
-}
-
-(function() {
-  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
-    try {
-      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
-        get: function() {
-          return undefined; // Or throw an error
-        },
-        configurable: false
-      });
-    } catch (error) {
-      console.error("Error defining prototype getter:", error);
-    }
-  }
-})();
-
-(function() {
-  const pendingMediaResolvers = {};
-  let nextMediaPromiseId = 0;
-
-  function requestMediaPermissions(constraints) {
-    const mediaPromiseId = nextMediaPromiseId++;
-    const promise = new Promise((resolve, reject) => {
-      pendingMediaResolvers[mediaPromiseId] = (granted) => {
-        delete pendingMediaResolvers[mediaPromiseId];
-        resolve(granted);
-      };
-    });
-
-    window.parent.postMessage({
-      type: 'requestMediaPermission',
-      constraints: constraints,
-      promiseId: mediaPromiseId,
-    }, '*');
-
-    return promise;
-  }
-
-  let originalGetUserMedia = realOriginalGetUserMedia;
-
-  function interceptGetUserMedia() {
-    if (navigator.mediaDevices) {
-      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
-        value: function(constraints) {
-          return requestMediaPermissions(constraints).then((granted) => {
-            if (granted) {
-              if (originalGetUserMedia) {
-                return originalGetUserMedia(constraints);
-              } else {
-                throw new Error("Original getUserMedia not available.");
-              }
-            } else {
-              throw new DOMException('Permission denied', 'NotAllowedError');
-            }
-          });
-        },
-        writable: false,
-        configurable: false
-      });
-    }
-  }
-
-  interceptGetUserMedia();
-
-  const observer = new MutationObserver(function(mutationsList, observer) {
-    for (const mutation of mutationsList) {
-      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
-        interceptGetUserMedia();
-      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
-        interceptGetUserMedia();
-      } else if (mutation.type === 'childList' && mutation.addedNodes) {
-        mutation.addedNodes.forEach(node => {
-          if (node === navigator.mediaDevices) {
-            interceptGetUserMedia();
-          }
-        });
-      }
-    }
-  });
-
-  function interceptSpeechRecognition() {
-    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
-      return;
-    }
-
-    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    const SpeechRecognitionWrapper = function(...args) {
-      const recognizer = new OriginalSpeechRecognition(...args);
-      const originalStart = recognizer.start.bind(recognizer);
-
-      recognizer.start = function() {
-        requestMediaPermissions({ audio: true }).then(granted => {
-          if (granted) {
-            originalStart();
-          } else {
-            const errorEvent = new SpeechRecognitionErrorEvent('error');
-            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
-            recognizer.dispatchEvent(errorEvent);
-          }
-        });
-      };
-
-      return recognizer;
-    };
-
-    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
-    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
-
-    if (window.SpeechRecognition) {
-      window.SpeechRecognition = SpeechRecognitionWrapper;
-    }
-    if (window.webkitSpeechRecognition) {
-      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
-    }
-  }
-
-  interceptSpeechRecognition();
-
-  window.addEventListener('message', function(event) {
-    if (event.data) {
-      if (event.data.type === 'resolveMediaPermission') {
-        const { promiseId, granted } = event.data;
-        if (pendingMediaResolvers[promiseId]) {
-          pendingMediaResolvers[promiseId](granted);
-        }
-      }
-    }
-  });
-
-})();</script><script>((function(modelInformation) {
-  const originalFetch = window.fetch;
-  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
-  let googleLlmBaseApiUrls = [
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
-    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
-  ];
-  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
-    googleLlmBaseApiUrls.push(
-      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
-      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
-    );
-  });
-  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
-    googleLlmBaseApiUrls.push(
-      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
-      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
-    );
-  });
-
-  const pendingFetchResolvers = {};
-  let nextPromiseId = 0;
-
-  function handleStringInput(input, optionsArgument) {
-    const actualUrl = input;
-    const fetchCallArgs = [actualUrl, optionsArgument];
-    const effectiveOptions = optionsArgument || {};
-    const bodyForApiKeyCheck = effectiveOptions.body;
-    const bodyForPostMessage = effectiveOptions.body;
-    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
-  }
-
-  function handleRequestInput(input, optionsArgument) {
-    const actualUrl = input.url;
-    const fetchCallArgs = [input, optionsArgument];
-    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
-    let bodyForApiKeyCheck;
-    let bodyForPostMessage;
-
-    if (optionsArgument) {
-      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
-      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
-      if ('body' in optionsArgument) {
-        bodyForApiKeyCheck = optionsArgument.body;
-        bodyForPostMessage = optionsArgument.body;
-      } else {
-        bodyForApiKeyCheck = undefined;
-        bodyForPostMessage = input.body;
-      }
-    } else {
-      bodyForApiKeyCheck = undefined;
-      bodyForPostMessage = input.body;
-    }
-    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
-  }
-
-  window.fetch = function(input, optionsArgument) {
-    let actualUrl;
-    let fetchCallArgs;
-    let effectiveOptions = {};
-    let bodyForApiKeyCheck;
-    let bodyForPostMessage;
-
-    if (typeof input === 'string') {
-      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
-    } else if (input instanceof Request) {
-      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
-    } else {
-      return originalFetch.apply(window, [input, optionsArgument]);
-    }
-
-    effectiveOptions.method = effectiveOptions.method || 'GET';
-    if (!effectiveOptions.headers) {
-      effectiveOptions.headers = new Headers();
-    }
-
-
-    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
-      let apiKeyIsNull = true;
-
-      const regex = new RegExp("models/([^:]+)");
-      const modelNameMatch = actualUrl.match(regex);
-      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
-
-
-      try {
-        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
-        const apiKeyParam = urlObject.searchParams.get('key');
-        if (apiKeyParam) {
-          apiKeyIsNull = false;
-        }
-      } catch (e) {
-        // Continue checks even if URL parsing fails
-      }
-
-      if (apiKeyIsNull && effectiveOptions.headers) {
-        const h = new Headers(effectiveOptions.headers);
-        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
-        if (apiKeyHeaderValue) {
-          apiKeyIsNull = false;
-          return originalFetch.apply(window, fetchCallArgs);
-        }
-      }
-
-      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
-        try {
-          const bodyData = JSON.parse(bodyForApiKeyCheck);
-          if (bodyData && bodyData.apiKey) {
-            apiKeyIsNull = false;
-            return originalFetch.apply(window, fetchCallArgs);
-          }
-        } catch (e) {
-          // Ignore JSON parsing errors
-        }
-      }
-
-      if(apiKeyIsNull) {
-        const promiseId = nextPromiseId++;
-        const promise = new Promise((resolve) => {
-          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
-            delete pendingFetchResolvers[promiseId];
-            resolve(resolvedResponse);
-          };
-        });
-
-        let serializedBodyForPostMessage;
-        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
-            serializedBodyForPostMessage = bodyForPostMessage;
-        } else if (bodyForPostMessage instanceof ReadableStream) {
-            serializedBodyForPostMessage = null;
-        } else {
-            try {
-                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
-            } catch (e) {
-                serializedBodyForPostMessage = null;
-            }
-        }
-
-        const messageOptions = {
-            method: effectiveOptions.method,
-            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
-            body: serializedBodyForPostMessage
-        };
-
-        window.parent.postMessage({
-          type: 'requestFetch',
-          url: actualUrl,
-          modelName: modelName,
-          options: messageOptions,
-          promiseId: promiseId,
-        }, '*');
-
-        return promise;
-      }
-      return originalFetch.apply(window, fetchCallArgs);
-    }
-    return originalFetch.apply(window, fetchCallArgs);
-  };
-
-  window.addEventListener('message', function(event) {
-    if (event.data && event.data.type === 'resolveFetch') {
-      const { promiseId, response } = event.data;
-      if (pendingFetchResolvers[promiseId]) {
-        try {
-          const reconstructedResponse = new Response(response.body, {
-            status: response.status,
-            statusText: response.statusText,
-            headers: new Headers(response.headers),
-          });
-          pendingFetchResolvers[promiseId](reconstructedResponse);
-        } catch (error) {
-          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
-        }
-      }
-    }
-  });
-
-}))({"textModelName":"gemini-2.5-flash-preview-09-2025","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
-</script><script>(function() {
-  const originalConsoleLog = console.log;
-  const originalConsoleError = console.error;
-
-    /**
-   * Normalizes an error event or a promise rejection reason into a structured error object.
-   * @param {*} errorEventOrReason The error object or reason.
-   * @return {object} Structured error data { message, name, stack }.
-   */
-  function getErrorObject(errorEventOrReason) {
-    if (errorEventOrReason instanceof Error) {
-      return {
-        message: errorEventOrReason.message,
-        name: errorEventOrReason.name,
-        stack: errorEventOrReason.stack,
-      };
-    }
-    // Fallback for non-Error objects.
-    try {
-      return {
-        message: JSON.stringify(errorEventOrReason),
-        name: 'UnknownErrorType',
-        stack: null,
-      };
-    } catch (e) {
-      return {
-        message: String(errorEventOrReason),
-        name: 'UnknownErrorTypeNonStringifiable',
-        stack: null,
-      };
-    }
-  }
-
-  /**
-   * Converts an array of arguments (from log/error) into a single string.
-   * Handles Error objects specially to include their message and stack.
-   * @param {Array<*>} args - Arguments passed to console methods.
-   * @return {string} A string representation of the arguments.
-   */
-  function stringifyArgs(args) {
-    return args
-      .map((arg) => {
-        if (arg instanceof Error) {
-          const {message, stack} = arg;
-          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
-        }
-        if (typeof arg === 'object' && arg !== null) {
-          try {
-            return JSON.stringify(arg);
-          } catch (error) {
-            return '[Circular Object]';
-          }
-        } else {
-          return String(arg);
-        }
-      })
-      .join(' ');
-  }
-
-  console.log = function(...args) {
-    const logString = stringifyArgs(args);
-    window.parent.postMessage({ type: 'log', message: logString }, '*');
-    originalConsoleLog.apply(console, args);
-  };
-
-  console.error = function(...args) {
-    let errorData;
-    if (args.length > 0 && args[0] instanceof Error) {
-      const err = args[0];
-      // If the first arg is an Error, capture its details.
-      errorData = {
-        type: 'error',
-        source: 'CONSOLE_ERROR',
-        ...getErrorObject(err),
-        rawArgsString: stringifyArgs(args.slice(1)),
-        timestamp: new Date().toISOString(),
-      };
-    } else {
-      // If not an Error object, treat all args as a general error message.
-      errorData = {
-        type: 'error',
-        source: 'CONSOLE_ERROR',
-        message: stringifyArgs(args),
-        name: 'ConsoleLoggedError',
-        stack: null,
-        timestamp: new Date().toISOString(),
-      };
-    }
-    window.parent.postMessage(errorData, '*');
-    originalConsoleError.apply(console, args);
-  };
-
-  // Listen for global unhandled synchronous errors.
-  window.addEventListener('error', function(event) {
-    const errorDetails = event.error ? getErrorObject(event.error) : {
-      message: event.message,
-      name: 'GlobalError',
-      stack: null,
-      filename: event.filename,
-      lineno: event.lineno,
-      colno: event.colno,
-    };
-
-    window.parent.postMessage({
-      type: 'error',
-      source: 'global',
-      ...errorDetails,
-      message: errorDetails.message || event.message,
-      timestamp: new Date().toISOString(),
-    }, '*');
-  });
-
-  // Listen for unhandled promise rejections (asynchronous errors).
-  window.addEventListener('unhandledrejection', function(event) {
-    const errorDetails = getErrorObject(event.reason);
-
-    window.parent.postMessage({
-      type: 'error',
-      source: 'unhandledrejection',
-      ...errorDetails,
-      message: errorDetails.message || 'Unhandled Promise Rejection',
-      timestamp: new Date().toISOString(),
-    }, '*');
-  });
-
-})();</script>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Men's Olympic Hockey 2026 - Interactive Master</title>
-    
-    <!-- PWA / Mobile App Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#111111">
-    
-    <style>
-        :root {
-            --panel-width: 5in;
-            --panel-height: 6in;
-            --header-bg: #1a1a1a;
-            --header-text: #fff;
-            --accent-red: #c0392b;
-            --accent-blue: #2980b9;
-            --accent-green: #27ae60;
-            --font-desc: 12.9px;
-            --page-bg: #fff;
-            --visual-h: 360px;
-            --content-h: 216px;
-        }
-
-        body {
-            font-family: 'Arial Narrow', 'Roboto Condensed', sans-serif;
-            background-color: #111;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        .book-viewer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            perspective: 2000px;
-            width: 100%;
-        }
-
-        .book-spread {
-            display: flex;
-            justify-content: center;
-            background: #222;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease;
-        }
-
-        /* Gutter - Hidden on mobile single page */
-        .book-spread::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 20px;
-            bottom: 20px;
-            width: 6px;
-            background: linear-gradient(90deg, #333, #222, #333);
-            border-left: 1px solid #444;
-            border-right: 1px solid #444;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            z-index: 100;
-            transform: translateX(-50%);
-            pointer-events: none;
-        }
-
-        .book-spread.single-page::after {
-            display: none;
-        }
-
-        .left-page, .right-page {
-            width: var(--panel-width);
-            height: var(--panel-height);
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease-in-out;
-        }
-
-        .left-page { transform-origin: right; }
-        .right-page { transform-origin: left; }
-
-        .left-page > .panel, .right-page > .panel {
-            backface-visibility: hidden;
-        }
-
-        .left-page .back, .right-page .back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
-        }
-
-        @keyframes turnNext {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(-180deg); }
-        }
-
-        @keyframes turnPrev {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(180deg); }
-        }
-
-        .panel {
-            width: var(--panel-width);
-            height: var(--panel-height);
-            box-sizing: border-box;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            background: var(--page-bg);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            background: rgba(255,255,255,0.05);
-            padding: 10px 20px;
-            border-radius: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-            z-index: 1000;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 900;
-            font-size: 11px;
-            text-transform: uppercase;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .btn:hover:not(:disabled) {
-            background: #eee;
-            transform: translateY(-2px);
-        }
-
-        .btn.save-btn { background: #27ae60; color: #fff; }
-
-        .btn:disabled {
-            opacity: 0.1;
-            cursor: not-allowed;
-        }
-
-        .page-num {
-            font-size: 16px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            color: #aaa;
-            min-width: 60px;
-            text-align: center;
-        }
-
-        .sync-status {
-            font-size: 10px;
-            color: #27ae60;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .sync-status.active { opacity: 1; }
-
-        .page-layout-full {
-            padding: 0;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            border: none;
-            position: relative;
-        }
-
-        .bg-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .venue-header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 125px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 30px 15px 0 15px;
-            box-sizing: border-box;
-            z-index: 20;
-        }
-
-        .align-right { align-items: flex-end; text-align: right; }
-
-        .venue-title-perf {
-            color: #fff;
-            font-weight: 400;
-            text-transform: uppercase;
-            font-size: 27px;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-            line-height: 1;
-            white-space: nowrap;
-        }
-
-        .venue-title-perf b { font-weight: 900; }
-        .venue-title-perf .divider { width: 1.5px; height: 18px; background: #fff; margin: 0 10px; opacity: 0.8; }
-
-        .venue-architect-perf {
-            color: #fff;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0,0,0,1), 0 1px 2px rgba(0,0,0,1);
-        }
-
-        .text-bottom-overlay {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.78);
-            color: #fff;
-            padding: 10px 16px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            z-index: 10;
-            width: 82%;
-        }
-
-        .pos-giulia { top: 380px; left: 0; }
-        .pos-rho { bottom: 200px; right: 0; }
-
-        .desc-text-perf {
-            font-size: 16px;
-            line-height: 1.45;
-            color: #fff;
-            text-align: justify;
-            margin: 0;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-        }
-
-        .tina-layout {
-            background: #fff;
-            padding: 20px 22px 15px 22px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            border: none;
-        }
-
-        .tina-img-zone {
-            height: 345px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            background: #fff;
-            flex-shrink: 0;
-        }
-
-        .tina-img-zone img {
-            max-width: 90%;
-            max-height: 100%;
-            object-fit: contain;
-            margin-top: 5px;
-        }
-
-        .tina-title-banner {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 10px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .tina-title-main { font-size: 22px; font-weight: 900; color: var(--accent-red); text-transform: uppercase; letter-spacing: 1px; }
-        .tina-title-pipe { margin: 0 8px; color: #ccc; font-size: 20px; font-weight: 300; }
-        .tina-title-sub { font-size: 13px; font-weight: bold; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; }
-
-        .tina-text-box { height: 130px; flex-shrink: 0; width: 100%; }
-        .tina-text-box .venue-desc { color: #444; font-size: 13.8px; line-height: 1.45; text-align: justify; margin: 0; text-shadow: none; }
-
-        .flex-table-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            overflow: hidden;
-        }
-
-        h2 {
-            margin: 0 0 10px 0;
-            font-size: 17px;
-            text-transform: uppercase;
-            background: var(--header-bg);
-            color: var(--header-text);
-            padding: 5px 10px;
-            font-weight: 900;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            line-height: 1.1;
-            color: #000;
-        }
-
-        th {
-            background: #f0f0f0;
-            border-bottom: 2px solid #000;
-            padding: 3px 0;
-            font-weight: bold;
-            text-align: center;
-            font-size: 11px;
-            color: #000;
-        }
-
-        td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #000; }
-
-        .c-grp { width: 35px; text-align: center; font-weight: 900; font-size: 12px; }
-        .c-ven { width: 18px; text-align: center; color: #777; font-size: 10px; }
-        .c-date { width: 95px; color: #000; font-weight: bold; font-size: 11px; text-align: left; padding-left: 5px; white-space: nowrap; }
-        .c-time { width: 55px; text-align: center; font-size: 11px; }
-
-        .team-home { display: inline-block; width: 38%; text-align: right; font-weight: bold; overflow: hidden; white-space: nowrap; vertical-align: middle; padding-right: 1px; color: #000; }
-        .team-away { display: inline-block; width: 38%; text-align: left; font-weight: bold; overflow: hidden; white-space: nowrap; vertical-align: middle; padding-left: 1px; color: #000; }
-        .score-area { display: inline-block; width: 22%; text-align: center; white-space: nowrap; vertical-align: middle; font-size: 0; }
-        .flag-icon { width: 14px; height: 10px; display: inline-block; vertical-align: middle; border: 0.5px solid #333; margin: 0 2px; }
-
-        .sb {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 1px solid #444;
-            background: #fff;
-            margin: 0 1px;
-            vertical-align: middle;
-            text-align: center;
-            font-size: 11px;
-            font-weight: 900;
-            line-height: 18px;
-            outline: none;
-            color: #000;
-            overflow: hidden; /* Fixes the square size */
-        }
-
-        .sb[contenteditable="true"]:focus { background: #fffde7; border-color: #000; }
-
-        .std-table td { border: 1px solid #ddd; text-align: center; font-size: 13px; height: 28px; }
-        .std-table td:first-child { text-align: left; padding-left: 5px; font-weight: bold; width: 45%; }
-
-        .th-A { background: var(--accent-red); color: #fff; }
-        .th-B { background: var(--accent-blue); color: #fff; }
-        .th-C { background: var(--accent-green); color: #fff; }
-
-        .seed-row { display: flex; align-items: flex-end; font-size: 15px; flex-grow: 1; }
-        .seed-num { width: 25px; font-weight: bold; color: #666; }
-        .seed-name { flex-grow: 1; border-bottom: 1px solid #bbb; margin-right: 5px; height: 23px; }
-        .seed-stat { width: 30px; border-bottom: 1px solid #bbb; margin-right: 2px; height: 23px; }
-
-        .vert-label {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            font-size: 10px;
-            font-weight: bold;
-            text-align: center;
-            background: #f0f0f0;
-            width: 22px;
-            text-transform: uppercase;
-            flex-shrink: 0;
-            margin-left: 2px;
-            color: #000;
-        }
-
-        .front-overlay, .back-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            text-align: center;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .front-overlay { background: rgba(0,0,0,0.35); padding: 25px 10px 10px 10px; box-sizing: border-box; }
-        .back-overlay { padding: 20px 10px 15px 10px; box-sizing: border-box; background: rgba(255,255,255,0.4); }
-
-        .oly-logo { width: 100px; height: 50px; margin: 0 auto; }
-        .medals-table { font-size: 13px; }
-        .medals-table th { background: #222; color: #fff; font-size: 12px; height: 21px; text-align: center; }
-        .medals-table td { height: 23px; border-bottom: 1px solid #eee; text-align: center; }
-
-        .master-only { display: inline-block; }
-
-        .rules-main-list { display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; margin: 0; padding: 0; list-style: none; }
-        .rule-block { margin-bottom: 8px; }
-        .rule-block b { display: block; color: var(--accent-red); text-transform: uppercase; font-size: 13px; font-weight: 900; letter-spacing: 0.8px; margin-bottom: 1px; }
-        .rule-block p { margin: 0; font-size: 16px; color: #111; line-height: 1.25; text-align: justify; }
-
-        .ot-container { background: #f4f4f4; border: 2px solid var(--accent-blue); border-radius: 4px; padding: 8px 12px; margin-top: 5px; }
-        .ot-container h3 { margin: 0 0 5px 0; font-size: 14px; color: var(--accent-blue); text-transform: uppercase; font-weight: 900; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
-        .ot-sub-item { margin-bottom: 4px; }
-        .ot-sub-item:last-child { margin-bottom: 0; }
-        .ot-sub-item b { font-size: 13px; color: #333; text-transform: uppercase; }
-        .ot-sub-item p { margin: 0; font-size: 15.5px; color: #111; line-height: 1.2; }
-
-        .star-card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .star-name { font-weight: bold; font-size: 14px; color: #000; }
-        .star-team { font-size: 11px; color: #666; text-transform: uppercase; }
-
-        /* Mobile specific scaling */
-        @media (max-width: 800px) {
-            .book-spread {
-                padding: 10px;
-                transform: scale(0.9); /* Adjust scale to fit phone width */
-                transform-origin: top center;
-            }
-            .book-viewer {
-                gap: 5px;
-                padding-top: 10px;
-            }
-            .controls {
-                transform: scale(0.9);
-                margin-top: -30px;
-            }
-        }
-    </style>
+    <title>Olympic Hockey Guide 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="flipbook.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 
-<div class="book-viewer">
-    <div class="book-spread" id="spread-container"><div class="left-page"><div class="panel" id="p7">
-        <h2>Group Standings</h2>
-        <div class="flex-table-container" id="standings-tables-container"><table class="std-table"><thead><tr><th class="th-A" colspan="7">GROUP A</th></tr><tr><th width="45%">Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>P</th></tr></thead><tbody><tr><td><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</td><td>1</td><td>0</td><td>5</td><td>0</td><td>5</td><td>3</td></tr><tr><td><img src="https://flagcdn.com/w20/ch.png" class="flag-icon"> SWI</td><td>1</td><td>0</td><td>4</td><td>0</td><td>4</td><td>3</td></tr><tr><td><img src="https://flagcdn.com/w20/fr.png" class="flag-icon"> FRA</td><td>0</td><td>1</td><td>0</td><td>4</td><td>-4</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/cz.png" class="flag-icon"> CZE</td><td>0</td><td>1</td><td>0</td><td>5</td><td>-5</td><td>0</td></tr></tbody></table><table class="std-table"><thead><tr><th class="th-B" colspan="7">GROUP B</th></tr><tr><th width="45%">Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>P</th></tr></thead><tbody><tr><td><img src="https://flagcdn.com/w20/se.png" class="flag-icon"> SWE</td><td>1</td><td>0</td><td>5</td><td>2</td><td>3</td><td>3</td></tr><tr><td><img src="https://flagcdn.com/w20/sk.png" class="flag-icon"> SLO</td><td>1</td><td>0</td><td>4</td><td>1</td><td>3</td><td>3</td></tr><tr><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td><td>0</td><td>1</td><td>1</td><td>4</td><td>-3</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/it.png" class="flag-icon"> ITA</td><td>0</td><td>1</td><td>2</td><td>5</td><td>-3</td><td>0</td></tr></tbody></table><table class="std-table"><thead><tr><th class="th-C" colspan="7">GROUP C</th></tr><tr><th width="45%">Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>P</th></tr></thead><tbody><tr><td><img src="https://flagcdn.com/w20/us.png" class="flag-icon"> USA</td><td>1</td><td>0</td><td>5</td><td>2</td><td>3</td><td>3</td></tr><tr><td><img src="https://flagcdn.com/w20/de.png" class="flag-icon"> GER</td><td>1</td><td>0</td><td>3</td><td>1</td><td>2</td><td>3</td></tr><tr><td><img src="https://flagcdn.com/w20/dk.png" class="flag-icon"> DEN</td><td>0</td><td>1</td><td>1</td><td>3</td><td>-2</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/lv.png" class="flag-icon"> LAT</td><td>0</td><td>1</td><td>2</td><td>5</td><td>-3</td><td>0</td></tr></tbody></table></div>
-        <div style="margin-top:auto; font-size:10px; border-top:1px solid #ddd; padding-top:4px; color:#000;">$Pts = (W \times 3) + (OTW \times 2) + (OTL \times 1)$. * or t = OT Result.</div>
-    </div><div class="back"></div></div><div class="right-page"><div class="panel" id="p8" style="padding-top: 8px;">
-        <h2 style="margin-bottom: 8px;">Preliminaries</h2>
-        <div class="flex-table-container" style="justify-content: flex-start;">
-            <table id="table-prelims" style="font-size: 14.5px;">
-                <thead><tr><th class="c-grp" style="padding: 2px 0;">G</th><th class="c-ven" style="padding: 2px 0;">V</th><th class="c-date" style="padding: 2px 0 2px 5px;">Date</th><th class="c-time" style="padding: 2px 0;">ET</th><th class="c-match" style="padding: 2px 0;">Matchup</th></tr></thead>
-                <tbody id="sched-prelims-v"><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-blue)">B</td><td class="c-ven">R</td><td class="c-date">Wed Feb 11</td><td class="c-time">10:40a</td><td class="c-match"><span class="team-home">SLO <img src="https://flagcdn.com/w20/sk.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p1-h')">4</span><span class="sb" oninput="window.handleInput(this, 'p1-a')">1</span></span><span class="team-away"><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-blue)">B</td><td class="c-ven">S</td><td class="c-date">Wed Feb 11</td><td class="c-time">03:10p</td><td class="c-match"><span class="team-home">SWE <img src="https://flagcdn.com/w20/se.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p2-h')">5</span><span class="sb" oninput="window.handleInput(this, 'p2-a')">2</span></span><span class="team-away"><img src="https://flagcdn.com/w20/it.png" class="flag-icon"> ITA</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-red)">A</td><td class="c-ven">R</td><td class="c-date">Thu Feb 12</td><td class="c-time">06:10a</td><td class="c-match"><span class="team-home">SWI <img src="https://flagcdn.com/w20/ch.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p3-h')">4</span><span class="sb" oninput="window.handleInput(this, 'p3-a')">0</span></span><span class="team-away"><img src="https://flagcdn.com/w20/fr.png" class="flag-icon"> FRA</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-red)">A</td><td class="c-ven">S</td><td class="c-date">Thu Feb 12</td><td class="c-time">10:40a</td><td class="c-match"><span class="team-home">CZE <img src="https://flagcdn.com/w20/cz.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p4-h')">0</span><span class="sb" oninput="window.handleInput(this, 'p4-a')">5</span></span><span class="team-away"><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-green)">C</td><td class="c-ven">R</td><td class="c-date">Thu Feb 12</td><td class="c-time">03:10p</td><td class="c-match"><span class="team-home">LAT <img src="https://flagcdn.com/w20/lv.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p5-h')">2</span><span class="sb" oninput="window.handleInput(this, 'p5-a')">5</span></span><span class="team-away"><img src="https://flagcdn.com/w20/us.png" class="flag-icon"> USA</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-green)">C</td><td class="c-ven">R</td><td class="c-date">Thu Feb 12</td><td class="c-time">03:10p</td><td class="c-match"><span class="team-home">GER <img src="https://flagcdn.com/w20/de.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p6-h')">3</span><span class="sb" oninput="window.handleInput(this, 'p6-a')">1</span></span><span class="team-away"><img src="https://flagcdn.com/w20/dk.png" class="flag-icon"> DEN</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-blue)">B</td><td class="c-ven">S</td><td class="c-date">Fri Feb 13</td><td class="c-time">06:10a</td><td class="c-match"><span class="team-home">FIN <img src="https://flagcdn.com/w20/fi.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p7-h')"></span><span class="sb" oninput="window.handleInput(this, 'p7-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/se.png" class="flag-icon"> SWE</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-blue)">B</td><td class="c-ven">R</td><td class="c-date">Fri Feb 13</td><td class="c-time">06:10a</td><td class="c-match"><span class="team-home">ITA <img src="https://flagcdn.com/w20/it.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p8-h')"></span><span class="sb" oninput="window.handleInput(this, 'p8-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/sk.png" class="flag-icon"> SLO</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-red)">A</td><td class="c-ven">R</td><td class="c-date">Fri Feb 13</td><td class="c-time">10:40a</td><td class="c-match"><span class="team-home">FRA <img src="https://flagcdn.com/w20/fr.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p9-h')"></span><span class="sb" oninput="window.handleInput(this, 'p9-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/cz.png" class="flag-icon"> CZE</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-red)">A</td><td class="c-ven">S</td><td class="c-date">Fri Feb 13</td><td class="c-time">03:10p</td><td class="c-match"><span class="team-home">CAN <img src="https://flagcdn.com/w20/ca.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p10-h')"></span><span class="sb" oninput="window.handleInput(this, 'p10-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/ch.png" class="flag-icon"> SWI</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-blue)">B</td><td class="c-ven">R</td><td class="c-date">Sat Feb 14</td><td class="c-time">06:10a</td><td class="c-match"><span class="team-home">SWE <img src="https://flagcdn.com/w20/se.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p11-h')"></span><span class="sb" oninput="window.handleInput(this, 'p11-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/sk.png" class="flag-icon"> SLO</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-green)">C</td><td class="c-ven">S</td><td class="c-date">Sat Feb 14</td><td class="c-time">06:10a</td><td class="c-match"><span class="team-home">GER <img src="https://flagcdn.com/w20/de.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p12-h')"></span><span class="sb" oninput="window.handleInput(this, 'p12-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/lv.png" class="flag-icon"> LAT</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-blue)">B</td><td class="c-ven">R</td><td class="c-date">Sat Feb 14</td><td class="c-time">10:40a</td><td class="c-match"><span class="team-home">FIN <img src="https://flagcdn.com/w20/fi.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p13-h')"></span><span class="sb" oninput="window.handleInput(this, 'p13-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/it.png" class="flag-icon"> ITA</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-green)">C</td><td class="c-ven">S</td><td class="c-date">Sat Feb 14</td><td class="c-time">03:10p</td><td class="c-match"><span class="team-home">USA <img src="https://flagcdn.com/w20/us.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p14-h')"></span><span class="sb" oninput="window.handleInput(this, 'p14-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/dk.png" class="flag-icon"> DEN</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-red)">A</td><td class="c-ven">S</td><td class="c-date">Sun Feb 15</td><td class="c-time">06:10a</td><td class="c-match"><span class="team-home">SWI <img src="https://flagcdn.com/w20/ch.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p15-h')"></span><span class="sb" oninput="window.handleInput(this, 'p15-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/cz.png" class="flag-icon"> CZE</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-red)">A</td><td class="c-ven">R</td><td class="c-date">Sun Feb 15</td><td class="c-time">10:40a</td><td class="c-match"><span class="team-home">CAN <img src="https://flagcdn.com/w20/ca.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p16-h')"></span><span class="sb" oninput="window.handleInput(this, 'p16-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/fr.png" class="flag-icon"> FRA</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-green)">C</td><td class="c-ven">R</td><td class="c-date">Sun Feb 15</td><td class="c-time">01:10p</td><td class="c-match"><span class="team-home">DEN <img src="https://flagcdn.com/w20/dk.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p17-h')"></span><span class="sb" oninput="window.handleInput(this, 'p17-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/lv.png" class="flag-icon"> LAT</span></td></tr><tr><td class="c-grp" style="padding:6px 0; color:var(--accent-green)">C</td><td class="c-ven">S</td><td class="c-date">Sun Feb 15</td><td class="c-time">03:10p</td><td class="c-match"><span class="team-home">USA <img src="https://flagcdn.com/w20/us.png" class="flag-icon"></span><span class="score-area"><span class="sb" oninput="window.handleInput(this, 'p18-h')"></span><span class="sb" oninput="window.handleInput(this, 'p18-a')"></span></span><span class="team-away"><img src="https://flagcdn.com/w20/de.png" class="flag-icon"> GER</span></td></tr></tbody>
-            </table>
-        </div>
-        <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:4px; display:flex; justify-content:space-between;"><span>S: Santagiulia</span><span>R: Rho Fiera</span></div>
-    </div><div class="back"></div></div></div>
-    <div class="controls">
-        <button class="btn" onclick="window.prevSpread()">BACK</button>
-        <div class="page-num" id="page-display">10 | 11</div>
-        <button class="btn" onclick="window.nextSpread()">NEXT</button>
-        
-        
-        
-    </div>
-</div>
+<div class="book" id="hockey-book">
 
-<audio id="pageTurn" src="https://www.soundjay.com/paper/paper-page-turn-1.mp3" preload="auto"></audio>
-
-<div id="panel-source" style="display:none;">
-    <!-- P1: COVER -->
-    <div class="panel page-layout-full" id="p1">
-        <img src="https://i.postimg.cc/bJVNFD1f/Capt1ure.png" class="bg-img">
-        <div class="front-overlay">
-            <div style="text-align:center; width: 100%; margin-top: 25px;">
-                <img src="https://i.imgur.com/QpluDDF.png" style="width: 85%; height: auto; filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));">
-                <div style="font-size:52px; font-weight:100; color:rgba(255,255,255,0.8); margin-top: -5px; letter-spacing: 12px; text-shadow: none;">2026</div>
-            </div>
-            <div style="margin-top: auto; margin-bottom: 15px;">
-                <svg class="oly-logo" viewBox="0 0 100 50"><circle cx="20" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle><circle cx="50" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle><circle cx="80" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle><circle cx="35" cy="32" r="14" stroke="white" fill="none" stroke-width="3"></circle><circle cx="65" cy="32" r="14" stroke="white" fill="none" stroke-width="3"></circle></svg>
-            </div>
-            <div style="width: 100%; padding-bottom: 20px;">
-                <div style="font-size:16px; font-weight:900; color:#fff; text-shadow: 0 0 10px #000; letter-spacing:2px;">OLYMPIC MEN'S HOCKEY</div>
-                <div style="font-size:11px; color:#ddd; text-shadow: 0 0 5px #000; letter-spacing:5px;">POCKET GUIDE</div>
+    <!-- Page 0: Cover + Inside Cover -->
+    <div class="page">
+        <div class="front cover" id="page-p1">
+            <img src="https://i.postimg.cc/bJVNFD1f/Capt1ure.png" class="bg-img">
+            <div class="front-overlay">
+                <div style="text-align:center; width: 100%; margin-top: 5px;">
+                    <div style="font-size:20px; font-weight:500; color:#fff; margin-bottom: 3px; letter-spacing: 5px; text-shadow: 0 0 15px #000, 0 0 8px #000; font-family: Arial, sans-serif;">2026</div>
+                </div>
+                <div style="margin-top: 5px; margin-bottom: 5px; display: flex; align-items: center; justify-content: center; gap: 15px;">
+                    <div style="width: 140px; height: 2px; background: rgba(255,255,255,0.7);"></div>
+                    <svg class="oly-logo" viewBox="0 0 100 50">
+                        <circle cx="20" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle>
+                        <circle cx="50" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle>
+                        <circle cx="80" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle>
+                        <circle cx="35" cy="32" r="14" stroke="white" fill="none" stroke-width="3"></circle>
+                        <circle cx="65" cy="32" r="14" stroke="white" fill="none" stroke-width="3"></circle>
+                    </svg>
+                    <div style="width: 140px; height: 2px; background: rgba(255,255,255,0.7);"></div>
+                </div>
+                <div style="text-align:center; width: 100%;">
+                    <img src="https://i.imgur.com/QpluDDF.png" style="width: 95%; height: auto; filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));">
+                </div>
+                <div style="width: 100%; margin-top: auto; padding-bottom: 0px;">
+                    <div style="background: rgba(0,0,0,0.65); width: calc(100% + 40px); margin-left: -20px; padding: 3px 0; text-align: center;">
+                        <div style="font-size:16px; font-weight:900; color:#fff; text-shadow: 0 0 15px #000, 0 0 8px #000; letter-spacing:2px;">OLYMPIC MEN'S HOCKEY</div>
+                        <div style="font-size:11px; color:#f5f5f5; text-shadow: 0 0 12px #000, 0 0 6px #000; letter-spacing:5px; margin-top: 2px;">POCKET GUIDE</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- P_INTRO -->
-    <div class="panel" id="p_intro" style="padding: 25px 25px 15px 25px; background: #fdfdfd; display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <h2 style="background: none; color: #111; font-size: 24px; border-bottom: 3px solid #c0392b; margin-bottom: 15px; width: 100%; justify-content: center;">Introduction</h2>
-        <div style="font-size: 13.3px; color: #333; line-height: 1.4; text-align: justify; overflow-y: auto; flex-grow: 1;">
-            <p style="margin-top: 0;">After a 12-year wait, the world’s greatest stage for hockey is finally back in its "best-on-best" form. With NHL players returning to the Olympic ice for the first time since 2014, the Milano Cortina 2026 Men’s Hockey Tournament isn't just another competition—it’s the definitive battle for global supremacy.</p>
-            <p>From the first puck drop on February 11 to the gold medal game on February 22, 12 nations are descending on Milan's Santagiulia and Rho Arenas. Here is what makes this year’s tournament a must-watch:</p>
-            <p style="margin-bottom: 8px;"><strong>The "Best-on-Best" Era Returns</strong><br>
-            The storylines are already legendary. For the first time ever, we get to see generational talents like Sidney Crosby and Connor McDavid share the same sweater for Team Canada. Meanwhile, the United States arrives with perhaps their most skilled roster in history, led by Auston Matthews and a powerhouse defense featuring Quinn Hughes.</p>
-        </div>
-        <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 15px 0; gap: 20px;">
-            <img src="https://upload.wikimedia.org/wikipedia/en/6/60/2026_Winter_Olympics_logo.png?20210922122018" style="height: 60px; width: auto; object-fit: contain;">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/jbbqfkafamqfxovy0iut" style="height: 60px; width: auto; object-fit: contain;">
-            <img src="https://img.olympics.com/images/image/private/t_s_9-16_800/f_auto/primary/aucd9penq1yskqrysm8n" style="height: 60px; width: 45px; object-fit: cover; border-radius: 8px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canadian_Olympic_Committee_logo.svg/960px-Canadian_Olympic_Committee_logo.svg.png?20181224225813" style="height: 60px; width: auto; object-fit: contain;">
-        </div>
-        <div style="width: 100%; border-top: 1px solid #eee; padding-top: 10px; font-weight: bold; color: #888; font-size: 11px; letter-spacing: 2px;">
-            FEBRUARY 11 - 22, 2026
-        </div>
-    </div>
-
-    <!-- P2: TINA MASCOT -->
-    <div class="panel tina-layout" id="p2">
-        <div class="tina-img-zone">
-            <img src="https://i.postimg.cc/HnxSPprz/miss.png" alt="Tina Mascot">
-        </div>
-        <div class="tina-title-banner">
-            <span class="tina-title-main">Meet Tina</span>
-            <span class="tina-title-pipe">|</span>
-            <span class="tina-title-sub">The Official Mascot</span>
-        </div>
-        <div class="tina-text-box">
-            <div class="venue-desc" style="color:#444;">
-                Born in the Italian peaks and refined by the city, Tina is a dreamer on a mission. Explorer, guardian of nature, and believer that big dreams change the world. She knows that differences are an asset and respect is fundamental to growing up. From the snow-capped summits of Cortina to the urban sprawl of Milano, she is the creative spirit of the Games. Nature remains her true home, and she does everything in her power to protect it.
+        <div class="back panel" id="page-p_intro" style="padding: 25px 25px 15px 25px; background: #fdfdfd; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <h2 style="background: none; color: #111; font-size: 24px; border-bottom: 3px solid #c0392b; margin-bottom: 15px; width: 100%; justify-content: center;">Introduction</h2>
+            <div style="font-size: 13.3px; color: #333; line-height: 1.4; text-align: justify; overflow-y: auto; flex-grow: 1;">
+                <p style="margin-top: 0; margin-bottom: 10px;"><strong>The Boys Are Back</strong><br>
+                After a 12-year wait, the world's greatest stage for hockey is finally back in its true form. With NHL players returning to the Olympic ice for the first time since 2014, the Milano Cortina 2026 Men's Hockey Tournament isn't just another competition—it's the definitive battle for global supremacy. Follow here from the first puck drop on February 11 to the gold medal game on February 22, as 12 nations battle on Milan's Santagiulia and Rho Arenas.</p>        
+                <p style="margin-bottom: 0;"><strong>The Best-on-Best Era</strong><br>
+                The storylines are already legendary. For the first time ever, we get to see generational talents like Sidney Crosby and Connor McDavid share the same sweater for Team Canada. Meanwhile, the United States arrives with perhaps their most skilled roster in history, led by Auston Matthews and a powerhouse defense featuring Quinn Hughes.</p>
+                <p style="margin-bottom: 0; margin-top: 10px;"><strong>Olympic Hockey Legacy</strong><br>
+                Men's hockey debuted at the 1920 Summer Olympics before becoming a Winter Games staple in 1924. Canada dominated early, winning the first four gold medals and has since claimed nine total—the most of any nation. The U.S. enters with two gold medals (tied for third all-time) and a record eight silvers. Reigning champion Finland seeks to match Canada's 2010-2014 back-to-back feat, defending their first-ever gold won in 2022.</p>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 15px 0; gap: 20px;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/60/2026_Winter_Olympics_logo.png?20210922122018" style="height: 60px; width: auto; object-fit: contain;">
+                <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/jbbqfkafamqfxovy0iut" style="height: 60px; width: auto; object-fit: contain;">
+                <img src="https://img.olympics.com/images/image/private/t_s_9-16_800/f_auto/primary/aucd9penq1yskqrysm8n" style="height: 60px; width: 45px; object-fit: cover; border-radius: 8px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canadian_Olympic_Committee_logo.svg/960px-Canadian_Olympic_Committee_logo.svg.png?20181224225813" style="height: 60px; width: auto; object-fit: contain;">
+            </div>
+            <div style="width: 100%; border-top: 1px solid #eee; padding-top: 10px; font-weight: bold; color: #888; font-size: 11px; letter-spacing: 2px;">
+                FEBRUARY 11 - 22, 2026
             </div>
         </div>
     </div>
 
-    <!-- P3: SANTAGIULIA -->
-    <div class="panel page-layout-full" id="p3">
-        <img src="https://c.imggu.com/i/2026/02/12/7Fp1Y.png" class="bg-img" alt="Santagiulia Collage">
-        <div class="venue-header-overlay">
-            <div class="venue-title-perf"><b>Santagiulia</b><div class="divider"></div>Arena Italia</div>
-            <div class="venue-architect-perf">Architect: David Chipperfield</div>
-        </div>
-        <div class="text-bottom-overlay pos-giulia">
-            <p class="desc-text-perf">The Santagiulia Arena is the high-tech cathedral for the gold medal quest. Its shimmering metallic rings echo the spiraling ramps of the legendary San Siro stadium, glowing with LED strips at night. Inside, the surface is crafted by legendary ice man Don Moffatt, providing a stage for 16,000 fans to witness the crowning of Olympic champions.</p>
-        </div>
-    </div>
-
-    <!-- P4: RHO FIERA -->
-    <div class="panel page-layout-full" id="p4">
-        <img src="https://b.imggu.com/i/2026/02/12/7FWCV.png" class="bg-img" alt="Rho Fiera Collage">
-        <div class="venue-header-overlay align-right">
-            <div class="venue-title-perf"><b>Rho Fiera</b><div class="divider"></div>The Ice Park</div>
-            <div class="venue-architect-perf">Architect: Massimiliano Fuksas</div>
-        </div>
-        <div class="text-bottom-overlay pos-rho">
-            <p class="desc-text-perf">The Milano Ice Park is where the beauty of the sport meets the beast of architecture. The campus features a Speed Skating Stadium for 7,500 fans and a secondary Hockey Arena for 6,000. Under its sweeping glass roof, this landmark facility creates a high-performance environment where elegance and power collide.</p>
-        </div>
-    </div>
-
-    <!-- P_RULES: PAGE 6 -->
-    <div class="panel" id="p_rules" style="padding: 15px; background: #fff;">
-        <h2 style="margin-bottom: 8px;">Tournament Rules</h2>
-        <div class="rules-main-list">
-            <div class="rule-block">
-                <b>Fighting ejections</b>
-                <p>Automatic game misconduct and ejection. The IIHF Disciplinary Committee reviews all incidents for additional suspension.</p>
+    <!-- Page 1: Daily Buzz + Groups (New Order: 3,4) -->
+    <div class="page">
+        <div class="front panel" id="page-p5" style="padding: 12px 15px;">
+            <h2 style="margin-bottom:8px;">Daily Buzz: Saturday, Feb 14</h2>
+            <div style="margin-bottom: 6px;">
+                <div style="font-size: 9px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 2px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px;">Yesterday's Scores</div>
+                <div id="yesterday-buzz-v" style="display: flex; flex-direction: column; gap: 3px;"></div>
             </div>
-            <div class="rule-block">
-                <b>The "Oshie" Shootout</b>
-                <p>Five initial shooters. After round five, a coach can choose the same player to shoot repeatedly as often as they desire.</p>
+            <div style="margin-bottom: 6px;">
+                <div style="font-size: 9px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 2px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px;">Today's Schedule</div>
+                <div id="today-buzz-v" style="display: flex; flex-direction: column; gap: 3px;"></div>
             </div>
-            <div class="rule-block">
-                <b>Strict Crease Rule</b>
-                <p>Whistle blown if an attacker enters the crease even without contact. Faceoffs are moved outside the zone.</p>
+            <div>
+                <div style="font-size: 9px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 2px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px;">Tomorrow's Games</div>
+                <div id="tomorrow-buzz-v" style="display: flex; flex-direction: column; gap: 3px;"></div>
             </div>
-            <div class="rule-block">
-                <b>Point System</b>
-                <p>3 points for regulation win, 2 for OT/SO win, 1 for OT/SO loss, 0 for regulation loss.</p>
-            </div>
-            <div class="rule-block">
-                <b>Rosters</b>
-                <p>22-man active game rosters (20 skaters, 2 goalies). Lineups due 60m before puck drop.</p>
-            </div>
+            <div style="margin-top: auto; border-top: 1px dashed #ddd; padding-top: 6px; text-align: center; color: #bbb; font-size: 10px; font-style: italic;">"Gold isn't won on the ice, it's won in the heart."</div>
         </div>
-        <div class="ot-container">
-            <h3>Overtime Formats</h3>
-            <div class="ot-sub-item"><b>Preliminary Round</b><p>5-minute 3-on-3 sudden death followed by a shootout.</p></div>
-            <div class="ot-sub-item"><b>Quarter/Semifinals</b><p>10-minute 3-on-3 sudden death followed by a shootout.</p></div>
-            <div class="ot-sub-item"><b>Gold Medal Game</b><p>Unlimited 20-minute 3-on-3 periods until a winner scores. No shootouts.</p></div>
+        <div class="back panel" id="page-p7">
+            <h2>Group Standings</h2>
+            <div class="flex-table-container" id="standings-tables-container"></div>
+            <div style="margin-top:auto; font-size:10px; border-top:1px solid #ddd; padding-top:4px; color:#000;">Pts = (W × 3) + (OTW × 2) + (OTL × 1). * or t = OT Result.</div>
         </div>
     </div>
 
-    <!-- P5: DAILY BUZZ (PAGE 7) -->
-    <div class="panel" id="p5" style="padding: 15px;">
-        <h2>Daily Buzz: Thursday, Feb 12</h2>
-        <div style="margin-bottom: 20px;">
-            <div style="font-size: 11px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px;">Yesterday's Scores</div>
-            <div id="yesterday-buzz-v" style="display: flex; flex-direction: column; gap: 12px;"></div>
+    <!-- Page 2: Preliminaries + Seeding (New Order: 5,6) -->
+    <div class="page">
+        <div class="front panel" id="page-p8" style="padding: 12px 16px 8px 16px;">
+            <h2 style="margin-bottom: 6px;">Preliminaries</h2>
+            <div class="flex-table-container" style="justify-content: flex-start; overflow: visible;">
+                <table id="table-prelims" style="font-size: 13.1px;">
+                    <thead><tr><th class="c-grp" style="padding: 3px 8px;">G</th><th class="c-ven" style="padding: 3px 8px;">V</th><th class="c-date" style="padding: 3px 8px;">Date</th><th class="c-time" style="padding: 3px 8px;">ET</th><th class="c-match" style="padding: 3px 8px;">Matchup</th></tr></thead>
+                    <tbody id="sched-prelims-v"></tbody>
+                </table>
+            </div>
+            <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:2px; display:flex; justify-content:space-between;"><span>S: Santagiulia</span><span>R: Rho Fiera</span></div>
         </div>
-        <div>
-            <div style="font-size: 11px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px;">Today's Schedule</div>
-            <div id="today-buzz-v" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        <div class="back panel" id="page-p9">
+            <h2>Seeding (1-12)</h2>
+            <div style="display:flex; border-bottom:1px solid #000;">
+                <div style="flex:1;">
+                    <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:5px; color:#000; align-items:center; height:20px; overflow:hidden;">
+                        <span style="width:28px; flex-shrink:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;"></span>
+                        <span style="flex:1; box-sizing:border-box; display:flex; align-items:center;">Team Name</span>
+                        <span style="width:48px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Group</span>
+                        <span style="width:90px; flex-shrink:0; text-align:center; letter-spacing:0.8px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Record</span>
+                        <span style="width:40px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">GD</span>
+                        <span style="width:40px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">PTS</span>
+                        <span style="width:5%; box-sizing:border-box;"></span>
+                    </div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">1</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">2</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">3</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">4</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                </div>
+                <div class="vert-label">BYE TO QF</div>
+            </div>
+            <!-- Qualification: Two columns side by side -->
+            <div style="display:flex; gap:15px; margin-top:4px;">
+                <div style="flex:1;">
+                    <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:3px; padding:0; color:#000;">
+                        <span style="width:28px; flex-shrink:0;"></span>
+                        <span style="flex:1;">Team Name</span>
+                        <span style="width:35px; flex-shrink:0; text-align:center;">GD</span>
+                        <span style="width:35px; flex-shrink:0; text-align:center;">PTS</span>
+                    </div>
+                    <div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">5</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">6</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">7</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">8</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                    </div>
+                </div>
+                <div style="flex:1;">
+                    <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:3px; padding:0; color:#000;">
+                        <span style="width:28px; flex-shrink:0;"></span>
+                        <span style="flex:1;">Team Name</span>
+                        <span style="width:35px; flex-shrink:0; text-align:center;">GD</span>
+                        <span style="width:35px; flex-shrink:0; text-align:center;">PTS</span>
+                    </div>
+                    <div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">9</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">10</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">11</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">12</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                    </div>
+                </div>
+                <div class="vert-label">QUALIFICATION</div>
+            </div>
+            <!-- Knockout Stage Header -->
+            <h2 style="margin-top:10px; margin-bottom:6px;">Knockout Stage</h2>
+            <!-- Qualification Round Games -->
+            <div>
+                <table style="width:100%; border-collapse:collapse; font-size:13.1px;">
+                    <thead>
+                        <tr>
+                            <th colspan="7" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:3.2px;">QUALIFICATION ROUND</th>
+                        </tr>
+                        <tr style="display:none;">
+                            <th class="c-grp" style="padding:3px 4px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd; width:18px;">G</th>
+                            <th class="c-ven" style="padding:3px 4px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd; width:18px;">V</th>
+                            <th class="c-date" style="padding:3px 4px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd; width:68px;">Date</th>
+                            <th class="c-time" style="padding:3px 4px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd; width:42px;">ET</th>
+                            <th class="c-flag" style="padding:3px 4px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd; width:22px;"></th>
+                            <th class="c-match" style="padding:3px 10px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd;">Matchup</th>
+                            <th class="c-flag" style="padding:3px 4px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd; width:22px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="qual-games-v"></tbody>
+                </table>
+            </div>
+            <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:5px;">Tie-Break: Rank > Pts > GD.</div>
         </div>
-        <div style="margin-top: auto; border-top: 1px dashed #ddd; padding-top: 15px; text-align: center; color: #bbb; font-size: 13px; font-style: italic;">"Gold isn't won on the ice, it's won in the heart."</div>
     </div>
 
-    <!-- P_NEW8: PAGE 8 -->
-    <div class="panel" id="p_new8" style="padding: 15px; background: #fdfdfd;">
-        <h2>Global Contenders</h2>
-        <div style="margin-top: 5px;">
-            <div class="star-card">
-                <img src="https://flagcdn.com/w40/ca.png" style="width: 30px; height: auto; border: 1px solid #ccc;">
-                <div><div class="star-name">Team Canada</div><div class="star-team">McDavid, Crosby, MacKinnon</div></div>
+    <!-- Page 3: Knockout + Global Contenders (New Order: 7,8) -->
+    <div class="page">
+        <div class="front panel" id="page-p10">
+            <!-- Reseed section at top -->
+            <div style="margin-bottom:8px; padding:6px; background:#f0f0f0; border:1px solid #ccc; border-radius:3px;">
+                <div style="font-size:10px; font-weight:900; color:#333; margin-bottom:4px; text-transform:uppercase;">Reseed for Quarterfinals</div>
+                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:4px; font-size:10px;">
+                    <div class="seed-row" style="margin:0;"><div class="seed-num">1</div><div class="seed-name"></div></div>
+                    <div class="seed-row" style="margin:0;"><div class="seed-num">2</div><div class="seed-name"></div></div>
+                    <div class="seed-row" style="margin:0;"><div class="seed-num">3</div><div class="seed-name"></div></div>
+                    <div class="seed-row" style="margin:0;"><div class="seed-num">4</div><div class="seed-name"></div></div>
+                </div>
             </div>
-            <div class="star-card">
-                <img src="https://flagcdn.com/w40/us.png" style="width: 30px; height: auto; border: 1px solid #ccc;">
-                <div><div class="star-name">Team USA</div><div class="star-team">Matthews, Tkachuk, Q. Hughes</div></div>
+            <h2 style="margin-top:0;">Knockout Stage</h2>
+            <div class="flex-table-container">
+                <table id="table-ko" style="font-size: 13.5px;">
+                    <thead><tr><th class="c-grp">Rd</th><th class="c-ven">V</th><th class="c-date" style="width:95px;">Date</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
+                    <tbody id="sched-ko-v"></tbody>
+                </table>
             </div>
-            <div class="star-card">
-                <img src="https://flagcdn.com/w40/se.png" style="width: 30px; height: auto; border: 1px solid #ccc;">
-                <div><div class="star-name">Sweden</div><div class="star-team">Dahlin, Karlsson, Pettersson</div></div>
-            </div>
-            <div class="star-card">
-                <img src="https://flagcdn.com/w40/fi.png" style="width: 30px; height: auto; border: 1px solid #ccc;">
-                <div><div class="star-name">Finland</div><div class="star-team">Barkov, Rantanen, Heiskanen</div></div>
-            </div>
+            <div style="margin-top:auto; background:#f9f9f9; padding:5px; font-size:10px; border: 1px solid #ddd; color:#000;">Highest seed plays Lowest. OT: 3v3 then SO.</div>
         </div>
-        
-        <!-- NEW STATS SECTION -->
-        <div style="margin-top: 8px;">
-            <div style="font-size: 11px; font-weight: 900; color: #c0392b; margin-bottom: 2px; text-transform: uppercase;">Top 3 Points</div>
-            <table style="width:100%; font-size:10px; border-collapse:collapse; margin-bottom:8px;">
+        <div class="back panel" id="page-p_new8" style="padding: 15px; background: #fdfdfd;">
+            <h2>Global Contenders</h2>
+            <div style="margin-top: 5px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; width: calc(100% - 10px); max-width: none; margin-left: 0; margin-right: auto; justify-items: start;">
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
+                <img src="https://flagcdn.com/w80/ca.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
+                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
+                  <div style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="font-weight:900; color:#222; font-size:15px;">Canada</span>
+                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
+                  </div>
+                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">McDavid, Crosby, MacKinnon</div>
+                </div>
+              </div>
+
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
+                <img src="https://flagcdn.com/w80/us.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
+                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
+                  <div style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="font-weight:900; color:#222; font-size:15px;">USA</span>
+                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
+                  </div>
+                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">Matthews, Tkachuk, Hughes</div>
+                </div>
+              </div>
+
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
+                <img src="https://flagcdn.com/w80/se.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
+                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
+                  <div style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="font-weight:900; color:#222; font-size:15px;">Sweden</span>
+                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
+                  </div>
+                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">Pettersson, Karlsson, Dahlin</div>
+                </div>
+              </div>
+
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
+                <img src="https://flagcdn.com/w80/fi.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
+                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
+                  <div style="display:flex; align-items:flex-start; gap:8px;">
+                    <span style="font-weight:900; color:#222; font-size:15px;">Finland</span>
+                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
+                  </div>
+                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">Barkov, Rantanen, Heiskanen</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Stats Section -->
+            <div style="margin-top: 8px;">
+              <div style="font-size: 14px; font-weight: 900; color: #c0392b; margin-bottom: 4px; text-transform: uppercase; letter-spacing:1px;">Top 3 Points</div>
+              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; margin-bottom:10px; table-layout:fixed;">
                 <thead style="background:#eee;">
-                    <tr><th style="padding:2px; text-align:left;">Player</th><th style="padding:2px; text-align:left;">Team</th><th style="padding:2px; text-align:center;">GP</th><th style="padding:2px; text-align:center;">G</th><th style="padding:2px; text-align:center;">A</th><th style="padding:2px; text-align:center;">P</th></tr>
+                  <tr>
+                    <th style="padding:3px; text-align:center; width:5%; font-size:11px;">#</th>
+                    <th style="padding:3px 0 3px 5px; text-align:left; width:35%; font-size:11px;">Player</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:12px;">Team</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">GP</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">G</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">A</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">PTS</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr><td style="padding:2px; border-bottom:1px solid #eee;">1. Juraj Slafkovsky</td><td style="padding:2px; border-bottom:1px solid #eee;">SVK</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">2</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee; font-weight:bold;">3</td></tr>
-                    <tr><td style="padding:2px; border-bottom:1px solid #eee;">T2. Rasmus Dahlin</td><td style="padding:2px; border-bottom:1px solid #eee;">SWE</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">0</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">3</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee; font-weight:bold;">3</td></tr>
-                    <tr><td style="padding:2px;">T2. Connor McDavid</td><td style="padding:2px;">CAN</td><td style="padding:2px; text-align:center;">1</td><td style="padding:2px; text-align:center;">0</td><td style="padding:2px; text-align:center;">3</td><td style="padding:2px; text-align:center; font-weight:bold;">3</td></tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:3px; text-align:center; font-size:11px;">1</td>
+                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                      <img src='https://flagcdn.com/w20/sk.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Juraj Slafkovsky
+                    </td>
+                    <td style="padding:3px; font-size:12px; text-align:center;">SVK</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">2</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center; font-weight:bold;">3</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:3px; text-align:center; font-size:11px;">T2</td>
+                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                      <img src='https://flagcdn.com/w20/se.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Rasmus Dahlin
+                    </td>
+                    <td style="padding:3px; font-size:12px; text-align:center;">SWE</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">0</td>
+                    <td style="padding:3px; text-align:center;">3</td>
+                    <td style="padding:3px; text-align:center; font-weight:bold;">3</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:3px; text-align:center; font-size:11px;">T2</td>
+                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Connor McDavid
+                    </td>
+                    <td style="padding:3px; font-size:12px; text-align:center;">CAN</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">0</td>
+                    <td style="padding:3px; text-align:center;">3</td>
+                    <td style="padding:3px; text-align:center; font-weight:bold;">3</td>
+                  </tr>
                 </tbody>
-            </table>
+              </table>
 
-            <div style="font-size: 11px; font-weight: 900; color: #2980b9; margin-bottom: 2px; text-transform: uppercase;">Top 3 Goalies</div>
-            <table style="width:100%; font-size:10px; border-collapse:collapse;">
+              <div style="font-size: 14px; font-weight: 900; color: #2980b9; margin-bottom: 6px; text-transform: uppercase; letter-spacing:1px;">Top 3 Goalies</div>
+              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; table-layout:fixed;">
                 <thead style="background:#eee;">
-                    <tr><th style="padding:2px; text-align:left;">Player</th><th style="padding:2px; text-align:left;">Team</th><th style="padding:2px; text-align:center;">GP</th><th style="padding:2px; text-align:center;">W</th><th style="padding:2px; text-align:center;">GAA</th><th style="padding:2px; text-align:center;">SV%</th></tr>
+                  <tr>
+                    <th style="padding:3px; text-align:center; width:5%; font-size:11px;">#</th>
+                    <th style="padding:3px 0 3px 5px; text-align:left; width:35%; font-size:11px;">Player</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:12px;">Team</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">GP</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">W</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">GAA</th>
+                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">SV%</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr><td style="padding:2px; border-bottom:1px solid #eee;">Jordan Binnington</td><td style="padding:2px; border-bottom:1px solid #eee;">CAN</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">0.00</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1.000</td></tr>
-                    <tr><td style="padding:2px; border-bottom:1px solid #eee;">Leonardo Genoni</td><td style="padding:2px; border-bottom:1px solid #eee;">SWI</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">0.00</td><td style="padding:2px; text-align:center; border-bottom:1px solid #eee;">1.000</td></tr>
-                    <tr><td style="padding:2px;">Samuel Hlavaj</td><td style="padding:2px;">SVK</td><td style="padding:2px; text-align:center;">1</td><td style="padding:2px; text-align:center;">1</td><td style="padding:2px; text-align:center;">1.00</td><td style="padding:2px; text-align:center;">0.975</td></tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:3px; text-align:center; font-size:11px;">1</td>
+                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Jordan Binnington
+                    </td>
+                    <td style="padding:3px; font-size:12px; text-align:center;">CAN</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">0.00</td>
+                    <td style="padding:3px; text-align:center;">1.000</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:3px; text-align:center; font-size:11px;">2</td>
+                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                      <img src='https://flagcdn.com/w20/ch.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Leonardo Genoni
+                    </td>
+                    <td style="padding:3px; font-size:12px; text-align:center;">SWI</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">0.00</td>
+                    <td style="padding:3px; text-align:center;">1.000</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:3px; text-align:center; font-size:11px;">3</td>
+                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                      <img src='https://flagcdn.com/w20/sk.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Samuel Hlavaj
+                    </td>
+                    <td style="padding:3px; font-size:12px; text-align:center;">SVK</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">1</td>
+                    <td style="padding:3px; text-align:center;">1.00</td>
+                    <td style="padding:3px; text-align:center;">0.975</td>
+                  </tr>
                 </tbody>
-            </table>
-        </div>
-        
-        <div style="margin-top: auto; font-size: 12px; line-height: 1.4; color: #555; background: #fff; padding: 10px; border: 1px solid #eee;">
-            <b>The Verdict:</b> Milan 2026 marks the first "Best-on-Best" tournament in over a decade. While Canada remains the favorite, the gap has closed, with the USA and Sweden bringing perhaps their fastest rosters in Olympic history.
-        </div>
-    </div>
-
-    <!-- P6: ROSTER (PAGE 9) -->
-    <div class="panel" id="p6" style="padding:0; background:#000;">
-        <img src="https://i0.wp.com/www.rawcharge.com/wp-content/uploads/sites/5/2025/12/team-canada-roster.jpg?resize=819%2C1024&amp;ssl=1" style="width:100%; height:100%; object-fit:fill;">
-    </div>
-
-    <!-- P7: GROUPS (PAGE 10) -->
-    <div class="panel" id="p7">
-        <h2>Group Standings</h2>
-        <div class="flex-table-container" id="standings-tables-container"><table class="std-table"><thead><tr><th class="th-A" colspan="7">GROUP A</th></tr><tr><th width="45%">Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>P</th></tr></thead><tbody><tr><td><img src="https://flagcdn.com/w20/ca.png" class="flag-icon"> CAN</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/cz.png" class="flag-icon"> CZE</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/ch.png" class="flag-icon"> SWI</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/fr.png" class="flag-icon"> FRA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table><table class="std-table"><thead><tr><th class="th-B" colspan="7">GROUP B</th></tr><tr><th width="45%">Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>P</th></tr></thead><tbody><tr><td><img src="https://flagcdn.com/w20/fi.png" class="flag-icon"> FIN</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/se.png" class="flag-icon"> SWE</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/sk.png" class="flag-icon"> SLO</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/it.png" class="flag-icon"> ITA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table><table class="std-table"><thead><tr><th class="th-C" colspan="7">GROUP C</th></tr><tr><th width="45%">Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>P</th></tr></thead><tbody><tr><td><img src="https://flagcdn.com/w20/us.png" class="flag-icon"> USA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/de.png" class="flag-icon"> GER</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/lv.png" class="flag-icon"> LAT</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td><img src="https://flagcdn.com/w20/dk.png" class="flag-icon"> DEN</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div>
-        <div style="margin-top:auto; font-size:10px; border-top:1px solid #ddd; padding-top:4px; color:#000;">$Pts = (W \times 3) + (OTW \times 2) + (OTL \times 1)$. * or t = OT Result.</div>
-    </div>
-
-    <!-- P8: PRELIMINARIES (PAGE 11) -->
-    <div class="panel" id="p8" style="padding-top: 8px;">
-        <h2 style="margin-bottom: 8px;">Preliminaries</h2>
-        <div class="flex-table-container" style="justify-content: flex-start;">
-            <table id="table-prelims" style="font-size: 14.5px;">
-                <thead><tr><th class="c-grp" style="padding: 2px 0;">G</th><th class="c-ven" style="padding: 2px 0;">V</th><th class="c-date" style="padding: 2px 0 2px 5px;">Date</th><th class="c-time" style="padding: 2px 0;">ET</th><th class="c-match" style="padding: 2px 0;">Matchup</th></tr></thead>
-                <tbody id="sched-prelims-v"></tbody>
-            </table>
-        </div>
-        <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:4px; display:flex; justify-content:space-between;"><span>S: Santagiulia</span><span>R: Rho Fiera</span></div>
-    </div>
-
-    <!-- P9: SEEDING (PAGE 12) -->
-    <div class="panel" id="p9">
-        <h2>Seeding (1-12)</h2>
-        <div style="display:flex; font-size:10px; font-weight:bold; margin-bottom:5px; padding:0 30px 0 12px; color:#000;"><span style="flex-grow:1;">Team Name</span><span style="width:30px; text-align:center;">GD</span><span style="width:30px; text-align:center;">Pts</span></div>
-        <div style="display:flex; border-bottom:3px solid #000; flex-grow:2.4;">
-            <div style="flex-grow:1;">
-                <div class="seed-row"><div class="seed-num">1</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">2</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">3</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">4</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
+              </table>
             </div>
-            <div class="vert-label">BYE TO QF</div>
-        </div>
-        <div style="display:flex; border-bottom:3px solid #000; flex-grow:0.8; margin-top:2px;">
-            <div style="flex-grow:1; padding-top: 8px;">
-                <div class="seed-row"><div class="seed-num">5</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">6</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">7</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">8</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">9</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">10</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">11</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
-                <div class="seed-row"><div class="seed-num">12</div><div class="seed-name"></div><div class="seed-stat"></div><div class="seed-stat"></div></div>
+            
+            <div style="margin-top: auto; font-size: 12px; line-height: 1.4; color: #555; background: #fff; padding: 10px; border: 1px solid #eee;">
+                <b>The Verdict:</b> Milan 2026 marks the first "Best-on-Best" tournament in over a decade. While Canada remains the favorite, the gap has closed, with the USA and Sweden bringing perhaps their fastest rosters in Olympic history.
             </div>
-            <div class="vert-label">QUALIFICATION</div>
         </div>
-        <div style="display:flex; flex-grow:2.2; margin-top:2px;">
-            <div style="flex-grow:1; padding-top: 8px;">
-                <div class="seed-row"><div class="seed-num">1</div><div class="seed-name"></div></div>
-                <div class="seed-row"><div class="seed-num">2</div><div class="seed-name"></div></div>
-                <div class="seed-row"><div class="seed-num">3</div><div class="seed-name"></div></div>
-                <div class="seed-row" style="margin-bottom:0;"><div class="seed-num">4</div><div class="seed-name"></div></div>
-            </div>
-            <div class="vert-label">RESEED</div>
-        </div>
-        <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:5px;">Tie-Break: Rank &gt; Pts &gt; GD.</div>
     </div>
 
-    <!-- P10: KNOCKOUT (PAGE 13) -->
-    <div class="panel" id="p10">
-        <h2>Knockout Stage</h2>
-        <div class="flex-table-container">
-            <table id="table-ko" style="font-size: 13.5px;">
-                <thead><tr><th class="c-grp">Rd</th><th class="c-ven">V</th><th class="c-date" style="width:95px;">Date</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
-                <tbody id="sched-ko-v"></tbody>
+    <!-- Page 4: Rules + Canada Pic (New Order: 9,10) -->
+    <div class="page">
+        <div class="front panel" id="page-p_rules" style="padding: 15px; background: #fff;">
+            <h2 style="margin-bottom: 8px;">Tournament Rules</h2>
+            <div class="rules-main-list">
+                <div class="rule-block">
+                    <b>Fighting ejections</b>
+                    <p>Automatic game misconduct and ejection. The IIHF Disciplinary Committee reviews all incidents for additional suspension.</p>
+                </div>
+                <div class="rule-block">
+                    <b>The "Oshie" Shootout</b>
+                    <p>Five initial shooters. After round five, a coach can choose the same player to shoot repeatedly as often as they desire.</p>
+                </div>
+                <div class="rule-block">
+                    <b>Strict Crease Rule</b>
+                    <p>If an attacker enters the crease even without contact, the referee may call a whistle and move the faceoff outside the zone.</p>
+                </div>
+                <div class="rule-block">
+                    <b>Checks to the Head</b>
+                    <p>In international play, checks to the head can be called as major penalties or game misconducts if the referee deems the play reckless.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-top: 6px;">
+                <div class="ot-container" style="flex: 1;">
+                    <h3>Point System</h3>
+                    <p style="font-size: 11px; margin: 0; color: #222;">3 points for regulation win, 2 for OT/SO win, 1 for OT/SO loss, 0 for regulation loss.</p>
+                </div>
+                <div class="ot-container" style="flex: 1;">
+                    <h3>Rosters</h3>
+                    <p style="font-size: 11px; margin: 0; color: #222;">22-man active game rosters (20 skaters, 2 goalies). Lineups due 60m before puck drop.</p>
+                </div>
+                <div class="ot-container" style="flex: 1;">
+                    <h3>Rink Dimensions</h3>
+                    <p style="font-size: 11px; margin: 0 0 2px 0; color: #222;"><b style="font-size: 11.5px;">NHL:</b> 200 (L) × 85 (W) ft.</p>
+                    <p style="font-size: 11px; margin: 0 0 2px 0; color: #222;"><b style="font-size: 11.5px;">IIHF:</b> 197 (L) × 98.5 (W) ft.</p>
+                    <p style="font-size: 11px; margin: 0; color: #222;"><b style="font-size: 11.5px;">OLY:</b> 196.85 (L) × 85.3 (W) ft.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 6px; margin-top: 6px;">
+                <div class="ot-container" style="flex: 0 0 55%;">
+                    <h3>Overtime Formats</h3>
+                    <div class="ot-sub-item"><b>Preliminary Round</b><p>5-minute 3-on-3 sudden death followed by a shootout.</p></div>
+                    <div class="ot-sub-item"><b>Quarter/Semifinals</b><p>10-minute 3-on-3 sudden death followed by a shootout.</p></div>
+                    <div class="ot-sub-item"><b>Gold Medal Game (No shootouts)</b><p>Unlimited 20-minute 3-on-3 periods until a winner scores.</p></div>
+                </div>
+                <div class="ot-container" style="flex: 0 0 45%;">
+                    <h3>Equipment</h3>
+                    <div class="ot-sub-item"><b>Goalie Mask Designs</b><p>Need pre-approval from tournament officials.</p></div>
+                    <div class="ot-sub-item"><b>Neck Guards</b><p>Mandatory for all players on the ice.</p></div>
+                    <div class="ot-sub-item"><b>Sticks</b><p>Must be on market within last 6 months.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="back panel" id="page-p6" style="padding:0; background:#000;">
+            <img src="https://i0.wp.com/www.rawcharge.com/wp-content/uploads/sites/5/2025/12/team-canada-roster.jpg?resize=819%2C1024&ssl=1" style="width:100%; height:100%; object-fit:fill;">
+        </div>
+    </div>
+
+    <!-- Page 5: Tina + Santagiulia (New Order: 11,12) -->
+    <div class="page">
+        <div class="front panel tina-layout" id="page-p2">
+            <div class="tina-img-zone">
+                <img src="https://i.postimg.cc/HnxSPprz/miss.png" alt="Tina Mascot">
+            </div>
+            <div class="tina-title-banner">
+                <span class="tina-title-main">Meet Tina</span>
+                <span class="tina-title-pipe">|</span>
+                <span class="tina-title-sub">The Official Mascot</span>
+            </div>
+            <div class="tina-text-box">
+                <div class="venue-desc" style="color:#444;">
+                    Born in the Italian peaks and refined by the city, Tina is a dreamer on a mission. Explorer, guardian of nature, and believer that big dreams change the world. She knows that differences are an asset and respect is fundamental to growing up. From the snow-capped summits of Cortina to the urban sprawl of Milano, she is the creative spirit of the Games. Nature remains her true home, and she does everything in her power to protect it.
+                </div>
+            </div>
+        </div>
+        <div class="back panel page-layout-full" id="page-p3">
+            <img src="https://c.imggu.com/i/2026/02/12/7Fp1Y.png" class="bg-img" alt="Santagiulia Collage">
+            <div class="venue-header-overlay">
+                <div class="venue-title-perf"><b>Santagiulia</b><div class="divider"></div>Arena Italia</div>
+                <div class="venue-architect-perf">Architect: David Chipperfield</div>
+            </div>
+            <div class="text-bottom-overlay pos-giulia">
+                <p class="desc-text-perf">The Santagiulia Arena is the high-tech cathedral for the gold medal quest. Its shimmering metallic rings echo the spiraling ramps of the legendary San Siro stadium, glowing with LED strips at night. Inside, the surface is crafted by legendary ice man Don Moffatt, providing a stage for 16,000 fans to witness the crowning of Olympic champions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: Rho Fiera + History (New Order: 13,14) -->
+    <div class="page">
+        <div class="front panel page-layout-full" id="page-p4">
+            <img src="https://b.imggu.com/i/2026/02/12/7FWCV.png" class="bg-img" alt="Rho Fiera Collage">
+            <div class="venue-header-overlay align-right">
+                <div class="venue-title-perf"><b>Rho Fiera</b><div class="divider"></div>Total Ice Park</div>
+                <div class="venue-architect-perf">Architect: Massimiliano Fuksas</div>
+            </div>
+            <div class="text-bottom-overlay pos-rho">
+                <p class="desc-text-perf">The Milano Ice Park is where the beauty of the sport meets the beast of architecture. The campus features a Speed Skating Stadium for 7,500 fans and a secondary Hockey Arena for 6,000. Under its sweeping glass roof, this landmark facility creates a high-performance environment where elegance and power collide.</p>
+            </div>
+        </div>
+        <div class="back panel" id="page-p11">
+            <h2>Olympic History</h2>
+            <table class="medals-table">
+                <thead><tr><th>Year</th><th>🥇 Gold</th><th>🥈 Silver</th><th>🥉 Bronze</th></tr></thead>
+                <tbody id="history-v"></tbody>
             </table>
-        </div>
-        <div style="margin-top:auto; background:#f9f9f9; padding:5px; font-size:10px; border: 1px solid #ddd; color:#000;">Highest seed plays Lowest. OT: 3v3 then SO.</div>
-    </div>
-
-    <!-- P11: HISTORY (PAGE 14) -->
-    <div class="panel" id="p11">
-        <h2>Olympic History</h2>
-        <table class="medals-table">
-            <thead><tr><th>Year</th><th>🥇 Gold</th><th>🥈 Silver</th><th>🥉 Bronze</th></tr></thead>
-            <tbody id="history-v"></tbody>
-        </table>
-        <div style="margin: 8px auto 0; width: 100%; padding: 5px; background: #fff; border: 1px solid #000; border-radius: 2px; box-sizing: border-box; overflow: hidden;">
-            <img src="https://i.postimg.cc/xT5YsbQy/wq.png" style="width: calc(100% - 8px); display: block; margin: 0 auto;">
-            <div style="text-align: center; font-size: 12px; color: #555; margin-top: 3px; font-style: italic;">Dominik Hašek holds his gold medal after shutting out Russia 1-0 in 1998. Nagano, Japan.</div>
-        </div>
-        <div style="text-align: left; font-size: 12px; color: #333; line-height: 1.2; margin-top: 3px; padding: 3px 7px; background: #f9f9f9; border: 1px solid #eee; border-radius: 2px;">
-            List reflects when NHL players join Olympics circa 1998<br>
-            <span style="color: #c0392b;">*</span> NHL opts out 2018 &amp; 2022
+            <div style="text-align: center; font-size: 12px; color: #333; line-height: 1.4; margin-top: 2px; margin-bottom: 2px; padding: 5px 7px; background: #fafafa; border: 1px solid #eee; border-radius: 2px;">
+                List reflects when NHL players join Olympics circa 1998 | <span style="color: #c0392b;">*</span> NHL opts out 2018 & 2022
+            </div>
+            <div style="margin: 4px auto 0; width: 100%; padding: 10px; background: #fff; border: 1px solid #000; border-radius: 2px; box-sizing: border-box; overflow: hidden;">
+              <img src="https://i.postimg.cc/xT5YsbQy/wq.png" style="width: calc(100% - 20px); display: block; margin: 0 auto;">
+              <div style="text-align: center; font-size: 11px; color: #555; margin: 0 2px 8px 2px; padding: 4px 2px; font-style: italic; line-height:1.2; background: #f9f9f9; border-radius: 4px;">Dominik Hašek holds his gold medal after shutting out Russia 1-0 in 1998. Nagano, Japan.</div>
+            </div>
         </div>
     </div>
 
-    <!-- P_OUTRO (PAGE 15) -->
-    <div class="panel" id="p_outro" style="padding: 20px; background: #fff;">
-        <h2 style="background: var(--header-bg); color: #fff; padding: 5px 10px; margin: -10px -10px 10px -10px;">Tournament Notes</h2>
-        <div style="margin-top: 15px; border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
-        <div style="margin-top: auto; text-align: center; font-size: 10px; color: #aaa;">Capture your highlights and personal tournament stats here.</div>
-    </div>
-
-    <!-- P12: BACK COVER (PAGE 16) -->
-    <div class="panel page-layout-full" id="p12">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg/1280px-IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg" class="bg-img" alt="Vintage hockey team photo">
-        <div class="back-overlay">
-            <svg class="oly-logo" style="margin-top: 20px; filter: brightness(0);" viewBox="0 0 100 50">
-                <circle cx="20" cy="18" r="14" stroke="black" fill="none" stroke-width="3"></circle>
-                <circle cx="50" cy="18" r="14" stroke="black" fill="none" stroke-width="3"></circle>
-                <circle cx="80" cy="18" r="14" stroke="black" fill="none" stroke-width="3"></circle>
-                <circle cx="35" cy="32" r="14" stroke="black" fill="none" stroke-width="3"></circle>
-                <circle cx="65" cy="32" r="14" stroke="black" fill="none" stroke-width="3"></circle></svg>
-            <div style="margin-top: auto; font-size: 10px; color: #000; font-weight: bold; padding-bottom: 15px;">© 2026 Hockey Fan Micro-Press</div>
+    <!-- Page 7: Notes + Back Cover -->
+    <div class="page">
+        <div class="front panel" id="page-p_outro" style="padding: 20px; background: #fff;">
+            <h2 style="background: var(--header-bg); color: #fff; padding: 5px 10px; margin: -10px -10px 10px -10px;">Tournament Notes</h2>
+            <div style="margin-top: 15px; border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="margin-top: auto; text-align: center; font-size: 10px; color: #aaa;">Capture your highlights and personal tournament stats here.</div>
+        </div>
+        <div class="back cover" id="page-p12">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg/1280px-IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg" class="bg-img" alt="Vintage hockey">
+            <div class="back-overlay">
+                <svg class="oly-logo" style="margin-top: 20px; filter: brightness(0);" viewBox="0 0 100 50">
+                    <circle cx="20" cy="18" r="14" stroke="black" fill="none" stroke-width="3"></circle>
+                    <circle cx="50" cy="18" r="14" stroke="black" fill="none" stroke-width="3"></circle>
+                    <circle cx="80" cy="18" r="14" stroke="black" fill="none" stroke-width="3"></circle>
+                    <circle cx="35" cy="32" r="14" stroke="black" fill="none" stroke-width="3"></circle>
+                    <circle cx="65" cy="32" r="14" stroke="black" fill="none" stroke-width="3"></circle>
+                </svg>
+                <div style="margin-top: auto; font-size: 10px; color: #000; font-weight: bold; padding-bottom: 15px;">© 2026 Hockey Fan Micro-Press</div>
+            </div>
         </div>
     </div>
+
 </div>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+<!-- Controls -->
+<div class="controls">
+    <button class="btn" onclick="bookPrev()">BACK</button>
+    <div class="page-num" id="page-display">COVER</div>
+    <button class="btn" onclick="bookNext()">NEXT</button>
+</div>
 
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'hockey-guide-2026';
-    const firebaseConfigStr = typeof __firebase_config !== 'undefined' ? __firebase_config : null;
-    
-    let db = null;
-    let auth = null;
-    let user = null;
+<!-- Page turn sound -->
+<audio id="pageTurn" preload="auto" crossorigin="anonymous" src="https://raw.githubusercontent.com/cutiejf/olyhockey26/main/PageFlip3.wav"></audio>
 
-    if (firebaseConfigStr) {
-        const config = JSON.parse(firebaseConfigStr);
-        const app = initializeApp(config);
-        auth = getAuth(app);
-        db = getFirestore(app);
-    }
+<script>
+// Flipbook engine
+const flipBook = (elBook) => {
+    const pages = Array.from(elBook.querySelectorAll(".page"));
+    let current = 0;
 
-    const masterSpreads = [ 
-        ['p1'], 
-        ['p_intro', 'p2'], 
-        ['p3', 'p4'], 
-        ['p_rules', 'p5'], 
-        ['p_new8', 'p6'],  
-        ['p7', 'p8'],      
-        ['p9', 'p10'],     
-        ['p11', 'p_outro'],
-        ['p12']            
-    ];
+    pages.forEach((page, idx) => {
+        page.style.setProperty("--i", idx);
+    });
 
-    const teamGroups = { 'Canada': 'A', 'Czechia': 'A', 'Switzerland': 'A', 'France': 'A', 'Finland': 'B', 'Sweden': 'B', 'Slovakia': 'B', 'Italy': 'B', 'USA': 'C', 'Germany': 'C', 'Latvia': 'C', 'Denmark': 'C' };
-    const flagMap = { 'Canada': 'ca', 'Czechia': 'cz', 'Switzerland': 'ch', 'France': 'fr', 'Finland': 'fi', 'Sweden': 'se', 'Slovakia': 'sk', 'Italy': 'it', 'USA': 'us', 'Germany': 'de', 'Latvia': 'lv', 'Denmark': 'dk' };
-    
-    // Scores reset to empty
-    const storedScores = {
-        "p1-h": "4",
-        "p1-a": "1",
-        "p2-h": "5",
-        "p2-a": "2",
-        "p3-h": "4",
-        "p3-a": "0",
-        "p4-a": "5",
-        "p4-h": "0",
-        "p5-a": "5",
-        "p5-h": "2",
-        "p6-h": "3",
-        "p6-a": "1"
+    const setCurrent = (c) => {
+        current = Math.max(0, Math.min(c, pages.length));
+        elBook.style.setProperty("--c", current);
+        updatePageDisplay();
+        playPageSound();
+    };
+
+    const updatePageDisplay = () => {
+        const display = document.getElementById('page-display');
+        if (!display) return;
+        if (current === 0) {
+            display.textContent = 'COVER';
+        } else if (current >= pages.length) {
+            display.textContent = 'BACK';
+        } else {
+            const leftPage = current * 2;
+            const rightPage = leftPage + 1;
+            display.textContent = leftPage + ' | ' + rightPage;
+        }
+    };
+
+    const playPageSound = () => {
+        const audio = document.getElementById('pageTurn');
+        if (audio) {
+            audio.currentTime = 0;
+            audio.volume = 0.6;
+            audio.play().catch(() => {});
+        }
+    };
+
+    setCurrent(0);
+
+    // Click to flip
+    pages.forEach((page, idx) => {
+        page.addEventListener("click", (evt) => {
+            if (evt.target.closest("a")) return;
+            const next = evt.target.closest(".back") ? idx : idx + 1;
+            setCurrent(next);
+        });
+    });
+
+    // Expose for buttons
+    window.bookNext = () => setCurrent(current + 1);
+    window.bookPrev = () => setCurrent(current - 1);
+    window.bookGoTo = (c) => setCurrent(c);
 };
-    
-    let spreadIdx = 0;
 
-    const prelims = [
-        { id:'p1', g:'B', d:'Wed Feb 11', t:'10:40a', h:'Slovakia', a:'Finland', v:'R' },
-        { id:'p2', g:'B', d:'Wed Feb 11', t:'03:10p', h:'Sweden', a:'Italy', v:'S' },
-        { id:'p3', g:'A', d:'Thu Feb 12', t:'06:10a', h:'Switzerland', a:'France', v:'R' },
-        { id:'p4', g:'A', d:'Thu Feb 12', t:'10:40a', h:'Czechia', a:'Canada', v:'S' },
-        { id:'p5', g:'C', d:'Thu Feb 12', t:'03:10p', h:'Latvia', a:'USA', v:'R' },
-        { id:'p6', g:'C', d:'Thu Feb 12', t:'03:10p', h:'Germany', a:'Denmark', v:'R' },
-        { id:'p7', g:'B', d:'Fri Feb 13', t:'06:10a', h:'Finland', a:'Sweden', v:'S' },
-        { id:'p8', g:'B', d:'Fri Feb 13', t:'06:10a', h:'Italy', a:'Slovakia', v:'R' },
-        { id:'p9', g:'A', d:'Fri Feb 13', t:'10:40a', h:'France', a:'Czechia', v:'R' },
-        { id:'p10', g:'A', d:'Fri Feb 13', t:'03:10p', h:'Canada', a:'Switzerland', v:'S' },
-        { id:'p11', g:'B', d:'Sat Feb 14', t:'06:10a', h:'Sweden', a:'Slovakia', v:'R' },
-        { id:'p12', g:'C', d:'Sat Feb 14', t:'06:10a', h:'Germany', a:'Latvia', v:'S' },
-        { id:'p13', g:'B', d:'Sat Feb 14', t:'10:40a', h:'Finland', a:'Italy', v:'R' },
-        { id:'p14', g:'C', d:'Sat Feb 14', t:'03:10p', h:'USA', a:'Denmark', v:'S' },
-        { id:'p15', g:'A', d:'Sun Feb 15', t:'06:10a', h:'Switzerland', a:'Czechia', v:'S' },
-        { id:'p16', g:'A', d:'Sun Feb 15', t:'10:40a', h:'Canada', a:'France', v:'R' },
-        { id:'p17', g:'C', d:'Sun Feb 15', t:'01:10p', h:'Denmark', a:'Latvia', v:'R' },
-        { id:'p18', g:'C', d:'Sun Feb 15', t:'03:10p', h:'USA', a:'Germany', v:'S' }
-    ];
+document.querySelectorAll(".book").forEach(flipBook);
 
-    const knockouts = [
-        { header: 'QUALIFICATION ROUND' },
-        { id:'k1', g:'Q', d:'Tue Feb 17', t:'06:10a', h:'Seed 8', a:'Seed 9', v:'R' },
-        { id:'k2', g:'Q', d:'Tue Feb 17', t:'10:40a', h:'Seed 5', a:'Seed 12', v:'S' },
-        { id:'k3', g:'Q', d:'Tue Feb 17', t:'12:10p', h:'Seed 6', a:'Seed 11', v:'R' },
-        { id:'k4', g:'Q', d:'Tue Feb 17', t:'03:10p', h:'Seed 7', a:'Seed 10', v:'S' },
-        { header: 'QUARTERFINALS' },
-        { id:'k5', g:'QF', d:'Wed Feb 18', t:'10:40a', h:'Seed 1', a:'Reseed 4', v:'S' },
-        { id:'k6', g:'QF', d:'Wed Feb 18', t:'10:40a', h:'Seed 2', a:'Reseed 3', v:'R' },
-        { id:'k7', g:'QF', d:'Wed Feb 18', t:'03:10p', h:'Seed 3', a:'Reseed 2', v:'S' },
-        { id:'k8', g:'QF', d:'Wed Feb 18', t:'03:10p', h:'Seed 4', a:'Reseed 1', v:'R' },
-        { header: 'SEMIFINALS' },
-        { id:'k9', g:'SF', d:'Fri Feb 20', t:'10:40a', h:'Win QF', a:'Win QF', v:'S' },
-        { id:'k10', g:'SF', d:'Fri Feb 20', t:'03:10p', h:'Win QF', a:'Win QF', v:'S' },
-        { header: 'MEDAL GAMES' },
-        { id:'k11', g:'🥉', d:'Sat Feb 21', t:'02:40p', h:'Lose SF1', a:'Lose SF2', v:'S' },
-        { id:'k12', g:'🥇🥈', d:'Sun Feb 22', t:'08:10a', h:'Win SF1', a:'Win SF2', v:'S' }
-    ];
-
-    const historyData = [['2022', 'fi', 'FIN', 'ru', 'ROC', 'sk', 'SVK'], ['2018', 'ru', 'OAR', 'de', 'GER', 'ca', 'CAN'], ['2014', 'ca', 'CAN', 'se', 'SWE', 'fi', 'FIN'], ['2010', 'ca', 'CAN', 'us', 'USA', 'fi', 'FIN'], ['2006', 'se', 'SWE', 'fi', 'FIN', 'cz', 'CZE'], ['2002', 'ca', 'CAN', 'us', 'USA', 'ru', 'RUS'], ['1998', 'cz', 'CZE', 'ru', 'RUS', 'fi', 'FIN']];
-
-    function isMobile() { return window.innerWidth < 800; }
-
-    function getActiveSpreads() {
-        if (!isMobile()) return masterSpreads;
-        // Flatten into single pages for mobile
-        const flattened = [];
-        masterSpreads.forEach(s => s.forEach(p => flattened.push([p])));
-        return flattened;
+// Inline data (no fetch needed - works with file:// protocol)
+window.HockeyData = {
+    "flagMap": {
+        "Canada": "ca", "Czechia": "cz", "Switzerland": "ch", "France": "fr",
+        "Finland": "fi", "Sweden": "se", "Slovakia": "sk", "Italy": "it",
+        "USA": "us", "Germany": "de", "Latvia": "lv", "Denmark": "dk"
+    },
+    "storedScores": {
+        "p1-h": "4", "p1-a": "1", "p2-h": "5", "p2-a": "2",
+        "p3-h": "4", "p3-a": "0", "p4-a": "5", "p4-h": "0",
+        "p5-a": "5", "p5-h": "1", "p6-h": "3", "p6-a": "1",
+        "p8-h": "2", "p8-a": "3", "p7-h": "4", "p7-a": "1",
+        "p10-h": "5", "p10-a": "1", "p9-h": "3", "p9-a": "6",
+        "p11-h": "5", "p11-a": "3", "p12-h": "3", "p12-a": "4"
+    },
+    "storedESPNStats": {
+        "scorers": [
+            {"rank": "1.", "name": "Connor McDavid", "team": "CAN", "gp": "2", "goals": "1", "assists": "5", "points": "6"},
+            {"rank": "T2.", "name": "Nathan MacKinnon", "team": "CAN", "gp": "2", "goals": "2", "assists": "2", "points": "4"},
+            {"rank": "T2.", "name": "Juraj Slafkovsky", "team": "SVK", "gp": "2", "goals": "2", "assists": "2", "points": "4"}
+        ],
+        "goalies": [
+            {"rank": "T1.", "name": "Jordan Binnington", "team": "CAN", "gp": "1", "wins": "1", "gaa": "0.00", "svp": "1.000"},
+            {"rank": "T1.", "name": "Leonardo Genoni", "team": "SWI", "gp": "1", "wins": "1", "gaa": "0.00", "svp": "1.000"},
+            {"rank": "3.", "name": "Samuel Hlavaj", "team": "SVK", "gp": "1", "wins": "1", "gaa": "1.00", "svp": ".975"}
+        ],
+        "lastFetch": "2026-02-14T11:22:41.653Z"
+    },
+    "prelims": [
+        { "id": "p1", "g": "B", "d": "Wed Feb 11", "t": "10:40a", "h": "Slovakia", "a": "Finland", "v": "R" },
+        { "id": "p2", "g": "B", "d": "Wed Feb 11", "t": "03:10p", "h": "Sweden", "a": "Italy", "v": "S" },
+        { "id": "p3", "g": "A", "d": "Thu Feb 12", "t": "06:10a", "h": "Switzerland", "a": "France", "v": "R" },
+        { "id": "p4", "g": "A", "d": "Thu Feb 12", "t": "10:40a", "h": "Czechia", "a": "Canada", "v": "S" },
+        { "id": "p5", "g": "C", "d": "Thu Feb 12", "t": "03:10p", "h": "Latvia", "a": "USA", "v": "R" },
+        { "id": "p6", "g": "C", "d": "Thu Feb 12", "t": "03:10p", "h": "Germany", "a": "Denmark", "v": "R" },
+        { "id": "p7", "g": "B", "d": "Fri Feb 13", "t": "06:10a", "h": "Finland", "a": "Sweden", "v": "S" },
+        { "id": "p8", "g": "B", "d": "Fri Feb 13", "t": "06:10a", "h": "Italy", "a": "Slovakia", "v": "R" },
+        { "id": "p9", "g": "A", "d": "Fri Feb 13", "t": "10:40a", "h": "France", "a": "Czechia", "v": "R" },
+        { "id": "p10", "g": "A", "d": "Fri Feb 13", "t": "03:10p", "h": "Canada", "a": "Switzerland", "v": "S" },
+        { "id": "p11", "g": "B", "d": "Sat Feb 14", "t": "06:10a", "h": "Sweden", "a": "Slovakia", "v": "R" },
+        { "id": "p12", "g": "C", "d": "Sat Feb 14", "t": "06:10a", "h": "Germany", "a": "Latvia", "v": "S" },
+        { "id": "p13", "g": "B", "d": "Sat Feb 14", "t": "10:40a", "h": "Finland", "a": "Italy", "v": "R" },
+        { "id": "p14", "g": "C", "d": "Sat Feb 14", "t": "03:10p", "h": "USA", "a": "Denmark", "v": "S" },
+        { "id": "p15", "g": "A", "d": "Sun Feb 15", "t": "06:10a", "h": "Switzerland", "a": "Czechia", "v": "S" },
+        { "id": "p16", "g": "A", "d": "Sun Feb 15", "t": "10:40a", "h": "Canada", "a": "France", "v": "R" },
+        { "id": "p17", "g": "C", "d": "Sun Feb 15", "t": "01:10p", "h": "Denmark", "a": "Latvia", "v": "R" },
+        { "id": "p18", "g": "C", "d": "Sun Feb 15", "t": "03:10p", "h": "USA", "a": "Germany", "v": "S" }
+    ],
+    "knockouts": [
+        { "header": "QUALIFICATION ROUND" },
+        { "id": "k1", "g": "Q", "d": "Tue Feb 17", "t": "06:10a", "h": "Seed 8", "a": "Seed 9", "v": "R" },
+        { "id": "k2", "g": "Q", "d": "Tue Feb 17", "t": "10:40a", "h": "Seed 5", "a": "Seed 12", "v": "S" },
+        { "id": "k3", "g": "Q", "d": "Tue Feb 17", "t": "12:10p", "h": "Seed 6", "a": "Seed 11", "v": "R" },
+        { "id": "k4", "g": "Q", "d": "Tue Feb 17", "t": "03:10p", "h": "Seed 7", "a": "Seed 10", "v": "S" },
+        { "header": "QUARTERFINALS" },
+        { "id": "k5", "g": "QF", "d": "Wed Feb 18", "t": "10:40a", "h": "Seed 1", "a": "Reseed 4", "v": "S" },
+        { "id": "k6", "g": "QF", "d": "Wed Feb 18", "t": "10:40a", "h": "Seed 2", "a": "Reseed 3", "v": "R" },
+        { "id": "k7", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Seed 3", "a": "Reseed 2", "v": "S" },
+        { "id": "k8", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Seed 4", "a": "Reseed 1", "v": "R" },
+        { "header": "SEMIFINALS" },
+        { "id": "k9", "g": "SF", "d": "Fri Feb 20", "t": "10:40a", "h": "Win QF", "a": "Win QF", "v": "S" },
+        { "id": "k10", "g": "SF", "d": "Fri Feb 20", "t": "03:10p", "h": "Win QF", "a": "Win QF", "v": "S" },
+        { "header": "MEDAL GAMES" },
+        { "id": "k11", "g": "🥉", "d": "Sat Feb 21", "t": "02:40p", "h": "Lose SF1", "a": "Lose SF2", "v": "S" },
+        { "id": "k12", "g": "🥇🥈", "d": "Sun Feb 22", "t": "08:10a", "h": "Win SF1", "a": "Win SF2", "v": "S" }
+    ],
+    "historyData": [
+        ["2022", "fi", "FIN", "ru", "ROC", "sk", "SVK"],
+        ["2018", "ru", "OAR", "de", "GER", "ca", "CAN"],
+        ["2014", "ca", "CAN", "se", "SWE", "fi", "FIN"],
+        ["2010", "ca", "CAN", "us", "USA", "fi", "FIN"],
+        ["2006", "se", "SWE", "fi", "FIN", "cz", "CZE"],
+        ["2002", "ca", "CAN", "us", "USA", "ru", "RUS"],
+        ["1998", "cz", "CZE", "ru", "RUS", "fi", "FIN"]
+    ],
+    "teamGroups": {
+        "Canada": "A", "Czechia": "A", "Switzerland": "A", "France": "A",
+        "Finland": "B", "Sweden": "B", "Slovakia": "B", "Italy": "B",
+        "USA": "C", "Germany": "C", "Latvia": "C", "Denmark": "C"
     }
+};
 
-    window.renderBook = function() {
-        const container = document.getElementById('spread-container');
-        if (!container) return;
-        container.innerHTML = '';
-        
-        const currentSpreads = getActiveSpreads();
-        if (spreadIdx >= currentSpreads.length) spreadIdx = currentSpreads.length - 1;
-        
-        const spread = currentSpreads[spreadIdx];
+// Helper function for group colors
+const getGrpColor = (grp) => grp === 'A' ? '#c0392b' : grp === 'B' ? '#2980b9' : grp === 'C' ? '#27ae60' : 'inherit';
 
-        const leftDiv = document.createElement('div');
-        leftDiv.classList.add('left-page');
-        const rightDiv = document.createElement('div');
-        rightDiv.classList.add('right-page');
+// Initialize tables after DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    injectTables();
+    updateStandings();
+});
 
-        let leftPanel = null;
-        let rightPanel = null;
+function injectTables() {
+    const data = window.HockeyData || {};
+    const prelims = data.prelims || [];
+    const knockouts = data.knockouts || [];
+    const historyData = data.historyData || [];
+    const storedScores = data.storedScores || {};
+    const flagMap = data.flagMap || {};
 
-        if (spread.length === 1) {
-            container.classList.add('single-page');
-            const panelClone = document.getElementById(spread[0]).cloneNode(true);
-            // On desktop first/last page are offset. On mobile single-page, they are always "left".
-            if (isMobile()) {
-                leftPanel = panelClone;
-            } else if (spreadIdx === 0) {
-                rightPanel = panelClone;
-            } else {
-                leftPanel = panelClone;
-            }
-        } else {
-            container.classList.remove('single-page');
-            leftPanel = document.getElementById(spread[0]).cloneNode(true);
-            rightPanel = document.getElementById(spread[1]).cloneNode(true);
+    const getFlagImg = (name) => {
+        let code = 'ca';
+        for (const key in flagMap) {
+            if (name.indexOf(key) !== -1) { code = flagMap[key]; break; }
         }
-
-        if (leftPanel) {
-            leftDiv.appendChild(leftPanel);
-            const back = document.createElement('div'); back.classList.add('back'); leftDiv.appendChild(back);
-            container.appendChild(leftDiv);
-        }
-        if (rightPanel) {
-            rightDiv.appendChild(rightPanel);
-            const back = document.createElement('div'); back.classList.add('back'); rightDiv.appendChild(back);
-            container.appendChild(rightDiv);
-        }
-
-        let absPageNumStart = 0;
-        if (isMobile()) {
-            absPageNumStart = spreadIdx + 1;
-            document.getElementById('page-display').innerText = `${absPageNumStart}`;
-        } else {
-            // Logic for desktop page numbering across dual spreads
-            let count = 0;
-            for (let i = 0; i < spreadIdx; i++) count += masterSpreads[i].length;
-            absPageNumStart = count + 1;
-            document.getElementById('page-display').innerText = spread.length === 1 ? `${absPageNumStart}` : `${absPageNumStart} | ${absPageNumStart + 1}`;
-        }
-
-        injectTables();
-        updateStandings();
+        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 4px;">';
     };
 
-    function injectTables() {
-        const pBody = document.querySelector('#spread-container #sched-prelims-v');
-        if (pBody) {
-            prelims.forEach(g => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td class="c-grp" style="padding:6px 0; color:${window.getGrpColor(g.g)}">${g.g}</td><td class="c-ven">${g.v}</td><td class="c-date">${g.d}</td><td class="c-time">${g.t}</td><td class="c-match"><span class="team-home">${g.h.substring(0,3).toUpperCase()} ${window.getFlagImg(g.h)}</span><span class="score-area"><span class="sb" contenteditable="true" oninput="window.handleInput(this, '${g.id}-h')">${storedScores[g.id+'-h'] || ''}</span><span class="sb" contenteditable="true" oninput="window.handleInput(this, '${g.id}-a')">${storedScores[g.id+'-a'] || ''}</span></span><span class="team-away">${window.getFlagImg(g.a)} ${g.a.substring(0,3).toUpperCase()}</span></td>`;
-                pBody.appendChild(tr);
-            });
-        }
-        
-        const kBody = document.querySelector('#spread-container #sched-ko-v');
-        if (kBody) {
-            knockouts.forEach(g => {
-                const tr = document.createElement('tr');
-                if (g.header) {
-                    tr.innerHTML = `<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:3.2px;">${g.header}</td>`;
-                } else {
-                    tr.innerHTML = `<td class="c-grp" style="padding:8.8px 0">${g.g}</td><td class="c-ven">${g.v}</td><td class="c-date" style="width:95px;">${g.d}</td><td class="c-time">${g.t}</td><td class="c-match"><span class="team-home">${g.h}</span><span class="score-area"><span class="sb" contenteditable="true" oninput="window.handleInput(this, '${g.id}-h')">${storedScores[g.id+'-h'] || ''}</span><span class="sb" contenteditable="true" oninput="window.handleInput(this, '${g.id}-a')">${storedScores[g.id+'-a'] || ''}</span></span><span class="team-away">${g.a}</span></td>`;
-                }
-                kBody.appendChild(tr);
-            });
-        }
-
-        const yBuzz = document.querySelector('#spread-container #yesterday-buzz-v');
-        const tBuzz = document.querySelector('#spread-container #today-buzz-v');
-        if (yBuzz || tBuzz) {
-            const todayStr = 'Thu Feb 12'; const yesterdayStr = 'Wed Feb 11';
-            if (yBuzz) {
-                prelims.filter(m => m.d === yesterdayStr).forEach(m => {
-                    const div = document.createElement('div');
-                    div.style = "display: flex; align-items: center; font-size: 16px; font-weight: bold; color: #111;";
-                    div.innerHTML = `<span style="width: 50px;"><span style="background:#eee; padding: 2px 4px; border-radius: 2px; font-size: 10px; color: #666;">GRP ${m.g}</span></span><span style="flex: 1; text-align: right;">${m.h.substring(0,3).toUpperCase()} ${window.getFlagImg(m.h)}</span><span style="width: 60px; text-align: center; background: #000; color: #fff; margin: 0 12px; border-radius: 4px; padding: 3px 0; font-size: 17px;">${storedScores[`${m.id}-h`] || '0'}-${storedScores[`${m.id}-a`] || '0'}</span><span style="flex: 1; text-align: left;">${window.getFlagImg(m.a)} ${m.a.substring(0,3).toUpperCase()}</span>`;
-                    yBuzz.appendChild(div);
-                });
-            }
-            if (tBuzz) {
-                prelims.filter(m => m.d === todayStr).forEach(m => {
-                    const div = document.createElement('div');
-                    div.style = "display: flex; align-items: center; font-size: 16px; font-weight: bold; color: #111;";
-                    div.innerHTML = `
-                        <span style="width: 40px; text-align: left;"><span style="background:#eee; padding: 2px 4px; border-radius: 2px; font-size: 10px; color: #666;">GRP ${m.g}</span></span>
-                        <span style="width: 60px; font-size: 14px; color: var(--accent-red); font-weight: 900; text-align: center; letter-spacing: -0.5px;">${m.t}</span>
-                        <span style="flex: 1; text-align: right;">${m.h.substring(0,3).toUpperCase()} ${window.getFlagImg(m.h)}</span>
-                        <span style="width: 60px; text-align: center; background: #000; color: #fff; margin: 0 12px; border-radius: 4px; padding: 3px 0; font-size: 17px;">
-                            ${storedScores[`${m.id}-h`] || '0'}-${storedScores[`${m.id}-a`] || '0'}
-                        </span>
-                        <span style="flex: 1; text-align: left;">${window.getFlagImg(m.a)} ${m.a.substring(0,3).toUpperCase()}</span>
-                    `;
-                    tBuzz.appendChild(div);
-                });
-            }
-        }
-
-        const hBody = document.querySelector('#spread-container #history-v');
-        if (hBody) {
-            historyData.forEach(r => {
-                const tr = document.createElement('tr');
-                let yr = r[0]; if (yr === '2018' || yr === '2022') yr += '<span style="color: #c0392b;">*</span>';
-                tr.innerHTML = `<td>${yr}</td><td><img src="https://flagcdn.com/w20/${r[1]}.png" class="flag-icon"> ${r[2]}</td><td><img src="https://flagcdn.com/w20/${r[3]}.png" class="flag-icon"> ${r[4]}</td><td><img src="https://flagcdn.com/w20/${r[5]}.png" class="flag-icon"> ${r[6]}</td>`;
-                hBody.appendChild(tr);
-            });
-        }
-    }
-
-    window.getFlagImg = (name) => {
-        let code = 'ca'; for (let key in flagMap) { if (name.includes(key)) { code = flagMap[key]; break; } }
-        return `<img src="https://flagcdn.com/w20/${code}.png" class="flag-icon">`;
-    };
-
-    window.getGrpColor = (grp) => (grp === 'A' ? 'var(--accent-red)' : grp === 'B' ? 'var(--accent-blue)' : grp === 'C' ? 'var(--accent-green)' : 'inherit');
-
-    window.handleInput = async function(el, key) {
-        const val = el.innerText.trim();
-        storedScores[key] = val;
-        updateStandings();
-        if (user && db) {
-            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'scores', 'live');
-            try { await setDoc(docRef, { [key]: val }, { merge: true }); showSync(); } catch (err) { console.error("Save error:", err); }
-        }
-    };
-
-    function updateStandings() {
-        const results = {};
-        Object.keys(teamGroups).forEach(team => { results[team] = { w:0, otw:0, otl:0, l:0, gf:0, ga:0, gd:0, p:0 }; });
+    // Preliminaries with editable score boxes
+    const pBody = document.getElementById('sched-prelims-v');
+    if (pBody) {
+        pBody.innerHTML = '';
         prelims.forEach(g => {
-            const hRaw = (storedScores[g.id + '-h'] || '').toLowerCase();
-            const aRaw = (storedScores[g.id + '-a'] || '').toLowerCase();
-            if (!hRaw || !aRaw || isNaN(parseInt(hRaw)) || isNaN(parseInt(aRaw))) return;
-            const hScore = parseInt(hRaw); const aScore = parseInt(aRaw);
-            const isOT = hRaw.includes('*') || aRaw.includes('*') || hRaw.includes('t') || aRaw.includes('t');
-            results[g.h].gf += hScore; results[g.h].ga += aScore;
-            results[g.a].gf += aScore; results[g.a].ga += hScore;
-            if (hScore > aScore) {
-                if (isOT) { results[g.h].otw++; results[g.h].p += 2; results[g.a].otl++; results[g.a].p += 1; }
-                else { results[g.h].w++; results[g.h].p += 3; results[g.a].l++; }
-            } else if (aScore > hScore) {
-                if (isOT) { results[g.a].otw++; results[g.a].p += 2; results[g.h].otl++; results[g.h].p += 1; }
-                else { results[g.a].w++; results[g.a].p += 3; results[g.h].l++; }
-            }
-        });
-        const container = document.getElementById('standings-tables-container');
-        if (!container) return;
-        container.innerHTML = '';
-        ['A', 'B', 'C'].forEach(grp => {
-            const teams = Object.keys(teamGroups).filter(t => teamGroups[t] === grp);
-            teams.sort((a,b) => results[b].p - results[a].p || (results[b].gf - results[b].ga) - (results[a].gf - results[a].ga));
-            let html = `<table class="std-table"><thead><tr><th class="th-${grp}" colspan="7">GROUP ${grp}</th></tr><tr><th width="45%">Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>P</th></tr></thead><tbody>`;
-            teams.forEach(t => {
-                const r = results[t];
-                html += `<tr><td><img src="https://flagcdn.com/w20/${flagMap[t]}.png" class="flag-icon"> ${t.substring(0,3).toUpperCase()}</td><td>${r.w + r.otw}</td><td>${r.l + r.otl}</td><td>${r.gf}</td><td>${r.ga}</td><td>${r.gf - r.ga}</td><td>${r.p}</td></tr>`;
-            });
-            container.innerHTML += html + `</tbody></table>`;
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td class="c-grp" style="padding:3px 8px; color:' + getGrpColor(g.g) + '">' + g.g + '</td>' +
+                '<td class="c-ven" style="padding:3px 8px;">' + g.v + '</td>' +
+                '<td class="c-date" style="padding:3px 8px;">' + g.d + '</td>' +
+                '<td class="c-time" style="padding:3px 8px;">' + g.t + '</td>' +
+                '<td class="c-match" style="padding:3px 8px;">' +
+                    '<span class="team-home">' + g.h.substring(0,3).toUpperCase() + ' ' + getFlagImg(g.h) + '</span>' +
+                    '<span class="score-area">' +
+                        '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
+                        '<span class="sb" contenteditable="true" data-key="' + g.id + '-a">' + (storedScores[g.id + '-a'] || '') + '</span>' +
+                    '</span>' +
+                    '<span class="team-away">' + getFlagImg(g.a) + ' ' + g.a.substring(0,3).toUpperCase() + '</span>' +
+                '</td>';
+            pBody.appendChild(tr);
         });
     }
 
-    function showSync() {
-        const ind = document.getElementById('sync-indicator');
-        if (ind) { ind.classList.add('active'); setTimeout(() => ind.classList.remove('active'), 2000); }
+    // Knockouts with editable score boxes (skip qualification round - shown separately)
+    const kBody = document.getElementById('sched-ko-v');
+    if (kBody) {
+        kBody.innerHTML = '';
+        knockouts.filter(g => !g.header || g.header !== 'QUALIFICATION ROUND').forEach(g => {
+            if (g.g === 'Q') return; // Skip qualification games
+            const tr = document.createElement('tr');
+            if (g.header) {
+                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:3.2px;">' + g.header + '</td>';
+            } else {
+                tr.innerHTML = '<td class="c-grp" style="padding:8.8px 0">' + g.g + '</td>' +
+                    '<td class="c-ven">' + g.v + '</td>' +
+                    '<td class="c-date" style="width:95px;">' + g.d + '</td>' +
+                    '<td class="c-time">' + g.t + '</td>' +
+                    '<td class="c-match">' +
+                        '<span class="team-home">' + g.h + '</span>' +
+                        '<span class="score-area">' +
+                            '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
+                            '<span class="sb" contenteditable="true" data-key="' + g.id + '-a">' + (storedScores[g.id + '-a'] || '') + '</span>' +
+                        '</span>' +
+                        '<span class="team-away">' + g.a + '</span>' +
+                    '</td>';
+            }
+            kBody.appendChild(tr);
+        });
     }
 
-    window.masterSave = async function() {
-        if (user && db) {
-            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'scores', 'live');
-            try { await setDoc(docRef, storedScores, { merge: true }); showSync(); } catch (err) { console.error("Master cloud save error:", err); }
-        }
-        let fullHTML = document.documentElement.outerHTML;
-        fullHTML = fullHTML.replace(/const storedScores = \{[\s\S]*?\};/, `const storedScores = ${JSON.stringify(storedScores, null, 8)};`);
-        const blob = new Blob(['<!DOCTYPE html>\n' + fullHTML], { type: 'text/html' });
-        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'hockey_guide_MASTER.html'; a.click();
-    };
+    // Qualification Round games on seeding page - now handled in updateSeeds()
+    // This will be populated with actual team names after standings are computed
 
-    window.saveUpdatedHTML = function() {
-        let fullHTML = document.documentElement.outerHTML;
-        fullHTML = fullHTML.replace(/const storedScores = \{[\s\S]*?\};/, `const storedScores = ${JSON.stringify(storedScores, null, 8)};`);
-        const parser = new DOMParser(); 
-        const exportDoc = parser.parseFromString(fullHTML, 'text/html');
-        exportDoc.querySelectorAll('.master-only').forEach(el => el.remove());
-        exportDoc.querySelectorAll('.sb').forEach(el => el.removeAttribute('contenteditable'));
-        const blob = new Blob(['<!DOCTYPE html>\n' + exportDoc.documentElement.outerHTML], { type: 'text/html' });
-        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'hockey_guide_2026_clean.html'; a.click();
-    };
+    // History
+    const hBody = document.getElementById('history-v');
+    if (hBody) {
+        hBody.innerHTML = '';
+        historyData.forEach(r => {
+            hBody.innerHTML += '<tr><td>' + r[0] + '</td><td><img src="https://flagcdn.com/w20/' + r[1] + '.png" style="width:14px;"> ' + r[2] + '</td>' +
+                '<td><img src="https://flagcdn.com/w20/' + r[3] + '.png" style="width:14px;"> ' + r[4] + '</td>' +
+                '<td><img src="https://flagcdn.com/w20/' + r[5] + '.png" style="width:14px;"> ' + r[6] + '</td></tr>';
+        });
+    }
 
-    window.nextSpread = function() {
-        const currentSpreads = getActiveSpreads();
-        if (spreadIdx < currentSpreads.length - 1) {
-            const sound = document.getElementById('pageTurn'); if (sound) sound.play();
-            const rightPage = document.querySelector('.right-page');
-            if (rightPage && !isMobile()) {
-                rightPage.style.animation = 'turnNext 0.6s ease-in-out forwards';
-                setTimeout(() => { spreadIdx++; window.renderBook(); rightPage.style.animation = ''; rightPage.style.transform = 'rotateY(0deg)'; }, 600);
-            } else { spreadIdx++; window.renderBook(); }
-        }
-    };
+    // Daily buzz - Current date is Sat Feb 14
+    const todayStr = 'Sat Feb 14';
+    const yesterdayStr = 'Fri Feb 13';
+    const tomorrowStr = 'Sun Feb 15';
 
-    window.prevSpread = function() {
-        if (spreadIdx > 0) {
-            const sound = document.getElementById('pageTurn'); if (sound) sound.play();
-            const leftPage = document.querySelector('.left-page');
-            if (leftPage && !isMobile()) {
-                leftPage.style.animation = 'turnPrev 0.6s ease-in-out forwards';
-                setTimeout(() => { spreadIdx--; window.renderBook(); leftPage.style.animation = ''; leftPage.style.transform = 'rotateY(0deg)'; }, 600);
-            } else { spreadIdx--; window.renderBook(); }
-        }
-    };
+    // Consistent row style with fixed-width time column
+    const buzzRowStyle = 'display:flex; align-items:center; font-size:13px; font-weight:bold; padding:4px 0;';
+    const grpColStyle = 'width:18px; text-align:center; font-weight:900; margin-right:4px; font-size:12px;';
+    const venColStyle = 'width:16px; text-align:center; margin-right:6px; font-size:12px; color:#888;';
+    const timeColStyle = 'width:50px; text-align:center; font-weight:900; margin-right:6px; font-size:12px;';
+    const scoreBoxStyle = 'margin:0 4px; background:#000; color:#fff; padding:3px 7px; border-radius:3px; min-width:40px; text-align:center; font-size:13px;';
 
-    window.addEventListener('resize', () => { window.renderBook(); });
+    const yBuzz = document.getElementById('yesterday-buzz-v');
+    if (yBuzz) {
+        yBuzz.innerHTML = '';
+        prelims.filter(m => m.d === yesterdayStr).forEach(m => {
+            yBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
+                '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
+                '<span style="' + venColStyle + '">' + m.v + '</span>' +
+                '<span style="' + timeColStyle + 'color:#c0392b;">F</span>' +
+                '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
+                '<span style="' + scoreBoxStyle + '">' + (storedScores[m.id + '-h'] || '0') + '-' + (storedScores[m.id + '-a'] || '0') + '</span>' +
+                '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
+                '</div>';
+        });
+    }
 
-    const initApp = async () => {
-        if (!auth) { window.renderBook(); return; }
-        try {
-            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) { await signInWithCustomToken(auth, __initial_auth_token); } 
-            else { await signInAnonymously(auth); }
-            user = auth.currentUser;
-            if (user && db) {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'scores', 'live');
-                onSnapshot(docRef, (snap) => {
-                    if (snap.exists()) { Object.assign(storedScores, snap.data()); window.renderBook(); }
-                }, (err) => { console.error("Cloud Sync Listener Error:", err); });
+    const tBuzz = document.getElementById('today-buzz-v');
+    if (tBuzz) {
+        tBuzz.innerHTML = '';
+        prelims.filter(m => m.d === todayStr).forEach(m => {
+            const homeScore = storedScores[m.id + '-h'];
+            const awayScore = storedScores[m.id + '-a'];
+            const hasScore = homeScore && awayScore && homeScore !== '' && awayScore !== '';
+            
+            if (hasScore) {
+                // Game is finished - show final score
+                tBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
+                    '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
+                    '<span style="' + venColStyle + '">' + m.v + '</span>' +
+                    '<span style="' + timeColStyle + 'color:#c0392b;">F</span>' +
+                    '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
+                    '<span style="' + scoreBoxStyle + '">' + homeScore + '-' + awayScore + '</span>' +
+                    '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
+                    '</div>';
+            } else {
+                // Game hasn't started - show time
+                tBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
+                    '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
+                    '<span style="' + venColStyle + '">' + m.v + '</span>' +
+                    '<span style="' + timeColStyle + 'color:#c0392b;">' + m.t + '</span>' +
+                    '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
+                    '<span style="' + scoreBoxStyle + 'background:#eee; color:#333;">vs</span>' +
+                    '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
+                    '</div>';
             }
-        } catch (e) { console.error("Initialization failed:", e); }
-        window.renderBook();
-    };
+        });
+    }
 
-    initApp();
+    const tmBuzz = document.getElementById('tomorrow-buzz-v');
+    if (tmBuzz) {
+        tmBuzz.innerHTML = '';
+        prelims.filter(m => m.d === tomorrowStr).forEach(m => {
+            tmBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
+                '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
+                '<span style="' + venColStyle + '">' + m.v + '</span>' +
+                '<span style="' + timeColStyle + 'color:#2980b9;">' + m.t + '</span>' +
+                '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
+                '<span style="' + scoreBoxStyle + 'background:#f0f0f0; color:#666;">vs</span>' +
+                '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
+                '</div>';
+        });
+    }
+
+    // Display-only: remove contenteditable from score boxes
+    document.querySelectorAll('.sb').forEach(el => {
+        el.removeAttribute('contenteditable');
+    });
+}
+
+// Store scores in memory
+let storedScoresLocal = {};
+
+function updateStandings() {
+    const data = window.HockeyData || {};
+    const prelims = data.prelims || [];
+    const storedScores = Object.assign({}, data.storedScores || {}, storedScoresLocal);
+    const flagMap = data.flagMap || {};
+    const teamGroups = data.teamGroups || {};
+
+    const results = {};
+    Object.keys(teamGroups).forEach(team => { results[team] = { w:0, otw:0, otl:0, l:0, gf:0, ga:0, gd:0, p:0 }; });
+    prelims.forEach(g => {
+        const hRaw = (storedScores[g.id + '-h'] || '').toString().toLowerCase();
+        const aRaw = (storedScores[g.id + '-a'] || '').toString().toLowerCase();
+        if (!hRaw || !aRaw || isNaN(parseInt(hRaw)) || isNaN(parseInt(aRaw))) return;
+        const hScore = parseInt(hRaw); const aScore = parseInt(aRaw);
+        const isOT = hRaw.includes('*') || aRaw.includes('*') || hRaw.includes('t') || aRaw.includes('t');
+        results[g.h].gf += hScore; results[g.h].ga += aScore;
+        results[g.a].gf += aScore; results[g.a].ga += hScore;
+        if (hScore > aScore) {
+            if (isOT) { results[g.h].otw++; results[g.h].p += 2; results[g.a].otl++; results[g.a].p += 1; }
+            else { results[g.h].w++; results[g.h].p += 3; results[g.a].l++; }
+        } else if (aScore > hScore) {
+            if (isOT) { results[g.a].otw++; results[g.a].p += 2; results[g.h].otl++; results[g.h].p += 1; }
+            else { results[g.a].w++; results[g.a].p += 3; results[g.h].l++; }
+        }
+    });
+    const container = document.getElementById('standings-tables-container');
+    if (!container) return;
+    container.innerHTML = '';
+    ['A', 'B', 'C'].forEach(grp => {
+        const teams = Object.keys(teamGroups).filter(t => teamGroups[t] === grp);
+        teams.sort((a,b) => results[b].p - results[a].p || (results[b].gf - results[b].ga) - (results[a].gf - results[a].ga));
+        let html = `<table class="std-table"><thead><tr><th class="th-${grp}" colspan="11">GROUP ${grp}</th></tr><tr><th width="2%" style="text-align:center;">Rank</th><th width="35%">Team</th><th width="7%" style="text-align:center;">GP</th><th width="7%" style="text-align:center;">W</th><th width="7%" style="text-align:center;">OTW</th><th width="7%" style="text-align:center;">OTL</th><th width="7%" style="text-align:center;">L</th><th width="7%" style="text-align:center;">GF</th><th width="7%" style="text-align:center;">GA</th><th width="7%" style="text-align:center;">GD</th><th width="7%" style="text-align:center;">PTS</th></tr></thead><tbody>`;
+        teams.forEach((t, idx) => {
+            const r = results[t];
+            const gamesPlayed = r.w + r.otw + r.otl + r.l;
+            const rank = idx + 1;
+            html += `<tr><td style="padding-right:2px;">${rank}</td><td style="padding-left:4px;"><img src="https://flagcdn.com/w20/${flagMap[t]}.png" class="flag-icon"> ${t}</td><td>${gamesPlayed}</td><td>${r.w}</td><td>${r.otw}</td><td>${r.otl}</td><td>${r.l}</td><td>${r.gf}</td><td>${r.ga}</td><td>${r.gf - r.ga}</td><td>${r.p}</td></tr>`;
+        });
+        container.innerHTML += html + `</tbody></table>`;
+    });
+    
+    // Update seeds 1-12
+    updateSeeds(results, flagMap, teamGroups);
+}
+
+function updateSeeds(results, flagMap, teamGroups) {
+    const data = window.HockeyData || {};
+    const knockouts = data.knockouts || [];
+    const storedScores = Object.assign({}, data.storedScores || {}, storedScoresLocal);
+    
+    // Get all teams sorted by standings
+    const allTeams = Object.keys(results).map(t => ({
+        name: t,
+        ...results[t],
+        gd: results[t].gf - results[t].ga
+    }));
+    allTeams.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
+    
+    // Populate seeds 1-12 (only on seeding page)
+    const seedingPage = document.getElementById('page-p9');
+    if (seedingPage) {
+        const seedRows = seedingPage.querySelectorAll('.seed-row');
+        for (let i = 0; i < seedRows.length && i < allTeams.length; i++) {
+            const team = allTeams[i];
+            const row = seedRows[i];
+            const nameEl = row.querySelector('.seed-name');
+            const grpEl = row.querySelector('.seed-grp');
+            const recEl = row.querySelector('.seed-record');
+            const statEls = row.querySelectorAll('.seed-stat');
+            
+            // Set team name with flag for all seeds
+            if (nameEl) {
+                const flagCode = flagMap[team.name];
+                if (flagCode) {
+                    // Top 4: Full name with flag
+                    // Seeds 5-12: Centered 3-letter abbreviation with flag
+                    if (i < 4) {
+                        nameEl.innerHTML = '<img src="https://flagcdn.com/w20/' + flagCode + '.png" class="flag-icon" style="margin-right:4px; vertical-align:middle;"> ' + team.name;
+                    } else {
+                        nameEl.innerHTML = '<img src="https://flagcdn.com/w20/' + flagCode + '.png" class="flag-icon" style="margin-right:4px; vertical-align:middle;"> ' + team.name.substring(0,3).toUpperCase();
+                        nameEl.style.textAlign = 'center';
+                    }
+                } else {
+                    nameEl.textContent = team.name;
+                }
+            }
+            
+            // For top 4 seeds (i = 0-3), show group and record
+            if (i < 4 && grpEl && recEl) {
+                const grp = teamGroups[team.name];
+                grpEl.textContent = grp || '';
+                grpEl.style.color = getGrpColor(grp);
+                recEl.textContent = team.w + '-' + team.otw + '-' + team.otl + '-' + team.l;
+            }
+            
+            // For all seeds, show GD and Pts
+            if (statEls.length >= 2) {
+                statEls[0].textContent = team.gd;
+                statEls[1].textContent = team.p;
+            }
+        }
+    }
+    
+    // Update qualification games with actual team names
+    const qualGames = document.getElementById('qual-games-v');
+    if (qualGames) {
+        qualGames.innerHTML = '';
+        knockouts.filter(g => g.g === 'Q').forEach(g => {
+            // Replace Seed X with actual team names
+            let homeName = g.h;
+            let awayName = g.a;
+            let homeFlag = '';
+            let awayFlag = '';
+            
+            if (homeName.startsWith('Seed ')) {
+                const seedNum = parseInt(homeName.replace('Seed ', ''));
+                if (allTeams[seedNum - 1]) {
+                    homeName = allTeams[seedNum - 1].name;
+                    homeFlag = flagMap[homeName];
+                }
+            }
+            if (awayName.startsWith('Seed ')) {
+                const seedNum = parseInt(awayName.replace('Seed ', ''));
+                if (allTeams[seedNum - 1]) {
+                    awayName = allTeams[seedNum - 1].name;
+                    awayFlag = flagMap[awayName];
+                }
+            }
+            
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td class="c-grp" style="padding:8.8px 4px; text-align:center; width:18px;">' + g.g + '</td>' +
+                '<td class="c-ven" style="padding:8.8px 4px; text-align:center; width:18px;">' + g.v + '</td>' +
+                '<td class="c-date" style="padding:8.8px 4px; text-align:center; width:68px;">' + g.d + '</td>' +
+                '<td class="c-time" style="padding:8.8px 4px; text-align:center; width:42px;">' + g.t + '</td>' +
+                '<td class="c-flag" style="padding:8.8px 8px 8.8px 12px; text-align:right; width:22px;">' +
+                    (homeFlag ? '<img src="https://flagcdn.com/w20/' + homeFlag + '.png" class="flag-icon" style="vertical-align:middle;">' : '') +
+                '</td>' +
+                '<td class="c-match" style="padding:8.8px 6px; text-align:center;">' +
+                    '<span style="display:inline-block; min-width:80px; text-align:right; padding-right:6px;">' + homeName + '</span>' +
+                    '<span class="score-area">' +
+                        '<span class="sb">' + (storedScores[g.id + '-h'] || '') + '</span>' +
+                        '<span class="sb">' + (storedScores[g.id + '-a'] || '') + '</span>' +
+                    '</span>' +
+                    '<span style="display:inline-block; min-width:80px; text-align:left; padding-left:6px;">' + awayName + '</span>' +
+                '</td>' +
+                '<td class="c-flag" style="padding:8.8px 4px; text-align:left; width:22px;">' +
+                    (awayFlag ? '<img src="https://flagcdn.com/w20/' + awayFlag + '.png" class="flag-icon" style="vertical-align:middle;">' : '') +
+                '</td>';
+            qualGames.appendChild(tr);
+        });
+        
+        // Display-only: no handlers needed
+    }
+}
+
+// Display-only version - no editing allowed
+window.handleInput = function(el, key) {
+    // Disabled in clean version
+};
+
+// Display-only: no sync indicator needed
+function showSync() {
+    // Disabled in clean version
+}
+
+// Display-only version - no save functions needed
+window.masterSave = function() {
+    alert('This is the clean display version. Update data.json on the server to change scores.');
+};
+window.exportDataJSON = function() {
+    alert('This is the clean display version. No export needed.');
+};
+window.saveUpdatedHTML = function() {
+    alert('This is the clean display version. No export needed.');
+};
+
+// Display-only version - no API calls needed
+
+
+
+// Display-only version - no API calls
+window.refreshScores = function() {
+    alert('This is the clean display version. Update data.json on the server to change scores.');
+};
+
+function updateScoringTableData(scorers) {
+    const tbody = document.querySelector('#page-p_new8 table tbody');
+    if (!tbody) {
+        console.error('Could not find scoring table tbody');
+        return;
+    }
+    
+    console.log('Updating scoring table with', scorers.length, 'scorers');
+    
+    const teamToCountry = {
+        'CAN': 'ca', 'USA': 'us', 'SWE': 'se', 'FIN': 'fi',
+        'SVK': 'sk', 'CZE': 'cz', 'SWI': 'ch', 'GER': 'de',
+        'LAT': 'lv', 'DEN': 'dk', 'ITA': 'it', 'FRA': 'fr'
+    };
+    
+    let html = '';
+    scorers.forEach((s, idx) => {
+        const flag = teamToCountry[s.team] || 'ca';
+        const rankNum = s.rank.replace('.', '');
+        html += `<tr style="background:#fff;">
+            <td style="padding:3px; text-align:center; font-size:11px;">${rankNum}</td>
+            <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                <img src='https://flagcdn.com/w20/${flag}.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> ${s.name}
+            </td>
+            <td style="padding:3px; font-size:12px; text-align:center;">${s.team}</td>
+            <td style="padding:3px; text-align:center;">${s.gp}</td>
+            <td style="padding:3px; text-align:center;">${s.goals}</td>
+            <td style="padding:3px; text-align:center;">${s.assists}</td>
+            <td style="padding:3px; text-align:center; font-weight:bold;">${s.points}</td>
+        </tr>`;
+    });
+    
+    tbody.innerHTML = html;
+    console.log('Scoring table updated successfully');
+}
+
+function updateGoalieTableData(goalies) {
+    const tables = document.querySelectorAll('#page-p_new8 table');
+    if (tables.length < 2) {
+        console.error('Could not find goalie table - only found', tables.length, 'tables');
+        return;
+    }
+    
+    const tbody = tables[1].querySelector('tbody');
+    if (!tbody) {
+        console.error('Could not find goalie table tbody');
+        return;
+    }
+    
+    console.log('Updating goalie table with', goalies.length, 'goalies');
+    
+    const teamToCountry = {
+        'CAN': 'ca', 'USA': 'us', 'SWE': 'se', 'FIN': 'fi',
+        'SVK': 'sk', 'CZE': 'cz', 'SWI': 'ch', 'GER': 'de',
+        'LAT': 'lv', 'DEN': 'dk', 'ITA': 'it', 'FRA': 'fr'
+    };
+    
+    let html = '';
+    goalies.forEach((g, idx) => {
+        const flag = teamToCountry[g.team] || 'ca';
+        const rankNum = g.rank.replace('.', '');
+        html += `<tr style="background:#fff;">
+            <td style="padding:3px; text-align:center; font-size:11px;">${rankNum}</td>
+            <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
+                <img src='https://flagcdn.com/w20/${flag}.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> ${g.name}
+            </td>
+            <td style="padding:3px; font-size:12px; text-align:center;">${g.team}</td>
+            <td style="padding:3px; text-align:center;">${g.gp}</td>
+            <td style="padding:3px; text-align:center;">${g.wins}</td>
+            <td style="padding:3px; text-align:center;">${g.gaa}</td>
+            <td style="padding:3px; text-align:center;">${g.svp}</td>
+        </tr>`;
+    });
+    
+    tbody.innerHTML = html;
+    console.log('Goalie table updated successfully');
+}
+
+// Initialize on page load (display-only mode)
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize tables from embedded HockeyData
+    injectTables();
+    updateStandings();
+    
+    // Load cached ESPN stats from HockeyData.storedESPNStats
+    const data = window.HockeyData || {};
+    const cached = data.storedESPNStats || {};
+    
+    if (cached.scorers && cached.scorers.length > 0) {
+        console.log('Loading cached scorers:', cached.scorers);
+        updateScoringTableData(cached.scorers);
+    }
+    
+    if (cached.goalies && cached.goalies.length > 0) {
+        console.log('Loading cached goalies:', cached.goalies);
+        updateGoalieTableData(cached.goalies);
+    }
+});
 </script>
 
-</body></html>
+</body>
+</html>
