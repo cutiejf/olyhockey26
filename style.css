@@ -1,0 +1,603 @@
+/* Hockey Guide 2026 - Styles */
+:root {
+    --panel-width: 5in;
+    --p-w: var(--panel-width);
+    --panel-height: 6in;
+    --header-bg: #1a1a1a;
+    --header-text: #fff;
+    --accent-red: #c0392b;
+    --accent-blue: #2980b9;
+    --accent-green: #27ae60;
+    --font-desc: 12.9px;
+    --page-bg: #fff;
+    --visual-h: 360px;
+    --content-h: 216px;
+}
+
+body {
+    font-family: 'Arial Narrow', 'Roboto Condensed', sans-serif;
+    background-color: #111;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.book-viewer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    perspective: 2000px;
+    width: 100%;
+}
+
+.book-spread {
+    display: flex;
+    justify-content: center;
+    background: #222;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    overflow: visible;
+    width: calc(var(--panel-width) * 2);
+    height: var(--panel-height);
+}
+
+/* Gutter */
+.book-spread::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 6px;
+    background: linear-gradient(90deg, #333, #222, #333);
+    border-left: 1px solid #444;
+    border-right: 1px solid #444;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 100;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.book-spread.single-page::after,
+.book-spread.is-closed::after {
+    display: none;
+}
+
+/* Prevent flash of initial static content until JS renders */
+.book-spread {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.js-ready .book-spread {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 220ms ease;
+}
+
+.left-page, .right-page {
+    width: var(--panel-width);
+    height: var(--panel-height);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+    z-index: 1;
+}
+
+.left-page { transform-origin: right; }
+.right-page { transform-origin: left; }
+.left-page.overlay { z-index: 220; }
+
+/* Subtle shadow during flip for depth */
+.left-page, .right-page { transition: box-shadow 0.25s; }
+.right-page[style*="animation"] { box-shadow: -10px 0 26px rgba(0,0,0,0.45); }
+.left-page[style*="animation"] { box-shadow: 10px 0 26px rgba(0,0,0,0.45); }
+
+.left-page > .panel, .right-page > .panel {
+    backface-visibility: hidden;
+}
+
+.left-page .back, .right-page .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+/* Ensure the cover flap faces cover fully */
+.cover-flap .back { background: var(--page-bg) !important; }
+
+@keyframes turnNext {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(-180deg); }
+}
+
+@keyframes turnPrev {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(180deg); }
+}
+
+@keyframes turnPrevReverse {
+    from { transform: rotateY(-180deg); }
+    to { transform: rotateY(0deg); }
+}
+
+.flipping-page, .flipping-page-back {
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+.flipping-page > .panel,
+.flipping-page-back > .panel {
+    backface-visibility: hidden;
+}
+
+.flipping-page > .back,
+.flipping-page-back > .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.panel {
+    width: var(--panel-width);
+    height: var(--panel-height);
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background: var(--page-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+    z-index: 10000;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 11px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+    background: #eee;
+    transform: translateY(-2px);
+}
+
+.btn.save-btn { background: #27ae60; color: #fff; }
+
+.btn:disabled {
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
+.page-num {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #aaa;
+    min-width: 60px;
+    text-align: center;
+}
+
+.sync-status {
+    font-size: 10px;
+    color: #27ae60;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.sync-status.active { opacity: 1; }
+
+/* Full page layout */
+.page-layout-full {
+    padding: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    position: relative;
+}
+
+.bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.venue-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 125px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px 15px 0 15px;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+.align-right { align-items: flex-end; text-align: right; }
+
+.venue-title-perf {
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 27px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.venue-title-perf b { font-weight: 900; }
+.venue-title-perf .divider { width: 1.5px; height: 18px; background: #fff; margin: 0 10px; opacity: 0.8; }
+
+.venue-architect-perf {
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,0,0,1), 0 1px 2px rgba(0,0,0,1);
+}
+
+.text-bottom-overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 10;
+    width: 82%;
+}
+
+.pos-giulia { top: 380px; left: 0; }
+.pos-rho { bottom: 200px; right: 0; }
+
+.desc-text-perf {
+    font-size: 16px;
+    line-height: 1.45;
+    color: #fff;
+    text-align: justify;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Tina mascot layout */
+.tina-layout {
+    background: #fff;
+    padding: 20px 22px 15px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+}
+
+.tina-img-zone {
+    height: 345px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.tina-img-zone img {
+    max-width: 90%;
+    max-height: 100%;
+    object-fit: contain;
+    margin-top: 5px;
+}
+
+.tina-title-banner {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tina-title-main { font-size: 22px; font-weight: 900; color: var(--accent-red); text-transform: uppercase; letter-spacing: 1px; }
+.tina-title-pipe { margin: 0 8px; color: #ccc; font-size: 20px; font-weight: 300; }
+.tina-title-sub { font-size: 13px; font-weight: bold; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; }
+
+.tina-text-box { height: 130px; flex-shrink: 0; width: 100%; }
+.tina-text-box .venue-desc { color: #444; font-size: 13.8px; line-height: 1.45; text-align: justify; margin: 0; text-shadow: none; }
+
+/* Tables */
+.flex-table-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+h2 {
+    margin: 0 0 10px 0;
+    font-size: 17px;
+    text-transform: uppercase;
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 5px 10px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    line-height: 1.1;
+    color: #000;
+}
+
+th {
+    background: #f0f0f0;
+    border-bottom: 2px solid #000;
+    padding: 3px 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 11px;
+    color: #000;
+}
+
+td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #000; }
+
+.c-grp { width: 35px; text-align: center; font-weight: 900; font-size: 12px; }
+.c-ven { width: 18px; text-align: center; color: #777; font-size: 10px; }
+.c-date { width: 95px; color: #000; font-weight: bold; font-size: 11px; text-align: left; padding-left: 5px; white-space: nowrap; }
+.c-time { width: 55px; text-align: center; font-size: 11px; }
+
+.team-home { display: inline-block; width: 38%; text-align: right; font-weight: bold; overflow: hidden; white-space: nowrap; vertical-align: middle; padding-right: 1px; color: #000; }
+.team-away { display: inline-block; width: 38%; text-align: left; font-weight: bold; overflow: hidden; white-space: nowrap; vertical-align: middle; padding-left: 1px; color: #000; }
+.score-area { display: inline-block; width: 22%; text-align: center; white-space: nowrap; vertical-align: middle; font-size: 0; }
+.flag-icon { width: 14px; height: 10px; display: inline-block; vertical-align: middle; border: 0.5px solid #333; margin: 0 2px; }
+
+.sb {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #444;
+    background: #fff;
+    margin: 0 1px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 18px;
+    outline: none;
+    color: #000;
+    overflow: hidden;
+}
+
+.sb[contenteditable="true"]:focus { background: #fffde7; border-color: #000; }
+
+.std-table td { border: 1px solid #ddd; text-align: center; font-size: 13px; height: 28px; }
+.std-table td:first-child { text-align: left; padding-left: 5px; font-weight: bold; width: 45%; }
+
+.th-A { background: var(--accent-red); color: #fff; }
+.th-B { background: var(--accent-blue); color: #fff; }
+.th-C { background: var(--accent-green); color: #fff; }
+
+.seed-row { display: flex; align-items: flex-end; font-size: 15px; flex-grow: 1; }
+.seed-num { width: 25px; font-weight: bold; color: #666; }
+.seed-name { flex-grow: 1; border-bottom: 1px solid #bbb; margin-right: 5px; height: 23px; }
+.seed-stat { width: 30px; border-bottom: 1px solid #bbb; margin-right: 2px; height: 23px; }
+
+.vert-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    background: #f0f0f0;
+    width: 22px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    margin-left: 2px;
+    color: #000;
+}
+
+/* Overlays */
+.front-overlay, .back-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.front-overlay { background: rgba(0,0,0,0.35); padding: 25px 10px 10px 10px; box-sizing: border-box; }
+.back-overlay { padding: 20px 10px 15px 10px; box-sizing: border-box; background: rgba(255,255,255,0.4); }
+
+/* Cover states */
+.is-closed {
+    transform: translateX(calc(var(--panel-width) / -2));
+}
+
+.is-open {
+    transform: translateX(0);
+}
+
+/* Cover flap animation */
+.cover-flap {
+    width: var(--panel-width);
+    height: var(--panel-height);
+    position: absolute;
+    top: 0;
+    left: var(--panel-width);
+    transform-origin: left;
+    z-index: 2000 !important;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d;
+}
+
+/* When flipped, needs to be positioned differently */
+
+.cover-flap.flipped { transform: rotateY(-180deg); }
+
+.face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; }
+.face.front { background: #000; z-index: 2; }
+.face.back { background: var(--page-bg); transform: rotateY(180deg); z-index: 1; }
+
+.cover-flap .face { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; }
+.cover-flap .face .panel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 25px; box-sizing: border-box; }
+
+/* Inner pages z-index */
+.left-page > .panel, .right-page > .panel { z-index: 1000; }
+
+/* Overlay clone used during animated flips */
+.overlay-clone { box-shadow: 0 30px 80px rgba(0,0,0,0.6); pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; }
+
+/* Page turn transition - overlay covers content during flip */
+.overlay-clone {
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    pointer-events: none;
+    transform-style: preserve-3d;
+}
+
+.overlay-clone .right-page,
+.overlay-clone .left-page {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.overlay-clone .panel {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Overlay clone is always visible during flip */
+.overlay-clone {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.oly-logo { width: 100px; height: 50px; margin: 0 auto; }
+
+/* Canvas page flip overlay */
+#pageflip-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5000;
+}
+
+.medals-table { font-size: 13px; }
+.medals-table th { background: #222; color: #fff; font-size: 12px; height: 21px; text-align: center; }
+.medals-table td { height: 23px; border-bottom: 1px solid #eee; text-align: center; }
+
+.master-only { display: inline-block; }
+
+/* Rules */
+.rules-main-list { display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; margin: 0; padding: 0; list-style: none; }
+.rule-block { margin-bottom: 8px; }
+.rule-block b { display: block; color: var(--accent-red); text-transform: uppercase; font-size: 13px; font-weight: 900; letter-spacing: 0.8px; margin-bottom: 1px; }
+.rule-block p { margin: 0; font-size: 16px; color: #111; line-height: 1.25; text-align: justify; }
+
+.ot-container { background: #f4f4f4; border: 2px solid var(--accent-blue); border-radius: 4px; padding: 8px 12px; margin-top: 5px; }
+.ot-container h3 { margin: 0 0 5px 0; font-size: 14px; color: var(--accent-blue); text-transform: uppercase; font-weight: 900; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+.ot-sub-item { margin-bottom: 4px; }
+.ot-sub-item:last-child { margin-bottom: 0; }
+.ot-sub-item b { font-size: 13px; color: #333; text-transform: uppercase; }
+.ot-sub-item p { margin: 0; font-size: 15.5px; color: #111; line-height: 1.2; }
+
+.star-card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.star-name { font-weight: bold; font-size: 14px; color: #000; }
+.star-team { font-size: 11px; color: #666; text-transform: uppercase; }
+
+/* Mobile */
+@media (max-width: 800px) {
+    .book-spread {
+        padding: 10px;
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+    .book-viewer {
+        gap: 5px;
+        padding-top: 10px;
+    }
+    .controls {
+        transform: scale(0.9);
+        margin-top: -30px;
+    }
+}

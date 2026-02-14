@@ -1,0 +1,833 @@
+/* Flipbook CSS - Clean 3D Page Turn Engine */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --panel-width: 5in;
+    --panel-height: 6in;
+    --accent-red: #c0392b;
+    --accent-blue: #2980b9;
+    --accent-green: #27ae60;
+    --header-bg: #1a1a1a;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    perspective: 1500px;
+    font: 12px/1.4 'Arial Narrow', 'Roboto Condensed', sans-serif;
+    overflow: hidden;
+    color: #111;
+    background: #111;
+}
+
+/* ========== FLIPBOOK CORE ========== */
+.book {
+    position: relative;
+    display: flex;
+    margin: 30px auto 20px;
+    width: var(--panel-width);
+    height: var(--panel-height);
+    pointer-events: none;
+    transform-style: preserve-3d;
+    transition: translate 1s;
+    translate: calc(min(var(--c), 1) * 50%) 0%;
+}
+
+.page {
+    --thickness: 8;
+    flex: none;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    pointer-events: all;
+    user-select: none;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transition:
+        transform 1s,
+        rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+    translate: calc(var(--i) * -100%) 0px 0px;
+    transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.3px)));
+    rotate: y calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+    box-shadow: 0 0.5em 1em -0.2em rgba(0,0,0,0.2);
+}
+
+.front,
+.back {
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+    background-color: #fff;
+    translate: 0px;
+}
+
+.back {
+    translate: -100% 0;
+    rotate: y 180deg;
+}
+
+.front {
+    background: linear-gradient(to left, #f9f9f9 80%, #eee 100%);
+    border-radius: 0.1em 0.5em 0.5em 0.1em;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.back {
+    background: linear-gradient(to right, #f9f9f9 80%, #eee 100%);
+    border-radius: 0.5em 0.1em 0.1em 0.5em;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* ========== CONTROLS ========== */
+.controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.08);
+    padding: 10px 25px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.15);
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+}
+
+.btn {
+    background: linear-gradient(135deg, #c0392b, #a02920);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 900;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    transform: scale(1.05);
+}
+
+.page-num {
+    font-size: 14px;
+    font-weight: 900;
+    min-width: 80px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Save buttons */
+.btn.save-btn {
+    background: linear-gradient(135deg, #27ae60, #1e8449);
+}
+
+.btn.save-btn:hover {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+#export-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+#export-btn:hover {
+    background: linear-gradient(135deg, #5dade2, #3498db);
+}
+
+.master-only {
+    display: inline-block;
+}
+
+.sync-status {
+    font-size: 10px;
+    font-weight: bold;
+    color: #27ae60;
+    opacity: 0;
+    transition: opacity 0.3s;
+    min-width: 50px;
+}
+
+.sync-status.active {
+    opacity: 1;
+}
+
+/* Score boxes */
+.score-area {
+    display: inline-flex;
+    gap: 3px;
+    margin: 0 6px;
+}
+
+.sb {
+    display: inline-block;
+    width: 22px;
+    text-align: center;
+    font-weight: bold;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 1px 0;
+}
+
+.sb[contenteditable="true"] {
+    background: #fffef0;
+    cursor: text;
+}
+
+.sb[contenteditable="true"]:focus {
+    outline: 2px solid #3498db;
+    border-color: #3498db;
+}
+
+.team-home, .team-away {
+    font-size: 13.1px;
+    font-weight: bold;
+    display: inline-block;
+    width: 58px;
+}
+
+.team-home {
+    text-align: right;
+}
+
+.team-away {
+    text-align: left;
+}
+
+.c-grp, .c-ven, .c-date, .c-time, .c-match {
+    padding: 3px 8px;
+    vertical-align: middle;
+}
+
+.c-match {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.flag-icon {
+    width: 16px;
+    height: 11px;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+/* ========== STANDINGS TABLE STYLES ========== */
+.std-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.std-table th {
+    padding: 4px;
+    font-size: 11px;
+}
+
+.std-table td {
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 13px;
+    height: 25px;
+    padding: 2px 4px;
+}
+
+.std-table td:first-child {
+    text-align: center;
+    font-weight: bold;
+}
+
+.th-A { background: var(--accent-red); color: #fff; }
+.th-B { background: var(--accent-blue); color: #fff; }
+.th-C { background: var(--accent-green); color: #fff; }
+
+/* ========== PANEL STYLES ========== */
+.panel {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 900;
+    color: #111;
+    background: linear-gradient(90deg, var(--header-bg), #333);
+    color: #fff;
+    padding: 6px 12px;
+    margin: -8px -15px 10px -15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Cover styles */
+.cover {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    position: relative;
+}
+
+.cover .bg-img,
+.page-layout-full .bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.cover .front-overlay,
+.cover .back-overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.front-overlay {
+    background: rgba(0,0,0,0.35);
+}
+
+.back-overlay {
+    background: rgba(255,255,255,0.4);
+}
+
+.oly-logo {
+    width: 80px;
+    height: auto;
+}
+
+/* Full-page layout */
+.page-layout-full {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.page-layout-full .bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.venue-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 15px;
+    z-index: 1;
+}
+
+.venue-header-overlay.align-right {
+    text-align: right;
+}
+
+.venue-title-perf {
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.venue-title-perf .divider {
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: var(--accent-red);
+    margin: 0 8px;
+    vertical-align: middle;
+}
+
+.venue-architect-perf {
+    font-size: 11.5px;
+    color: #ccc;
+    margin-top: 3px;
+}
+
+.text-bottom-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.75);
+    padding: 10px 15px;
+    z-index: 1;
+}
+
+.desc-text-perf {
+    font-size: 11.5px;
+    color: #eee;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Tina layout */
+.tina-layout {
+    padding: 0;
+    background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
+}
+
+.tina-img-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tina-img-zone img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.tina-title-banner {
+    background: linear-gradient(90deg, #5F0A1A, #8C0B1B);
+    color: #fff;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tina-title-main {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.tina-title-pipe {
+    opacity: 0.5;
+}
+
+.tina-title-sub {
+    font-size: 11px;
+    opacity: 0.9;
+}
+
+.tina-text-box {
+    padding: 10px 15px;
+    background: #fff;
+}
+
+/* Rules */
+.rules-main-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rule-block {
+    background: #f0f0f0;
+    padding: 4px 8px;
+    border-left: none;
+}
+
+.rule-block b {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 1px;
+}
+
+.rule-block p {
+    font-size: 12px;
+    margin: 0;
+    color: #222;
+}
+
+.ot-container {
+    margin-top: 0;
+    background: #f4f4f4;
+    padding: 7px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.ot-container h3 {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.ot-sub-item {
+    margin-bottom: 3px;
+}
+
+.ot-sub-item b {
+    font-size: 11.5px;
+}
+
+.ot-sub-item p {
+    font-size: 11px;
+    margin: 0;
+    color: #222;
+}
+
+.rink-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+}
+
+.rink-table th {
+    background: #2980b9;
+    color: #fff;
+    padding: 3px 2px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 9px;
+}
+
+.rink-table td {
+    padding: 3px 2px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 9px;
+}
+
+.rink-table tr:last-child td {
+    border-bottom: none;
+}
+
+.rink-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Tables */
+.flex-table-container {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+th, td {
+    padding: 3px 4px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #f4f4f4;
+    font-weight: 900;
+    font-size: 9px;
+}
+
+.medals-table th,
+.medals-table td {
+    padding: 4px 6px;
+    font-size: 12px;
+    text-align: center;
+    width: 25%;
+}
+
+/* Seeding */
+.seed-row {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-bottom: 1px solid #eee;
+    font-size: 12.5px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.seed-row > * {
+    box-sizing: border-box;
+}
+
+.seed-row-upper {
+    gap: 0 !important;
+    width: 100%;
+    overflow: hidden;
+}
+
+.seed-row-upper > * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.seed-row-lower {
+    gap: 0;
+}
+
+.seed-num {
+    background: #e8e8e8;
+    padding: 0;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: 900;
+    color: var(--accent-red);
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.seed-row-upper .seed-num {
+    padding: 0;
+    font-size: 11px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.seed-row-lower .seed-num {
+    min-width: 28px;
+    padding: 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.seed-row-lower .seed-name {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.seed-name {
+    text-align: left;
+    min-width: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.seed-row-upper .seed-name {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.seed-grp {
+    text-align: center;
+    font-weight: 900;
+    font-size: 13px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.seed-record {
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.seed-stat {
+    text-align: center;
+    font-size: 12.5px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.vert-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 9px;
+    font-weight: 900;
+    color: #888;
+    padding: 5px;
+    background: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Flag icons */
+.flag-icon {
+    width: 16px;
+    height: 11px;
+    vertical-align: middle;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+
+/* Mobile - Single Page View */
+@media (max-width: 768px) {
+    body {
+        overflow: visible;
+        perspective: none;
+    }
+    
+    .book {
+        display: block;
+        width: 100vw;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        translate: 0 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .page {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        transform: none !important;
+        rotate: none !important;
+        translate: 0 !important;
+        transition: none !important;
+        box-shadow: none;
+        transform-origin: unset;
+        transform-style: flat;
+    }
+    
+    /* Hide ALL back pages/divs on mobile */
+    .back,
+    .page .back,
+    .panel.back {
+        display: none !important;
+    }
+    
+    /* Make front pages display properly */
+    .front,
+    .panel.front {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 100vh;
+        translate: 0 !important;
+        transform: none !important;
+        backface-visibility: visible !important;
+        border-radius: 0 !important;
+        border: none !important;
+        background: #fff !important;
+        overflow: visible !important;
+    }
+    
+    /* Cover page full height */
+    .front.cover {
+        min-height: 100vh;
+        height: 100vh;
+        padding: 0 !important;
+        overflow: hidden;
+    }
+    
+    .front-overlay {
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+    /* Non-cover pages get padding */
+    .front:not(.cover) {
+        padding: 20px 15px !important;
+        box-sizing: border-box;
+    }
+    
+    .panel {
+        padding: 20px 15px !important;
+        box-sizing: border-box;
+        min-height: 100vh;
+        height: auto !important;
+    }
+    
+    /* Tables responsive */
+    table {
+        font-size: 10px !important;
+        width: 100% !important;
+    }
+    
+    th, td {
+        padding: 3px 1px !important;
+        font-size: 10px !important;
+    }
+    
+    h2 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Controls */
+    .controls {
+        padding: 6px 10px;
+        bottom: 10px;
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 6px 10px;
+        font-size: 9px;
+    }
+    
+    /* Ensure images scale */
+    img:not(.flag-icon):not(.oly-logo) {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Remove any fixed heights */
+    * {
+        max-height: none !important;
+    }
+}
