@@ -711,88 +711,85 @@ th {
 /* Mobile - Single Page View */
 @media (max-width: 768px) {
     body {
-        overflow: visible;
+        overflow: hidden;
         perspective: none;
     }
     
     .book {
-        display: block;
-        width: 100vw;
-        height: auto;
-        margin: 0;
-        padding: 0;
-        translate: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        translate: none !important;
         transform: none !important;
         transition: none !important;
+        perspective: none !important;
     }
     
     .page {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
+        display: flex !important;
+        flex: 0 0 100vw !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        scroll-snap-align: start !important;
         transform: none !important;
         rotate: none !important;
-        translate: 0 !important;
+        translate: none !important;
         transition: none !important;
-        box-shadow: none;
-        transform-origin: unset;
-        transform-style: flat;
+        box-shadow: none !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
     }
     
-    /* Hide ALL back pages/divs on mobile */
+    /* HIDE ALL BACK ELEMENTS */
     .back,
-    .page .back,
+    .page > .back,
+    div.back,
     .panel.back {
         display: none !important;
     }
     
-    /* Make front pages display properly */
+    /* Show only front pages */
     .front,
+    .page > .front,
+    div.front,
     .panel.front {
         display: block !important;
-        position: relative !important;
         width: 100% !important;
-        height: auto !important;
-        min-height: 100vh;
-        translate: 0 !important;
-        transform: none !important;
-        backface-visibility: visible !important;
-        border-radius: 0 !important;
-        border: none !important;
+        height: 100% !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
         background: #fff !important;
-        overflow: visible !important;
+        border: none !important;
+        border-radius: 0 !important;
     }
     
-    /* Cover page full height */
+    /* Cover page specific */
     .front.cover {
-        min-height: 100vh;
-        height: 100vh;
         padding: 0 !important;
-        overflow: hidden;
+        overflow: hidden !important;
     }
     
     .front-overlay {
-        height: 100%;
-        padding: 20px;
-        box-sizing: border-box;
+        height: 100% !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
     }
     
-    /* Non-cover pages get padding */
-    .front:not(.cover) {
-        padding: 20px 15px !important;
-        box-sizing: border-box;
-    }
-    
+    /* Content adjustments */
     .panel {
-        padding: 20px 15px !important;
-        box-sizing: border-box;
-        min-height: 100vh;
-        height: auto !important;
+        height: 100% !important;
     }
     
-    /* Tables responsive */
+    /* Tables */
     table {
         font-size: 10px !important;
         width: 100% !important;
@@ -808,26 +805,14 @@ th {
         margin-bottom: 10px !important;
     }
     
-    /* Controls */
+    /* Hide controls on mobile - swipe instead */
     .controls {
-        padding: 6px 10px;
-        bottom: 10px;
-        gap: 8px;
+        display: none !important;
     }
     
-    .btn {
-        padding: 6px 10px;
-        font-size: 9px;
-    }
-    
-    /* Ensure images scale */
+    /* Images */
     img:not(.flag-icon):not(.oly-logo) {
         max-width: 100% !important;
         height: auto !important;
-    }
-    
-    /* Remove any fixed heights */
-    * {
-        max-height: none !important;
     }
 }
