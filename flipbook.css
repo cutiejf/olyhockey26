@@ -26,10 +26,12 @@ body {
 .book {
     position: absolute;
     left: 50%;
+    top: 50%;
     display: flex;
-    margin: 30px auto 20px;
     width: var(--panel-width);
     height: var(--panel-height);
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 140px);
     pointer-events: none;
     transform-style: preserve-3d;
     transition: transform 0.5s ease;
@@ -38,7 +40,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     /* Initial: front cover centered (page extends RIGHT of spine) */
-    transform: translateX(calc(var(--panel-width) / -2));
+    transform: translate(calc(var(--panel-width) / -2), -50%);
 }
 
 .page {

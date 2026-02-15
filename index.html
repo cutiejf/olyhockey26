@@ -529,56 +529,26 @@
 
 </div>
 
-<!-- Simple Page Navigation -->
-<div class="nav-simple">
-    <button class="nav-arrow" onclick="bookPrev()" title="Previous">‹</button>
-    <div class="nav-page" id="page-display">COVER</div>
-    <button class="nav-arrow" onclick="bookNext()" title="Next">›</button>
-</div>
-
-<!-- Top Right Menu -->
-<div class="menu-top">
-    <button class="menu-toggle" onclick="toggleMenu()" id="menu-toggle">⋯</button>
-    <div class="menu-dropdown" id="menu-dropdown">
-        <button class="menu-item" onclick="toggleFullscreen(); closeMenu();">⛶ Fullscreen</button>
-        <button class="menu-item" onclick="resetBook(); closeMenu();">⟲ Reset</button>
-        <button class="menu-item" onclick="bookGoTo(0); closeMenu();">⏮ First Page</button>
-        <button class="menu-item" onclick="bookGoTo(99); closeMenu();">⏭ Last Page</button>
-        <button class="menu-item" onclick="zoomIn(); closeMenu();">+ Zoom In</button>
-        <button class="menu-item" onclick="zoomOut(); closeMenu();">− Zoom Out</button>
-        <button class="menu-item" onclick="toggleLock(); closeMenu();" id="lock-menu-btn">🔓 Lock/Unlock</button>
-    </div>
+<!-- Navigation Buttons -->
+<button class="push--flat push--prev" onclick="bookPrev()" title="Previous"></button>
+<button class="push--flat push--next" onclick="bookNext()" title="Next"></button>
+<div class="page-display" id="page-display">COVER</div>
+<button class="push--flat push--menu" onclick="toggleMenu()" id="menu-toggle" title="Menu"></button>
+<div class="menu-dropdown" id="menu-dropdown">
+    <button class="menu-item" onclick="toggleFullscreen(); closeMenu();">⛶ Fullscreen</button>
+    <button class="menu-item" onclick="resetBook(); closeMenu();">⟲ Reset</button>
+    <button class="menu-item" onclick="bookGoTo(0); closeMenu();">⏮ First</button>
+    <button class="menu-item" onclick="bookGoTo(99); closeMenu();">⏭ Last</button>
 </div>
 
 <!-- Page turn sound -->
 <audio id="pageTurn" preload="auto" src="PageFlip3.wav"></audio>
 
 <script>
-// Zoom and pan functionality
-let zoomLevel = 1;
-const zoomStep = 0.1;
-const minZoom = 0.5;
-const maxZoom = 1.5;
-let panX = 0, panY = 0;
-let isDragging = false;
-let dragStartX = 0, dragStartY = 0;
-
 // Apply initial transform
 window.addEventListener('DOMContentLoaded', () => {
     applyTransform();
 });
-
-window.zoomIn = () => {
-    zoomLevel = Math.min(maxZoom, zoomLevel + zoomStep);
-    applyTransform();
-};
-
-window.zoomOut = () => {
-    zoomLevel = Math.max(minZoom, zoomLevel - zoomStep);
-    // Reset pan when zooming out to 1x
-    if (zoomLevel <= 1) { panX = 0; panY = 0; }
-    applyTransform();
-};
 
 function applyTransform() {
     const book = document.getElementById('hockey-book');
@@ -586,27 +556,18 @@ function applyTransform() {
         let baseTransform;
         const c = parseInt(book.style.getPropertyValue('--c') || '0');
         const totalPages = book.querySelectorAll('.page').length;
-        // Default 25px lower, but 0 in fullscreen
-        const defaultOffsetY = document.fullscreenElement ? 0 : 25;
-        
-        // Fixed pan constraints regardless of zoom level
-        // This prevents the book from moving too far from center
-        const maxPanX = 200;
-        const maxPanY = 150;
-        panX = Math.max(-maxPanX, Math.min(maxPanX, panX));
-        panY = Math.max(-maxPanY, Math.min(maxPanY, panY));
         
         if (c === 0) {
             // Front cover: page extends RIGHT of spine, shift left to center
-            baseTransform = 'translateX(calc(var(--panel-width) / -2))';
+            baseTransform = 'translate(calc(var(--panel-width) / -2), -50%)';
         } else if (c >= totalPages) {
             // Back cover: page extends LEFT of spine, shift right to center
-            baseTransform = 'translateX(calc(var(--panel-width) / 2))';
+            baseTransform = 'translate(calc(var(--panel-width) / 2), -50%)';
         } else {
             // Open book: spread visible, spine at center
-            baseTransform = 'translateX(0)';
+            baseTransform = 'translate(0, -50%)';
         }
-        book.style.transform = `${baseTransform} translate(${panX}px, ${panY + defaultOffsetY}px) scale(${zoomLevel})`;
+        book.style.transform = baseTransform;
     }
 }
 
@@ -629,12 +590,7 @@ window.closeMenu = () => {
     }
 };
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.menu-top')) {
-        closeMenu();
-    }
-});
+
 
 // Fullscreen toggle
 window.toggleFullscreen = () => {
@@ -645,54 +601,14 @@ window.toggleFullscreen = () => {
     }
 };
 
-// Auto-zoom on fullscreen - fit to screen
 document.addEventListener('fullscreenchange', () => {
-    if (document.fullscreenElement) {
-        // Calculate zoom to fit book in viewport
-        const book = document.getElementById('hockey-book');
-        const panelHeight = 550; // book panel height in px
-        const panelWidth = 400;  // book panel width in px
-        const controlsHeight = 70;
-        const availableHeight = window.innerHeight - controlsHeight;
-        const availableWidth = window.innerWidth;
-        
-        // Calculate scale to fit (use smaller of width/height constraints)
-        const scaleH = availableHeight / panelHeight;
-        const scaleW = availableWidth / (panelWidth * 2); // *2 for open spread
-        zoomLevel = Math.min(scaleH, scaleW, 1.5) * 0.95; // 95% to add padding
-        panX = 0;
-        panY = 0;
-    } else {
-        // Exiting fullscreen - reset zoom
-        zoomLevel = 1;
-        panX = 0;
-        panY = 0;
-    }
     applyTransform();
 });
 
-// Reset to first page and position
+// Reset to first page
 window.resetBook = () => {
-    zoomLevel = 1;
-    panX = 0;
-    panY = 0;
     if (window.bookGoTo) window.bookGoTo(0);
     applyTransform();
-};
-
-// Lock mode - disable drag/flip, enable text selection
-let isLocked = false;
-window.toggleLock = () => {
-    isLocked = !isLocked;
-    const menuBtn = document.getElementById('lock-menu-btn');
-    const book = document.getElementById('hockey-book');
-    if (isLocked) {
-        if (menuBtn) menuBtn.textContent = '🔒 Locked';
-        if (book) book.style.userSelect = 'text';
-    } else {
-        if (menuBtn) menuBtn.textContent = '🔓 Lock/Unlock';
-        if (book) book.style.userSelect = 'none';
-    }
 };
 
 // Prevent image dragging
@@ -702,130 +618,57 @@ document.addEventListener('dragstart', (e) => {
     }
 });
 
-// Drag to pan
-let dragMoved = false;
-let potentialDrag = false;
-let mouseDownX = 0, mouseDownY = 0;
-
-document.addEventListener('mousedown', (e) => {
-    if (isLocked) return; // Don't drag when locked
-    if (e.target.closest('.book')) {
-        e.preventDefault(); // Prevent default drag behavior
-        potentialDrag = true;
-        dragMoved = false;
-        mouseDownX = e.clientX;
-        mouseDownY = e.clientY;
-        dragStartX = e.clientX - panX;
-        dragStartY = e.clientY - panY;
+// Page flip on edge click
+document.addEventListener('click', (e) => {
+    const panel = e.target.closest('.front, .back');
+    if (panel) {
+        const rect = panel.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const edgeWidth = rect.width * 0.2;
+        if (x < edgeWidth && window.bookPrev) {
+            window.bookPrev();
+        } else if (x > rect.width - edgeWidth && window.bookNext) {
+            window.bookNext();
+        }
     }
 });
 
+// Hover effect on edges
 document.addEventListener('mousemove', (e) => {
-    if (potentialDrag && !isDragging) {
-        // Only start dragging if mouse moved more than 5px
-        const dx = e.clientX - mouseDownX;
-        const dy = e.clientY - mouseDownY;
-        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
-            isDragging = true;
-            dragMoved = true;
-            document.body.style.cursor = 'grabbing';
-            const book = document.getElementById('hockey-book');
-            if (book) book.style.transition = 'none';
-        }
-    }
-    if (isDragging) {
-        panX = e.clientX - dragStartX;
-        panY = e.clientY - dragStartY;
-        applyTransform();
-    } else if (!isLocked && !potentialDrag) {
-        // Show hover effect on edges with curl/lift hint (only when unlocked)
-        const panel = e.target.closest('.front, .back');
-        document.querySelectorAll('.page-flip-zone').forEach(z => {
-            z.style.background = '';
-            z.style.boxShadow = '';
-        });
+    const panel = e.target.closest('.front, .back');
+    document.querySelectorAll('.page-flip-zone').forEach(z => {
+        z.style.background = '';
+        z.style.boxShadow = '';
+    });
+    
+    if (panel) {
+        const rect = panel.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const edgeWidth = rect.width * 0.2;
+        const isFront = panel.classList.contains('front');
+        const isBack = panel.classList.contains('back');
         
-        let hoverActive = false;
-        if (panel) {
-            const rect = panel.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const edgeWidth = rect.width * 0.2;
-            const isFront = panel.classList.contains('front');
-            const isBack = panel.classList.contains('back');
-            
-            // Front panels: right edge goes forward
-            if (isFront && x > rect.width - edgeWidth) {
-                const zone = panel.querySelector('.page-flip-right');
-                if (zone) {
-                    zone.style.background = 'linear-gradient(to left, rgba(255, 200, 50, 0.5), transparent)';
-                    zone.style.boxShadow = 'inset -15px 0 30px -5px rgba(0,0,0,0.4)';
-                    document.body.style.cursor = 'pointer';
-                    hoverActive = true;
-                }
+        if (isFront && x > rect.width - edgeWidth) {
+            const zone = panel.querySelector('.page-flip-right');
+            if (zone) {
+                zone.style.background = 'linear-gradient(to left, rgba(255, 200, 50, 0.5), transparent)';
+                zone.style.boxShadow = 'inset -15px 0 30px -5px rgba(0,0,0,0.4)';
+                document.body.style.cursor = 'pointer';
             }
-            // Back panels: left edge goes back
-            else if (isBack && x < edgeWidth) {
-                const zone = panel.querySelector('.page-flip-left');
-                if (zone) {
-                    zone.style.background = 'linear-gradient(to right, rgba(255, 200, 50, 0.5), transparent)';
-                    zone.style.boxShadow = 'inset 15px 0 30px -5px rgba(0,0,0,0.4)';
-                    document.body.style.cursor = 'pointer';
-                    hoverActive = true;
-                }
+        } else if (isBack && x < edgeWidth) {
+            const zone = panel.querySelector('.page-flip-left');
+            if (zone) {
+                zone.style.background = 'linear-gradient(to right, rgba(255, 200, 50, 0.5), transparent)';
+                zone.style.boxShadow = 'inset 15px 0 30px -5px rgba(0,0,0,0.4)';
+                document.body.style.cursor = 'pointer';
             }
-        }
-        
-        // Show grab cursor when over book but not over a flip zone
-        if (!hoverActive && e.target.closest('.book')) {
-            document.body.style.cursor = 'grab';
-        } else if (!hoverActive) {
+        } else {
             document.body.style.cursor = '';
         }
-    }
-});
-
-document.addEventListener('mouseup', (e) => {
-    const wasPotentialDrag = potentialDrag;
-    potentialDrag = false;
-    
-    if (isDragging) {
-        isDragging = false;
+    } else {
         document.body.style.cursor = '';
-        // Re-enable transition
-        const book = document.getElementById('hockey-book');
-        if (book) book.style.transition = 'transform 0.5s ease';
-    } else if (wasPotentialDrag && !isLocked) {
-        // It was a click (no drag) - check for page flip
-        const panel = e.target.closest('.front, .back');
-        if (panel) {
-            const rect = panel.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const edgeWidth = rect.width * 0.2;
-            if (x < edgeWidth && window.bookPrev) {
-                window.bookPrev();
-            } else if (x > rect.width - edgeWidth && window.bookNext) {
-                window.bookNext();
-            }
-        }
     }
 });
-
-// Scroll wheel zoom (disabled when locked)
-document.addEventListener('wheel', (e) => {
-    if (isLocked) return; // No zoom when locked
-    if (e.target.closest('.book')) {
-        e.preventDefault();
-        if (e.deltaY < 0) {
-            // Scroll up = zoom in
-            zoomLevel = Math.min(maxZoom, zoomLevel + zoomStep);
-        } else {
-            // Scroll down = zoom out
-            zoomLevel = Math.max(minZoom, zoomLevel - zoomStep);
-            if (zoomLevel <= 1) { panX = 0; panY = 0; }
-        }
-        applyTransform();
-    }
-}, { passive: false });
 
 // Flipbook engine
 const flipBook = (elBook) => {
