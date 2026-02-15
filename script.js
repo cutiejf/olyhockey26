@@ -41,7 +41,6 @@ function initBook() {
         nextBtn.onclick = bookNext;
     }
 }
-}
 
 function bindPages() {
     // No longer needed; handled in initBook()
