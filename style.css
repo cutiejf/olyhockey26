@@ -595,6 +595,48 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 .star-name { font-weight: bold; font-size: 14px; color: #000; }
 .star-team { font-size: 11px; color: #666; text-transform: uppercase; }
 
+/* Page flip zones - narrow click areas on edges */
+.page-flip-zone {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    z-index: 100;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.page-flip-zone:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.page-flip-left {
+    left: 0;
+    border-right: 1px solid transparent;
+}
+
+.page-flip-left:hover {
+    border-right: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+.page-flip-right {
+    right: 0;
+    border-left: 1px solid transparent;
+}
+
+.page-flip-right:hover {
+    border-left: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Drag cursor when zoomed */
+.book[style*="scale(1."] {
+    cursor: grab;
+}
+
+.book[style*="scale(1."]:active {
+    cursor: grabbing;
+}
+
 /* Mobile */
 @media (max-width: 800px) {
     .book-spread {
