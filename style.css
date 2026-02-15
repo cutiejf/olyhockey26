@@ -231,23 +231,22 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    padding-bottom: 60px;
     overflow: hidden;
     background: #111;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
 }
 
 :fullscreen .book {
-    position: absolute;
-    top: calc(50% - 20px);
-    left: 50%;
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0;
 }
 
 :fullscreen .controls {
-    bottom: 20px;
+    bottom: 15px;
 }
 
 .btn.save-btn { background: #27ae60; color: #fff; }

@@ -576,7 +576,8 @@ function applyTransform() {
         let baseTransform;
         const c = parseInt(book.style.getPropertyValue('--c') || '0');
         const totalPages = book.querySelectorAll('.page').length;
-        const defaultOffsetY = 25; // Default 25px lower
+        // Default 25px lower, but 0 in fullscreen
+        const defaultOffsetY = document.fullscreenElement ? 0 : 25;
         
         if (c === 0) {
             // Front cover: page extends RIGHT of spine, shift left to center
@@ -601,11 +602,21 @@ window.toggleFullscreen = () => {
     }
 };
 
-// Auto-zoom on fullscreen
+// Auto-zoom on fullscreen - fit to screen
 document.addEventListener('fullscreenchange', () => {
     if (document.fullscreenElement) {
-        // Entering fullscreen - zoom in
-        zoomLevel = 1.4;
+        // Calculate zoom to fit book in viewport
+        const book = document.getElementById('hockey-book');
+        const panelHeight = 550; // book panel height in px
+        const panelWidth = 400;  // book panel width in px
+        const controlsHeight = 70;
+        const availableHeight = window.innerHeight - controlsHeight;
+        const availableWidth = window.innerWidth;
+        
+        // Calculate scale to fit (use smaller of width/height constraints)
+        const scaleH = availableHeight / panelHeight;
+        const scaleW = availableWidth / (panelWidth * 2); // *2 for open spread
+        zoomLevel = Math.min(scaleH, scaleW, 1.5) * 0.95; // 95% to add padding
         panX = 0;
         panY = 0;
     } else {
