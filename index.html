@@ -539,13 +539,16 @@
 <!-- Page Number Circle -->
 <div class="page-circle" id="page-display">COVER</div>
 
-<!-- Right Side Toolbar -->
-<div class="toolbar-right">
-    <button class="toolbar-btn" onclick="zoomIn()" title="Zoom In">+</button>
-    <button class="toolbar-btn" onclick="zoomOut()" title="Zoom Out">−</button>
-    <button class="toolbar-btn" onclick="resetBook()" title="Reset">⟲</button>
-    <button class="toolbar-btn" onclick="toggleLock()" id="lock-btn" title="Lock/Unlock">🔓</button>
-    <button class="toolbar-btn" onclick="toggleFullscreen()" id="fs-btn" title="Fullscreen">⛶</button>
+<!-- Right Side Toolbar (Collapsible) -->
+<div class="toolbar-right" id="toolbar-right">
+    <button class="toolbar-btn toolbar-toggle" onclick="toggleToolbar()" title="Toggle Toolbar">☰</button>
+    <div class="toolbar-buttons" id="toolbar-buttons">
+        <button class="toolbar-btn" onclick="zoomIn()" title="Zoom In">+</button>
+        <button class="toolbar-btn" onclick="zoomOut()" title="Zoom Out">−</button>
+        <button class="toolbar-btn" onclick="resetBook()" title="Reset">⟲</button>
+        <button class="toolbar-btn" onclick="toggleLock()" id="lock-btn" title="Lock/Unlock">🔓</button>
+        <button class="toolbar-btn" onclick="toggleFullscreen()" id="fs-btn" title="Fullscreen">⛶</button>
+    </div>
 </div>
 
 <!-- Page turn sound -->
@@ -587,6 +590,11 @@ function applyTransform() {
         // Default 25px lower, but 0 in fullscreen
         const defaultOffsetY = document.fullscreenElement ? 0 : 25;
         
+        // Constrain pan to keep book on screen (max 100px from edge)
+        const maxPan = 100;
+        panX = Math.max(-maxPan, Math.min(maxPan, panX));
+        panY = Math.max(-maxPan, Math.min(maxPan, panY));
+        
         if (c === 0) {
             // Front cover: page extends RIGHT of spine, shift left to center
             baseTransform = 'translateX(calc(var(--panel-width) / -2))';
@@ -600,6 +608,14 @@ function applyTransform() {
         book.style.transform = `${baseTransform} translate(${panX}px, ${panY + defaultOffsetY}px) scale(${zoomLevel})`;
     }
 }
+
+// Toggle toolbar visibility
+window.toggleToolbar = () => {
+    const buttons = document.getElementById('toolbar-buttons');
+    if (buttons) {
+        buttons.classList.toggle('collapsed');
+    }
+};
 
 // Fullscreen toggle
 window.toggleFullscreen = () => {
