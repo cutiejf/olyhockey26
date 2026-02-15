@@ -602,6 +602,22 @@ document.addEventListener('mouseup', () => {
     }
 });
 
+// Scroll wheel zoom
+document.addEventListener('wheel', (e) => {
+    if (e.target.closest('.book')) {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+            // Scroll up = zoom in
+            zoomLevel = Math.min(maxZoom, zoomLevel + zoomStep);
+        } else {
+            // Scroll down = zoom out
+            zoomLevel = Math.max(minZoom, zoomLevel - zoomStep);
+            if (zoomLevel <= 1) { panX = 0; panY = 0; }
+        }
+        applyTransform();
+    }
+}, { passive: false });
+
 // Flipbook engine
 const flipBook = (elBook) => {
     const pages = Array.from(elBook.querySelectorAll(".page"));
