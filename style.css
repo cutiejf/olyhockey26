@@ -240,7 +240,7 @@ body {
     top: calc(50% + 10px);
     left: 50%;
     margin: 0;
-    transform-origin: center center;
+    transform-origin: left center;
 }
 
 :fullscreen .controls {
