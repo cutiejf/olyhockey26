@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     min-height: 100dvh;
     perspective: 1500px;
-    font: 12px/1.4 'Arial Narrow', 'Roboto Condensed', sans-serif;
+    font: 12px/1.4 'Poppins', 'Arial Narrow', 'Roboto Condensed', sans-serif;
     overflow: hidden;
     color: #111;
     background: #111;
@@ -278,6 +278,9 @@ body {
     flex-direction: column;
     background: #fff;
     overflow: hidden;
+    font-family: 'Poppins', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
 }
 
 h2 {
