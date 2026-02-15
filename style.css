@@ -233,20 +233,20 @@ body {
     padding: 0;
     overflow: hidden;
     background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 :fullscreen .book {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: absolute;
+    top: calc(50% - 35px);
+    left: 50%;
     margin: 0;
 }
 
 :fullscreen .controls {
-    bottom: 15px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .btn.save-btn { background: #27ae60; color: #fff; }
