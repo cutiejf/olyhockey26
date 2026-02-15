@@ -617,11 +617,20 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
     z-index: 9999;
     cursor: pointer;
     transition: background 0.2s ease;
-    pointer-events: all;
+    pointer-events: auto;
 }
 
 .page-flip-zone:hover {
     background: rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+/* Drag cursor for book panels */
+.front, .back {
+    cursor: grab;
+}
+.front:active, .back:active {
+    cursor: grabbing;
 }
 
 .page-flip-left {

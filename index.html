@@ -598,19 +598,9 @@ window.toggleFullscreen = () => {
     }
 };
 
-// Helper: check if click is in drag zone (middle 60% of panel, not edges)
-function isInDragZone(e) {
-    const panel = e.target.closest('.front, .back');
-    if (!panel) return false;
-    const rect = panel.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const edgeWidth = rect.width * 0.2; // 20% on each edge for flip
-    return x > edgeWidth && x < (rect.width - edgeWidth);
-}
-
-// Drag to pan (only in middle of panels)
+// Drag to pan (anywhere on book except flip zones)
 document.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.book') && !e.target.closest('.page-flip-zone') && isInDragZone(e)) {
+    if (e.target.closest('.book') && !e.target.closest('.page-flip-zone')) {
         isDragging = true;
         dragStartX = e.clientX - panX;
         dragStartY = e.clientY - panY;
