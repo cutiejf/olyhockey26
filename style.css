@@ -601,9 +601,10 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
     top: 0;
     height: 100%;
     width: 20%;
-    z-index: 100;
+    z-index: 9999;
     cursor: pointer;
     transition: background 0.2s ease;
+    pointer-events: all;
 }
 
 .page-flip-zone:hover {
