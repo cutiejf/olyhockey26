@@ -635,9 +635,10 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
     top: 0;
     height: 100%;
     width: 20%;
-    z-index: 10;
-    transition: background 0.2s ease;
+    z-index: 100;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
     pointer-events: none;
+    background: transparent;
 }
 
 /* Drag cursor for book panels, pointer on edges */

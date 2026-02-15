@@ -600,6 +600,22 @@ window.toggleFullscreen = () => {
     }
 };
 
+// Auto-zoom on fullscreen
+document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement) {
+        // Entering fullscreen - zoom in
+        zoomLevel = 1.4;
+        panX = 0;
+        panY = 0;
+    } else {
+        // Exiting fullscreen - reset zoom
+        zoomLevel = 1;
+        panX = 0;
+        panY = 0;
+    }
+    applyTransform();
+});
+
 // Reset to first page and position
 window.resetBook = () => {
     zoomLevel = 1;
@@ -657,28 +673,31 @@ document.addEventListener('mousemove', (e) => {
             z.style.background = '';
             z.style.boxShadow = '';
         });
-        document.querySelectorAll('.page').forEach(p => p.style.boxShadow = '');
+        document.body.style.cursor = '';
         if (panel) {
             const rect = panel.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const edgeWidth = rect.width * 0.2;
-            const page = panel.closest('.page');
-            if (x < edgeWidth) {
-                const zone = panel.querySelector('.page-flip-left');
-                if (zone) {
-                    zone.style.background = 'linear-gradient(to right, rgba(200, 150, 0, 0.25), transparent)';
-                    zone.style.boxShadow = 'inset 8px 0 15px -5px rgba(0,0,0,0.3)';
-                    document.body.style.cursor = 'pointer';
-                }
-            } else if (x > rect.width - edgeWidth) {
+            const isFront = panel.classList.contains('front');
+            const isBack = panel.classList.contains('back');
+            
+            // Front panels: right edge goes forward
+            if (isFront && x > rect.width - edgeWidth) {
                 const zone = panel.querySelector('.page-flip-right');
                 if (zone) {
-                    zone.style.background = 'linear-gradient(to left, rgba(200, 150, 0, 0.25), transparent)';
-                    zone.style.boxShadow = 'inset -8px 0 15px -5px rgba(0,0,0,0.3)';
+                    zone.style.background = 'linear-gradient(to left, rgba(200, 150, 0, 0.3), transparent)';
+                    zone.style.boxShadow = 'inset -10px 0 20px -5px rgba(0,0,0,0.25)';
                     document.body.style.cursor = 'pointer';
                 }
-            } else {
-                document.body.style.cursor = '';
+            }
+            // Back panels: left edge goes back
+            else if (isBack && x < edgeWidth) {
+                const zone = panel.querySelector('.page-flip-left');
+                if (zone) {
+                    zone.style.background = 'linear-gradient(to right, rgba(200, 150, 0, 0.3), transparent)';
+                    zone.style.boxShadow = 'inset 10px 0 20px -5px rgba(0,0,0,0.25)';
+                    document.body.style.cursor = 'pointer';
+                }
             }
         }
     }
