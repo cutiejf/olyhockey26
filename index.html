@@ -551,6 +551,11 @@ let panX = 0, panY = 0;
 let isDragging = false;
 let dragStartX = 0, dragStartY = 0;
 
+// Apply initial transform
+window.addEventListener('DOMContentLoaded', () => {
+    applyTransform();
+});
+
 window.zoomIn = () => {
     zoomLevel = Math.min(maxZoom, zoomLevel + zoomStep);
     applyTransform();
@@ -654,8 +659,6 @@ const flipBook = (elBook) => {
         current = Math.max(0, Math.min(c, pages.length));
         elBook.style.setProperty("--c", current);
         isCentered = (current === 0 || current >= pages.length);
-        // Reset pan when changing pages
-        panX = 0; panY = 0;
         applyTransform();
         updatePageDisplay();
         playPageSound();
