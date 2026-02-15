@@ -547,7 +547,6 @@ let zoomLevel = 1;
 const zoomStep = 0.1;
 const minZoom = 0.5;
 const maxZoom = 1.5;
-let isCentered = true;
 let panX = 0, panY = 0;
 let isDragging = false;
 let dragStartX = 0, dragStartY = 0;
@@ -573,12 +572,18 @@ function applyTransform() {
     const book = document.getElementById('hockey-book');
     if (book) {
         let baseTransform;
-        if (isCentered) {
-            // Cover/back cover: center single page
-            baseTransform = 'translateX(calc(-50% - var(--panel-width) / 2))';
+        const c = parseInt(book.style.getPropertyValue('--c') || '0');
+        const totalPages = book.querySelectorAll('.page').length;
+        
+        if (c === 0) {
+            // Front cover: page extends RIGHT of spine, shift left to center
+            baseTransform = 'translateX(calc(var(--panel-width) / -2))';
+        } else if (c >= totalPages) {
+            // Back cover: page extends LEFT of spine, shift right to center
+            baseTransform = 'translateX(calc(var(--panel-width) / 2))';
         } else {
-            // Open book: center spread
-            baseTransform = 'translateX(-50%)';
+            // Open book: spread visible, spine at center
+            baseTransform = 'translateX(0)';
         }
         book.style.transform = `${baseTransform} translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
     }
@@ -676,7 +681,6 @@ const flipBook = (elBook) => {
     const setCurrent = (c) => {
         current = Math.max(0, Math.min(c, pages.length));
         elBook.style.setProperty("--c", current);
-        isCentered = (current === 0 || current >= pages.length);
         applyTransform();
         updatePageDisplay();
         playPageSound();

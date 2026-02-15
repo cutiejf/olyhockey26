@@ -33,8 +33,8 @@ body {
     pointer-events: none;
     transform-style: preserve-3d;
     transition: transform 0.5s ease;
-    /* Initial: centered on single page (cover) */
-    transform: translateX(calc(-50% - var(--panel-width) / 2));
+    /* Initial: front cover centered (page extends RIGHT of spine) */
+    transform: translateX(calc(var(--panel-width) / -2));
 }
 
 .page {
