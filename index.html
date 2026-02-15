@@ -531,6 +531,7 @@
 <!-- Controls -->
 <div class="controls">
     <button class="btn" onclick="resetBook()" title="Reset">⟲</button>
+    <button class="btn" onclick="toggleLock()" id="lock-btn" title="Lock/Unlock">🔓</button>
     <button class="btn zoom-btn" onclick="zoomOut()">−</button>
     <button class="btn" onclick="bookPrev()">BACK</button>
     <div class="page-num" id="page-display">COVER</div>
@@ -608,9 +609,27 @@ window.resetBook = () => {
     applyTransform();
 };
 
+// Lock mode - disable drag/flip, enable text selection
+let isLocked = false;
+window.toggleLock = () => {
+    isLocked = !isLocked;
+    const btn = document.getElementById('lock-btn');
+    const book = document.getElementById('hockey-book');
+    if (isLocked) {
+        btn.textContent = '🔒';
+        btn.style.background = '#e74c3c';
+        if (book) book.style.userSelect = 'text';
+    } else {
+        btn.textContent = '🔓';
+        btn.style.background = '';
+        if (book) book.style.userSelect = 'none';
+    }
+};
+
 // Drag to pan
 let dragMoved = false;
 document.addEventListener('mousedown', (e) => {
+    if (isLocked) return; // Don't drag when locked
     if (e.target.closest('.book')) {
         isDragging = true;
         dragMoved = false;
@@ -631,8 +650,8 @@ document.addEventListener('mousemove', (e) => {
         panX = e.clientX - dragStartX;
         panY = e.clientY - dragStartY;
         applyTransform();
-    } else {
-        // Show hover effect on edges with curl/lift hint
+    } else if (!isLocked) {
+        // Show hover effect on edges with curl/lift hint (only when unlocked)
         const panel = e.target.closest('.front, .back');
         document.querySelectorAll('.page-flip-zone').forEach(z => {
             z.style.background = '';
@@ -673,8 +692,8 @@ document.addEventListener('mouseup', (e) => {
         const book = document.getElementById('hockey-book');
         if (book) book.style.transition = 'transform 0.5s ease';
         
-        // If no drag movement, check for page flip
-        if (!dragMoved) {
+        // If no drag movement and not locked, check for page flip
+        if (!dragMoved && !isLocked) {
             const panel = e.target.closest('.front, .back');
             if (panel) {
                 const rect = panel.getBoundingClientRect();
