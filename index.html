@@ -189,25 +189,49 @@
 
     <!-- Page 3: Knockout + Global Contenders (New Order: 7,8) -->
     <div class="page">
-        <div class="front panel" id="page-p10">
-            <!-- Reseed section at top -->
-            <div style="margin-bottom:8px; padding:6px; background:#f0f0f0; border:1px solid #ccc; border-radius:3px;">
-                <div style="font-size:10px; font-weight:900; color:#333; margin-bottom:4px; text-transform:uppercase;">Reseed for Quarterfinals</div>
-                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:4px; font-size:10px;">
+        <div class="front panel" id="page-p10" style="padding: 12px 15px 10px 15px;">
+            <!-- Reseed grid -->
+            <div style="margin-bottom:6px; padding:4px 6px; background:#f0f0f0; border:1px solid #ccc; border-radius:3px;">
+                <div style="font-size:10px; font-weight:900; color:#333; margin-bottom:3px; text-transform:uppercase;">Reseed for Quarterfinals</div>
+                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:3px; font-size:10px;">
                     <div class="seed-row" style="margin:0;"><div class="seed-num">1</div><div class="seed-name"></div></div>
                     <div class="seed-row" style="margin:0;"><div class="seed-num">2</div><div class="seed-name"></div></div>
                     <div class="seed-row" style="margin:0;"><div class="seed-num">3</div><div class="seed-name"></div></div>
                     <div class="seed-row" style="margin:0;"><div class="seed-num">4</div><div class="seed-name"></div></div>
                 </div>
             </div>
-            <h2 style="margin-top:0;">Knockout Stage</h2>
-            <div class="flex-table-container">
-                <table id="table-ko" style="font-size: 13.5px;">
-                    <thead><tr><th class="c-grp">Rd</th><th class="c-ven">V</th><th class="c-date" style="width:95px;">Date</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
+            <h2 style="margin-top:0; margin-bottom:4px;">Knockout Stage</h2>
+            <div class="flex-table-container" style="flex-grow:1;">
+                <table id="table-ko" style="font-size: 13px;">
                     <tbody id="sched-ko-v"></tbody>
                 </table>
             </div>
-            <div style="margin-top:auto; background:#f9f9f9; padding:5px; font-size:10px; border: 1px solid #ddd; color:#000;">Highest seed plays Lowest. OT: 3v3 then SO.</div>
+            <!-- Podium Footer -->
+            <div style="margin-top:auto; padding-top:8px; border-top:1px solid #ddd;">
+                <div style="display:flex; align-items:flex-end; justify-content:center; gap:8px; height:70px;">
+                    <!-- Silver (2nd) -->
+                    <div style="display:flex; flex-direction:column; align-items:center; width:80px;">
+                        <div id="podium-silver" style="font-size:10px; font-weight:bold; text-align:center; margin-bottom:2px;">-</div>
+                        <div style="background:linear-gradient(180deg, #C0C0C0 0%, #A8A8A8 100%); width:100%; height:45px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #999;">
+                            <span style="font-size:18px;">🥈</span>
+                        </div>
+                    </div>
+                    <!-- Gold (1st - tallest) -->
+                    <div style="display:flex; flex-direction:column; align-items:center; width:90px;">
+                        <div id="podium-gold" style="font-size:10px; font-weight:bold; text-align:center; margin-bottom:2px;">-</div>
+                        <div style="background:linear-gradient(180deg, #FFD700 0%, #DAA520 100%); width:100%; height:60px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #B8860B;">
+                            <span style="font-size:22px;">🥇</span>
+                        </div>
+                    </div>
+                    <!-- Bronze (3rd - shortest) -->
+                    <div style="display:flex; flex-direction:column; align-items:center; width:80px;">
+                        <div id="podium-bronze" style="font-size:10px; font-weight:bold; text-align:center; margin-bottom:2px;">-</div>
+                        <div style="background:linear-gradient(180deg, #CD7F32 0%, #8B4513 100%); width:100%; height:35px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #8B4513;">
+                            <span style="font-size:16px;">🥉</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="back panel" id="page-p_new8" style="padding: 15px; background: #fdfdfd;">
             <h2>Global Contenders</h2>
@@ -490,17 +514,17 @@
         <div class="front panel" id="page-p_outro" style="padding: 20px; background: #fff;">
             <h2 style="background: var(--header-bg); color: #fff; padding: 5px 10px; margin: -10px -10px 10px -10px;">Tournament Notes</h2>
             <div style="margin-top: 10px; font-size: 11px; color: #333; line-height: 1.5;">
+                <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #2980b9;">
+                    <strong>Group B 3-Way Tie (6 pts each):</strong><br>
+                    Slovakia, Finland, Sweden tied at 6 pts. H2H circular (each beat one other). GD among tied: SVK +1, FIN 0, SWE -1. Result: 1. Slovakia, 2. Finland, 3. Sweden.
+                </div>
                 <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #c0392b;">
                     <strong>Suspensions:</strong><br>
                     Italy's C. Digiacinto suspended 1 game (illegal check to head, Game #8 vs SVK, 2/13 2nd period, IIHF Rule 48).
                 </div>
-                <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #2980b9;">
-                    <strong>Seeding Criteria (in order):</strong><br>
-                    1. Group position (winners first) 2. Points 3. Goal differential 4. Goals for 5. IIHF World Ranking.
-                </div>
                 <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #27ae60;">
-                    <strong>Group Tiebreaker:</strong><br>
-                    Head-to-head record first, then GD among tied teams only.
+                    <strong>Seeding Criteria:</strong><br>
+                    1. Group position 2. Points 3. GD 4. GF 5. IIHF Ranking. Group tiebreaker: H2H first, then GD among tied.
                 </div>
             </div>
             <div style="margin-top: 10px; font-size: 10px; color: #555;">
@@ -662,11 +686,11 @@ window.HockeyData = {
         { "id": "k7", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Seed 3", "a": "Reseed 2", "v": "S" },
         { "id": "k8", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Seed 4", "a": "Reseed 1", "v": "R" },
         { "header": "SEMIFINALS" },
-        { "id": "k9", "g": "SF", "d": "Fri Feb 20", "t": "10:40a", "h": "Win QF", "a": "Win QF", "v": "S" },
-        { "id": "k10", "g": "SF", "d": "Fri Feb 20", "t": "03:10p", "h": "Win QF", "a": "Win QF", "v": "S" },
+        { "id": "k9", "g": "SF", "d": "Fri Feb 20", "t": "10:40a", "h": "TBD", "a": "TBD", "v": "S" },
+        { "id": "k10", "g": "SF", "d": "Fri Feb 20", "t": "03:10p", "h": "TBD", "a": "TBD", "v": "S" },
         { "header": "MEDAL GAMES" },
-        { "id": "k11", "g": "🥉", "d": "Sat Feb 21", "t": "02:40p", "h": "Lose SF1", "a": "Lose SF2", "v": "S" },
-        { "id": "k12", "g": "🥇🥈", "d": "Sun Feb 22", "t": "08:10a", "h": "Win SF1", "a": "Win SF2", "v": "S" }
+        { "id": "k11", "g": "BRZ", "d": "Sat Feb 21", "t": "02:40p", "h": "TBD", "a": "TBD", "v": "S" },
+        { "id": "k12", "g": "GLD", "d": "Sun Feb 22", "t": "08:10a", "h": "TBD", "a": "TBD", "v": "S" }
     ],
     "historyData": [
         ["2022", "fi", "FIN", "ru", "ROC", "sk", "SVK"],
@@ -744,13 +768,13 @@ function injectTables() {
             if (g.g === 'Q') return; // Skip qualification games
             const tr = document.createElement('tr');
             if (g.header) {
-                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:3.2px;">' + g.header + '</td>';
+                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:11px; border-bottom:1px solid #000; padding:2px;">' + g.header + '</td>';
             } else {
-                tr.innerHTML = '<td class="c-grp" style="padding:8.8px 0">' + g.g + '</td>' +
-                    '<td class="c-ven">' + g.v + '</td>' +
-                    '<td class="c-date" style="width:95px;">' + g.d + '</td>' +
-                    '<td class="c-time">' + g.t + '</td>' +
-                    '<td class="c-match">' +
+                tr.innerHTML = '<td class="c-grp" style="padding:6px 4px;">' + g.g + '</td>' +
+                    '<td class="c-ven" style="padding:6px 4px;">' + g.v + '</td>' +
+                    '<td class="c-date" style="padding:6px 4px; width:90px;">' + g.d + '</td>' +
+                    '<td class="c-time" style="padding:6px 4px;">' + g.t + '</td>' +
+                    '<td class="c-match" style="padding:6px 4px;">' +
                         '<span class="team-home">' + g.h + '</span>' +
                         '<span class="score-area">' +
                             '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
