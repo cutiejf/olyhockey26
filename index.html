@@ -531,15 +531,40 @@
 
 <!-- Controls -->
 <div class="controls">
+    <button class="btn zoom-btn" onclick="zoomOut()">−</button>
     <button class="btn" onclick="bookPrev()">BACK</button>
     <div class="page-num" id="page-display">COVER</div>
     <button class="btn" onclick="bookNext()">NEXT</button>
+    <button class="btn zoom-btn" onclick="zoomIn()">+</button>
 </div>
 
 <!-- Page turn sound -->
 <audio id="pageTurn" preload="auto" crossorigin="anonymous" src="https://raw.githubusercontent.com/cutiejf/olyhockey26/main/PageFlip3.wav"></audio>
 
 <script>
+// Zoom functionality
+let zoomLevel = 1;
+const zoomStep = 0.1;
+const minZoom = 0.5;
+const maxZoom = 1.5;
+
+window.zoomIn = () => {
+    zoomLevel = Math.min(maxZoom, zoomLevel + zoomStep);
+    applyZoom();
+};
+
+window.zoomOut = () => {
+    zoomLevel = Math.max(minZoom, zoomLevel - zoomStep);
+    applyZoom();
+};
+
+function applyZoom() {
+    const book = document.getElementById('hockey-book');
+    if (book) {
+        book.style.transform = `translateX(-50%) scale(${zoomLevel})`;
+    }
+}
+
 // Flipbook engine
 const flipBook = (elBook) => {
     const pages = Array.from(elBook.querySelectorAll(".page"));
