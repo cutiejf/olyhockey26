@@ -528,26 +528,24 @@
 
 </div>
 
-<!-- Side Navigation Arrows -->
-<button class="side-nav side-nav-left" onclick="bookPrev()" title="Previous">❮</button>
-<button class="side-nav side-nav-right" onclick="bookNext()" title="Next">❯</button>
+<!-- Simple Page Navigation -->
+<div class="nav-simple">
+    <button class="nav-arrow" onclick="bookPrev()" title="Previous">‹</button>
+    <div class="nav-page" id="page-display">COVER</div>
+    <button class="nav-arrow" onclick="bookNext()" title="Next">›</button>
+</div>
 
-<!-- First/Last Page Buttons -->
-<button class="side-nav-edge side-nav-first" onclick="bookGoTo(0)" title="First Page">⏮</button>
-<button class="side-nav-edge side-nav-last" onclick="bookGoTo(99)" title="Last Page">⏭</button>
-
-<!-- Page Number Circle -->
-<div class="page-circle" id="page-display">COVER</div>
-
-<!-- Right Side Toolbar (Collapsible) -->
-<div class="toolbar-right" id="toolbar-right">
-    <button class="toolbar-btn toolbar-toggle" onclick="toggleToolbar()" title="Toggle Toolbar">☰</button>
-    <div class="toolbar-buttons" id="toolbar-buttons">
-        <button class="toolbar-btn" onclick="zoomIn()" title="Zoom In">+</button>
-        <button class="toolbar-btn" onclick="zoomOut()" title="Zoom Out">−</button>
-        <button class="toolbar-btn" onclick="resetBook()" title="Reset">⟲</button>
-        <button class="toolbar-btn" onclick="toggleLock()" id="lock-btn" title="Lock/Unlock">🔓</button>
-        <button class="toolbar-btn" onclick="toggleFullscreen()" id="fs-btn" title="Fullscreen">⛶</button>
+<!-- Top Right Menu -->
+<div class="menu-top">
+    <button class="menu-toggle" onclick="toggleMenu()" id="menu-toggle">⋯</button>
+    <div class="menu-dropdown" id="menu-dropdown">
+        <button class="menu-item" onclick="toggleFullscreen(); closeMenu();">⛶ Fullscreen</button>
+        <button class="menu-item" onclick="resetBook(); closeMenu();">⟲ Reset</button>
+        <button class="menu-item" onclick="bookGoTo(0); closeMenu();">⏮ First Page</button>
+        <button class="menu-item" onclick="bookGoTo(99); closeMenu();">⏭ Last Page</button>
+        <button class="menu-item" onclick="zoomIn(); closeMenu();">+ Zoom In</button>
+        <button class="menu-item" onclick="zoomOut(); closeMenu();">− Zoom Out</button>
+        <button class="menu-item" onclick="toggleLock(); closeMenu();" id="lock-menu-btn">🔓 Lock/Unlock</button>
     </div>
 </div>
 
@@ -590,7 +588,7 @@ function applyTransform() {
         // Default 25px lower, but 0 in fullscreen
         const defaultOffsetY = document.fullscreenElement ? 0 : 25;
         
-        // Constrain pan to keep book on screen (max 100px from edge)
+        // Constrain pan to keep book on screen (fixed 100px regardless of zoom)
         const maxPan = 100;
         panX = Math.max(-maxPan, Math.min(maxPan, panX));
         panY = Math.max(-maxPan, Math.min(maxPan, panY));
@@ -609,13 +607,31 @@ function applyTransform() {
     }
 }
 
-// Toggle toolbar visibility
-window.toggleToolbar = () => {
-    const buttons = document.getElementById('toolbar-buttons');
-    if (buttons) {
-        buttons.classList.toggle('collapsed');
+// Menu toggle
+window.toggleMenu = () => {
+    const dropdown = document.getElementById('menu-dropdown');
+    const toggle = document.getElementById('menu-toggle');
+    if (dropdown && toggle) {
+        dropdown.classList.toggle('show');
+        toggle.classList.toggle('active');
     }
 };
+
+window.closeMenu = () => {
+    const dropdown = document.getElementById('menu-dropdown');
+    const toggle = document.getElementById('menu-toggle');
+    if (dropdown && toggle) {
+        dropdown.classList.remove('show');
+        toggle.classList.remove('active');
+    }
+};
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.menu-top')) {
+        closeMenu();
+    }
+});
 
 // Fullscreen toggle
 window.toggleFullscreen = () => {
@@ -665,15 +681,13 @@ window.resetBook = () => {
 let isLocked = false;
 window.toggleLock = () => {
     isLocked = !isLocked;
-    const btn = document.getElementById('lock-btn');
+    const menuBtn = document.getElementById('lock-menu-btn');
     const book = document.getElementById('hockey-book');
     if (isLocked) {
-        btn.textContent = '🔒';
-        btn.style.background = '#e74c3c';
+        if (menuBtn) menuBtn.textContent = '🔒 Locked';
         if (book) book.style.userSelect = 'text';
     } else {
-        btn.textContent = '🔓';
-        btn.style.background = '';
+        if (menuBtn) menuBtn.textContent = '🔓 Lock/Unlock';
         if (book) book.style.userSelect = 'none';
     }
 };
@@ -775,8 +789,9 @@ document.addEventListener('mouseup', (e) => {
     }
 });
 
-// Scroll wheel zoom
+// Scroll wheel zoom (disabled when locked)
 document.addEventListener('wheel', (e) => {
+    if (isLocked) return; // No zoom when locked
     if (e.target.closest('.book')) {
         e.preventDefault();
         if (e.deltaY < 0) {
