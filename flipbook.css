@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     min-height: 100dvh;
     perspective: 1500px;
-    font: 12px/1.4 'Poppins', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+    font: 11px/1.4 'Poppins', 'Arial Narrow', 'Roboto Condensed', sans-serif;
     overflow: hidden;
     color: #111;
     background: #111;
