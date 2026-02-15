@@ -237,9 +237,10 @@ body {
 
 :fullscreen .book {
     position: absolute;
-    top: calc(50% - 35px);
+    top: calc(50% + 10px);
     left: 50%;
     margin: 0;
+    transform-origin: center center;
 }
 
 :fullscreen .controls {
