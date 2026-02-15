@@ -598,29 +598,72 @@ window.toggleFullscreen = () => {
     }
 };
 
-// Drag to pan (anywhere on book except flip zones)
+// Drag to pan
+let dragMoved = false;
 document.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.book') && !e.target.closest('.page-flip-zone')) {
+    if (e.target.closest('.book')) {
         isDragging = true;
+        dragMoved = false;
         dragStartX = e.clientX - panX;
         dragStartY = e.clientY - panY;
         document.body.style.cursor = 'grabbing';
-        e.preventDefault();
+        // Disable transition for instant drag response
+        const book = document.getElementById('hockey-book');
+        if (book) book.style.transition = 'none';
     }
 });
 
 document.addEventListener('mousemove', (e) => {
     if (isDragging) {
+        const dx = e.clientX - dragStartX - panX;
+        const dy = e.clientY - dragStartY - panY;
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) dragMoved = true;
         panX = e.clientX - dragStartX;
         panY = e.clientY - dragStartY;
         applyTransform();
+    } else {
+        // Show hover effect on edges
+        const panel = e.target.closest('.front, .back');
+        document.querySelectorAll('.page-flip-zone').forEach(z => z.style.background = '');
+        if (panel) {
+            const rect = panel.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const edgeWidth = rect.width * 0.2;
+            if (x < edgeWidth) {
+                const zone = panel.querySelector('.page-flip-left');
+                if (zone) { zone.style.background = 'rgba(200, 150, 0, 0.15)'; document.body.style.cursor = 'pointer'; }
+            } else if (x > rect.width - edgeWidth) {
+                const zone = panel.querySelector('.page-flip-right');
+                if (zone) { zone.style.background = 'rgba(200, 150, 0, 0.15)'; document.body.style.cursor = 'pointer'; }
+            } else {
+                document.body.style.cursor = '';
+            }
+        }
     }
 });
 
-document.addEventListener('mouseup', () => {
+document.addEventListener('mouseup', (e) => {
     if (isDragging) {
         isDragging = false;
         document.body.style.cursor = '';
+        // Re-enable transition
+        const book = document.getElementById('hockey-book');
+        if (book) book.style.transition = 'transform 0.5s ease';
+        
+        // If no drag movement, check for page flip
+        if (!dragMoved) {
+            const panel = e.target.closest('.front, .back');
+            if (panel) {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const edgeWidth = rect.width * 0.2;
+                if (x < edgeWidth && window.bookPrev) {
+                    window.bookPrev();
+                } else if (x > rect.width - edgeWidth && window.bookNext) {
+                    window.bookNext();
+                }
+            }
+        }
     }
 });
 
@@ -676,30 +719,26 @@ const flipBook = (elBook) => {
         playPageSound();
     };
 
-    const createZone = (side, action) => {
+    const createZone = (side) => {
         const zone = document.createElement('div');
         zone.className = `page-flip-zone page-flip-${side}`;
-        zone.addEventListener('click', (e) => {
-            e.stopPropagation();
-            setCurrent(action);
-        });
         return zone;
     };
 
     pages.forEach((page, idx) => {
         page.style.setProperty("--i", idx);
         
-        // Add click zones on edges
+        // Add visual hover zones on edges (click handled by mouseup)
         const frontPanel = page.querySelector('.front');
         if (frontPanel) {
             frontPanel.style.position = 'relative';
-            frontPanel.appendChild(createZone('right', idx + 1));
+            frontPanel.appendChild(createZone('right'));
         }
         
         const backPanel = page.querySelector('.back');
         if (backPanel) {
             backPanel.style.position = 'relative';
-            backPanel.appendChild(createZone('left', idx));
+            backPanel.appendChild(createZone('left'));
         }
     });
 

@@ -219,8 +219,29 @@ body {
 }
 
 /* Fullscreen mode adjustments */
+:fullscreen {
+    background: #111;
+}
+
 :fullscreen body {
-    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:fullscreen .book {
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 :fullscreen .controls {
@@ -608,24 +629,18 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 .star-name { font-weight: bold; font-size: 14px; color: #000; }
 .star-team { font-size: 11px; color: #666; text-transform: uppercase; }
 
-/* Page flip zones - narrow click areas on edges */
+/* Page flip zones - visual hover areas on edges */
 .page-flip-zone {
     position: absolute;
     top: 0;
     height: 100%;
     width: 20%;
-    z-index: 99999;
-    cursor: pointer !important;
+    z-index: 10;
     transition: background 0.2s ease;
-    pointer-events: auto !important;
+    pointer-events: none;
 }
 
-.page-flip-zone:hover {
-    background: rgba(200, 150, 0, 0.15);
-    cursor: pointer !important;
-}
-
-/* Drag cursor for book panels */
+/* Drag cursor for book panels, pointer on edges */
 .front, .back {
     cursor: grab;
 }
