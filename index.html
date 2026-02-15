@@ -12,36 +12,12 @@
 
 <div class="book" id="hockey-book">
 
-    <!-- Page 0: Cover + Inside Cover -->
+    <!-- Page 0: Custom Cover Image Only -->
     <div class="page">
         <div class="front cover" id="page-p1">
-            <img src="https://i.postimg.cc/bJVNFD1f/Capt1ure.png" class="bg-img">
-            <div class="front-overlay">
-                <div style="text-align:center; width: 100%; margin-top: 5px;">
-                    <div style="font-size:20px; font-weight:500; color:#fff; margin-bottom: 3px; letter-spacing: 5px; text-shadow: 0 0 15px #000, 0 0 8px #000; font-family: Arial, sans-serif;">2026</div>
-                </div>
-                <div style="margin-top: 5px; margin-bottom: 5px; display: flex; align-items: center; justify-content: center; gap: 15px;">
-                    <div style="width: 140px; height: 2px; background: rgba(255,255,255,0.7);"></div>
-                    <svg class="oly-logo" viewBox="0 0 100 50">
-                        <circle cx="20" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle>
-                        <circle cx="50" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle>
-                        <circle cx="80" cy="18" r="14" stroke="white" fill="none" stroke-width="3"></circle>
-                        <circle cx="35" cy="32" r="14" stroke="white" fill="none" stroke-width="3"></circle>
-                        <circle cx="65" cy="32" r="14" stroke="white" fill="none" stroke-width="3"></circle>
-                    </svg>
-                    <div style="width: 140px; height: 2px; background: rgba(255,255,255,0.7);"></div>
-                </div>
-                <div style="text-align:center; width: 100%;">
-                    <img src="https://i.imgur.com/QpluDDF.png" style="width: 95%; height: auto; filter: drop-shadow(0 0 10px rgba(0,0,0,0.2));">
-                </div>
-                <div style="width: 100%; margin-top: auto; padding-bottom: 0px;">
-                    <div style="background: rgba(0,0,0,0.65); width: calc(100% + 40px); margin-left: -20px; padding: 3px 0; text-align: center;">
-                        <div style="font-size:16px; font-weight:900; color:#fff; text-shadow: 0 0 15px #000, 0 0 8px #000; letter-spacing:2px;">OLYMPIC MEN'S HOCKEY</div>
-                        <div style="font-size:11px; color:#f5f5f5; text-shadow: 0 0 12px #000, 0 0 6px #000; letter-spacing:5px; margin-top: 2px;">POCKET GUIDE</div>
-                    </div>
-                </div>
-            </div>
+            <img src="https://raw.githubusercontent.com/cutiejf/olyhockey26/main/cover.png" class="bg-img" style="width:100%;height:100%;object-fit:cover;">
         </div>
+    </div>
         <div class="back panel" id="page-p_intro" style="padding: 25px 25px 15px 25px; background: #fdfdfd; display: flex; flex-direction: column; align-items: center; text-align: center;">
             <h2 style="background: none; color: #111; font-size: 24px; border-bottom: 3px solid #c0392b; margin-bottom: 15px; width: 100%; justify-content: center;">Introduction</h2>
             <div style="font-size: 13.3px; color: #333; line-height: 1.4; text-align: justify; overflow-y: auto; flex-grow: 1;">
@@ -85,9 +61,7 @@
         <div class="back panel" id="page-p7">
             <h2>Group Standings</h2>
             <div class="flex-table-container" id="standings-tables-container"></div>
-            <div style="margin-top:auto; font-size:9.5px; border-top:1px solid #ddd; padding-top:4px; color:#000; line-height:1.3;">
-                <div>Pts = (W × 3) + (OTW × 2) + (OTL × 1). * or t = OT Result. <strong>Tiebreaker:</strong> H2H record, then GD among tied teams.</div>
-            </div>
+            <div style="margin-top:auto; font-size:10px; border-top:1px solid #ddd; padding-top:4px; color:#000;">Pts = (W × 3) + (OTW × 2) + (OTL × 1). * or t = OT Result.</div>
         </div>
     </div>
 
@@ -101,25 +75,25 @@
                     <tbody id="sched-prelims-v"></tbody>
                 </table>
             </div>
-            <div style="margin-top:auto; font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:4px; display:flex; justify-content:space-between;"><span>S: Santagiulia</span><span>R: Rho Fiera</span></div>
+            <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:2px; display:flex; justify-content:space-between;"><span>S: Santagiulia</span><span>R: Rho Fiera</span></div>
         </div>
         <div class="back panel" id="page-p9">
             <h2>Seeding (1-12)</h2>
             <div style="display:flex; border-bottom:1px solid #000;">
                 <div style="flex:1;">
                     <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:5px; color:#000; align-items:center; height:20px; overflow:hidden;">
-                        <span style="width:24px; flex-shrink:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;"></span>
-                        <span style="width:95px; flex-shrink:0; box-sizing:border-box; display:flex; align-items:center;">Team</span>
-                        <span style="width:38px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Grp</span>
-                        <span style="width:30px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">GP</span>
-                        <span style="width:80px; flex-shrink:0; text-align:center; letter-spacing:0.5px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Record</span>
-                        <span style="width:35px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">GD</span>
-                        <span style="width:35px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">PTS</span>
+                        <span style="width:28px; flex-shrink:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;"></span>
+                        <span style="flex:1; box-sizing:border-box; display:flex; align-items:center;">Team Name</span>
+                        <span style="width:48px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Group</span>
+                        <span style="width:90px; flex-shrink:0; text-align:center; letter-spacing:0.8px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Record</span>
+                        <span style="width:40px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">GD</span>
+                        <span style="width:40px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">PTS</span>
+                        <span style="width:5%; box-sizing:border-box;"></span>
                     </div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:24px; flex-shrink:0;">1</div><div class="seed-name" style="width:95px; flex-shrink:0;"></div><div class="seed-grp" style="width:38px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-record" style="width:80px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:24px; flex-shrink:0;">2</div><div class="seed-name" style="width:95px; flex-shrink:0;"></div><div class="seed-grp" style="width:38px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-record" style="width:80px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:24px; flex-shrink:0;">3</div><div class="seed-name" style="width:95px; flex-shrink:0;"></div><div class="seed-grp" style="width:38px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-record" style="width:80px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:24px; flex-shrink:0;">4</div><div class="seed-name" style="width:95px; flex-shrink:0;"></div><div class="seed-grp" style="width:38px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-record" style="width:80px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">1</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">2</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">3</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">4</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div class="seed-stat" style="width:40px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
                 </div>
                 <div class="vert-label">BYE TO QF</div>
             </div>
@@ -129,30 +103,28 @@
                     <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:3px; padding:0; color:#000;">
                         <span style="width:28px; flex-shrink:0;"></span>
                         <span style="flex:1;">Team Name</span>
-                        <span style="width:30px; flex-shrink:0; text-align:center;">GP</span>
                         <span style="width:35px; flex-shrink:0; text-align:center;">GD</span>
                         <span style="width:35px; flex-shrink:0; text-align:center;">PTS</span>
                     </div>
                     <div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">5</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">6</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">7</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">8</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">5</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">6</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">7</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">8</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
                     </div>
                 </div>
                 <div style="flex:1;">
                     <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:3px; padding:0; color:#000;">
                         <span style="width:28px; flex-shrink:0;"></span>
                         <span style="flex:1;">Team Name</span>
-                        <span style="width:30px; flex-shrink:0; text-align:center;">GP</span>
                         <span style="width:35px; flex-shrink:0; text-align:center;">GD</span>
                         <span style="width:35px; flex-shrink:0; text-align:center;">PTS</span>
                     </div>
                     <div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">9</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">10</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">11</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">12</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">9</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">10</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">11</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">12</div><div class="seed-name" style="flex:1;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div></div>
                     </div>
                 </div>
                 <div class="vert-label">QUALIFICATION</div>
@@ -179,58 +151,31 @@
                     <tbody id="qual-games-v"></tbody>
                 </table>
             </div>
-            <div style="margin-top:auto; font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:4px; line-height:1.3;">
-                <div style="margin-bottom:3px;"><strong>Seeding:</strong> Group winners → Seeds 1-3. Best 2nd place → Seed 4. Then by: Pts > GD > GF > IIHF Ranking.</div>
-                <div>Semi-Finals: Highest seed plays lowest, 2nd-highest plays 3rd-highest.</div>
-            </div>
+            <div style="margin-top:auto; font-size:9px; color:#888; border-top:1px solid #eee; padding-top:5px;">Tie-Break: Rank > Pts > GD.</div>
         </div>
     </div>
 
     <!-- Page 3: Knockout + Global Contenders (New Order: 7,8) -->
     <div class="page">
-        <div class="front panel" id="page-p10" style="padding: 12px 15px 10px 15px;">
-            <!-- Reseed grid -->
-            <div style="margin-bottom:6px; padding:4px 6px; background:#f0f0f0; border:1px solid #ccc; border-radius:3px;">
-                <div style="font-size:10px; font-weight:900; color:#333; margin-bottom:3px; text-transform:uppercase;">Reseed for Quarterfinals</div>
-                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:3px; font-size:10px;">
+        <div class="front panel" id="page-p10">
+            <!-- Reseed section at top -->
+            <div style="margin-bottom:8px; padding:6px; background:#f0f0f0; border:1px solid #ccc; border-radius:3px;">
+                <div style="font-size:10px; font-weight:900; color:#333; margin-bottom:4px; text-transform:uppercase;">Reseed for Quarterfinals</div>
+                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:4px; font-size:10px;">
                     <div class="seed-row" style="margin:0;"><div class="seed-num">1</div><div class="seed-name"></div></div>
                     <div class="seed-row" style="margin:0;"><div class="seed-num">2</div><div class="seed-name"></div></div>
                     <div class="seed-row" style="margin:0;"><div class="seed-num">3</div><div class="seed-name"></div></div>
                     <div class="seed-row" style="margin:0;"><div class="seed-num">4</div><div class="seed-name"></div></div>
                 </div>
             </div>
-            <h2 style="margin-top:0; margin-bottom:4px;">Knockout Stage</h2>
-            <div class="flex-table-container" style="flex-grow:1;">
-                <table id="table-ko" style="font-size: 13px;">
+            <h2 style="margin-top:0;">Knockout Stage</h2>
+            <div class="flex-table-container">
+                <table id="table-ko" style="font-size: 13.5px;">
+                    <thead><tr><th class="c-grp">Rd</th><th class="c-ven">V</th><th class="c-date" style="width:95px;">Date</th><th class="c-time">ET</th><th class="c-match">Matchup</th></tr></thead>
                     <tbody id="sched-ko-v"></tbody>
                 </table>
             </div>
-            <!-- Podium Footer -->
-            <div style="margin-top:auto; padding:10px; background:#f8f8f8; border:1px solid #ddd; border-radius:4px;">
-                <div style="display:flex; align-items:flex-end; justify-content:center; gap:15px; height:85px;">
-                    <!-- Silver (2nd) -->
-                    <div style="display:flex; flex-direction:column; align-items:center; width:90px;">
-                        <div id="podium-silver" style="font-size:11px; font-weight:bold; text-align:center; margin-bottom:3px; padding:3px 6px; background:#fff; border:1px dashed #999; border-radius:3px; min-width:70px;">TBD</div>
-                        <div style="background:linear-gradient(180deg, #C0C0C0 0%, #A8A8A8 100%); width:100%; height:50px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #999;">
-                            <span style="font-size:20px;">🥈</span>
-                        </div>
-                    </div>
-                    <!-- Gold (1st - tallest) -->
-                    <div style="display:flex; flex-direction:column; align-items:center; width:100px;">
-                        <div id="podium-gold" style="font-size:11px; font-weight:bold; text-align:center; margin-bottom:3px; padding:3px 6px; background:#fff; border:1px dashed #B8860B; border-radius:3px; min-width:80px;">TBD</div>
-                        <div style="background:linear-gradient(180deg, #FFD700 0%, #DAA520 100%); width:100%; height:65px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #B8860B;">
-                            <span style="font-size:24px;">🥇</span>
-                        </div>
-                    </div>
-                    <!-- Bronze (3rd - shortest) -->
-                    <div style="display:flex; flex-direction:column; align-items:center; width:90px;">
-                        <div id="podium-bronze" style="font-size:11px; font-weight:bold; text-align:center; margin-bottom:3px; padding:3px 6px; background:#fff; border:1px dashed #8B4513; border-radius:3px; min-width:70px;">TBD</div>
-                        <div style="background:linear-gradient(180deg, #CD7F32 0%, #8B4513 100%); width:100%; height:40px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #8B4513;">
-                            <span style="font-size:18px;">🥉</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div style="margin-top:auto; background:#f9f9f9; padding:5px; font-size:10px; border: 1px solid #ddd; color:#000;">Highest seed plays Lowest. OT: 3v3 then SO.</div>
         </div>
         <div class="back panel" id="page-p_new8" style="padding: 15px; background: #fdfdfd;">
             <h2>Global Contenders</h2>
@@ -384,8 +329,7 @@
             </div>
             
             <div style="margin-top: auto; font-size: 12px; line-height: 1.4; color: #555; background: #fff; padding: 10px; border: 1px solid #eee;">
-                <div style="margin-bottom:6px;"><b>The Verdict:</b> Milan 2026 marks the first "Best-on-Best" tournament in over a decade. While Canada remains the favorite, the gap has closed, with the USA and Sweden bringing perhaps their fastest rosters in Olympic history.</div>
-                <div style="font-size:10px; color:#666;">Official game statistics can be found <a href="https://www.iihf.com/en/events/2026/olympic-m/tournamentinfo/officialdocuments" target="_blank" style="color:#2980b9; text-decoration:underline;">here</a>.</div>
+                <b>The Verdict:</b> Milan 2026 marks the first "Best-on-Best" tournament in over a decade. While Canada remains the favorite, the gap has closed, with the USA and Sweden bringing perhaps their fastest rosters in Olympic history.
             </div>
         </div>
     </div>
@@ -441,9 +385,6 @@
                     <div class="ot-sub-item"><b>Neck Guards</b><p>Mandatory for all players on the ice.</p></div>
                     <div class="ot-sub-item"><b>Sticks</b><p>Must be on market within last 6 months.</p></div>
                 </div>
-            </div>
-            <div style="margin-top:auto; font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:4px; line-height:1.3;">
-                Complete IIHF rulebook can be found <a href="https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/3_the_iihf/2025-26_iihf_rulebook_22122025-v1.pdf" target="_blank" style="color:#2980b9; text-decoration:underline;">here</a>.
             </div>
         </div>
         <div class="back panel" id="page-p6" style="padding:0; background:#000;">
@@ -512,31 +453,19 @@
     <div class="page">
         <div class="front panel" id="page-p_outro" style="padding: 20px; background: #fff;">
             <h2 style="background: var(--header-bg); color: #fff; padding: 5px 10px; margin: -10px -10px 10px -10px;">Tournament Notes</h2>
-            <div style="margin-top: 10px; font-size: 11px; color: #333; line-height: 1.5;">
-                <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #2980b9;">
-                    <strong>Group B 3-Way Tie (6 pts each):</strong><br>
-                    Slovakia, Finland, Sweden tied at 6 pts. H2H circular (each beat one other). GD among tied: SVK +1, FIN 0, SWE -1. Result: 1. Slovakia, 2. Finland, 3. Sweden.
-                </div>
-                <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #c0392b;">
-                    <strong>Suspensions:</strong><br>
-                    Italy's C. Digiacinto suspended 1 game (illegal check to head, Game #8 vs SVK, 2/13 2nd period, IIHF Rule 48).
-                </div>
-                <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #27ae60;">
-                    <strong>Seeding Criteria:</strong><br>
-                    1. Group position 2. Points 3. GD 4. GF 5. IIHF Ranking. Group tiebreaker: H2H first, then GD among tied.
-                </div>
-            </div>
-            <div style="margin-top: 10px; font-size: 10px; color: #555;">
-                <strong>IIHF Resources:</strong><br>
-                <a href="https://www.iihf.com/en/events/2026/olympic-m/tournamentinfo/68589/tournament_format" target="_blank" style="color:#2980b9;">Tournament Format</a> |
-                <a href="https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/3_the_iihf/2025-26_iihf_rulebook_22122025-v1.pdf" target="_blank" style="color:#2980b9;">IIHF Rulebook (PDF)</a> |
-                <a href="https://www.iihf.com/en/events/2026/olympic-m/gamedocs" target="_blank" style="color:#2980b9;">Official Game Documents</a>
-            </div>
-            <div style="margin-top: auto; border-top: 1px solid #eee; padding-top: 8px; text-align: center; font-size: 10px; color: #aaa;">Personal notes space below</div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
+            <div style="margin-top: 15px; border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 30px;"></div>
+            <div style="margin-top: auto; text-align: center; font-size: 10px; color: #aaa;">Capture your highlights and personal tournament stats here.</div>
         </div>
         <div class="back cover" id="page-p12">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg/1280px-IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg" class="bg-img" alt="Vintage hockey">
@@ -635,23 +564,22 @@ window.HockeyData = {
         "p1-h": "4", "p1-a": "1", "p2-h": "5", "p2-a": "2",
         "p3-h": "4", "p3-a": "0", "p4-a": "5", "p4-h": "0",
         "p5-a": "5", "p5-h": "1", "p6-h": "3", "p6-a": "1",
-        "p7-h": "4", "p7-a": "1", "p8-h": "2", "p8-a": "3",
-        "p9-h": "3", "p9-a": "6", "p10-h": "5", "p10-a": "1",
-        "p11-h": "5", "p11-a": "3", "p12-h": "3", "p12-a": "4",
-        "p13-h": "11", "p13-a": "0", "p14-h": "6", "p14-a": "3"
+        "p8-h": "2", "p8-a": "3", "p7-h": "4", "p7-a": "1",
+        "p10-h": "5", "p10-a": "1", "p9-h": "3", "p9-a": "6",
+        "p11-h": "5", "p11-a": "3", "p12-h": "3", "p12-a": "4"
     },
     "storedESPNStats": {
         "scorers": [
-            {"rank": "1.", "name": "Juraj Slafkovsky", "team": "SVK", "gp": "3", "goals": "3", "assists": "3", "points": "6"},
-            {"rank": "2.", "name": "Connor McDavid", "team": "CAN", "gp": "2", "goals": "1", "assists": "5", "points": "6"},
-            {"rank": "3.", "name": "Lucas Raymond", "team": "SWE", "gp": "3", "goals": "1", "assists": "4", "points": "5"}
+            {"rank": "1.", "name": "Connor McDavid", "team": "CAN", "gp": "2", "goals": "1", "assists": "5", "points": "6"},
+            {"rank": "T2.", "name": "Nathan MacKinnon", "team": "CAN", "gp": "2", "goals": "2", "assists": "2", "points": "4"},
+            {"rank": "T2.", "name": "Juraj Slafkovsky", "team": "SVK", "gp": "2", "goals": "2", "assists": "2", "points": "4"}
         ],
         "goalies": [
             {"rank": "T1.", "name": "Jordan Binnington", "team": "CAN", "gp": "1", "wins": "1", "gaa": "0.00", "svp": "1.000"},
-            {"rank": "1.", "name": "Leonardo Genoni", "team": "SWI", "gp": "1", "wins": "1", "gaa": "0.00", "svp": "1.000"},
-            {"rank": "3.", "name": "Logan Thompson", "team": "CAN", "gp": "1", "wins": "1", "gaa": "1.00", "svp": ".960"}
+            {"rank": "T1.", "name": "Leonardo Genoni", "team": "SWI", "gp": "1", "wins": "1", "gaa": "0.00", "svp": "1.000"},
+            {"rank": "3.", "name": "Samuel Hlavaj", "team": "SVK", "gp": "1", "wins": "1", "gaa": "1.00", "svp": ".975"}
         ],
-        "lastFetch": "2026-02-14T22:30:16.228Z"
+        "lastFetch": "2026-02-14T11:22:41.653Z"
     },
     "prelims": [
         { "id": "p1", "g": "B", "d": "Wed Feb 11", "t": "10:40a", "h": "Slovakia", "a": "Finland", "v": "R" },
@@ -685,11 +613,11 @@ window.HockeyData = {
         { "id": "k7", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Seed 3", "a": "Reseed 2", "v": "S" },
         { "id": "k8", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Seed 4", "a": "Reseed 1", "v": "R" },
         { "header": "SEMIFINALS" },
-        { "id": "k9", "g": "SF", "d": "Fri Feb 20", "t": "10:40a", "h": "TBD", "a": "TBD", "v": "S" },
-        { "id": "k10", "g": "SF", "d": "Fri Feb 20", "t": "03:10p", "h": "TBD", "a": "TBD", "v": "S" },
+        { "id": "k9", "g": "SF", "d": "Fri Feb 20", "t": "10:40a", "h": "Win QF", "a": "Win QF", "v": "S" },
+        { "id": "k10", "g": "SF", "d": "Fri Feb 20", "t": "03:10p", "h": "Win QF", "a": "Win QF", "v": "S" },
         { "header": "MEDAL GAMES" },
-        { "id": "k11", "g": "🥉", "d": "Sat Feb 21", "t": "02:40p", "h": "TBD", "a": "TBD", "v": "S" },
-        { "id": "k12", "g": "🥇", "d": "Sun Feb 22", "t": "08:10a", "h": "TBD", "a": "TBD", "v": "S" }
+        { "id": "k11", "g": "🥉", "d": "Sat Feb 21", "t": "02:40p", "h": "Lose SF1", "a": "Lose SF2", "v": "S" },
+        { "id": "k12", "g": "🥇🥈", "d": "Sun Feb 22", "t": "08:10a", "h": "Win SF1", "a": "Win SF2", "v": "S" }
     ],
     "historyData": [
         ["2022", "fi", "FIN", "ru", "ROC", "sk", "SVK"],
@@ -704,11 +632,6 @@ window.HockeyData = {
         "Canada": "A", "Czechia": "A", "Switzerland": "A", "France": "A",
         "Finland": "B", "Sweden": "B", "Slovakia": "B", "Italy": "B",
         "USA": "C", "Germany": "C", "Latvia": "C", "Denmark": "C"
-    },
-    "iihfRanking": {
-        "Canada": 1, "Finland": 2, "Czechia": 3, "USA": 4, "Sweden": 5,
-        "Switzerland": 6, "Germany": 7, "Slovakia": 8, "Latvia": 9,
-        "Denmark": 10, "France": 11, "Italy": 16
     }
 };
 
@@ -767,13 +690,13 @@ function injectTables() {
             if (g.g === 'Q') return; // Skip qualification games
             const tr = document.createElement('tr');
             if (g.header) {
-                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:11px; border-bottom:1px solid #000; padding:2px;">' + g.header + '</td>';
+                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:3.2px;">' + g.header + '</td>';
             } else {
-                tr.innerHTML = '<td class="c-grp" style="padding:6px 4px;">' + g.g + '</td>' +
-                    '<td class="c-ven" style="padding:6px 4px;">' + g.v + '</td>' +
-                    '<td class="c-date" style="padding:6px 4px; width:90px;">' + g.d + '</td>' +
-                    '<td class="c-time" style="padding:6px 4px;">' + g.t + '</td>' +
-                    '<td class="c-match" style="padding:6px 4px;">' +
+                tr.innerHTML = '<td class="c-grp" style="padding:8.8px 0">' + g.g + '</td>' +
+                    '<td class="c-ven">' + g.v + '</td>' +
+                    '<td class="c-date" style="width:95px;">' + g.d + '</td>' +
+                    '<td class="c-time">' + g.t + '</td>' +
+                    '<td class="c-match">' +
                         '<span class="team-home">' + g.h + '</span>' +
                         '<span class="score-area">' +
                             '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
@@ -883,77 +806,6 @@ function injectTables() {
 // Store scores in memory
 let storedScoresLocal = {};
 
-// Helper: Get H2H results between specific teams
-function getH2HResults(teams, prelims, storedScores) {
-    const h2h = {};
-    teams.forEach(t => { h2h[t] = { gf: 0, ga: 0, wins: 0, losses: 0 }; });
-    
-    prelims.forEach(g => {
-        if (!teams.includes(g.h) || !teams.includes(g.a)) return;
-        const hRaw = (storedScores[g.id + '-h'] || '').toString().toLowerCase();
-        const aRaw = (storedScores[g.id + '-a'] || '').toString().toLowerCase();
-        if (!hRaw || !aRaw || isNaN(parseInt(hRaw)) || isNaN(parseInt(aRaw))) return;
-        const hScore = parseInt(hRaw);
-        const aScore = parseInt(aRaw);
-        
-        h2h[g.h].gf += hScore;
-        h2h[g.h].ga += aScore;
-        h2h[g.a].gf += aScore;
-        h2h[g.a].ga += hScore;
-        
-        if (hScore > aScore) { h2h[g.h].wins++; h2h[g.a].losses++; }
-        else if (aScore > hScore) { h2h[g.a].wins++; h2h[g.h].losses++; }
-    });
-    return h2h;
-}
-
-// Helper: Sort teams with proper tiebreakers (H2H first, then GD among tied)
-function sortTeamsWithTiebreaker(teamNames, results, prelims, storedScores) {
-    // First, group teams by points
-    const byPoints = {};
-    teamNames.forEach(t => {
-        const pts = results[t].p;
-        if (!byPoints[pts]) byPoints[pts] = [];
-        byPoints[pts].push(t);
-    });
-    
-    const sorted = [];
-    const pointGroups = Object.keys(byPoints).map(Number).sort((a, b) => b - a);
-    
-    pointGroups.forEach(pts => {
-        let group = byPoints[pts];
-        
-        if (group.length === 1) {
-            sorted.push(group[0]);
-        } else {
-            // Multiple teams tied on points - apply tiebreakers
-            const h2h = getH2HResults(group, prelims, storedScores);
-            
-            // Sort by: H2H GD among tied teams, then H2H GF, then overall GD
-            group.sort((a, b) => {
-                const aH2HGD = h2h[a].gf - h2h[a].ga;
-                const bH2HGD = h2h[b].gf - h2h[b].ga;
-                if (bH2HGD !== aH2HGD) return bH2HGD - aH2HGD;
-                
-                // H2H goals for
-                if (h2h[b].gf !== h2h[a].gf) return h2h[b].gf - h2h[a].gf;
-                
-                // Fall back to overall GD
-                const aGD = results[a].gf - results[a].ga;
-                const bGD = results[b].gf - results[b].ga;
-                if (bGD !== aGD) return bGD - aGD;
-                
-                // Fall back to overall GF
-                return results[b].gf - results[a].gf;
-            });
-            
-            group.forEach(t => sorted.push(t));
-        }
-    });
-    
-    return sorted;
-}
-
 function updateStandings() {
     const data = window.HockeyData || {};
     const prelims = data.prelims || [];
@@ -983,8 +835,8 @@ function updateStandings() {
     if (!container) return;
     container.innerHTML = '';
     ['A', 'B', 'C'].forEach(grp => {
-        const teamNames = Object.keys(teamGroups).filter(t => teamGroups[t] === grp);
-        const teams = sortTeamsWithTiebreaker(teamNames, results, prelims, storedScores);
+        const teams = Object.keys(teamGroups).filter(t => teamGroups[t] === grp);
+        teams.sort((a,b) => results[b].p - results[a].p || (results[b].gf - results[b].ga) - (results[a].gf - results[a].ga));
         let html = `<table class="std-table"><thead><tr><th class="th-${grp}" colspan="11">GROUP ${grp}</th></tr><tr><th width="2%" style="text-align:center;">Rank</th><th width="35%">Team</th><th width="7%" style="text-align:center;">GP</th><th width="7%" style="text-align:center;">W</th><th width="7%" style="text-align:center;">OTW</th><th width="7%" style="text-align:center;">OTL</th><th width="7%" style="text-align:center;">L</th><th width="7%" style="text-align:center;">GF</th><th width="7%" style="text-align:center;">GA</th><th width="7%" style="text-align:center;">GD</th><th width="7%" style="text-align:center;">PTS</th></tr></thead><tbody>`;
         teams.forEach((t, idx) => {
             const r = results[t];
@@ -1003,55 +855,14 @@ function updateSeeds(results, flagMap, teamGroups) {
     const data = window.HockeyData || {};
     const knockouts = data.knockouts || [];
     const storedScores = Object.assign({}, data.storedScores || {}, storedScoresLocal);
-    const prelims = data.prelims || [];
-    const iihfRanking = data.iihfRanking || {};
     
-    // Helper: Sort teams by pts > GD > GF > IIHF ranking
-    const sortBySeeding = (a, b) => {
-        const aR = results[a], bR = results[b];
-        if (bR.p !== aR.p) return bR.p - aR.p;
-        const aGD = aR.gf - aR.ga, bGD = bR.gf - bR.ga;
-        if (bGD !== aGD) return bGD - aGD;
-        if (bR.gf !== aR.gf) return bR.gf - aR.gf;
-        return (iihfRanking[a] || 99) - (iihfRanking[b] || 99);
-    };
-    
-    // Get each group's standings
-    const groupStandings = {};
-    ['A', 'B', 'C'].forEach(grp => {
-        const teamNames = Object.keys(teamGroups).filter(t => teamGroups[t] === grp);
-        groupStandings[grp] = sortTeamsWithTiebreaker(teamNames, results, prelims, storedScores);
-    });
-    
-    // Seeds 1-3: Group winners sorted by pts > GD > GF > IIHF
-    const groupWinners = ['A', 'B', 'C'].map(grp => groupStandings[grp][0]);
-    groupWinners.sort(sortBySeeding);
-    
-    // Seeds 4+: 2nd place teams sorted, best one is seed 4
-    const secondPlace = ['A', 'B', 'C'].map(grp => groupStandings[grp][1]);
-    secondPlace.sort(sortBySeeding);
-    
-    // 3rd place teams
-    const thirdPlace = ['A', 'B', 'C'].map(grp => groupStandings[grp][2]);
-    thirdPlace.sort(sortBySeeding);
-    
-    // 4th place teams
-    const fourthPlace = ['A', 'B', 'C'].map(grp => groupStandings[grp][3]);
-    fourthPlace.sort(sortBySeeding);
-    
-    // Build final seeding: 1-3 winners, 4 best 2nd, 5-6 other 2nds, 7-9 3rds, 10-12 4ths
-    const allTeams = [
-        ...groupWinners,           // Seeds 1-3
-        secondPlace[0],            // Seed 4 (best 2nd place)
-        secondPlace[1],            // Seed 5
-        secondPlace[2],            // Seed 6
-        ...thirdPlace,             // Seeds 7-9
-        ...fourthPlace             // Seeds 10-12
-    ].map(name => ({
-        name: name,
-        ...results[name],
-        gd: results[name].gf - results[name].ga
+    // Get all teams sorted by standings
+    const allTeams = Object.keys(results).map(t => ({
+        name: t,
+        ...results[t],
+        gd: results[t].gf - results[t].ga
     }));
+    allTeams.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
     
     // Populate seeds 1-12 (only on seeding page)
     const seedingPage = document.getElementById('page-p9');
@@ -1062,12 +873,8 @@ function updateSeeds(results, flagMap, teamGroups) {
             const row = seedRows[i];
             const nameEl = row.querySelector('.seed-name');
             const grpEl = row.querySelector('.seed-grp');
-            const gpEl = row.querySelector('.seed-gp');
             const recEl = row.querySelector('.seed-record');
             const statEls = row.querySelectorAll('.seed-stat');
-            
-            // Calculate games played
-            const gamesPlayed = team.w + team.otw + team.otl + team.l;
             
             // Set team name with flag for all seeds
             if (nameEl) {
@@ -1086,26 +893,12 @@ function updateSeeds(results, flagMap, teamGroups) {
                 }
             }
             
-            // For top 4 seeds (i = 0-3), show group, GP, and record
-            if (i < 4) {
-                if (grpEl) {
-                    const grp = teamGroups[team.name];
-                    grpEl.textContent = grp || '';
-                    grpEl.style.color = getGrpColor(grp);
-                }
-                if (gpEl) {
-                    gpEl.textContent = gamesPlayed;
-                    gpEl.style.textAlign = 'center';
-                }
-                if (recEl) {
-                    recEl.textContent = team.w + '-' + team.otw + '-' + team.otl + '-' + team.l;
-                }
-            } else {
-                // For seeds 5-12, show GP
-                if (gpEl) {
-                    gpEl.textContent = gamesPlayed;
-                    gpEl.style.textAlign = 'center';
-                }
+            // For top 4 seeds (i = 0-3), show group and record
+            if (i < 4 && grpEl && recEl) {
+                const grp = teamGroups[team.name];
+                grpEl.textContent = grp || '';
+                grpEl.style.color = getGrpColor(grp);
+                recEl.textContent = team.w + '-' + team.otw + '-' + team.otl + '-' + team.l;
             }
             
             // For all seeds, show GD and Pts
