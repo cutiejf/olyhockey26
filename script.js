@@ -20,50 +20,59 @@ async function loadData() {
 function initBook() {
     const book = document.querySelector('.book');
     if (!book) return;
-    
-    // Simple page structure - just display data from JSON
-    const pages = [
-        `<div class="page"><div class="front cover" style="background:linear-gradient(135deg, #1a1a1a, #2c2c2c); display:flex; flex-direction:column; justify-content:center; align-items:center; color:#fff;">
-            <div style="text-align:center;">
-                <div style="font-size:48px; font-weight:100; letter-spacing:12px;">2026</div>
-                <div style="font-size:14px; font-weight:900; letter-spacing:2px; margin-top:10px;">OLYMPIC MEN'S HOCKEY</div>
-            </div>
-        </div><div class="back" style="padding:15px;"><h2>Data Info</h2><p style="font-size:11px;">This is a live display powered by data.json. Upload new data to update scores automatically.</p></div></div>`,
-        
-        `<div class="page"><div class="front" style="padding:15px;"><h2>Scores</h2><div id="scores-display" style="flex:1; overflow:auto; font-size:10px;"></div></div><div class="back" style="padding:15px;"><h2>Stats</h2><div id="stats-display" style="flex:1; overflow:auto; font-size:10px;"></div></div></div>`
-    ];
-    
-    book.innerHTML = pages.join('');
-    bindPages();
-    renderContent();
+    // Set --c for the book
+    book.style.setProperty('--c', bookState.c);
+    // Set --i for each page
+    const pages = book.querySelectorAll('.page');
+    pages.forEach((page, i) => {
+        page.style.setProperty('--i', i);
+        page.querySelector('.front')?.addEventListener('click', () => bookNext());
+        page.querySelector('.back')?.addEventListener('click', () => bookPrev());
+    });
+
+    // Update page number display
+    updatePageNum();
+
+    // Controls
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    if (prevBtn && nextBtn) {
+        prevBtn.onclick = bookPrev;
+        nextBtn.onclick = bookNext;
+    }
+}
 }
 
 function bindPages() {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach((page, i) => {
-        page.style.setProperty('--i', i);
-        page.addEventListener('click', (e) => {
-            if (e.target.closest('.front')) bookNext();
-            if (e.target.closest('.back')) bookPrev();
-        });
-    });
-    updatePageDisplay();
+    // No longer needed; handled in initBook()
 }
 
 function bookNext() {
-    bookState.c = Math.min(bookState.c + 1, document.querySelectorAll('.page').length - 1);
-    updatePageDisplay();
+    const book = document.querySelector('.book');
+    const pages = book.querySelectorAll('.page');
+    bookState.c = Math.min(bookState.c + 1, pages.length - 1);
+    book.style.setProperty('--c', bookState.c);
+    updatePageNum();
 }
 
 function bookPrev() {
+    const book = document.querySelector('.book');
+    const pages = book.querySelectorAll('.page');
     bookState.c = Math.max(bookState.c - 1, 0);
-    updatePageDisplay();
+    book.style.setProperty('--c', bookState.c);
+    updatePageNum();
+}
+
+function updatePageNum() {
+    const pageNum = document.getElementById('page-num');
+    const book = document.querySelector('.book');
+    if (!pageNum || !book) return;
+    const pages = book.querySelectorAll('.page');
+    pageNum.textContent = `Page ${bookState.c + 1} / ${pages.length}`;
 }
 
 function updatePageDisplay() {
-    document.querySelector('.book').style.setProperty('--c', bookState.c);
-    const pages = ['COVER', 'SCORES & STATS'];
-    document.getElementById('page-display').textContent = pages[bookState.c] || 'PAGE ' + (bookState.c + 1);
+    // No longer needed; handled in bookNext/bookPrev
 }
 
 function renderContent() {
