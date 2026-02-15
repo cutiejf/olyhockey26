@@ -350,11 +350,6 @@ body {
   background: #f0f0f0;
 }
 
-/* Book Constraints */
-body {
-  overflow: hidden;
-}
-
 /* Hide old controls */
 .controls {
     display: none !important;

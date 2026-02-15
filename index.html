@@ -559,13 +559,13 @@ function applyTransform() {
         
         if (c === 0) {
             // Front cover: page extends RIGHT of spine, shift left to center
-            baseTransform = 'translate(calc(var(--panel-width) / -2), -50%)';
+            baseTransform = 'translateX(calc(var(--panel-width) / -2))';
         } else if (c >= totalPages) {
             // Back cover: page extends LEFT of spine, shift right to center
-            baseTransform = 'translate(calc(var(--panel-width) / 2), -50%)';
+            baseTransform = 'translateX(calc(var(--panel-width) / 2))';
         } else {
             // Open book: spread visible, spine at center
-            baseTransform = 'translate(0, -50%)';
+            baseTransform = 'translateX(0)';
         }
         book.style.transform = baseTransform;
     }
