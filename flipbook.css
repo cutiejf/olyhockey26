@@ -27,7 +27,7 @@ body {
     position: absolute;
     left: 50%;
     display: flex;
-    margin: 30px auto 20px;
+    margin: 43px auto 20px;
     width: var(--panel-width);
     height: var(--panel-height);
     pointer-events: none;
@@ -207,7 +207,7 @@ body {
     font-size: 13.1px;
     font-weight: bold;
     display: inline-block;
-    width: 58px;
+    width: 68px;
 }
 
 .team-home {
@@ -219,7 +219,7 @@ body {
 }
 
 .c-grp, .c-ven, .c-date, .c-time, .c-match {
-    padding: 3px 8px;
+    padding: 3px 5px;
     vertical-align: middle;
 }
 
@@ -416,7 +416,7 @@ h2 {
 /* Tina layout */
 .tina-layout {
     padding: 0;
-    background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
+    background: #fff;
 }
 
 .tina-img-zone {
@@ -428,8 +428,8 @@ h2 {
 }
 
 .tina-img-zone img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 85%;
+    max-height: 85%;
     object-fit: contain;
 }
 
@@ -459,6 +459,7 @@ h2 {
 .tina-text-box {
     padding: 10px 15px;
     background: #fff;
+    font-size: 12px;
 }
 
 /* Rules */
@@ -470,18 +471,18 @@ h2 {
 
 .rule-block {
     background: #f0f0f0;
-    padding: 4px 8px;
+    padding: 3px 8px;
     border-left: none;
 }
 
 .rule-block b {
     display: block;
-    font-size: 13px;
+    font-size: 12px;
     margin-bottom: 1px;
 }
 
 .rule-block p {
-    font-size: 12px;
+    font-size: 11px;
     margin: 0;
     color: #222;
 }
@@ -489,28 +490,28 @@ h2 {
 .ot-container {
     margin-top: 0;
     background: #f4f4f4;
-    padding: 7px;
+    padding: 6px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
 .ot-container h3 {
-    font-size: 13px;
-    margin-bottom: 4px;
+    font-size: 12px;
+    margin-bottom: 3px;
     color: var(--accent-blue);
     font-weight: 700;
 }
 
 .ot-sub-item {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .ot-sub-item b {
-    font-size: 11.5px;
+    font-size: 10.5px;
 }
 
 .ot-sub-item p {
-    font-size: 11px;
+    font-size: 10px;
     margin: 0;
     color: #222;
 }
@@ -836,7 +837,7 @@ th {
 /* Page Display - Above book */
 .page-display {
   position: fixed;
-  top: 10px;
+  top: 7px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255,255,255,0.95);
@@ -853,10 +854,10 @@ th {
 .push--prev,
 .push--next {
   position: fixed;
-  top: 45px;
+  bottom: 10px;
   display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border: 0;
   outline: none;
   background-color: #c41e3a !important;
@@ -879,7 +880,7 @@ th {
 }
 
 .push--prev {
-  left: calc(50% - 70px);
+  left: calc(50% - 60px);
 }
 
 .push--next {
@@ -892,7 +893,7 @@ th {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 28px;
+  font-size: 24px;
   color: white;
   font-weight: bold;
 }
@@ -903,7 +904,7 @@ th {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 28px;
+  font-size: 24px;
   color: white;
   font-weight: bold;
 }

@@ -19,7 +19,7 @@
         </div>
         <div class="back panel" id="page-p_intro" style="padding: 25px 25px 15px 25px; background: #fdfdfd; display: flex; flex-direction: column; align-items: center; text-align: center;">
             <h2 style="background: none; color: #111; font-size: 24px; border-bottom: 3px solid #c0392b; margin-bottom: 15px; width: 100%; justify-content: center;">Introduction</h2>
-            <div style="font-size: 13.3px; color: #333; line-height: 1.4; text-align: justify; overflow-y: auto; flex-grow: 1;">
+            <div style="font-size: 11.3px; color: #333; line-height: 1.4; text-align: justify; overflow-y: auto; flex-grow: 1;">
                 <p style="margin-top: 0; margin-bottom: 10px;"><strong>The Boys Are Back</strong><br>
                 After a 12-year wait, the world's greatest stage for hockey is finally back in its true form. With NHL players returning to the Olympic ice for the first time since 2014, the Milano Cortina 2026 Men's Hockey Tournament isn't just another competition—it's the definitive battle for global supremacy. Follow here from the first puck drop on February 11 to the gold medal game on February 22, as 12 nations battle on Milan's Santagiulia and Rho Arenas.</p>        
                 <p style="margin-bottom: 0;"><strong>The Best-on-Best Era</strong><br>
@@ -137,7 +137,7 @@
             <h2 style="margin-top:4px; margin-bottom:4px;">Qualification Round</h2>
             <!-- Qualification Round Games -->
             <div>
-                <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
+                <table style="width:100%; border-collapse:collapse; font-size:12px;">
                     <thead>
                         <tr style="display:none;">
                             <th class="c-grp" style="padding:3px 4px; font-size:10px; font-weight:bold; border-bottom:1px solid #ddd; width:18px;">G</th>
@@ -156,10 +156,10 @@
             <div style="margin-top:auto; margin-bottom:6px; padding:8px; background:#f0f0f0; border:1px solid #ccc; border-radius:3px;">
                 <div style="font-size:10px; font-weight:900; color:#333; margin-bottom:5px; text-transform:uppercase;">Reseed for Quarterfinals</div>
                 <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:4px; font-size:10px;">
-                    <div class="seed-row" style="margin:0;"><div class="seed-num">1</div><div class="seed-name"></div></div>
-                    <div class="seed-row" style="margin:0;"><div class="seed-num">2</div><div class="seed-name"></div></div>
-                    <div class="seed-row" style="margin:0;"><div class="seed-num">3</div><div class="seed-name"></div></div>
-                    <div class="seed-row" style="margin:0;"><div class="seed-num">4</div><div class="seed-name"></div></div>
+                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">1</div><div class="seed-name" style="flex:1;"></div></div>
+                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">2</div><div class="seed-name" style="flex:1;"></div></div>
+                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">3</div><div class="seed-name" style="flex:1;"></div></div>
+                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">4</div><div class="seed-name" style="flex:1;"></div></div>
                 </div>
             </div>
             <div style="font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:4px; line-height:1.3;">
@@ -171,10 +171,10 @@
 
     <!-- Page 3: Knockout + Global Contenders (New Order: 7,8) -->
     <div class="page">
-        <div class="front panel" id="page-p10">
+        <div class="front panel" id="page-p10" style="padding-right: 10px;">
             <h2 style="margin-top:0;">Knockout Bracket</h2>
             <div class="flex-table-container">
-                <table id="table-ko" style="font-size: 13.5px;">
+                <table id="table-ko" style="font-size: 12px;">
                     <tbody id="sched-ko-v"></tbody>
                 </table>
             </div>
@@ -207,150 +207,172 @@
         </div>
         <div class="back panel" id="page-p_new8" style="padding: 15px; background: #fdfdfd;">
             <h2>Global Contenders</h2>
-            <div style="margin-top: 5px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; width: calc(100% - 10px); max-width: none; margin-left: 0; margin-right: auto; justify-items: start;">
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
-                <img src="https://flagcdn.com/w80/ca.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
+            <div style="margin-top: 2px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; width: calc(100% - 10px); max-width: none; margin-left: 0; margin-right: auto; justify-items: start;">
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:4px; font-size:13px; padding:2px 4px 2px 0;">
+                <img src="https://flagcdn.com/w80/ca.png" style="width:38.5px; height:25px; border:1px solid #bbb; margin-right:2px; margin-left:0;">
                 <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
-                  <div style="display:flex; align-items:flex-start; gap:8px;">
-                    <span style="font-weight:900; color:#222; font-size:15px;">Canada</span>
-                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
+                  <div style="display:flex; align-items:flex-start; gap:6px;">
+                    <span style="font-weight:900; color:#222; font-size:14px;">Canada</span>
+                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:4px; margin-left:4px;"></span>
                   </div>
-                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">McDavid, Crosby, MacKinnon</div>
+                  <div style="margin-top:3px; color:#222; font-size:12px; font-weight:500; white-space:nowrap;">McDavid, Crosby, MacKinnon</div>
                 </div>
               </div>
 
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
-                <img src="https://flagcdn.com/w80/us.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:4px; font-size:13px; padding:2px 4px 2px 0;">
+                <img src="https://flagcdn.com/w80/us.png" style="width:38.5px; height:25px; border:1px solid #bbb; margin-right:2px; margin-left:0;">
                 <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
-                  <div style="display:flex; align-items:flex-start; gap:8px;">
-                    <span style="font-weight:900; color:#222; font-size:15px;">USA</span>
-                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
+                  <div style="display:flex; align-items:flex-start; gap:6px;">
+                    <span style="font-weight:900; color:#222; font-size:14px;">USA</span>
+                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:4px; margin-left:4px;"></span>
                   </div>
-                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">Matthews, Tkachuk, Hughes</div>
-                </div>
-              </div>
-
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
-                <img src="https://flagcdn.com/w80/se.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
-                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
-                  <div style="display:flex; align-items:flex-start; gap:8px;">
-                    <span style="font-weight:900; color:#222; font-size:15px;">Sweden</span>
-                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
-                  </div>
-                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">Pettersson, Karlsson, Dahlin</div>
-                </div>
-              </div>
-
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:6px; font-size:13px; padding:2px 4px 2px 0;">
-                <img src="https://flagcdn.com/w80/fi.png" style="width:40px; height:26px; border:1px solid #bbb; margin-right:4px; margin-left:0;">
-                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
-                  <div style="display:flex; align-items:flex-start; gap:8px;">
-                    <span style="font-weight:900; color:#222; font-size:15px;">Finland</span>
-                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:6px; margin-left:6px;"></span>
-                  </div>
-                  <div style="margin-top:6px; color:#222; font-size:13px; font-weight:500; white-space:nowrap;">Barkov, Rantanen, Heiskanen</div>
+                  <div style="margin-top:3px; color:#222; font-size:12px; font-weight:500; white-space:nowrap;">Matthews, Tkachuk, Hughes</div>
                 </div>
               </div>
             </div>
             
             <!-- Stats Section -->
             <div style="margin-top: 8px;">
-              <div style="font-size: 14px; font-weight: 900; color: #c0392b; margin-bottom: 4px; text-transform: uppercase; letter-spacing:1px;">Top 3 Points</div>
-              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; margin-bottom:10px; table-layout:fixed;">
+              <div style="font-size: 14px; font-weight: 900; color: #c0392b; margin-bottom: 4px; text-transform: uppercase; letter-spacing:1px;">Top 5 Points</div>
+              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 2px; margin-bottom:8px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
-                    <th style="padding:3px; text-align:center; width:5%; font-size:11px;">#</th>
-                    <th style="padding:3px 0 3px 5px; text-align:left; width:35%; font-size:11px;">Player</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:12px;">Team</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">GP</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">G</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">A</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">PTS</th>
+                    <th style="padding:2px; text-align:center; width:4%; font-size:10px;">#</th>
+                    <th style="padding:2px 0 2px 3px; text-align:left; width:44%; font-size:10px;">Player</th>
+                    <th style="padding:2px; text-align:center; width:10%; font-size:10px;">Team</th>
+                    <th style="padding:2px; text-align:center; width:9%; font-size:10px;">GP</th>
+                    <th style="padding:2px; text-align:center; width:9%; font-size:10px;">G</th>
+                    <th style="padding:2px; text-align:center; width:9%; font-size:10px;">A</th>
+                    <th style="padding:2px; text-align:center; width:11%; font-size:10px;">PTS</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style="background:#fff;">
-                    <td style="padding:3px; text-align:center; font-size:11px;">1</td>
-                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
-                      <img src='https://flagcdn.com/w20/sk.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Juraj Slafkovsky
+                    <td style="padding:2px; text-align:center; font-size:10px;">1</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Connor McDavid
                     </td>
-                    <td style="padding:3px; font-size:12px; text-align:center;">SVK</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">2</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center; font-weight:bold;">3</td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">CAN</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">7</td>
+                    <td style="padding:2px; text-align:center; font-weight:bold; font-size:10px;">9</td>
                   </tr>
                   <tr style="background:#fff;">
-                    <td style="padding:3px; text-align:center; font-size:11px;">T2</td>
-                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
-                      <img src='https://flagcdn.com/w20/se.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Rasmus Dahlin
+                    <td style="padding:2px; text-align:center; font-size:10px;">T2</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Macklin Celebrini
                     </td>
-                    <td style="padding:3px; font-size:12px; text-align:center;">SWE</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">0</td>
-                    <td style="padding:3px; text-align:center;">3</td>
-                    <td style="padding:3px; text-align:center; font-weight:bold;">3</td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">CAN</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">4</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-weight:bold; font-size:10px;">6</td>
                   </tr>
                   <tr style="background:#fff;">
-                    <td style="padding:3px; text-align:center; font-size:11px;">T2</td>
-                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
-                      <img src='https://flagcdn.com/w20/ca.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Connor McDavid
+                    <td style="padding:2px; text-align:center; font-size:10px;">T2</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/sk.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Juraj Slafkovsky
                     </td>
-                    <td style="padding:3px; font-size:12px; text-align:center;">CAN</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">0</td>
-                    <td style="padding:3px; text-align:center;">3</td>
-                    <td style="padding:3px; text-align:center; font-weight:bold;">3</td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">SVK</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-weight:bold; font-size:10px;">6</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:2px; text-align:center; font-size:10px;">T2</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Sidney Crosby
+                    </td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">CAN</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">4</td>
+                    <td style="padding:2px; text-align:center; font-weight:bold; font-size:10px;">6</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:2px; text-align:center; font-size:10px;">5</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Nathan MacKinnon
+                    </td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">CAN</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-weight:bold; font-size:10px;">5</td>
                   </tr>
                 </tbody>
               </table>
 
-              <div style="font-size: 14px; font-weight: 900; color: #2980b9; margin-bottom: 6px; text-transform: uppercase; letter-spacing:1px;">Top 3 Goalies</div>
-              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; table-layout:fixed;">
+              <div style="font-size: 14px; font-weight: 900; color: #2980b9; margin-bottom: 4px; text-transform: uppercase; letter-spacing:1px;">Top 5 Goalies</div>
+              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 2px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
-                    <th style="padding:3px; text-align:center; width:5%; font-size:11px;">#</th>
-                    <th style="padding:3px 0 3px 5px; text-align:left; width:35%; font-size:11px;">Player</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:12px;">Team</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">GP</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">W</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">GAA</th>
-                    <th style="padding:3px; text-align:center; width:12%; font-size:11px;">SV%</th>
+                    <th style="padding:2px; text-align:center; width:4%; font-size:10px;">#</th>
+                    <th style="padding:2px 0 2px 3px; text-align:left; width:44%; font-size:10px;">Player</th>
+                    <th style="padding:2px; text-align:center; width:10%; font-size:10px;">Team</th>
+                    <th style="padding:2px; text-align:center; width:9%; font-size:10px;">GP</th>
+                    <th style="padding:2px; text-align:center; width:8%; font-size:10px;">W</th>
+                    <th style="padding:2px; text-align:center; width:10%; font-size:10px;">GAA</th>
+                    <th style="padding:2px; text-align:center; width:11%; font-size:10px;">SV%</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style="background:#fff;">
-                    <td style="padding:3px; text-align:center; font-size:11px;">1</td>
-                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
-                      <img src='https://flagcdn.com/w20/ca.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Jordan Binnington
+                    <td style="padding:2px; text-align:center; font-size:10px;">1</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Logan Thompson
                     </td>
-                    <td style="padding:3px; font-size:12px; text-align:center;">CAN</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">0.00</td>
-                    <td style="padding:3px; text-align:center;">1.000</td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">CAN</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1.00</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">.960</td>
                   </tr>
                   <tr style="background:#fff;">
-                    <td style="padding:3px; text-align:center; font-size:11px;">2</td>
-                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
-                      <img src='https://flagcdn.com/w20/ch.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Leonardo Genoni
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/ca.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Jordan Binnington
                     </td>
-                    <td style="padding:3px; font-size:12px; text-align:center;">SWI</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">0.00</td>
-                    <td style="padding:3px; text-align:center;">1.000</td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">CAN</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1.00</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">.950</td>
                   </tr>
                   <tr style="background:#fff;">
-                    <td style="padding:3px; text-align:center; font-size:11px;">3</td>
-                    <td style="padding:3px 0 3px 5px; font-weight:700; font-size:13px;">
-                      <img src='https://flagcdn.com/w20/sk.png' style='width:18px; height:12px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:4px;'> Samuel Hlavaj
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/ch.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Leonardo Genoni
                     </td>
-                    <td style="padding:3px; font-size:12px; text-align:center;">SVK</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">1</td>
-                    <td style="padding:3px; text-align:center;">1.00</td>
-                    <td style="padding:3px; text-align:center;">0.975</td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">SUI</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1.48</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">.949</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:2px; text-align:center; font-size:10px;">4</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/fi.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Juuse Saros
+                    </td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">FIN</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">3</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">2</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1.34</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">.946</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding:2px; text-align:center; font-size:10px;">5</td>
+                    <td style="padding:2px 0 2px 3px; font-weight:700; font-size:11px; white-space:nowrap;">
+                      <img src='https://flagcdn.com/w20/us.png' style='width:16px; height:11px; border-radius:2px; border:1px solid #ccc; vertical-align:-1px; margin-right:3px;'> Connor Hellebuyck
+                    </td>
+                    <td style="padding:2px; font-size:10px; text-align:center;">USA</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">1.00</td>
+                    <td style="padding:2px; text-align:center; font-size:10px;">.944</td>
                   </tr>
                 </tbody>
               </table>
@@ -388,17 +410,17 @@
             <div style="display: flex; gap: 6px; margin-top: 6px;">
                 <div class="ot-container" style="flex: 1;">
                     <h3>Point System</h3>
-                    <p style="font-size: 11px; margin: 0; color: #222;">3 points for regulation win, 2 for OT/SO win, 1 for OT/SO loss, 0 for regulation loss.</p>
+                    <p style="font-size: 10px; margin: 0; color: #222;">3 points for regulation win, 2 for OT/SO win, 1 for OT/SO loss, 0 for regulation loss.</p>
                 </div>
                 <div class="ot-container" style="flex: 1;">
                     <h3>Rosters</h3>
-                    <p style="font-size: 11px; margin: 0; color: #222;">22-man active game rosters (20 skaters, 2 goalies). Lineups due 60m before puck drop.</p>
+                    <p style="font-size: 10px; margin: 0; color: #222;">22-man active game rosters (20 skaters, 2 goalies). Lineups due 60m before puck drop.</p>
                 </div>
                 <div class="ot-container" style="flex: 1;">
                     <h3>Rink Dimensions</h3>
-                    <p style="font-size: 11px; margin: 0 0 2px 0; color: #222;"><b style="font-size: 11.5px;">NHL:</b> 200 (L) × 85 (W) ft.</p>
-                    <p style="font-size: 11px; margin: 0 0 2px 0; color: #222;"><b style="font-size: 11.5px;">IIHF:</b> 197 (L) × 98.5 (W) ft.</p>
-                    <p style="font-size: 11px; margin: 0; color: #222;"><b style="font-size: 11.5px;">OLY:</b> 196.85 (L) × 85.3 (W) ft.</p>
+                    <p style="font-size: 10px; margin: 0 0 2px 0; color: #222;"><b style="font-size: 10.5px;">NHL:</b> 200 L × 85 W ft.</p>
+                    <p style="font-size: 10px; margin: 0 0 2px 0; color: #222;"><b style="font-size: 10.5px;">IIHF:</b> 197 L × 98.5 W ft.</p>
+                    <p style="font-size: 10px; margin: 0; color: #222;"><b style="font-size: 10.5px;">OLY:</b> 196.85 L × 85.3 W ft.</p>
                 </div>
             </div>
             <div style="display: flex; gap: 6px; margin-top: 6px;">
@@ -471,12 +493,12 @@
                 <thead><tr><th>Year</th><th>🥇 Gold</th><th>🥈 Silver</th><th>🥉 Bronze</th></tr></thead>
                 <tbody id="history-v"></tbody>
             </table>
-            <div style="text-align: center; font-size: 12px; color: #333; line-height: 1.4; margin-top: 2px; margin-bottom: 2px; padding: 5px 7px; background: #fafafa; border: 1px solid #eee; border-radius: 2px;">
+            <div style="text-align: center; font-size: 10px; color: #333; line-height: 1.4; margin-top: 0; margin-bottom: 0; padding: 5px 7px; background: #fafafa; border: 1px solid #eee; border-radius: 2px;">
                 List reflects when NHL players join Olympics circa 1998 | <span style="color: #c0392b;">*</span> NHL opts out 2018 & 2022
             </div>
-            <div style="margin: 4px auto 0; width: 100%; padding: 10px; background: #fff; border: 1px solid #000; border-radius: 2px; box-sizing: border-box; overflow: hidden;">
-              <img src="https://i.postimg.cc/xT5YsbQy/wq.png" style="width: calc(100% - 20px); display: block; margin: 0 auto;">
-              <div style="text-align: center; font-size: 11px; color: #555; margin: 0 2px 8px 2px; padding: 4px 2px; font-style: italic; line-height:1.2; background: #f9f9f9; border-radius: 4px;">Dominik Hašek holds his gold medal after shutting out Russia 1-0 in 1998. Nagano, Japan.</div>
+            <div style="margin: 4px auto 0; width: 100%; padding: 8px; background: #fff; border-radius: 2px; box-sizing: border-box; overflow: hidden;">
+              <img src="https://i.postimg.cc/xT5YsbQy/wq.png" style="width: calc(100% - 16px); display: block; margin: 0 auto;">
+              <div style="text-align: center; font-size: 11px; color: #555; margin: 0 2px 9px 2px; padding: 4px 2px; font-style: italic; line-height:1.2; background: #f9f9f9; border-radius: 4px;">Dominik Hašek holds his gold medal after shutting out Russia 1-0 in 1998. Nagano, Japan.</div>
             </div>
         </div>
     </div>
@@ -499,17 +521,16 @@
                     1. Group position 2. Points 3. GD 4. GF 5. IIHF Ranking. Group tiebreaker: H2H first, then GD among tied.
                 </div>
             </div>
-            <div style="margin-top: 10px; font-size: 10px; color: #555;">
+            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
+            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
+            <div style="margin-top: auto; font-size: 11px; color: #555; border-top: 1px solid #ddd; padding-top: 6px; background: #fafafa;">
                 <strong>IIHF Resources:</strong><br>
                 <a href="https://www.iihf.com/en/events/2026/olympic-m/tournamentinfo/68589/tournament_format" target="_blank" style="color:#2980b9;">Tournament Format</a> |
                 <a href="https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/3_the_iihf/2025-26_iihf_rulebook_22122025-v1.pdf" target="_blank" style="color:#2980b9;">IIHF Rulebook (PDF)</a> |
                 <a href="https://www.iihf.com/en/events/2026/olympic-m/gamedocs" target="_blank" style="color:#2980b9;">Official Game Documents</a>
             </div>
-            <div style="margin-top: auto; border-top: 1px solid #eee; padding-top: 8px; text-align: center; font-size: 10px; color: #aaa;">Personal notes space below</div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
-            <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
         </div>
         <div class="back cover" id="page-p12">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg/1280px-IJshockeyteam_tijdens_Olympische_Winterspelen%2C_SFA022000505.jpg" class="bg-img" alt="Vintage hockey">
@@ -738,7 +759,7 @@ const flipBook = (elBook) => {
 
 document.querySelectorAll(".book").forEach(flipBook);
 
-// Inline data (no fetch needed - works with file:// protocol)
+// Inline data (fallback if fetch fails - works with file:// protocol)
 window.HockeyData = {
     "flagMap": {
         "Canada": "ca", "Czechia": "cz", "Switzerland": "ch", "France": "fr",
@@ -752,18 +773,23 @@ window.HockeyData = {
         "p7-h": "4", "p7-a": "1", "p8-h": "2", "p8-a": "3",
         "p9-h": "3", "p9-a": "6", "p10-h": "5", "p10-a": "1",
         "p11-h": "5", "p11-a": "3", "p12-h": "3", "p12-a": "4",
-        "p13-h": "11", "p13-a": "0", "p14-h": "6", "p14-a": "3"
+        "p13-h": "11", "p13-a": "0", "p14-h": "6", "p14-a": "3",
+        "p15-h": "4", "p15-a": "3*", "p16-h": "10", "p16-a": "2"
     },
     "storedESPNStats": {
         "scorers": [
-            {"rank": "1.", "name": "Juraj Slafkovsky", "team": "SVK", "gp": "3", "goals": "3", "assists": "3", "points": "6"},
-            {"rank": "2.", "name": "Connor McDavid", "team": "CAN", "gp": "2", "goals": "1", "assists": "5", "points": "6"},
-            {"rank": "3.", "name": "Lucas Raymond", "team": "SWE", "gp": "3", "goals": "1", "assists": "4", "points": "5"}
+            {"rank": "1.", "name": "Connor McDavid", "team": "CAN", "gp": "3", "goals": "2", "assists": "7", "points": "9"},
+            {"rank": "2.", "name": "Macklin Celebrini", "team": "CAN", "gp": "3", "goals": "4", "assists": "2", "points": "6"},
+            {"rank": "3.", "name": "Juraj Slafkovsky", "team": "SVK", "gp": "3", "goals": "3", "assists": "3", "points": "6"},
+            {"rank": "4.", "name": "Sidney Crosby", "team": "CAN", "gp": "3", "goals": "2", "assists": "4", "points": "6"},
+            {"rank": "5.", "name": "Nathan MacKinnon", "team": "CAN", "gp": "3", "goals": "2", "assists": "3", "points": "5"}
         ],
         "goalies": [
-            {"rank": "1.", "name": "Jordan Binnington", "team": "CAN", "gp": "1", "wins": "1", "gaa": "0.00", "svp": "1.000"},
-            {"rank": "2.", "name": "Leonardo Genoni", "team": "SWI", "gp": "1", "wins": "1", "gaa": "0.00", "svp": "1.000"},
-            {"rank": "3.", "name": "Logan Thompson", "team": "CAN", "gp": "1", "wins": "1", "gaa": "1.00", "svp": ".960"}
+            {"rank": "1.", "name": "Logan Thompson", "team": "CAN", "gp": "1", "wins": "1", "gaa": "1.00", "svp": ".960"},
+            {"rank": "2.", "name": "Jordan Binnington", "team": "CAN", "gp": "2", "wins": "2", "gaa": "1.00", "svp": ".950"},
+            {"rank": "3.", "name": "Leonardo Genoni", "team": "SUI", "gp": "2", "wins": "2", "gaa": "1.48", "svp": ".949"},
+            {"rank": "4.", "name": "Juuse Saros", "team": "FIN", "gp": "3", "wins": "2", "gaa": "1.34", "svp": ".946"},
+            {"rank": "5.", "name": "Connor Hellebuyck", "team": "USA", "gp": "1", "wins": "1", "gaa": "1.00", "svp": ".944"}
         ],
         "lastFetch": "2026-02-14T22:30:16.228Z"
     },
@@ -826,8 +852,27 @@ const getGrpColor = (grp) => grp === 'A' ? '#c0392b' : grp === 'B' ? '#2980b9' :
 
 // Initialize tables after DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    injectTables();
-    updateStandings();
+    // Load data from data.json and then initialize
+    fetch('data.json')
+        .then(response => response.json())
+        .then(jsonData => {
+            // Merge JSON data with inline data
+            if (jsonData.storedScores) {
+                window.HockeyData.storedScores = Object.assign({}, window.HockeyData.storedScores, jsonData.storedScores);
+            }
+            if (jsonData.storedESPNStats) {
+                window.HockeyData.storedESPNStats = jsonData.storedESPNStats;
+            }
+            // Initialize after loading data
+            injectTables();
+            updateStandings();
+        })
+        .catch(err => {
+            console.log('Using inline data (data.json not loaded):', err);
+            // Fallback to inline data - already set
+            injectTables();
+            updateStandings();
+        });
 });
 
 function injectTables() {
@@ -876,13 +921,13 @@ function injectTables() {
             if (g.g === 'Q') return; // Skip qualification games
             const tr = document.createElement('tr');
             if (g.header) {
-                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:3.2px;">' + g.header + '</td>';
+                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:4px 0 8.8px 0;">' + g.header + '</td>';
             } else {
                 tr.innerHTML = '<td class="c-grp" style="padding:8.8px 0">' + g.g + '</td>' +
-                    '<td class="c-ven">' + g.v + '</td>' +
-                    '<td class="c-date" style="width:95px;">' + g.d + '</td>' +
-                    '<td class="c-time">' + g.t + '</td>' +
-                    '<td class="c-match">' +
+                    '<td class="c-ven" style="padding:8.8px 5px;">' + g.v + '</td>' +
+                    '<td class="c-date" style="width:85px; padding:8.8px 5px;">' + g.d + '</td>' +
+                    '<td class="c-time" style="width:50px; padding:8.8px 5px;">' + g.t + '</td>' +
+                    '<td class="c-match" style="padding:8.8px 5px;">' +
                         '<span class="team-home">' + g.h + '</span>' +
                         '<span class="score-area">' +
                             '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
@@ -917,8 +962,8 @@ function injectTables() {
     // Consistent row style with fixed-width time column
     const buzzRowStyle = 'display:flex; align-items:center; font-size:13px; font-weight:bold; padding:4px 0;';
     const grpColStyle = 'width:18px; text-align:center; font-weight:900; margin-right:4px; font-size:12px;';
-    const venColStyle = 'width:16px; text-align:center; margin-right:6px; font-size:12px; color:#888;';
-    const timeColStyle = 'width:50px; text-align:center; font-weight:900; margin-right:6px; font-size:12px;';
+    const venColStyle = 'width:16px; text-align:center; margin-right:3px; font-size:12px; color:#888;';
+    const timeColStyle = 'width:55px; text-align:center; font-weight:900; margin-right:6px; font-size:12px;';
     const scoreBoxStyle = 'margin:0 4px; background:#000; color:#fff; padding:3px 7px; border-radius:3px; min-width:40px; text-align:center; font-size:13px;';
 
     const yBuzz = document.getElementById('yesterday-buzz-v');
@@ -1089,15 +1134,48 @@ function updateStandings() {
 function updateSeeds(results, flagMap, teamGroups) {
     const data = window.HockeyData || {};
     const knockouts = data.knockouts || [];
+    const prelims = data.prelims || [];
     const storedScores = Object.assign({}, data.storedScores || {}, storedScoresLocal);
     
-    // Get all teams sorted by standings
-    const allTeams = Object.keys(results).map(t => ({
-        name: t,
-        ...results[t],
-        gd: results[t].gf - results[t].ga
-    }));
-    allTeams.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
+    // Get all teams sorted by Olympic seeding rules
+    // 1. Group standings using tiebreaker logic
+    const groupStandings = {};
+    ['A', 'B', 'C'].forEach(grp => {
+        const teamsInGrp = Object.keys(teamGroups).filter(t => teamGroups[t] === grp);
+        groupStandings[grp] = sortTeamsWithTiebreaker(teamsInGrp, results, prelims, storedScores).map(t => ({
+            name: t,
+            ...results[t],
+            gd: results[t].gf - results[t].ga
+        }));
+    });
+    
+    // 2. Seeds 1-3: Group winners sorted by pts/GD/GF
+    const groupWinners = [
+        groupStandings['A'][0],
+        groupStandings['B'][0],
+        groupStandings['C'][0]
+    ];
+    groupWinners.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
+    
+    // 3. Seed 4: Best second-place team
+    const secondPlace = [
+        groupStandings['A'][1],
+        groupStandings['B'][1],
+        groupStandings['C'][1]
+    ];
+    secondPlace.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
+    
+    // 4. Seeds 5-12: Remaining teams sorted by pts/GD/GF
+    const remaining = [
+        secondPlace[1], secondPlace[2], // 2nd and 3rd best second-place
+        groupStandings['A'][2], groupStandings['A'][3],
+        groupStandings['B'][2], groupStandings['B'][3],
+        groupStandings['C'][2], groupStandings['C'][3]
+    ];
+    remaining.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
+    
+    // Combine all seeds in order
+    const allTeams = [...groupWinners, secondPlace[0], ...remaining];
     
     // Populate seeds 1-12 (only on seeding page)
     const seedingPage = document.getElementById('page-p9');
@@ -1179,22 +1257,22 @@ function updateSeeds(results, flagMap, teamGroups) {
             }
             
             const tr = document.createElement('tr');
-            tr.innerHTML = '<td class="c-grp" style="padding:8.8px 4px; text-align:center; width:18px;">' + g.g + '</td>' +
-                '<td class="c-ven" style="padding:8.8px 4px; text-align:center; width:18px;">' + g.v + '</td>' +
-                '<td class="c-date" style="padding:8.8px 4px; text-align:center; width:68px;">' + g.d + '</td>' +
-                '<td class="c-time" style="padding:8.8px 4px; text-align:center; width:42px;">' + g.t + '</td>' +
-                '<td class="c-flag" style="padding:8.8px 8px 8.8px 12px; text-align:right; width:22px;">' +
+            tr.innerHTML = '<td class="c-grp" style="padding:6px 4px; text-align:center; width:18px;">' + g.g + '</td>' +
+                '<td class="c-ven" style="padding:6px 4px; text-align:center; width:18px;">' + g.v + '</td>' +
+                '<td class="c-date" style="padding:6px 4px; text-align:center; width:68px;">' + g.d + '</td>' +
+                '<td class="c-time" style="padding:6px 4px; text-align:center; width:42px;">' + g.t + '</td>' +
+                '<td class="c-flag" style="padding:6px 7px 6px 12px; text-align:right; width:22px;">' +
                     (homeFlag ? '<img src="https://flagcdn.com/w20/' + homeFlag + '.png" class="flag-icon" style="vertical-align:middle;">' : '') +
                 '</td>' +
-                '<td class="c-match" style="padding:8.8px 6px; text-align:center;">' +
-                    '<span style="display:inline-block; min-width:80px; text-align:right; padding-right:6px;">' + homeName + '</span>' +
+                '<td class="c-match" style="padding:6px 5px; text-align:center;">' +
+                    '<span style="display:inline-block; min-width:80px; text-align:right; padding-right:5px;">' + homeName + '</span>' +
                     '<span class="score-area">' +
                         '<span class="sb">' + (storedScores[g.id + '-h'] || '') + '</span>' +
                         '<span class="sb">' + (storedScores[g.id + '-a'] || '') + '</span>' +
                     '</span>' +
-                    '<span style="display:inline-block; min-width:80px; text-align:left; padding-left:6px;">' + awayName + '</span>' +
+                    '<span style="display:inline-block; min-width:80px; text-align:left; padding-left:5px;">' + awayName + '</span>' +
                 '</td>' +
-                '<td class="c-flag" style="padding:8.8px 4px; text-align:left; width:22px;">' +
+                '<td class="c-flag" style="padding:6px 3px; text-align:left; width:22px;">' +
                     (awayFlag ? '<img src="https://flagcdn.com/w20/' + awayFlag + '.png" class="flag-icon" style="vertical-align:middle;">' : '') +
                 '</td>';
             qualGames.appendChild(tr);
