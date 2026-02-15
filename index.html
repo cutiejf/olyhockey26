@@ -589,10 +589,12 @@ function applyTransform() {
         // Default 25px lower, but 0 in fullscreen
         const defaultOffsetY = document.fullscreenElement ? 0 : 25;
         
-        // Constrain pan to keep book on screen (fixed 100px regardless of zoom)
-        const maxPan = 100;
-        panX = Math.max(-maxPan, Math.min(maxPan, panX));
-        panY = Math.max(-maxPan, Math.min(maxPan, panY));
+        // Fixed pan constraints regardless of zoom level
+        // This prevents the book from moving too far from center
+        const maxPanX = 200;
+        const maxPanY = 150;
+        panX = Math.max(-maxPanX, Math.min(maxPanX, panX));
+        panY = Math.max(-maxPanY, Math.min(maxPanY, panY));
         
         if (c === 0) {
             // Front cover: page extends RIGHT of spine, shift left to center
@@ -693,6 +695,13 @@ window.toggleLock = () => {
     }
 };
 
+// Prevent image dragging
+document.addEventListener('dragstart', (e) => {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
+
 // Drag to pan
 let dragMoved = false;
 let potentialDrag = false;
@@ -701,6 +710,7 @@ let mouseDownX = 0, mouseDownY = 0;
 document.addEventListener('mousedown', (e) => {
     if (isLocked) return; // Don't drag when locked
     if (e.target.closest('.book')) {
+        e.preventDefault(); // Prevent default drag behavior
         potentialDrag = true;
         dragMoved = false;
         mouseDownX = e.clientX;
@@ -734,7 +744,8 @@ document.addEventListener('mousemove', (e) => {
             z.style.background = '';
             z.style.boxShadow = '';
         });
-        document.body.style.cursor = '';
+        
+        let hoverActive = false;
         if (panel) {
             const rect = panel.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -746,20 +757,29 @@ document.addEventListener('mousemove', (e) => {
             if (isFront && x > rect.width - edgeWidth) {
                 const zone = panel.querySelector('.page-flip-right');
                 if (zone) {
-                    zone.style.background = 'linear-gradient(to left, rgba(255, 200, 50, 0.4), transparent)';
-                    zone.style.boxShadow = 'inset -12px 0 25px -5px rgba(0,0,0,0.35)';
+                    zone.style.background = 'linear-gradient(to left, rgba(255, 200, 50, 0.5), transparent)';
+                    zone.style.boxShadow = 'inset -15px 0 30px -5px rgba(0,0,0,0.4)';
                     document.body.style.cursor = 'pointer';
+                    hoverActive = true;
                 }
             }
             // Back panels: left edge goes back
             else if (isBack && x < edgeWidth) {
                 const zone = panel.querySelector('.page-flip-left');
                 if (zone) {
-                    zone.style.background = 'linear-gradient(to right, rgba(255, 200, 50, 0.4), transparent)';
-                    zone.style.boxShadow = 'inset 12px 0 25px -5px rgba(0,0,0,0.35)';
+                    zone.style.background = 'linear-gradient(to right, rgba(255, 200, 50, 0.5), transparent)';
+                    zone.style.boxShadow = 'inset 15px 0 30px -5px rgba(0,0,0,0.4)';
                     document.body.style.cursor = 'pointer';
+                    hoverActive = true;
                 }
             }
+        }
+        
+        // Show grab cursor when over book but not over a flip zone
+        if (!hoverActive && e.target.closest('.book')) {
+            document.body.style.cursor = 'grab';
+        } else if (!hoverActive) {
+            document.body.style.cursor = '';
         }
     }
 });

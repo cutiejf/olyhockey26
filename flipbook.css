@@ -33,6 +33,10 @@ body {
     pointer-events: none;
     transform-style: preserve-3d;
     transition: transform 0.5s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     /* Initial: front cover centered (page extends RIGHT of spine) */
     transform: translateX(calc(var(--panel-width) / -2));
 }
@@ -54,6 +58,14 @@ body {
     transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.3px)));
     rotate: y calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
     box-shadow: 0 0.5em 1em -0.2em rgba(0,0,0,0.2);
+}
+
+.book img {
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 .front,
