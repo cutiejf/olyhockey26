@@ -530,6 +530,7 @@
 
 <!-- Controls -->
 <div class="controls">
+    <button class="btn" onclick="resetBook()" title="Reset">⟲</button>
     <button class="btn zoom-btn" onclick="zoomOut()">−</button>
     <button class="btn" onclick="bookPrev()">BACK</button>
     <div class="page-num" id="page-display">COVER</div>
@@ -598,6 +599,15 @@ window.toggleFullscreen = () => {
     }
 };
 
+// Reset to first page and position
+window.resetBook = () => {
+    zoomLevel = 1;
+    panX = 0;
+    panY = 0;
+    if (window.bookGoTo) window.bookGoTo(0);
+    applyTransform();
+};
+
 // Drag to pan
 let dragMoved = false;
 document.addEventListener('mousedown', (e) => {
@@ -622,19 +632,32 @@ document.addEventListener('mousemove', (e) => {
         panY = e.clientY - dragStartY;
         applyTransform();
     } else {
-        // Show hover effect on edges
+        // Show hover effect on edges with curl/lift hint
         const panel = e.target.closest('.front, .back');
-        document.querySelectorAll('.page-flip-zone').forEach(z => z.style.background = '');
+        document.querySelectorAll('.page-flip-zone').forEach(z => {
+            z.style.background = '';
+            z.style.boxShadow = '';
+        });
+        document.querySelectorAll('.page').forEach(p => p.style.boxShadow = '');
         if (panel) {
             const rect = panel.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const edgeWidth = rect.width * 0.2;
+            const page = panel.closest('.page');
             if (x < edgeWidth) {
                 const zone = panel.querySelector('.page-flip-left');
-                if (zone) { zone.style.background = 'rgba(200, 150, 0, 0.15)'; document.body.style.cursor = 'pointer'; }
+                if (zone) {
+                    zone.style.background = 'linear-gradient(to right, rgba(200, 150, 0, 0.25), transparent)';
+                    zone.style.boxShadow = 'inset 8px 0 15px -5px rgba(0,0,0,0.3)';
+                    document.body.style.cursor = 'pointer';
+                }
             } else if (x > rect.width - edgeWidth) {
                 const zone = panel.querySelector('.page-flip-right');
-                if (zone) { zone.style.background = 'rgba(200, 150, 0, 0.15)'; document.body.style.cursor = 'pointer'; }
+                if (zone) {
+                    zone.style.background = 'linear-gradient(to left, rgba(200, 150, 0, 0.25), transparent)';
+                    zone.style.boxShadow = 'inset -8px 0 15px -5px rgba(0,0,0,0.3)';
+                    document.body.style.cursor = 'pointer';
+                }
             } else {
                 document.body.style.cursor = '';
             }
