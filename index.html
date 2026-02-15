@@ -535,6 +535,7 @@
     <div class="page-num" id="page-display">COVER</div>
     <button class="btn" onclick="bookNext()">NEXT</button>
     <button class="btn zoom-btn" onclick="zoomIn()">+</button>
+    <button class="btn" onclick="toggleFullscreen()" id="fs-btn">⛶</button>
 </div>
 
 <!-- Page turn sound -->
@@ -583,9 +584,28 @@ function applyTransform() {
     }
 }
 
-// Drag to pan (always enabled)
+// Fullscreen toggle
+window.toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+        document.exitFullscreen().catch(() => {});
+    }
+};
+
+// Helper: check if click is in drag zone (middle 60% of panel, not edges)
+function isInDragZone(e) {
+    const panel = e.target.closest('.front, .back');
+    if (!panel) return false;
+    const rect = panel.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const edgeWidth = rect.width * 0.2; // 20% on each edge for flip
+    return x > edgeWidth && x < (rect.width - edgeWidth);
+}
+
+// Drag to pan (only in middle of panels)
 document.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.book') && !e.target.closest('.page-flip-zone')) {
+    if (e.target.closest('.book') && !e.target.closest('.page-flip-zone') && isInDragZone(e)) {
         isDragging = true;
         dragStartX = e.clientX - panX;
         dragStartY = e.clientY - panY;

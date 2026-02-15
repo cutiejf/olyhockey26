@@ -214,6 +214,19 @@ body {
     text-align: center;
 }
 
+#fs-btn {
+    font-size: 16px;
+}
+
+/* Fullscreen mode adjustments */
+:fullscreen body {
+    background: #000;
+}
+
+:fullscreen .controls {
+    bottom: 30px;
+}
+
 .btn.save-btn { background: #27ae60; color: #fff; }
 
 .btn:disabled {
