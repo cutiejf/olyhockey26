@@ -528,16 +528,24 @@
 
 </div>
 
-<!-- Controls -->
-<div class="controls">
-    <button class="btn" onclick="resetBook()" title="Reset">⟲</button>
-    <button class="btn" onclick="toggleLock()" id="lock-btn" title="Lock/Unlock">🔓</button>
-    <button class="btn zoom-btn" onclick="zoomOut()">−</button>
-    <button class="btn" onclick="bookPrev()">BACK</button>
-    <div class="page-num" id="page-display">COVER</div>
-    <button class="btn" onclick="bookNext()">NEXT</button>
-    <button class="btn zoom-btn" onclick="zoomIn()">+</button>
-    <button class="btn" onclick="toggleFullscreen()" id="fs-btn">⛶</button>
+<!-- Side Navigation Arrows -->
+<button class="side-nav side-nav-left" onclick="bookPrev()" title="Previous">❮</button>
+<button class="side-nav side-nav-right" onclick="bookNext()" title="Next">❯</button>
+
+<!-- First/Last Page Buttons -->
+<button class="side-nav-edge side-nav-first" onclick="bookGoTo(0)" title="First Page">⏮</button>
+<button class="side-nav-edge side-nav-last" onclick="bookGoTo(99)" title="Last Page">⏭</button>
+
+<!-- Page Number Circle -->
+<div class="page-circle" id="page-display">COVER</div>
+
+<!-- Right Side Toolbar -->
+<div class="toolbar-right">
+    <button class="toolbar-btn" onclick="zoomIn()" title="Zoom In">+</button>
+    <button class="toolbar-btn" onclick="zoomOut()" title="Zoom Out">−</button>
+    <button class="toolbar-btn" onclick="resetBook()" title="Reset">⟲</button>
+    <button class="toolbar-btn" onclick="toggleLock()" id="lock-btn" title="Lock/Unlock">🔓</button>
+    <button class="toolbar-btn" onclick="toggleFullscreen()" id="fs-btn" title="Fullscreen">⛶</button>
 </div>
 
 <!-- Page turn sound -->
