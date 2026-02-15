@@ -486,7 +486,7 @@
     <div class="page">
         <div class="front panel" id="page-p_outro" style="padding: 20px; background: #fff;">
             <h2 style="background: var(--header-bg); color: #fff; padding: 5px 10px; margin: -10px -10px 10px -10px;">Tournament Notes</h2>
-            <div style="margin-top: 10px; font-size: 11px; color: #333; line-height: 1.5;">
+            <div style="margin-top: 10px; font-size: 13px; color: #333; line-height: 1.6;">
                 <div style="margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-left: 3px solid #2980b9;">
                     <strong>Group B 3-Way Tie (6 pts each):</strong><br>
                     Slovakia, Finland, Sweden tied at 6 pts. H2H circular (each beat one other). GD among tied: SVK +1, FIN 0, SWE -1. Result: 1. Slovakia, 2. Finland, 3. Sweden.
@@ -547,21 +547,26 @@ let zoomLevel = 1;
 const zoomStep = 0.1;
 const minZoom = 0.5;
 const maxZoom = 1.5;
+let isCentered = true; // Track if book should be centered (cover/back cover)
 
 window.zoomIn = () => {
     zoomLevel = Math.min(maxZoom, zoomLevel + zoomStep);
-    applyZoom();
+    applyTransform();
 };
 
 window.zoomOut = () => {
     zoomLevel = Math.max(minZoom, zoomLevel - zoomStep);
-    applyZoom();
+    applyTransform();
 };
 
-function applyZoom() {
+function applyTransform() {
     const book = document.getElementById('hockey-book');
     if (book) {
-        book.style.transform = `translateX(-50%) scale(${zoomLevel})`;
+        if (isCentered) {
+            book.style.transform = `translateX(-50%) translateX(calc(var(--panel-width) / -2)) scale(${zoomLevel})`;
+        } else {
+            book.style.transform = `translateX(-50%) scale(${zoomLevel})`;
+        }
     }
 }
 
@@ -577,6 +582,9 @@ const flipBook = (elBook) => {
     const setCurrent = (c) => {
         current = Math.max(0, Math.min(c, pages.length));
         elBook.style.setProperty("--c", current);
+        // Center book at cover (0) and back cover (pages.length)
+        isCentered = (current === 0 || current >= pages.length);
+        applyTransform();
         updatePageDisplay();
         playPageSound();
     };
