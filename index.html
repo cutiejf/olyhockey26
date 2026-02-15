@@ -576,6 +576,7 @@ function applyTransform() {
         let baseTransform;
         const c = parseInt(book.style.getPropertyValue('--c') || '0');
         const totalPages = book.querySelectorAll('.page').length;
+        const defaultOffsetY = 25; // Default 25px lower
         
         if (c === 0) {
             // Front cover: page extends RIGHT of spine, shift left to center
@@ -587,7 +588,7 @@ function applyTransform() {
             // Open book: spread visible, spine at center
             baseTransform = 'translateX(0)';
         }
-        book.style.transform = `${baseTransform} translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
+        book.style.transform = `${baseTransform} translate(${panX}px, ${panY + defaultOffsetY}px) scale(${zoomLevel})`;
     }
 }
 
@@ -644,29 +645,39 @@ window.toggleLock = () => {
 
 // Drag to pan
 let dragMoved = false;
+let potentialDrag = false;
+let mouseDownX = 0, mouseDownY = 0;
+
 document.addEventListener('mousedown', (e) => {
     if (isLocked) return; // Don't drag when locked
     if (e.target.closest('.book')) {
-        isDragging = true;
+        potentialDrag = true;
         dragMoved = false;
+        mouseDownX = e.clientX;
+        mouseDownY = e.clientY;
         dragStartX = e.clientX - panX;
         dragStartY = e.clientY - panY;
-        document.body.style.cursor = 'grabbing';
-        // Disable transition for instant drag response
-        const book = document.getElementById('hockey-book');
-        if (book) book.style.transition = 'none';
     }
 });
 
 document.addEventListener('mousemove', (e) => {
+    if (potentialDrag && !isDragging) {
+        // Only start dragging if mouse moved more than 5px
+        const dx = e.clientX - mouseDownX;
+        const dy = e.clientY - mouseDownY;
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+            isDragging = true;
+            dragMoved = true;
+            document.body.style.cursor = 'grabbing';
+            const book = document.getElementById('hockey-book');
+            if (book) book.style.transition = 'none';
+        }
+    }
     if (isDragging) {
-        const dx = e.clientX - dragStartX - panX;
-        const dy = e.clientY - dragStartY - panY;
-        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) dragMoved = true;
         panX = e.clientX - dragStartX;
         panY = e.clientY - dragStartY;
         applyTransform();
-    } else if (!isLocked) {
+    } else if (!isLocked && !potentialDrag) {
         // Show hover effect on edges with curl/lift hint (only when unlocked)
         const panel = e.target.closest('.front, .back');
         document.querySelectorAll('.page-flip-zone').forEach(z => {
@@ -704,25 +715,26 @@ document.addEventListener('mousemove', (e) => {
 });
 
 document.addEventListener('mouseup', (e) => {
+    const wasPotentialDrag = potentialDrag;
+    potentialDrag = false;
+    
     if (isDragging) {
         isDragging = false;
         document.body.style.cursor = '';
         // Re-enable transition
         const book = document.getElementById('hockey-book');
         if (book) book.style.transition = 'transform 0.5s ease';
-        
-        // If no drag movement and not locked, check for page flip
-        if (!dragMoved && !isLocked) {
-            const panel = e.target.closest('.front, .back');
-            if (panel) {
-                const rect = panel.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const edgeWidth = rect.width * 0.2;
-                if (x < edgeWidth && window.bookPrev) {
-                    window.bookPrev();
-                } else if (x > rect.width - edgeWidth && window.bookNext) {
-                    window.bookNext();
-                }
+    } else if (wasPotentialDrag && !isLocked) {
+        // It was a click (no drag) - check for page flip
+        const panel = e.target.closest('.front, .back');
+        if (panel) {
+            const rect = panel.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const edgeWidth = rect.width * 0.2;
+            if (x < edgeWidth && window.bookPrev) {
+                window.bookPrev();
+            } else if (x > rect.width - edgeWidth && window.bookNext) {
+                window.bookNext();
             }
         }
     }
