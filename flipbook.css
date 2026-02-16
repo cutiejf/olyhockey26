@@ -26,7 +26,8 @@ body {
 .book {
     position: fixed;
     left: 50%;
-    top: calc(50% - 35px);
+    /* Center between page-display (top ~40px) and red buttons (bottom ~70px) */
+    top: calc(40px + (100vh - 40px - 70px - var(--panel-height)) / 2);
     display: flex;
     width: var(--panel-width);
     height: var(--panel-height);
@@ -37,8 +38,8 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    /* Always center the book visually - offset up to account for bottom controls */
-    transform: translate(-50%, -50%);
+    /* Center horizontally only */
+    transform: translateX(-50%);
 }
 
 .page {
