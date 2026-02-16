@@ -668,22 +668,22 @@ document.addEventListener('mousemove', (e) => {
     if (panel) {
         const rect = panel.getBoundingClientRect();
         const x = e.clientX - rect.left;
-        const edgeWidth = rect.width * 0.2;
+        const edgeWidth = rect.width * 0.35;
         const isFront = panel.classList.contains('front');
         const isBack = panel.classList.contains('back');
         
         if (isFront && x > rect.width - edgeWidth) {
             const zone = panel.querySelector('.page-flip-right');
             if (zone) {
-                zone.style.background = 'linear-gradient(to left, rgba(255, 200, 50, 0.5), transparent)';
-                zone.style.boxShadow = 'inset -15px 0 30px -5px rgba(0,0,0,0.4)';
+                zone.style.background = 'linear-gradient(to left, rgba(139, 0, 0, 0.3), transparent)';
+                zone.style.boxShadow = '';
                 document.body.style.cursor = 'pointer';
             }
         } else if (isBack && x < edgeWidth) {
             const zone = panel.querySelector('.page-flip-left');
             if (zone) {
-                zone.style.background = 'linear-gradient(to right, rgba(255, 200, 50, 0.5), transparent)';
-                zone.style.boxShadow = 'inset 15px 0 30px -5px rgba(0,0,0,0.4)';
+                zone.style.background = 'linear-gradient(to right, rgba(139, 0, 0, 0.3), transparent)';
+                zone.style.boxShadow = '';
                 document.body.style.cursor = 'pointer';
             }
         } else {
