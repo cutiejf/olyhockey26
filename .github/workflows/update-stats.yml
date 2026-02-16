@@ -2,8 +2,8 @@ name: Update Olympic Stats
 
 on:
   schedule:
-    # Run every 2 hours during Olympics (Feb 11-23)
-    - cron: '0 */2 * * *'
+    # Run every hour during Olympics (Feb 11-23)
+    - cron: '0 * * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -14,27 +14,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         
-      - name: Scrape and update stats
+      - name: Update stats and scores
         run: |
-          # Scrape player stats
-          PLAYERS=$(curl -s -A "Mozilla/5.0" "https://www.quanthockey.com/olympics/en/seasons/olympics-players-stats.html" | \
-            grep -oP '<tr class="(odd|even)[^"]*"[^>]*>[\s\S]*?</tr>' | head -10 | \
-            sed 's/<[^>]*>//g' | tr -s ' ' | head -5)
-          
-          # Scrape goalie stats  
-          GOALIES=$(curl -s -A "Mozilla/5.0" "https://www.quanthockey.com/olympics/en/seasons/olympics-goalies-stats.html" | \
-            grep -oP '<tr class="(odd|even)[^"]*"[^>]*>[\s\S]*?</tr>' | head -20)
-          
-          # Use Node.js to properly parse and update JSON
           node << 'EOF'
           const fs = require('fs');
           const https = require('https');
           
+          const SPORTSDB_API_KEY = '3';
+          const OLYMPIC_HOCKEY_LEAGUE_ID = '5137';
+          const HOCKEY_SEASON = '2026';
+          
           const headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' };
           
-          function fetch(url) {
+          function fetch(url, useHeaders = true) {
             return new Promise((resolve, reject) => {
-              https.get(url, { headers }, (res) => {
+              const options = useHeaders ? { headers } : {};
+              https.get(url, options, (res) => {
                 let data = '';
                 res.on('data', chunk => data += chunk);
                 res.on('end', () => resolve(data));
@@ -42,67 +37,138 @@ jobs:
             });
           }
           
+          // Team name mapping for TheSportsDB
+          const teamMap = {
+            'slovakia': 'Slovakia',
+            'finland': 'Finland',
+            'sweden': 'Sweden',
+            'italy': 'Italy',
+            'switzerland': 'Switzerland',
+            'france': 'France',
+            'czech republic': 'Czechia',
+            'czechia': 'Czechia',
+            'canada': 'Canada',
+            'germany': 'Germany',
+            'denmark': 'Denmark',
+            'latvia': 'Latvia',
+            'usa': 'USA',
+            'united states': 'USA'
+          };
+          
           async function main() {
             const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+            const prelims = data.prelims || [];
             
-            // Fetch players
-            const playersHtml = await fetch('https://www.quanthockey.com/olympics/en/seasons/olympics-players-stats.html');
-            const playerRows = playersHtml.match(/<tr class="(odd|even)[^"]*"[^>]*>[\s\S]*?<\/tr>/g) || [];
+            // Initialize storedScores if not exists
+            if (!data.storedScores) data.storedScores = {};
             
-            const scorers = playerRows.slice(0, 10).map(row => {
-              const text = row.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-              const parts = text.split(' ');
-              return {
-                name: parts[1] + ' ' + parts[2],
-                team: parts[3],
-                gp: parts[5],
-                goals: parts[6],
-                assists: parts[7],
-                points: parseInt(parts[8])
+            // ===== FETCH SCORES FROM TheSportsDB =====
+            try {
+              const scoresUrl = `https://www.thesportsdb.com/api/v1/json/${SPORTSDB_API_KEY}/eventsseason.php?id=${OLYMPIC_HOCKEY_LEAGUE_ID}&s=${HOCKEY_SEASON}`;
+              console.log('Fetching scores from TheSportsDB...');
+              const scoresJson = await fetch(scoresUrl, false);
+              const scoresData = JSON.parse(scoresJson);
+              
+              if (scoresData && scoresData.events) {
+                console.log('Processing', scoresData.events.length, 'events from API');
+                
+                scoresData.events.forEach(event => {
+                  if (!event.intHomeScore || !event.intAwayScore) return;
+                  
+                  const apiHome = (event.strHomeTeam || '').toLowerCase().replace(' ice hockey', '').trim();
+                  const apiAway = (event.strAwayTeam || '').toLowerCase().replace(' ice hockey', '').trim();
+                  const homeScore = event.intHomeScore;
+                  const awayScore = event.intAwayScore;
+                  
+                  const ourHome = teamMap[apiHome];
+                  const ourAway = teamMap[apiAway];
+                  
+                  if (!ourHome || !ourAway) {
+                    console.log('Could not map teams:', event.strHomeTeam, 'vs', event.strAwayTeam);
+                    return;
+                  }
+                  
+                  // Find matching game in prelims
+                  prelims.forEach(game => {
+                    if (game.h === ourHome && game.a === ourAway) {
+                      console.log('Updating', game.id, ':', game.h, homeScore, '-', awayScore, game.a);
+                      data.storedScores[game.id + '-h'] = homeScore;
+                      data.storedScores[game.id + '-a'] = awayScore;
+                    }
+                  });
+                });
+                
+                console.log('Scores updated from TheSportsDB');
+              }
+            } catch (err) {
+              console.log('TheSportsDB fetch error (continuing with stats):', err.message);
+            }
+            
+            // ===== FETCH PLAYER STATS FROM QuantHockey =====
+            try {
+              const playersHtml = await fetch('https://www.quanthockey.com/olympics/en/seasons/olympics-players-stats.html');
+              const playerRows = playersHtml.match(/<tr class="(odd|even)[^"]*"[^>]*>[\s\S]*?<\/tr>/g) || [];
+              
+              const scorers = playerRows.slice(0, 10).map(row => {
+                const text = row.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                const parts = text.split(' ');
+                return {
+                  name: parts[1] + ' ' + parts[2],
+                  team: parts[3],
+                  gp: parts[5],
+                  goals: parts[6],
+                  assists: parts[7],
+                  points: parseInt(parts[8])
+                };
+              }).sort((a, b) => b.points - a.points).slice(0, 5).map((p, i) => ({
+                rank: (i + 1) + '.',
+                name: p.name,
+                team: p.team,
+                gp: p.gp,
+                goals: p.goals,
+                assists: p.assists,
+                points: String(p.points)
+              }));
+              
+              // Fetch goalies
+              const goaliesHtml = await fetch('https://www.quanthockey.com/olympics/en/seasons/olympics-goalies-stats.html');
+              const goalieRows = goaliesHtml.match(/<tr class="(odd|even)[^"]*"[^>]*>[\s\S]*?<\/tr>/g) || [];
+              
+              const goalies = goalieRows.slice(0, 20).map(row => {
+                const text = row.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                const parts = text.split(' ');
+                return {
+                  name: parts[1] + ' ' + parts[2],
+                  team: parts[3],
+                  gp: parts[5],
+                  gaa: parts[6],
+                  svp: parseFloat(parts[7]),
+                  wins: parts[8]
+                };
+              }).sort((a, b) => b.svp - a.svp).slice(0, 5).map((g, i) => ({
+                rank: (i + 1) + '.',
+                name: g.name,
+                team: g.team,
+                gp: g.gp,
+                wins: g.wins,
+                gaa: g.gaa,
+                svp: '.' + Math.round(g.svp * 1000).toString().padStart(3, '0')
+              }));
+              
+              data.storedESPNStats = {
+                scorers,
+                goalies,
+                lastFetch: new Date().toISOString()
               };
-            }).sort((a, b) => b.points - a.points).slice(0, 5).map((p, i) => ({
-              rank: (i + 1) + '.',
-              name: p.name,
-              team: p.team,
-              gp: p.gp,
-              goals: p.goals,
-              assists: p.assists,
-              points: String(p.points)
-            }));
+              
+              console.log('Stats updated:', { scorers: scorers.length, goalies: goalies.length });
+            } catch (err) {
+              console.log('QuantHockey fetch error:', err.message);
+            }
             
-            // Fetch goalies
-            const goaliesHtml = await fetch('https://www.quanthockey.com/olympics/en/seasons/olympics-goalies-stats.html');
-            const goalieRows = goaliesHtml.match(/<tr class="(odd|even)[^"]*"[^>]*>[\s\S]*?<\/tr>/g) || [];
-            
-            const goalies = goalieRows.slice(0, 20).map(row => {
-              const text = row.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-              const parts = text.split(' ');
-              return {
-                name: parts[1] + ' ' + parts[2],
-                team: parts[3],
-                gp: parts[5],
-                gaa: parts[6],
-                svp: parseFloat(parts[7]),
-                wins: parts[8]
-              };
-            }).sort((a, b) => b.svp - a.svp).slice(0, 5).map((g, i) => ({
-              rank: (i + 1) + '.',
-              name: g.name,
-              team: g.team,
-              gp: g.gp,
-              wins: g.wins,
-              gaa: g.gaa,
-              svp: '.' + Math.round(g.svp * 1000).toString().padStart(3, '0')
-            }));
-            
-            data.storedESPNStats = {
-              scorers,
-              goalies,
-              lastFetch: new Date().toISOString()
-            };
-            
+            data.lastUpdate = new Date().toISOString();
             fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
-            console.log('Updated stats:', { scorers: scorers.length, goalies: goalies.length });
+            console.log('data.json saved');
           }
           
           main().catch(console.error);
@@ -113,4 +179,4 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add data.json
-          git diff --staged --quiet || (git commit -m "Auto-update stats $(date -u +%Y-%m-%dT%H:%M:%SZ)" && git push)
+          git diff --staged --quiet || (git commit -m "Auto-update stats & scores $(date -u +%Y-%m-%dT%H:%M:%SZ)" && git push)
