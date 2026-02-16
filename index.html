@@ -884,11 +884,25 @@ function injectTables() {
     const flagMap = data.flagMap || {};
 
     const getFlagImg = (name) => {
-        let code = 'ca';
+        let code = null;
         for (const key in flagMap) {
             if (name.indexOf(key) !== -1) { code = flagMap[key]; break; }
         }
+        if (!code) return ''; // No flag for placeholders like "Reseed 1", "Win QF", etc.
         return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 4px;">';
+    };
+    
+    // Helper to format team name appropriately for knockouts
+    const formatKOTeam = (name, isHome) => {
+        const flag = getFlagImg(name);
+        if (flag) {
+            // Real team - show 3-letter code + flag
+            const abbr = name.substring(0,3).toUpperCase();
+            return isHome ? abbr + ' ' + flag : flag + ' ' + abbr;
+        } else {
+            // Placeholder - show as-is
+            return name;
+        }
     };
 
     // Preliminaries with editable score boxes
@@ -928,12 +942,12 @@ function injectTables() {
                     '<td class="c-date" style="width:85px; padding:8.8px 5px;">' + g.d + '</td>' +
                     '<td class="c-time" style="width:50px; padding:8.8px 5px;">' + g.t + '</td>' +
                     '<td class="c-match" style="padding:8.8px 5px;">' +
-                        '<span class="team-home">' + g.h + '</span>' +
+                        '<span class="team-home">' + formatKOTeam(g.h, true) + '</span>' +
                         '<span class="score-area">' +
                             '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
                             '<span class="sb" contenteditable="true" data-key="' + g.id + '-a">' + (storedScores[g.id + '-a'] || '') + '</span>' +
                         '</span>' +
-                        '<span class="team-away">' + g.a + '</span>' +
+                        '<span class="team-away">' + formatKOTeam(g.a, false) + '</span>' +
                     '</td>';
             }
             kBody.appendChild(tr);
