@@ -288,21 +288,7 @@ body {
   background-color: #003d8f;
 }
 
-/* Page Display */
-.page-display {
-  position: fixed;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.95);
-  color: #333;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  z-index: 10000;
-}
+/* Page Display moved to flipbook.css */
 
 /* Menu Dropdown */
 .menu-dropdown {
@@ -658,7 +644,156 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
     color: #000;
 }
 
-/* Overlays moved to flipbook.css */
+/* ========== COVER STYLES ========== */
+
+/* Cover container */
+.cover {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    position: relative;
+}
+
+/* Cover background images */
+.cover .bg-img,
+.page-layout-full .bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Back cover specific positioning */
+.back.cover .bg-img {
+    top: -18px;
+}
+
+/* Cover overlays */
+.cover .front-overlay,
+.cover .back-overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.front-overlay {
+    background: rgba(0,0,0,0.35);
+}
+
+.back-overlay {
+    background: transparent;
+}
+
+/* Olympic rings logo */
+.oly-logo {
+    width: 80px;
+    height: auto;
+    filter: brightness(0);
+    flex-shrink: 0;
+}
+
+.back-overlay .oly-logo {
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+/* Back cover copyright */
+.back-copyright {
+    margin-top: auto;
+    margin-bottom: -3px;
+    font-size: 10px;
+    color: #000;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+/* Introduction page */
+.intro-page {
+    padding: 25px 25px 15px 25px;
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.intro-page h2 {
+    background: none;
+    color: #111;
+    font-size: 24px;
+    border-bottom: 3px solid #c0392b;
+    margin-bottom: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.intro-content {
+    font-size: 11.3px;
+    color: #333;
+    line-height: 1.4;
+    text-align: justify;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.intro-content p {
+    margin-bottom: 0;
+}
+
+.intro-content p:first-child {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.intro-content p:nth-child(3) {
+    margin-top: 10px;
+}
+
+.intro-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 15px 0;
+    gap: 20px;
+}
+
+.intro-logos img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.intro-logos img:nth-child(3) {
+    width: 45px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.intro-footer {
+    width: 100%;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    font-weight: bold;
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
 
 /* Cover states */
 .is-closed {
