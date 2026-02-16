@@ -58,9 +58,8 @@ body {
     translate: calc(var(--i) * -100%) 0px 0px;
     transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.3px)));
     rotate: y calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
-    box-shadow: 0 0.5em 1em -0.2em rgba(0,0,0,0.2),
-                inset 8px 0 20px -4px rgba(139, 0, 0, 0.9);
-    background: #5a0000;
+    box-shadow: 0 0.5em 1em -0.2em rgba(0,0,0,0.2);
+    background: transparent;
 }
 
 .book img {
@@ -71,6 +70,7 @@ body {
     pointer-events: none;
 }
 
+.front,
 .front,
 .back {
     position: relative;
@@ -89,15 +89,15 @@ body {
 }
 
 .front {
-    background: linear-gradient(to right, #8B0000 0%, transparent 30%);
     border-radius: 0.1em 0.5em 0.5em 0.1em;
     border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: inset 10px 0 20px -10px rgba(0,0,0,0.4);
 }
 
 .back {
-    background: linear-gradient(to left, #8B0000 0%, transparent 30%);
     border-radius: 0.5em 0.1em 0.1em 0.5em;
     border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: inset -10px 0 20px -10px rgba(0,0,0,0.4);
 }
 
 /* ========== CONTROLS ========== */
@@ -1041,7 +1041,7 @@ th {
 }
 
 .page-flip-left:hover {
-    background: linear-gradient(to right, rgba(0,0,0,0.2) 0%, transparent 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 100%);
 }
 
 .page-flip-right {
@@ -1049,5 +1049,5 @@ th {
 }
 
 .page-flip-right:hover {
-    background: linear-gradient(to left, rgba(0,0,0,0.2) 0%, transparent 100%);
+    background: linear-gradient(to left, rgba(0,0,0,0.3) 0%, transparent 100%);
 }

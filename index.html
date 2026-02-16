@@ -675,14 +675,14 @@ document.addEventListener('mousemove', (e) => {
         if (isFront && x > rect.width - edgeWidth) {
             const zone = panel.querySelector('.page-flip-right');
             if (zone) {
-                zone.style.background = 'linear-gradient(to left, rgba(139, 0, 0, 0.3), transparent)';
+                zone.style.background = 'linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent)';
                 zone.style.boxShadow = '';
                 document.body.style.cursor = 'pointer';
             }
         } else if (isBack && x < edgeWidth) {
             const zone = panel.querySelector('.page-flip-left');
             if (zone) {
-                zone.style.background = 'linear-gradient(to right, rgba(139, 0, 0, 0.3), transparent)';
+                zone.style.background = 'linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent)';
                 zone.style.boxShadow = '';
                 document.body.style.cursor = 'pointer';
             }

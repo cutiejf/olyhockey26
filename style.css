@@ -787,42 +787,12 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 .star-name { font-weight: bold; font-size: 14px; color: #000; }
 .star-team { font-size: 11px; color: #666; text-transform: uppercase; }
 
-/* Page flip zones - visual hover areas on edges */
-.page-flip-zone {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 20%;
-    z-index: 1000;
-    transition: background 0.15s ease, box-shadow 0.15s ease;
-    pointer-events: none;
-    background: transparent;
-}
-
 /* Drag cursor for book panels, pointer on edges */
 .front, .back {
     cursor: grab;
 }
 .front:active, .back:active {
     cursor: grabbing;
-}
-
-.page-flip-left {
-    left: 0;
-    border-right: 1px solid transparent;
-}
-
-.page-flip-left:hover {
-    border-right: 2px solid rgba(0, 0, 0, 0.15);
-}
-
-.page-flip-right {
-    right: 0;
-    border-left: 1px solid transparent;
-}
-
-.page-flip-right:hover {
-    border-left: 2px solid rgba(0, 0, 0, 0.15);
 }
 
 /* Drag cursor when zoomed */
