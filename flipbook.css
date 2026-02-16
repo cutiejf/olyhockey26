@@ -89,13 +89,13 @@ body {
 }
 
 .front {
-    background: linear-gradient(to left, #f9f9f9 30%, #8B0000 100%);
+    background: linear-gradient(to right, #8B0000 0%, transparent 30%);
     border-radius: 0.1em 0.5em 0.5em 0.1em;
     border: 1px solid rgba(0,0,0,0.1);
 }
 
 .back {
-    background: linear-gradient(to right, #f9f9f9 30%, #8B0000 100%);
+    background: linear-gradient(to left, #8B0000 0%, transparent 30%);
     border-radius: 0.5em 0.1em 0.1em 0.5em;
     border: 1px solid rgba(0,0,0,0.1);
 }
@@ -1022,12 +1022,26 @@ th {
     background: transparent;
 }
 
+.page-flip-left,
+.page-flip-right {
+    position: absolute;
+    top: 0;
+    width: 150px; /* Wider hover zone */
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: auto;
+    z-index: 1000; /* Ensure it's on top of all page content */
+    background: transparent;
+    transition: background 0.2s ease-in-out;
+}
+
 .page-flip-left {
     left: 0;
 }
 
 .page-flip-left:hover {
-    background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.2) 0%, transparent 100%);
 }
 
 .page-flip-right {
@@ -1035,5 +1049,5 @@ th {
 }
 
 .page-flip-right:hover {
-    background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%);
+    background: linear-gradient(to left, rgba(0,0,0,0.2) 0%, transparent 100%);
 }
