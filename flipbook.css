@@ -1024,7 +1024,6 @@ th {
 
 .page-flip-left {
     left: 0;
-    border-right: 1px solid transparent;
 }
 
 .page-flip-left:hover {
@@ -1033,7 +1032,6 @@ th {
 
 .page-flip-right {
     right: 0;
-    border-left: 1px solid transparent;
 }
 
 .page-flip-right:hover {
