@@ -49,5 +49,25 @@
       {"rank": "5.", "name": "Connor Hellebuyck", "team": "USA", "gp": "1", "wins": "1", "gaa": "1.00", "svp": ".944"}
     ],
     "lastFetch": "2026-02-15T12:00:00.000Z"
-  }
+  },
+  "prelims": [
+    { "id": "p1", "g": "B", "d": "Wed Feb 11", "t": "10:40a", "h": "Slovakia", "a": "Finland", "v": "R" },
+    { "id": "p2", "g": "B", "d": "Wed Feb 11", "t": "03:10p", "h": "Sweden", "a": "Italy", "v": "S" },
+    { "id": "p3", "g": "A", "d": "Thu Feb 12", "t": "06:10a", "h": "Switzerland", "a": "France", "v": "R" },
+    { "id": "p4", "g": "A", "d": "Thu Feb 12", "t": "10:40a", "h": "Czechia", "a": "Canada", "v": "S" },
+    { "id": "p5", "g": "C", "d": "Thu Feb 12", "t": "03:10p", "h": "Latvia", "a": "USA", "v": "R" },
+    { "id": "p6", "g": "C", "d": "Thu Feb 12", "t": "03:10p", "h": "Germany", "a": "Denmark", "v": "R" },
+    { "id": "p7", "g": "B", "d": "Fri Feb 13", "t": "06:10a", "h": "Finland", "a": "Sweden", "v": "S" },
+    { "id": "p8", "g": "B", "d": "Fri Feb 13", "t": "06:10a", "h": "Italy", "a": "Slovakia", "v": "R" },
+    { "id": "p9", "g": "A", "d": "Fri Feb 13", "t": "10:40a", "h": "France", "a": "Czechia", "v": "R" },
+    { "id": "p10", "g": "A", "d": "Fri Feb 13", "t": "03:10p", "h": "Canada", "a": "Switzerland", "v": "S" },
+    { "id": "p11", "g": "B", "d": "Sat Feb 14", "t": "06:10a", "h": "Sweden", "a": "Slovakia", "v": "R" },
+    { "id": "p12", "g": "C", "d": "Sat Feb 14", "t": "06:10a", "h": "Germany", "a": "Latvia", "v": "S" },
+    { "id": "p13", "g": "B", "d": "Sat Feb 14", "t": "10:40a", "h": "Finland", "a": "Italy", "v": "R" },
+    { "id": "p14", "g": "C", "d": "Sat Feb 14", "t": "03:10p", "h": "USA", "a": "Denmark", "v": "S" },
+    { "id": "p15", "g": "A", "d": "Sun Feb 15", "t": "06:10a", "h": "Switzerland", "a": "Czechia", "v": "S" },
+    { "id": "p16", "g": "A", "d": "Sun Feb 15", "t": "10:40a", "h": "Canada", "a": "France", "v": "R" },
+    { "id": "p17", "g": "C", "d": "Sun Feb 15", "t": "01:10p", "h": "Denmark", "a": "Latvia", "v": "R" },
+    { "id": "p18", "g": "C", "d": "Sun Feb 15", "t": "03:10p", "h": "USA", "a": "Germany", "v": "S" }
+  ]
 }
