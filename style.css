@@ -683,7 +683,7 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 }
 
 .front-overlay { background: rgba(0,0,0,0.35); padding: 25px 10px 10px 10px; box-sizing: border-box; }
-.back-overlay { padding: 20px 10px 15px 10px; box-sizing: border-box; background: rgba(255,255,255,0.4); }
+.back-overlay { padding: 20px 10px 15px 10px; box-sizing: border-box; background: transparent; }
 
 /* Cover states */
 .is-closed {

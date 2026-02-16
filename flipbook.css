@@ -338,7 +338,7 @@ h2 {
 }
 
 .back-overlay {
-    background: rgba(255,255,255,0.4);
+    background: transparent;
 }
 
 .oly-logo {
