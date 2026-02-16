@@ -1028,7 +1028,7 @@ th {
 }
 
 .page-flip-left:hover {
-    border-right: 2px solid rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
 }
 
 .page-flip-right {
@@ -1037,5 +1037,5 @@ th {
 }
 
 .page-flip-right:hover {
-    border-left: 2px solid rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%);
 }
