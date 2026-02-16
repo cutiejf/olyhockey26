@@ -62,6 +62,8 @@ jobs:
             // Initialize storedScores if not exists
             if (!data.storedScores) data.storedScores = {};
             
+            let scoresUpdated = 0;
+            
             // ===== FETCH SCORES FROM TheSportsDB =====
             try {
               const scoresUrl = `https://www.thesportsdb.com/api/v1/json/${SPORTSDB_API_KEY}/eventsseason.php?id=${OLYMPIC_HOCKEY_LEAGUE_ID}&s=${HOCKEY_SEASON}`;
@@ -69,8 +71,8 @@ jobs:
               const scoresJson = await fetch(scoresUrl, false);
               const scoresData = JSON.parse(scoresJson);
               
-              if (scoresData && scoresData.events) {
-                console.log('Processing', scoresData.events.length, 'events from API');
+              if (scoresData && scoresData.events && scoresData.events.length > 0) {
+                console.log('Processing', scoresData.events.length, 'events from TheSportsDB');
                 
                 scoresData.events.forEach(event => {
                   if (!event.intHomeScore || !event.intAwayScore) return;
@@ -83,25 +85,66 @@ jobs:
                   const ourHome = teamMap[apiHome];
                   const ourAway = teamMap[apiAway];
                   
-                  if (!ourHome || !ourAway) {
-                    console.log('Could not map teams:', event.strHomeTeam, 'vs', event.strAwayTeam);
-                    return;
-                  }
+                  if (!ourHome || !ourAway) return;
                   
-                  // Find matching game in prelims
                   prelims.forEach(game => {
                     if (game.h === ourHome && game.a === ourAway) {
-                      console.log('Updating', game.id, ':', game.h, homeScore, '-', awayScore, game.a);
                       data.storedScores[game.id + '-h'] = homeScore;
                       data.storedScores[game.id + '-a'] = awayScore;
+                      scoresUpdated++;
                     }
                   });
                 });
                 
-                console.log('Scores updated from TheSportsDB');
+                console.log('TheSportsDB: Updated', scoresUpdated, 'scores');
               }
             } catch (err) {
-              console.log('TheSportsDB fetch error (continuing with stats):', err.message);
+              console.log('TheSportsDB error:', err.message);
+            }
+            
+            // ===== FALLBACK: SCRAPE EliteProspects =====
+            if (scoresUpdated === 0) {
+              try {
+                console.log('Falling back to EliteProspects...');
+                const epHtml = await fetch('https://www.eliteprospects.com/games/2025-2026/og/all-teams');
+                
+                // Extract game rows - pattern: home team, away team, score
+                const gameRows = epHtml.match(/<tr>\s*<td class="date"[\s\S]*?<\/tr>/g) || [];
+                
+                gameRows.forEach(row => {
+                  // Extract teams from title attributes
+                  const teamMatches = row.match(/title="([^"]+) Olympics"/g) || [];
+                  if (teamMatches.length < 2) return;
+                  
+                  const homeTeam = teamMatches[0].replace('title="', '').replace(' Olympics"', '');
+                  const awayTeam = teamMatches[1].replace('title="', '').replace(' Olympics"', '');
+                  
+                  // Extract score
+                  const scoreMatch = row.match(/>(\d+)\s*-\s*(\d+)</);
+                  if (!scoreMatch) return;
+                  
+                  const homeScore = scoreMatch[1];
+                  const awayScore = scoreMatch[2];
+                  
+                  const ourHome = teamMap[homeTeam.toLowerCase()];
+                  const ourAway = teamMap[awayTeam.toLowerCase()];
+                  
+                  if (!ourHome || !ourAway) return;
+                  
+                  prelims.forEach(game => {
+                    if (game.h === ourHome && game.a === ourAway) {
+                      data.storedScores[game.id + '-h'] = homeScore;
+                      data.storedScores[game.id + '-a'] = awayScore;
+                      scoresUpdated++;
+                      console.log('EP:', game.id, ourHome, homeScore, '-', awayScore, ourAway);
+                    }
+                  });
+                });
+                
+                console.log('EliteProspects: Updated', scoresUpdated, 'scores');
+              } catch (err) {
+                console.log('EliteProspects error:', err.message);
+              }
             }
             
             // ===== FETCH PLAYER STATS FROM QuantHockey =====
