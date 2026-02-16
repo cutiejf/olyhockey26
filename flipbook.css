@@ -59,6 +59,7 @@ body {
     transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.3px)));
     rotate: y calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
     box-shadow: 0 0.5em 1em -0.2em rgba(0,0,0,0.2);
+    background: #111;
 }
 
 .book img {
