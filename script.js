@@ -80,15 +80,77 @@ function renderContent() {
     
     if (!scoresDisplay || !statsDisplay) return;
     
-    // Display scores
-    const scores = window_data.storedScores || {};
-    let scoresHTML = '<table style="width:100%; border-collapse:collapse;"><thead><tr style="background:#f0f0f0;"><th style="padding:3px;">Game</th><th>Home</th><th>Away</th></tr></thead><tbody>';
-    
-    Object.entries(scores).forEach(([key, val]) => {
-        scoresHTML += `<tr><td style="padding:3px; border-bottom:1px solid #eee;">${key}</td><td style="text-align:center;">${val || '-'}</td></tr>`;
+    // Build schedule from prelims + knockouts and group by date
+    const games = [];
+    const addGamesFrom = (arr) => {
+        if (!Array.isArray(arr)) return;
+        arr.forEach((g) => {
+            if (g && g.id) games.push(g);
+        });
+    };
+    addGamesFrom(window_data.prelims);
+    addGamesFrom(window_data.knockouts);
+
+    const monthMap = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+    const parseShortDate = (dstr) => {
+        if (!dstr) return null;
+        // Expect formats like "Wed Feb 11" or "Tue Feb 17"
+        const m = dstr.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})/i);
+        if (!m) return null;
+        const mon = m[1].slice(0,1).toUpperCase() + m[1].slice(1).toLowerCase();
+        const day = parseInt(m[2], 10);
+        const year = (new Date()).getFullYear();
+        return new Date(year, monthMap[mon], day);
+    };
+
+    const byDate = {};
+    games.forEach((g) => {
+        const dt = parseShortDate(g.d);
+        if (!dt) return;
+        const key = dt.toISOString().slice(0,10);
+        if (!byDate[key]) byDate[key] = [];
+        byDate[key].push(g);
     });
-    
-    scoresHTML += '</tbody></table>';
+
+    const sortedDates = Object.keys(byDate).sort();
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const dayKey = (d) => d.toISOString().slice(0,10);
+    const dayDiff = (d1, d2) => Math.round((d1 - d2) / 86400000);
+
+    let scoresHTML = '';
+
+    // Helper to render a date group
+    const renderGroup = (d, label) => {
+        const key = dayKey(d);
+        const group = byDate[key] || [];
+        scoresHTML += `<div style="margin-bottom:8px;"><div style="font-weight:700; font-size:12px;">${label}</div>`;
+        if (!group.length) {
+            scoresHTML += `<div style="text-align:center; color:#800000; font-size:15px; padding:8px 0; margin:6px 0 8px 0; font-weight:800;">DAY BREAK - NO GAMES</div>`;
+            // (optional) small centered note below day break can be appended here when needed
+        } else {
+            scoresHTML += '<table style="width:100%; border-collapse:collapse;"><thead><tr style="background:#f8f8f8;"><th style="padding:4px; text-align:left;">Time</th><th style="padding:4px; text-align:left;">Match</th><th style="padding:4px; text-align:center;">Score</th></tr></thead><tbody>';
+            group.forEach((g) => {
+                const scoreHome = (window_data.storedScores && window_data.storedScores[`${g.id}-h`]) || '';
+                const scoreAway = (window_data.storedScores && window_data.storedScores[`${g.id}-a`]) || '';
+                const scoreText = (scoreHome || scoreAway) ? `${scoreHome || '-'} - ${scoreAway || '-'}` : '';
+                scoresHTML += `<tr><td style="padding:6px; border-bottom:1px solid #eee; width:70px;">${g.t || ''}</td><td style="padding:6px; border-bottom:1px solid #eee;">${g.h} vs ${g.a}</td><td style="padding:6px; border-bottom:1px solid #eee; text-align:center;">${scoreText}</td></tr>`;
+            });
+            scoresHTML += '</tbody></table>';
+        }
+        scoresHTML += '</div>';
+    };
+
+    // Render Yesterday, Today, Tomorrow in that order
+    const yesterday = new Date(today); yesterday.setDate(today.getDate() - 1);
+    const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+
+    renderGroup(yesterday, "Yesterdays");
+    renderGroup(today, "Todays");
+    renderGroup(tomorrow, "Tomorrow's");
+
+    // (NEXT GAME DAY summary removed)
+
     scoresDisplay.innerHTML = scoresHTML;
     
     // Display ESPN stats if available

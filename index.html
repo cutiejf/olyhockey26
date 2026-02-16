@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Olympic Hockey Guide 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="flipbook.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
@@ -27,13 +28,13 @@
                 <p><strong>Olympic Hockey Legacy</strong><br>
                 Men's hockey debuted at the 1920 Summer Olympics before becoming a Winter Games staple in 1924. Canada dominated early, winning the first four gold medals and has since claimed nine total—the most of any nation. The U.S. enters with two gold medals (tied for third all-time) and a record eight silvers. Reigning champion Finland seeks to match Canada's 2010-2014 back-to-back feat, defending their first-ever gold won in 2022.</p>
             </div>
-            <div class="intro-logos">
+            <div class="intro-logos" style="transform: translateY(-4px);">
                 <img src="https://upload.wikimedia.org/wikipedia/en/6/60/2026_Winter_Olympics_logo.png?20210922122018" alt="Milano Cortina 2026">
                 <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/jbbqfkafamqfxovy0iut" alt="Olympic Rings">
                 <img src="https://img.olympics.com/images/image/private/t_s_9-16_800/f_auto/primary/aucd9penq1yskqrysm8n" alt="Milano Cortina Mascot">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Canadian_Olympic_Committee_logo.svg/960px-Canadian_Olympic_Committee_logo.svg.png?20181224225813" alt="Team Canada">
             </div>
-            <div class="intro-footer">
+            <div class="intro-footer" style="transform: translateY(-4px);">
                 FEBRUARY 11 - 22, 2026
             </div>
         </div>
@@ -43,17 +44,17 @@
     <div class="page">
         <div class="front panel" id="page-p5" style="padding: 12px 15px;">
             <h2 style="margin-bottom:8px;">Daily Buzz: Sunday, Feb 15</h2>
-            <div style="margin-bottom: 6px;">
-                <div style="font-size: 9px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 2px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px;">Yesterday's Scores</div>
-                <div id="yesterday-buzz-v" style="display: flex; flex-direction: column; gap: 3px;"></div>
+            <div style="margin-bottom: 8px;">
+                <div style="font-size: 12px; font-weight: 900; color: #444; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px;">Yesterday's Scores</div>
+                <div id="yesterday-buzz-v" style="display: flex; flex-direction: column; gap: 2px;"></div>
             </div>
-            <div style="margin-bottom: 6px;">
-                <div style="font-size: 9px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 2px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px;">Today's Schedule</div>
-                <div id="today-buzz-v" style="display: flex; flex-direction: column; gap: 3px;"></div>
+            <div style="margin-bottom: 8px;">
+                <div style="font-size: 12px; font-weight: 900; color: #444; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px;">Today's Schedule</div>
+                <div id="today-buzz-v" style="display: flex; flex-direction: column; gap: 2px;"></div>
             </div>
-            <div>
-                <div style="font-size: 9px; font-weight: 900; color: #888; border-bottom: 2px solid #eee; padding-bottom: 2px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1.5px;">Tomorrow's Games</div>
-                <div id="tomorrow-buzz-v" style="display: flex; flex-direction: column; gap: 3px;"></div>
+            <div style="margin-top:auto;">
+                <div style="font-size: 12px; font-weight: 900; color: #444; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px;">Tomorrow's Games</div>
+                <div id="tomorrow-buzz-v" style="display: flex; flex-direction: column; gap: 2px;"></div>
             </div>
             <div style="margin-top: auto; border-top: 1px dashed #ddd; padding-top: 6px; text-align: center; color: #bbb; font-size: 10px; font-style: italic;">"Gold isn't won on the ice, it's won in the heart."</div>
         </div>
@@ -61,7 +62,7 @@
             <h2>Group Standings</h2>
             <div class="flex-table-container" id="standings-tables-container"></div>
             <div style="margin-top:auto; font-size:9.5px; border-top:1px solid #ddd; padding-top:4px; color:#000; line-height:1.3;">
-                <div>Pts = (W × 3) + (OTW × 2) + (OTL × 1). * or t = OT Result. <strong>Tiebreaker:</strong> H2H record, then GD among tied teams.</div>
+                <div><strong>Points </strong>   =   Win × 3   |   OT/SO Win × 2   |   OT/SO Loss × 1 <p> <strong>Tiebreaker:</strong> H2H record, then GD among tied teams.</p></div>
             </div>
         </div>
     </div>
@@ -70,9 +71,16 @@
     <div class="page">
         <div class="front panel" id="page-p8" style="padding: 12px 16px 8px 16px;">
             <h2 style="margin-bottom: 6px;">Preliminaries</h2>
-            <div class="flex-table-container" style="justify-content: flex-start; overflow: visible;">
-                <table id="table-prelims" style="font-size: 13.1px;">
-                    <thead><tr><th class="c-grp" style="padding: 3px 8px;">G</th><th class="c-ven" style="padding: 3px 8px;">V</th><th class="c-date" style="padding: 3px 8px;">Date</th><th class="c-time" style="padding: 3px 8px;">ET</th><th class="c-match" style="padding: 3px 8px;">Matchup</th></tr></thead>
+            <div class="flex-table-container">
+                <table id="table-prelims" style="font-size: 13.1px; width: 100%; table-layout: fixed;">
+                    <colgroup>
+                        <col style="width: 28px;">
+                        <col style="width: 18px;">
+                        <col style="width: 80px;">
+                        <col style="width: 50px;">
+                        <col style="width: auto;">
+                    </colgroup>
+                    <thead><tr><th class="c-grp" style="padding: 5px 8px;">G</th><th class="c-ven" style="padding: 5px 8px;">V</th><th class="c-date" style="padding: 5px 8px;">Date</th><th class="c-time" style="padding: 5px 8px;">ET</th><th class="c-match" style="padding: 5px 8px;">Matchup</th></tr></thead>
                     <tbody id="sched-prelims-v"></tbody>
                 </table>
             </div>
@@ -83,19 +91,19 @@
             <div style="display:flex; border-bottom:1px solid #000;">
                 <div style="flex:1;">
                     <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:5px; color:#000; align-items:center; height:20px; overflow:hidden;">
-                        <span style="width:28px; flex-shrink:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;"></span>
+                        <span style="width:28px; flex-shrink:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">#</span>
                         <span style="flex:1; box-sizing:border-box; display:flex; align-items:center;">Team Name</span>
-                        <span style="width:48px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Group</span>
-                        <span style="width:30px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">GP</span>
-                        <span style="width:90px; flex-shrink:0; text-align:center; letter-spacing:0.8px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">Record</span>
-                        <span style="width:35px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">GD</span>
-                        <span style="width:35px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">PTS</span>
+                        <span style="width:36px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center; transform:translateX(-15px);">Group</span>
+                        <span style="width:28px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center; transform:translateX(-10px);">GP</span>
+                        <span style="width:70px; flex-shrink:0; text-align:center; letter-spacing:0.8px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; transform:translateX(-5px);">Record</span>
+                        <span style="width:30px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center; transform:translateX(3px);">GD</span>
+                        <span style="width:30px; flex-shrink:0; text-align:center; box-sizing:border-box; display:flex; align-items:center; justify-content:center; transform:translateX(2px);">PTS</span>
                         <span style="width:5%; box-sizing:border-box;"></span>
                     </div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">1</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">2</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">3</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
-                    <div class="seed-row seed-row-upper" style="gap:0%;"><div class="seed-num" style="width:28px; flex-shrink:0;">4</div><div class="seed-name" style="flex:1;"></div><div class="seed-grp" style="width:48px; flex-shrink:0;"></div><div class="seed-gp" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-record" style="width:90px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div class="seed-stat" style="width:35px; flex-shrink:0;"></div><div style="width:5%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">1</div><div class="seed-name" style="flex:1; text-align:left;"></div><div class="seed-grp" style="width:36px; flex-shrink:0; text-align:center; transform:translateX(-15px);"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center; transform:translateX(-10px);"></div><div class="seed-record" style="width:70px; flex-shrink:0; text-align:center; transform:translateX(-5px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(3px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(2px);"></div><div style="width:3%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">2</div><div class="seed-name" style="flex:1; text-align:left;"></div><div class="seed-grp" style="width:36px; flex-shrink:0; text-align:center; transform:translateX(-15px);"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center; transform:translateX(-10px);"></div><div class="seed-record" style="width:70px; flex-shrink:0; text-align:center; transform:translateX(-5px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(3px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(2px);"></div><div style="width:3%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">3</div><div class="seed-name" style="flex:1; text-align:left;"></div><div class="seed-grp" style="width:36px; flex-shrink:0; text-align:center; transform:translateX(-15px);"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center; transform:translateX(-10px);"></div><div class="seed-record" style="width:70px; flex-shrink:0; text-align:center; transform:translateX(-5px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(3px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(2px);"></div><div style="width:3%;"></div></div>
+                    <div class="seed-row seed-row-upper" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">4</div><div class="seed-name" style="flex:1; text-align:left;"></div><div class="seed-grp" style="width:36px; flex-shrink:0; text-align:center; transform:translateX(-15px);"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center; transform:translateX(-10px);"></div><div class="seed-record" style="width:70px; flex-shrink:0; text-align:center; transform:translateX(-5px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(3px);"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center; transform:translateX(2px);"></div><div style="width:3%;"></div></div>
                 </div>
                 <div class="vert-label">BYE TO QF</div>
             </div>
@@ -103,32 +111,32 @@
             <div style="display:flex; gap:15px; margin-top:4px;">
                 <div style="flex:1;">
                     <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:3px; padding:0; color:#000;">
-                        <span style="width:28px; flex-shrink:0;"></span>
-                        <span style="flex:1;">Team Name</span>
+                        <span style="width:28px; flex-shrink:0; text-align:center;">#</span>
+                        <span style="flex:1; text-align:center;">Team</span>
                         <span style="width:28px; flex-shrink:0; text-align:center;">GP</span>
                         <span style="width:30px; flex-shrink:0; text-align:center;">GD</span>
                         <span style="width:30px; flex-shrink:0; text-align:center;">PTS</span>
                     </div>
                     <div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">5</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">6</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">7</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">8</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">5</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">6</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">7</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">8</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
                     </div>
                 </div>
                 <div style="flex:1;">
                     <div style="display:flex; gap:0; font-size:11px; font-weight:bold; margin-bottom:3px; padding:0; color:#000;">
-                        <span style="width:28px; flex-shrink:0;"></span>
-                        <span style="flex:1;">Team Name</span>
+                        <span style="width:28px; flex-shrink:0; text-align:center;">#</span>
+                        <span style="flex:1; text-align:center;">Team</span>
                         <span style="width:28px; flex-shrink:0; text-align:center;">GP</span>
                         <span style="width:30px; flex-shrink:0; text-align:center;">GD</span>
                         <span style="width:30px; flex-shrink:0; text-align:center;">PTS</span>
                     </div>
                     <div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">9</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">10</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">11</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
-                        <div class="seed-row seed-row-lower" style="gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">12</div><div class="seed-name" style="flex:1;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div><div class="seed-stat" style="width:30px; flex-shrink:0;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">9</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">10</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">11</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
+                        <div class="seed-row seed-row-lower" style="gap:4px;"><div class="seed-num" style="width:28px; flex-shrink:0; text-align:center; font-weight:bold;">12</div><div class="seed-name" style="flex:1; text-align:center;"></div><div class="seed-gp" style="width:28px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div><div class="seed-stat" style="width:30px; flex-shrink:0; text-align:center;"></div></div>
                     </div>
                 </div>
                 <div class="vert-label">QUALIFICATION</div>
@@ -152,19 +160,23 @@
                     <tbody id="qual-games-v"></tbody>
                 </table>
             </div>
-            <!-- Reseed section for Quarterfinals -->
-            <div style="margin-top:auto; margin-bottom:6px; padding:8px; background:#f0f0f0; border:1px solid #ccc; border-radius:3px;">
-                <div style="font-size:10px; font-weight:900; color:#333; margin-bottom:5px; text-transform:uppercase;">Reseed for Quarterfinals</div>
-                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:4px; font-size:10px;">
-                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">1</div><div class="seed-name" style="flex:1;"></div></div>
-                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">2</div><div class="seed-name" style="flex:1;"></div></div>
-                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">3</div><div class="seed-name" style="flex:1;"></div></div>
-                    <div class="seed-row" style="margin:0; gap:0;"><div class="seed-num" style="width:28px; flex-shrink:0;">4</div><div class="seed-name" style="flex:1;"></div></div>
+            <!-- Simple reseed line -->
+            <div style="border-top:1px solid #ccc; margin-top:8px; padding-top:4px; margin-bottom:4px;">
+                <div style="font-size:9px; font-weight:600; color:#666; margin-bottom:2px; text-transform:uppercase;">Reseed for Quarterfinals</div>
+                <div style="display:flex; width:100%; padding:2px 0;">
+                    <span style="width:8%; text-align:center; font-size:12px; font-weight:bold; color:#800;">1 <span style="color:#ccc;">|</span></span>
+                    <span style="width:17%; text-align:center;"></span>
+                    <span style="width:8%; text-align:center; font-size:12px; font-weight:bold; color:#800;">2 <span style="color:#ccc;">|</span></span>
+                    <span style="width:17%; text-align:center;"></span>
+                    <span style="width:8%; text-align:center; font-size:12px; font-weight:bold; color:#800;">3 <span style="color:#ccc;">|</span></span>
+                    <span style="width:17%; text-align:center;"></span>
+                    <span style="width:8%; text-align:center; font-size:12px; font-weight:bold; color:#800;">4 <span style="color:#ccc;">|</span></span>
+                    <span style="width:17%; text-align:center;"></span>
                 </div>
             </div>
             <div style="font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:4px; line-height:1.3;">
-                <div style="margin-bottom:3px;"><strong>Seeding:</strong> Group winners → Seeds 1-3. Best 2nd place → Seed 4. Then by: Pts > GD > GF > IIHF Ranking.</div>
-                <div>Semi-Finals: Highest seed plays lowest, 2nd-highest plays 3rd-highest.</div>
+                <div style="margin-bottom:3px;"><strong>Seeding:</strong> Group winners → Seeds 1-3. Best 2nd place → Seed 4. Then: Pts > GD > GF > IIHF Rank.</div>
+                <div><strong>Semi-Finals:</strong> Highest seed plays lowest, 2nd-highest plays 3rd-highest.</div>
             </div>
         </div>
     </div>
@@ -174,31 +186,40 @@
         <div class="front panel" id="page-p10" style="padding-right: 10px;">
             <h2 style="margin-top:0;">Knockout Bracket</h2>
             <div class="flex-table-container">
-                <table id="table-ko" style="font-size: 12px;">
+                <table id="table-ko" style="font-size: 12px; width: 100%; table-layout: fixed;">
+                    <colgroup>
+                        <col style="width: 30px;">
+                        <col style="width: 18px;">
+                        <col style="width: 80px;">
+                        <col style="width: 50px;">
+                        <col style="width: 22px;">
+                        <col style="width: auto;">
+                        <col style="width: 22px;">
+                    </colgroup>
                     <tbody id="sched-ko-v"></tbody>
                 </table>
             </div>
             <!-- Podium Footer -->
-            <div style="margin-top:auto; padding:10px; background:#f8f8f8; border:1px solid #ddd; border-radius:4px;">
-                <div style="display:flex; align-items:flex-end; justify-content:center; gap:15px; height:85px;">
+            <div style="margin-top:4px; padding:6px; background:#f8f8f8; border:1px solid #ddd; border-radius:4px;">
+                <div style="display:flex; align-items:flex-end; justify-content:center; gap:0px; height:85px; width:100%;">
                     <!-- Silver (2nd) -->
-                    <div style="display:flex; flex-direction:column; align-items:center; width:90px;">
+                    <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
                         <div id="podium-silver" style="font-size:11px; font-weight:bold; text-align:center; margin-bottom:3px; padding:3px 6px; background:#fff; border:1px dashed #999; border-radius:3px; min-width:70px;">TBD</div>
-                        <div style="background:linear-gradient(180deg, #C0C0C0 0%, #A8A8A8 100%); width:100%; height:50px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #999;">
+                        <div style="background:linear-gradient(180deg, #C0C0C0 0%, #A8A8A8 100%); width:100%; height:50px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #999; box-shadow:inset 2px 2px 4px rgba(255,255,255,0.7), inset -2px -2px 4px rgba(0,0,0,0.2);">
                             <span style="font-size:20px;">🥈</span>
                         </div>
                     </div>
                     <!-- Gold (1st - tallest) -->
-                    <div style="display:flex; flex-direction:column; align-items:center; width:100px;">
+                    <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
                         <div id="podium-gold" style="font-size:11px; font-weight:bold; text-align:center; margin-bottom:3px; padding:3px 6px; background:#fff; border:1px dashed #B8860B; border-radius:3px; min-width:80px;">TBD</div>
-                        <div style="background:linear-gradient(180deg, #FFD700 0%, #DAA520 100%); width:100%; height:65px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #B8860B;">
-                            <span style="font-size:24px;">🥇</span>
+                        <div style="background:linear-gradient(180deg, #FFD700 0%, #DAA520 100%); width:100%; height:65px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #B8860B; box-shadow:inset 3px 3px 8px rgba(255,255,255,0.8), inset -3px -3px 8px rgba(0,0,0,0.3), 0 6px 12px rgba(0,0,0,0.3); transform:translateY(-5px);">
+                            <span style="font-size:24px; text-shadow:2px 2px 4px rgba(0,0,0,0.4);">🥇</span>
                         </div>
                     </div>
                     <!-- Bronze (3rd - shortest) -->
-                    <div style="display:flex; flex-direction:column; align-items:center; width:90px;">
+                    <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
                         <div id="podium-bronze" style="font-size:11px; font-weight:bold; text-align:center; margin-bottom:3px; padding:3px 6px; background:#fff; border:1px dashed #8B4513; border-radius:3px; min-width:70px;">TBD</div>
-                        <div style="background:linear-gradient(180deg, #CD7F32 0%, #8B4513 100%); width:100%; height:40px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #8B4513;">
+                        <div style="background:linear-gradient(180deg, #CD7F32 0%, #8B4513 100%); width:100%; height:40px; display:flex; align-items:center; justify-content:center; border-radius:3px 3px 0 0; border:1px solid #8B4513; box-shadow:inset 2px 2px 4px rgba(255,255,255,0.5), inset -2px -2px 4px rgba(0,0,0,0.3);">
                             <span style="font-size:18px;">🥉</span>
                         </div>
                     </div>
@@ -208,25 +229,19 @@
         <div class="back panel" id="page-p_new8" style="padding: 15px; background: #fdfdfd;">
             <h2>Global Contenders</h2>
             <div style="margin-top: 2px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; width: calc(100% - 10px); max-width: none; margin-left: 0; margin-right: auto; justify-items: start;">
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:4px; font-size:13px; padding:2px 4px 2px 0;">
-                <img src="https://flagcdn.com/w80/ca.png" style="width:38.5px; height:25px; border:1px solid #bbb; margin-right:2px; margin-left:0;">
-                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
-                  <div style="display:flex; align-items:flex-start; gap:6px;">
-                    <span style="font-weight:900; color:#222; font-size:14px;">Canada</span>
-                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:4px; margin-left:4px;"></span>
-                  </div>
-                  <div style="margin-top:3px; color:#222; font-size:12px; font-weight:500; white-space:nowrap;">McDavid, Crosby, MacKinnon</div>
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:8px; font-size:13px; padding:8px 10px; background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,248,248,0.6) 100%); border:1px solid #ddd; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+                <img src="https://flagcdn.com/w80/ca.png" style="width:28px; height:19px; border:1px solid #ccc; border-radius:2px; margin-right:4px; margin-left:0; object-fit: cover;">
+                <div style="display:flex; flex-direction:column; justify-content:center; min-width:0; flex:1;">
+                  <div style="font-weight:900; color:#222; font-size:14px; margin-bottom:2px;">Canada</div>
+                  <div style="color:#666; font-size:11px; font-weight:500; white-space:nowrap;">McDavid, Crosby, MacKinnon</div>
                 </div>
               </div>
 
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:4px; font-size:13px; padding:2px 4px 2px 0;">
-                <img src="https://flagcdn.com/w80/us.png" style="width:38.5px; height:25px; border:1px solid #bbb; margin-right:2px; margin-left:0;">
-                <div style="display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding-left:0;">
-                  <div style="display:flex; align-items:flex-start; gap:6px;">
-                    <span style="font-weight:900; color:#222; font-size:14px;">USA</span>
-                    <span style="flex:1; border-bottom:2px solid #bbb; height:0; margin-bottom:4px; margin-left:4px;"></span>
-                  </div>
-                  <div style="margin-top:3px; color:#222; font-size:12px; font-weight:500; white-space:nowrap;">Matthews, Tkachuk, Hughes</div>
+              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:8px; font-size:13px; padding:8px 10px; background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,248,248,0.6) 100%); border:1px solid #ddd; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+                <img src="https://flagcdn.com/w80/us.png" style="width:28px; height:19px; border:1px solid #ccc; border-radius:2px; margin-right:4px; margin-left:0; object-fit: cover;">
+                <div style="display:flex; flex-direction:column; justify-content:center; min-width:0; flex:1;">
+                  <div style="font-weight:900; color:#222; font-size:14px; margin-bottom:2px;">USA</div>
+                  <div style="color:#666; font-size:11px; font-weight:500; white-space:nowrap;">Matthews, Tkachuk, Hughes</div>
                 </div>
               </div>
             </div>
@@ -234,7 +249,7 @@
             <!-- Stats Section -->
             <div style="margin-top: 8px;">
               <div style="font-size: 14px; font-weight: 900; color: #c0392b; margin-bottom: 4px; text-transform: uppercase; letter-spacing:1px;">Top 5 Points</div>
-              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 2px; margin-bottom:8px; table-layout:fixed;">
+              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; margin-bottom:8px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
                     <th style="padding:2px; text-align:center; width:4%; font-size:10px;">#</th>
@@ -306,7 +321,7 @@
               </table>
 
               <div style="font-size: 14px; font-weight: 900; color: #2980b9; margin-bottom: 4px; text-transform: uppercase; letter-spacing:1px;">Top 5 Goalies</div>
-              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 2px; table-layout:fixed;">
+              <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
                     <th style="padding:2px; text-align:center; width:4%; font-size:10px;">#</th>
@@ -388,7 +403,7 @@
     <!-- Page 4: Rules + Canada Pic (New Order: 9,10) -->
     <div class="page">
         <div class="front panel" id="page-p_rules" style="padding: 15px; background: #fff;">
-            <h2 style="margin-bottom: 8px;">Tournament Rules</h2>
+            <h2 style="margin-bottom: 4px;">Tournament Rules</h2>
             <div class="rules-main-list">
                 <div class="rule-block">
                     <b>Fighting ejections</b>
@@ -407,14 +422,24 @@
                     <p>In international play, checks to the head can be called as major penalties or game misconducts if the referee deems the play reckless.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 6px; margin-top: 6px;">
+            <div class="three-up-row" style="display: flex; gap: 3px; margin-top: 2px;">
                 <div class="ot-container" style="flex: 1;">
                     <h3>Point System</h3>
-                    <p style="font-size: 10px; margin: 0; color: #222;">3 points for regulation win, 2 for OT/SO win, 1 for OT/SO loss, 0 for regulation loss.</p>
+                    <ul style="margin:0; padding-left:16px; color:#222;">
+                        <li><b>3 pts</b> for regulation win</li>
+                        <li><b>2 pts</b> for OT/SO win</li>
+                        <li><b>1 pt</b> for OT/SO loss</li>
+                        <li><b>0 pts</b> for regulation loss</li>
+                    </ul>
                 </div>
                 <div class="ot-container" style="flex: 1;">
                     <h3>Rosters</h3>
-                    <p style="font-size: 10px; margin: 0; color: #222;">22-man active game rosters (20 skaters, 2 goalies). Lineups due 60m before puck drop.</p>
+                    <ul style="margin:0; padding-left:16px; color:#222;">
+                       <p> <b>22</b>  active players / match</p>
+                         <p> <b>20 </b>skaters + <b>2 </b>goalies</p> 
+                         <p> <b>NHL:</b> 20 max</b>, 18 F/D & 2 G</p> 
+                         <p> Due<b> 1hr</b> before puck drop.</p>
+                    </ul>
                 </div>
                 <div class="ot-container" style="flex: 1;">
                     <h3>Rink Dimensions</h3>
@@ -423,21 +448,21 @@
                     <p style="font-size: 10px; margin: 0; color: #222;"><b style="font-size: 10.5px;">OLY:</b> 196.85 L × 85.3 W ft.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 6px; margin-top: 6px;">
-                <div class="ot-container" style="flex: 0 0 55%;">
+            <div style="display: flex; gap: 3px; margin-top: 2px;">
+                <div class="ot-container" style="flex: 0 0 calc(50% - 1.5px);">
                     <h3>Overtime Formats</h3>
                     <div class="ot-sub-item"><b>Preliminary Round</b><p>5-minute 3-on-3 sudden death followed by a shootout.</p></div>
                     <div class="ot-sub-item"><b>Quarter/Semifinals</b><p>10-minute 3-on-3 sudden death followed by a shootout.</p></div>
                     <div class="ot-sub-item"><b>Gold Medal Game (No shootouts)</b><p>Unlimited 20-minute 3-on-3 periods until a winner scores.</p></div>
                 </div>
-                <div class="ot-container" style="flex: 0 0 45%;">
+                <div class="ot-container" style="flex: 0 0 calc(50% - 1.5px);">
                     <h3>Equipment</h3>
                     <div class="ot-sub-item"><b>Goalie Mask Designs</b><p>Need pre-approval from tournament officials.</p></div>
                     <div class="ot-sub-item"><b>Neck Guards</b><p>Mandatory for all players on the ice.</p></div>
                     <div class="ot-sub-item"><b>Sticks</b><p>Must be on market within last 6 months.</p></div>
                 </div>
             </div>
-            <div style="margin-top:auto; font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:4px; line-height:1.3;">
+            <div class="rules-footer" style="margin-top:auto;">
                 Complete IIHF rulebook can be found <a href="https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/3_the_iihf/2025-26_iihf_rulebook_22122025-v1.pdf" target="_blank" style="color:#2980b9; text-decoration:underline;">here</a>.
             </div>
         </div>
@@ -465,12 +490,17 @@
         </div>
         <div class="back panel page-layout-full" id="page-p3">
             <img src="https://c.imggu.com/i/2026/02/12/7Fp1Y.png" class="bg-img" alt="Santagiulia Collage">
-            <div class="venue-header-overlay">
-                <div class="venue-title-perf"><b>Santagiulia</b><div class="divider"></div>Arena Italia</div>
-                <div class="venue-architect-perf">Architect: David Chipperfield</div>
-            </div>
+            <!-- Removed header overlay, titles moved to footer -->
             <div class="text-bottom-overlay pos-giulia">
+                <div class="venue-title-perf">
+                    <span class="venue-main">Santagiulia</span>
+                    <span class="divider">|</span>
+                    <span class="venue-nick">Arena Italia</span>
+                </div>
+                <div class="venue-architect-perf">Architect: David Chipperfield</div>
+                <!-- Description saved for later:
                 <p class="desc-text-perf" style="font-size: 13px; line-height: 1.5;">The Santagiulia Arena is the high-tech cathedral for the gold medal quest. Its shimmering metallic rings echo the spiraling ramps of the legendary San Siro stadium, glowing with LED strips at night. Inside, the surface is crafted by legendary ice man Don Moffatt, providing a stage for 16,000 fans to witness the crowning of Olympic champions.</p>
+                -->
             </div>
         </div>
     </div>
@@ -479,12 +509,17 @@
     <div class="page">
         <div class="front panel page-layout-full" id="page-p4">
             <img src="https://b.imggu.com/i/2026/02/12/7FWCV.png" class="bg-img" alt="Rho Fiera Collage">
-            <div class="venue-header-overlay align-right">
-                <div class="venue-title-perf"><b>Rho Fiera</b><div class="divider"></div>Total Ice Park</div>
-                <div class="venue-architect-perf">Architect: Massimiliano Fuksas</div>
-            </div>
+            <!-- Removed header overlay, titles moved to footer -->
             <div class="text-bottom-overlay pos-rho">
+                <div class="venue-title-perf">
+                    <span class="venue-main">Rho Fiera</span>
+                    <span class="divider">|</span>
+                    <span class="venue-nick">Total Ice Park</span>
+                </div>
+                <div class="venue-architect-perf">Architect: Massimiliano Fuksas</div>
+                <!-- Description saved for later:
                 <p class="desc-text-perf" style="font-size: 13px; line-height: 1.5;">The Milano Ice Park is where the beauty of the sport meets the beast of architecture. The campus features a Speed Skating Stadium for 7,500 fans and a secondary Hockey Arena for 6,000. Under its sweeping glass roof, this landmark facility creates a high-performance environment where elegance and power collide.</p>
+                -->
             </div>
         </div>
         <div class="back panel" id="page-p11">
@@ -520,6 +555,14 @@
                     <strong>Seeding Criteria:</strong><br>
                     1. Group position 2. Points 3. GD 4. GF 5. IIHF Ranking. Group tiebreaker: H2H first, then GD among tied.
                 </div>
+                <div style="margin-bottom: 8px; padding: 8px; background: #fff7e6; border-left: 3px solid #b8860b;">
+                    <strong>Disciplinary:</strong><br>
+                    Canada's Tom Wilson and France's Pierre Crinon were ejected for fighting.
+                </div>
+                <div style="margin-bottom: 8px; padding: 8px; background: #fff7f7; border-left: 3px solid #8e44ad;">
+                    <strong>Records:</strong><br>
+                    Sydney Crosby becomes the record point holder among active Olympic players with 16 pts.
+                </div>
             </div>
             <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
             <div style="border-bottom: 1px solid #eee; height: 25px;"></div>
@@ -551,9 +594,11 @@
 
 <!-- Navigation Buttons -->
 <div class="page-display" id="page-display">COVER</div>
-<button class="push--prev" onclick="bookPrev()" title="Previous"></button>
-<button class="push--next" onclick="bookNext()" title="Next"></button>
-<button class="push--menu" onclick="toggleMenu()" id="menu-toggle" title="Menu"></button>
+<div class="page-controls-arcade" role="group" aria-label="Navigation Controls">
+    <button class="push--prev push--flat" onclick="bookPrev()" title="Previous"></button>
+    <button class="push--next push--flat" onclick="bookNext()" title="Next"></button>
+</div>
+<button class="push--menu push--flat" onclick="toggleMenu()" id="menu-toggle" title="Menu"></button>
 <div class="menu-dropdown" id="menu-dropdown">
     <button class="menu-item" onclick="toggleFullscreen(); closeMenu();">⛶ Fullscreen</button>
     <button class="menu-item" onclick="resetBook(); closeMenu();">⟲ Reset</button>
@@ -644,11 +689,15 @@ document.addEventListener('click', (e) => {
     if (panel) {
         const rect = panel.getBoundingClientRect();
         const x = e.clientX - rect.left;
-        const edgeWidth = rect.width * 0.2;
-        if (x < edgeWidth && window.bookPrev) {
-            window.bookPrev();
-        } else if (x > rect.width - edgeWidth && window.bookNext) {
-            window.bookNext();
+        const edgeWidth = rect.width * 0.35; // 35% on each side
+        
+        const isFront = panel.classList.contains('front');
+        const isBack = panel.classList.contains('back');
+        
+        if (isFront && x > rect.width - edgeWidth) {
+            if (window.bookNext) window.bookNext();
+        } else if (isBack && x < edgeWidth) {
+            if (window.bookPrev) window.bookPrev();
         }
     }
 });
@@ -774,7 +823,8 @@ window.HockeyData = {
         "p9-h": "3", "p9-a": "6", "p10-h": "5", "p10-a": "1",
         "p11-h": "5", "p11-a": "3", "p12-h": "3", "p12-a": "4",
         "p13-h": "11", "p13-a": "0", "p14-h": "6", "p14-a": "3",
-        "p15-h": "4", "p15-a": "3*", "p16-h": "10", "p16-a": "2"
+        "p15-h": "4", "p15-a": "3*", "p16-h": "10", "p16-a": "2",
+        "p17-h": "4", "p17-a": "2", "p18-h": "5", "p18-a": "1"
     },
     "storedESPNStats": {
         "scorers": [
@@ -883,26 +933,40 @@ function injectTables() {
     const storedScores = data.storedScores || {};
     const flagMap = data.flagMap || {};
 
+    const getFlagImgBuzz = (name) => {
+        let code = null;
+        for (const key in flagMap) {
+            if (name.indexOf(key) !== -1) { code = flagMap[key]; break; }
+        }
+        if (!code) return '';
+        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;">';
+    };
     const getFlagImg = (name) => {
         let code = null;
         for (const key in flagMap) {
             if (name.indexOf(key) !== -1) { code = flagMap[key]; break; }
         }
         if (!code) return ''; // No flag for placeholders like "Reseed 1", "Win QF", etc.
-        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 4px;">';
+        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 -16px;">';
+    };
+    // Highlight 'Reseed N' substrings so we can style them
+    const highlightReseed = (s) => {
+        if (!s) return s;
+        // Wrap only the number in a reseed span: 'Reseed 4' => 'Reseed <span class="reseed">4</span>'
+        return s.replace(/Reseed\s*(\d+)/ig, function(_, p1) { return 'Reseed ' + '<span class="reseed">' + p1 + '</span>'; });
     };
     
     // Helper to format team name appropriately for knockouts
-    const formatKOTeam = (name, isHome) => {
-        const flag = getFlagImg(name);
-        if (flag) {
-            // Real team - show 3-letter code + flag
-            const abbr = name.substring(0,3).toUpperCase();
-            return isHome ? abbr + ' ' + flag : flag + ' ' + abbr;
-        } else {
-            // Placeholder - show as-is
-            return name;
+    const formatKOTeam = (name) => {
+        return name; // Just return name, flags handled separately
+    };
+    
+    // Helper to get flag code for knockout teams
+    const getKOFlag = (name) => {
+        for (const key in flagMap) {
+            if (name.indexOf(key) !== -1) return flagMap[key];
         }
+        return null;
     };
 
     // Preliminaries with editable score boxes
@@ -911,17 +975,17 @@ function injectTables() {
         pBody.innerHTML = '';
         prelims.forEach(g => {
             const tr = document.createElement('tr');
-            tr.innerHTML = '<td class="c-grp" style="padding:3px 8px; color:' + getGrpColor(g.g) + '">' + g.g + '</td>' +
-                '<td class="c-ven" style="padding:3px 8px;">' + g.v + '</td>' +
-                '<td class="c-date" style="padding:3px 8px;">' + g.d + '</td>' +
-                '<td class="c-time" style="padding:3px 8px;">' + g.t + '</td>' +
-                '<td class="c-match" style="padding:3px 8px;">' +
-                    '<span class="team-home">' + g.h.substring(0,3).toUpperCase() + ' ' + getFlagImg(g.h) + '</span>' +
-                    '<span class="score-area">' +
+            tr.innerHTML = '<td class="c-grp" style="padding:5px 8px; color:' + getGrpColor(g.g) + '">' + g.g + '</td>' +
+                '<td class="c-ven" style="padding:5px 8px;">' + g.v + '</td>' +
+                '<td class="c-date" style="padding:5px 8px;">' + g.d + '</td>' +
+                '<td class="c-time" style="padding:5px 8px;">' + g.t + '</td>' +
+                '<td class="c-match" style="padding:5px 8px;">' +
+                    '<span class="team-home" style="display:inline-flex; align-items:center; width:60px; justify-content:flex-start;"><span style="display:inline-block; width:18px; text-align:center; vertical-align:middle;">' + getFlagImg(g.h) + '</span><span style="text-align:right; padding-right:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;">' + g.h.substring(0,3).toUpperCase() + '</span></span>' +
+                    '<span class="score-area" style="display:inline-flex; align-items:center; width:44px; justify-content:center; margin:0 6px;">' +
                         '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
                         '<span class="sb" contenteditable="true" data-key="' + g.id + '-a">' + (storedScores[g.id + '-a'] || '') + '</span>' +
                     '</span>' +
-                    '<span class="team-away">' + getFlagImg(g.a) + ' ' + g.a.substring(0,3).toUpperCase() + '</span>' +
+                    '<span class="team-away" style="display:inline-flex; align-items:center; width:60px; justify-content:flex-end;"><span style="text-align:left; padding-left:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;">' + g.a.substring(0,3).toUpperCase() + '</span><span style="display:inline-block; width:18px; text-align:center; vertical-align:middle;">' + getFlagImg(g.a) + '</span></span>' +
                 '</td>';
             pBody.appendChild(tr);
         });
@@ -931,24 +995,68 @@ function injectTables() {
     const kBody = document.getElementById('sched-ko-v');
     if (kBody) {
         kBody.innerHTML = '';
+        // Filter out the qualification header from the knockout rendering
         knockouts.filter(g => !g.header || g.header !== 'QUALIFICATION ROUND').forEach(g => {
             if (g.g === 'Q') return; // Skip qualification games
+            if (g.header === 'MEDAL GAMES') return; // do not render the generic medal games header
             const tr = document.createElement('tr');
             if (g.header) {
-                tr.innerHTML = '<td colspan="5" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:4px 0 8.8px 0;">' + g.header + '</td>';
+                // If we're about to render Quarterfinals, add the quote above it
+                if (g.header === 'QUARTERFINALS') {
+                    const quoteRow = document.createElement('tr');
+                    quoteRow.innerHTML = '<td colspan="7" class="ko-quote" style="background:transparent; text-align:center; padding:6px 0; font-size:16px;">And then there were eight..</td>';
+                    kBody.appendChild(quoteRow);
+                    // spacer to give extra gap above the Quarterfinals header
+                    const spacer = document.createElement('tr');
+                    spacer.innerHTML = '<td colspan="7" style="background:transparent; height:10px; line-height:10px;">&nbsp;</td>';
+                    kBody.appendChild(spacer);
+                }
+                tr.innerHTML = '<td colspan="7" style="background:#f4f4f4; text-align:center; font-weight:900; font-size:12px; border-bottom:1px solid #000; padding:4px 0;">' + g.header + '</td>';
             } else {
-                tr.innerHTML = '<td class="c-grp" style="padding:8.8px 0">' + g.g + '</td>' +
-                    '<td class="c-ven" style="padding:8.8px 5px;">' + g.v + '</td>' +
-                    '<td class="c-date" style="width:85px; padding:8.8px 5px;">' + g.d + '</td>' +
-                    '<td class="c-time" style="width:50px; padding:8.8px 5px;">' + g.t + '</td>' +
-                    '<td class="c-match" style="padding:8.8px 5px;">' +
-                        '<span class="team-home">' + formatKOTeam(g.h, true) + '</span>' +
-                        '<span class="score-area">' +
+                // Insert separate headers for Bronze and Gold medal games
+                if (g.id === 'k11') {
+                    const bronzeHeader = document.createElement('tr');
+                    bronzeHeader.innerHTML = '<td colspan="7"><div class="medal-header bronze"><span class="medal-title">BRONZE MEDAL GAME</span></div></td>';
+                    kBody.appendChild(bronzeHeader);
+                    // small spacer below bronze header
+                    const spacerBelowBronze = document.createElement('tr');
+                    spacerBelowBronze.innerHTML = '<td colspan="7" style="background:transparent; height:2px; line-height:2px;">&nbsp;</td>';
+                    kBody.appendChild(spacerBelowBronze);
+                }
+                if (g.id === 'k12') {
+                    // small spacer above gold header
+                    const spacerAboveGold = document.createElement('tr');
+                    spacerAboveGold.innerHTML = '<td colspan="7" style="background:transparent; height:8px; line-height:8px;">&nbsp;</td>';
+                    kBody.appendChild(spacerAboveGold);
+                    const goldHeader = document.createElement('tr');
+                    goldHeader.innerHTML = '<td colspan="7"><div class="medal-header gold"><span class="medal-title">GOLD MEDAL MATCH</span></div></td>';
+                    kBody.appendChild(goldHeader);
+                    // add larger spacer below the gold header to lower the match row and prevent scrunching
+                    const spacerBelowGoldHeader = document.createElement('tr');
+                    spacerBelowGoldHeader.innerHTML = '<td colspan="7" style="background:transparent; height:16px; line-height:16px;">&nbsp;</td>';
+                    kBody.appendChild(spacerBelowGoldHeader);
+                }
+
+                var homeFlag = getKOFlag(g.h) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.h) + '.png" style="width:16px; height:11px; vertical-align:-1px;">' : '';
+                var awayFlag = getKOFlag(g.a) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.a) + '.png" style="width:16px; height:11px; vertical-align:-1px;">' : '';
+                const homeLabel = highlightReseed(formatKOTeam(g.h));
+                const awayLabel = highlightReseed(formatKOTeam(g.a));
+
+                tr.innerHTML = '<td class="c-grp" style="padding:6px 2px;">' + g.g + '</td>' +
+                    '<td class="c-ven" style="padding:6px 5px;">' + g.v + '</td>' +
+                    '<td class="c-date" style="padding:6px 5px;">' + g.d + '</td>' +
+                    '<td class="c-time" style="padding:6px 5px;">' + g.t + '</td>' +
+                    // Qualification-style flags: left flag cell (right-aligned), match cell, right flag cell (left-aligned)
+                    '<td class="c-flag" style="padding:6px 6px 6px 8px; text-align:right; width:22px;">' + (homeFlag ? homeFlag : '') + '</td>' +
+                    '<td class="c-match" style="padding:6px 4px; text-align:center;">' +
+                        '<span style="display:inline-block; min-width:64px; text-align:right; padding-right:4px;">' + homeLabel + '</span>' +
+                        '<span class="score-area" style="display:inline-block; width:36px;">' +
                             '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
                             '<span class="sb" contenteditable="true" data-key="' + g.id + '-a">' + (storedScores[g.id + '-a'] || '') + '</span>' +
                         '</span>' +
-                        '<span class="team-away">' + formatKOTeam(g.a, false) + '</span>' +
-                    '</td>';
+                        '<span style="display:inline-block; min-width:64px; text-align:left; padding-left:4px;">' + awayLabel + '</span>' +
+                    '</td>' +
+                    '<td class="c-flag" style="padding:6px 2px 6px 3px; text-align:left; width:22px;">' + (awayFlag ? awayFlag : '') + '</td>';
             }
             kBody.appendChild(tr);
         });
@@ -968,79 +1076,126 @@ function injectTables() {
         });
     }
 
-    // Daily buzz - Current date is Sun Feb 15
-    const todayStr = 'Sun Feb 15';
-    const yesterdayStr = 'Sat Feb 14';
-    const tomorrowStr = 'Tue Feb 17';
+    // Daily buzz - grouped date rendering (Yesterday / Today / Tomorrow + NEXT GAME DAY)
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    const year = new Date().getFullYear();
 
-    // Consistent row style with fixed-width time column
+    const parseDataDate = (s) => {
+        if (!s) return null;
+        const m = s.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})/i);
+        if (!m) return null;
+        const mon = m[1].slice(0,1).toUpperCase() + m[1].slice(1).toLowerCase();
+        const day = parseInt(m[2], 10);
+        const monthMap = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+        return new Date(year, monthMap[mon], day);
+    };
+
+    const formatDateKey = (d) => {
+        return new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(d).replace(/,\s*/g, ' ');
+    };
+
+    // Combine prelims + knockouts into schedule
+    const schedule = [];
+    (prelims || []).forEach(p => schedule.push(p));
+    (knockouts || []).forEach(k => { if (k && k.id) schedule.push(k); });
+
+    // Group games by formatted date key
+    const byDate = {};
+    schedule.forEach(g => {
+        const dt = parseDataDate(g.d);
+        if (!dt) return;
+        const key = formatDateKey(dt);
+        if (!byDate[key]) byDate[key] = [];
+        byDate[key].push(g);
+    });
+
+    const todayKey = formatDateKey(now);
+    const yesterdayDate = new Date(now); yesterdayDate.setDate(now.getDate() - 1);
+    const tomorrowDate = new Date(now); tomorrowDate.setDate(now.getDate() + 1);
+    const yesterdayKey = formatDateKey(yesterdayDate);
+    const tomorrowKey = formatDateKey(tomorrowDate);
+
+    // Update title
+    const buzzTitle = document.querySelector('#page-p5 h2');
+    if (buzzTitle) buzzTitle.textContent = 'Daily Buzz: ' + todayKey;
+
+    // Row styles
     const buzzRowStyle = 'display:flex; align-items:center; font-size:13px; font-weight:bold; padding:4px 0;';
-    const grpColStyle = 'width:18px; text-align:center; font-weight:900; margin-right:4px; font-size:12px;';
-    const venColStyle = 'width:16px; text-align:center; margin-right:3px; font-size:12px; color:#888;';
-    const timeColStyle = 'width:55px; text-align:center; font-weight:900; margin-right:6px; font-size:12px;';
-    const scoreBoxStyle = 'margin:0 4px; background:#000; color:#fff; padding:3px 7px; border-radius:3px; min-width:40px; text-align:center; font-size:13px;';
+    const grpColStyle = 'width:16px; text-align:center; font-weight:900; margin-right:2px; font-size:12px;';
+    const venColStyle = 'width:14px; text-align:center; margin-right:2px; font-size:12px; color:#888;';
+    const timeColStyle = 'width:62px; text-align:center; font-weight:900; margin-right:4px; font-size:12px;';
+    const scoreBoxStyle = 'margin:0 3px; background:#000; color:#fff; padding:3px 6px; border-radius:3px; min-width:38px; text-align:center; font-size:13px;';
 
-    const yBuzz = document.getElementById('yesterday-buzz-v');
-    if (yBuzz) {
-        yBuzz.innerHTML = '';
-        prelims.filter(m => m.d === yesterdayStr).forEach(m => {
-            yBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
-                '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
-                '<span style="' + venColStyle + '">' + m.v + '</span>' +
-                '<span style="' + timeColStyle + 'color:#c0392b;">F</span>' +
-                '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
-                '<span style="' + scoreBoxStyle + '">' + (storedScores[m.id + '-h'] || '0') + '-' + (storedScores[m.id + '-a'] || '0') + '</span>' +
-                '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
+    const renderBuzzList = (container, key, mode) => {
+        if (!container) return;
+        container.innerHTML = '';
+        const list = byDate[key] || [];
+        if (!list.length) {
+            container.innerHTML = '<div style="text-align:center; color:#800000; font-size:15px; padding:10px 0; margin:8px 0 6px 0; font-weight:800;">DAY BREAK - NO GAMES</div>';
+            // If this is today's day break, show the Women's Semifinals note below
+            if (key === todayKey) {
+                container.innerHTML += '<div style="text-align:center; font-size:11px; font-weight:700; color:#333; margin-top:-4px; margin-bottom:4px;">WOMAN\'S SEMI-FINALS</div>';
+                container.innerHTML += '<div style="display:flex; flex-direction:row; gap:18px; justify-content:center; align-items:center; font-size:12px; color:#222; margin-bottom:6px;">' +
+                    '<div>USA vs SWE — 10:40a</div>' +
+                    '<div style="opacity:0.6;">•</div>' +
+                    '<div>CAN vs SWI — 3:10p</div>' +
                 '</div>';
-        });
-    }
+            }
+            return;
+        }
+        list.forEach(m => {
+            const hKey = m.id + '-h';
+            const aKey = m.id + '-a';
+            const homeScore = (storedScores && storedScores[hKey]) || '';
+            const awayScore = (storedScores && storedScores[aKey]) || '';
+            const hasScore = storedScores && storedScores.hasOwnProperty(hKey) && storedScores.hasOwnProperty(aKey) && homeScore !== '' && awayScore !== '' && !(homeScore === '0' && awayScore === '0');
 
-    const tBuzz = document.getElementById('today-buzz-v');
-    if (tBuzz) {
-        tBuzz.innerHTML = '';
-        prelims.filter(m => m.d === todayStr).forEach(m => {
-            const homeScore = storedScores[m.id + '-h'];
-            const awayScore = storedScores[m.id + '-a'];
-            const hasScore = homeScore && awayScore && homeScore !== '' && awayScore !== '';
-            
-            if (hasScore) {
-                // Game is finished - show final score
-                tBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
+            if (mode === 'past' || hasScore) {
+                // final
+                container.innerHTML += '<div style="' + buzzRowStyle + '">' +
                     '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
                     '<span style="' + venColStyle + '">' + m.v + '</span>' +
                     '<span style="' + timeColStyle + 'color:#c0392b;">F</span>' +
-                    '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
-                    '<span style="' + scoreBoxStyle + '">' + homeScore + '-' + awayScore + '</span>' +
-                    '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
-                    '</div>';
+                    '<span style="flex:1; display:flex; align-items:center; padding-right:1px;">' +
+                        '<span style="display:inline-block; width:16px; text-align:left; margin-right:1px;">' + getFlagImgBuzz(m.h) + '</span>' +
+                        '<span style="flex:1; text-align:right; padding-right:6px;">' + m.h + '</span>' +
+                    '</span>' +
+                    '<span style="' + scoreBoxStyle + '">' + (homeScore || '-') + '-' + (awayScore || '-') + '</span>' +
+                    '<span style="flex:1; display:flex; align-items:center; padding-left:1px;">' +
+                        '<span style="flex:1; text-align:left; padding-left:6px;">' + m.a + '</span>' +
+                        '<span style="display:inline-block; width:16px; text-align:right; margin-left:1px; margin-right:8px;">' + getFlagImgBuzz(m.a) + '</span>' +
+                    '</span>' +
+                '</div>';
             } else {
-                // Game hasn't started - show time
-                tBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
+                // upcoming
+                container.innerHTML += '<div style="' + buzzRowStyle + '">' +
                     '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
                     '<span style="' + venColStyle + '">' + m.v + '</span>' +
-                    '<span style="' + timeColStyle + 'color:#c0392b;">' + m.t + '</span>' +
-                    '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
-                    '<span style="' + scoreBoxStyle + 'background:#eee; color:#333;">vs</span>' +
-                    '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
-                    '</div>';
+                    '<span style="' + timeColStyle + 'color:#2980b9;">' + (m.t || '') + '</span>' +
+                    '<span style="flex:1; display:flex; align-items:center; padding-right:1px;">' +
+                        '<span style="display:inline-block; width:16px; text-align:left; margin-right:1px;">' + getFlagImgBuzz(m.h) + '</span>' +
+                        '<span style="flex:1; text-align:right; padding-right:6px;">' + m.h + '</span>' +
+                    '</span>' +
+                    '<span style="' + scoreBoxStyle + 'background:#f0f0f0; color:#666;">vs</span>' +
+                    '<span style="flex:1; display:flex; align-items:center; padding-left:1px;">' +
+                        '<span style="flex:1; text-align:left; padding-left:6px;">' + m.a + '</span>' +
+                        '<span style="display:inline-block; width:16px; text-align:right; margin-left:1px; margin-right:8px;">' + getFlagImgBuzz(m.a) + '</span>' +
+                    '</span>' +
+                '</div>';
             }
         });
-    }
+    };
 
+    // Fill containers
+    const yBuzz = document.getElementById('yesterday-buzz-v');
+    renderBuzzList(yBuzz, yesterdayKey, 'past');
+    const tBuzz = document.getElementById('today-buzz-v');
+    renderBuzzList(tBuzz, todayKey, 'mixed');
     const tmBuzz = document.getElementById('tomorrow-buzz-v');
-    if (tmBuzz) {
-        tmBuzz.innerHTML = '';
-        prelims.filter(m => m.d === tomorrowStr).forEach(m => {
-            tmBuzz.innerHTML += '<div style="' + buzzRowStyle + '">' +
-                '<span style="' + grpColStyle + 'color:' + getGrpColor(m.g) + ';">' + m.g + '</span>' +
-                '<span style="' + venColStyle + '">' + m.v + '</span>' +
-                '<span style="' + timeColStyle + 'color:#2980b9;">' + m.t + '</span>' +
-                '<span style="flex:1; text-align:right; padding-right:5px;">' + m.h + ' ' + getFlagImg(m.h) + '</span>' +
-                '<span style="' + scoreBoxStyle + 'background:#f0f0f0; color:#666;">vs</span>' +
-                '<span style="flex:1; text-align:left; padding-left:5px;">' + getFlagImg(m.a) + ' ' + m.a + '</span>' +
-                '</div>';
-        });
-    }
+    renderBuzzList(tmBuzz, tomorrowKey, 'upcoming');
+
+    // (NEXT GAME DAY summary removed - showing only Yesterday/Today/Tomorrow)
 
     // Display-only: remove contenteditable from score boxes
     document.querySelectorAll('.sb').forEach(el => {
@@ -1131,12 +1286,12 @@ function updateStandings() {
     ['A', 'B', 'C'].forEach(grp => {
         let teams = Object.keys(teamGroups).filter(t => teamGroups[t] === grp);
         teams = sortTeamsWithTiebreaker(teams, results, prelims, storedScores);
-        let html = `<table class="std-table"><thead><tr><th class="th-${grp}" colspan="11">GROUP ${grp}</th></tr><tr><th width="2%" style="text-align:center;">Rank</th><th width="35%">Team</th><th width="7%" style="text-align:center;">GP</th><th width="7%" style="text-align:center;">W</th><th width="7%" style="text-align:center;">OTW</th><th width="7%" style="text-align:center;">OTL</th><th width="7%" style="text-align:center;">L</th><th width="7%" style="text-align:center;">GF</th><th width="7%" style="text-align:center;">GA</th><th width="7%" style="text-align:center;">GD</th><th width="7%" style="text-align:center;">PTS</th></tr></thead><tbody>`;
+        let html = `<table class="std-table"><colgroup><col class="c-num"><col class="c-team"><col class="c-gp"><col class="c-w"><col class="c-otw"><col class="c-otl"><col class="c-l"><col class="c-gf"><col class="c-ga"><col class="c-gd"><col class="c-pts"></colgroup><thead><tr><th class="th-${grp}" colspan="11">GROUP ${grp}</th></tr><tr><th>#</th><th style="text-align:left; padding-left:4px;">Team</th><th>GP</th><th>W</th><th>OTW</th><th>OTL</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>PTS</th></tr></thead><tbody>`;
         teams.forEach((t, idx) => {
             const r = results[t];
             const gamesPlayed = r.w + r.otw + r.otl + r.l;
             const rank = idx + 1;
-            html += `<tr><td style="padding-right:2px;">${rank}</td><td style="padding-left:4px;"><img src="https://flagcdn.com/w20/${flagMap[t]}.png" class="flag-icon"> ${t}</td><td>${gamesPlayed}</td><td>${r.w}</td><td>${r.otw}</td><td>${r.otl}</td><td>${r.l}</td><td>${r.gf}</td><td>${r.ga}</td><td>${r.gf - r.ga}</td><td>${r.p}</td></tr>`;
+            html += `<tr><td>${rank}</td><td style="text-align:left; padding-left:4px;"><img src="https://flagcdn.com/w20/${flagMap[t]}.png" class="flag-icon" style="vertical-align:middle; margin-right:4px;">${t}</td><td>${gamesPlayed}</td><td>${r.w}</td><td>${r.otw}</td><td>${r.otl}</td><td>${r.l}</td><td>${r.gf}</td><td>${r.ga}</td><td>${r.gf - r.ga}</td><td>${r.p}</td></tr>`;
         });
         container.innerHTML += html + `</tbody></table>`;
     });
@@ -1203,20 +1358,23 @@ function updateSeeds(results, flagMap, teamGroups) {
             const recEl = row.querySelector('.seed-record');
             const statEls = row.querySelectorAll('.seed-stat');
             
+            // Build flag image
+            const flagCode = flagMap[team.name];
+            const flagImg = flagCode ? '<img src="https://flagcdn.com/w20/' + flagCode + '.png" class="flag-icon" style="vertical-align:middle;">' : '';
+            
             // Set team name with flag for all seeds
             if (nameEl) {
-                const flagCode = flagMap[team.name];
-                if (flagCode) {
-                    // Top 4: Full name with flag
-                    // Seeds 5-12: Centered 3-letter abbreviation with flag
-                    if (i < 4) {
-                        nameEl.innerHTML = '<img src="https://flagcdn.com/w20/' + flagCode + '.png" class="flag-icon" style="margin-right:4px; vertical-align:middle;"> ' + team.name;
-                    } else {
-                        nameEl.innerHTML = '<img src="https://flagcdn.com/w20/' + flagCode + '.png" class="flag-icon" style="margin-right:4px; vertical-align:middle;"> ' + team.name.substring(0,3).toUpperCase();
-                        nameEl.style.textAlign = 'center';
-                    }
+                if (i < 4) {
+                    nameEl.innerHTML = flagImg + '<span class="seed-name-nudge">' + team.name + '</span>';
+                    // ensure flags stay in place and name nudged only
+                    nameEl.style.display = 'flex';
+                    nameEl.style.alignItems = 'center';
                 } else {
-                    nameEl.textContent = team.name;
+                    // For seeds 5-12, flag left-aligned, name center
+                    nameEl.innerHTML = '<span style="display:inline-block; width:18px; text-align:left;">' + flagImg + '</span><span style="flex:1; text-align:center;">' + team.name.substring(0,3).toUpperCase() + '</span>';
+                    nameEl.style.display = 'flex';
+                    nameEl.style.alignItems = 'center';
+                    nameEl.style.justifyContent = 'center';
                 }
             }
             
@@ -1227,7 +1385,17 @@ function updateSeeds(results, flagMap, teamGroups) {
                 grpEl.style.color = getGrpColor(grp);
                 const gpEl = row.querySelector('.seed-gp');
                 if (gpEl) gpEl.textContent = team.w + team.otw + team.otl + team.l;
+                // apply high-specificity classes so transforms aren't overridden
+                grpEl.classList.add('seed-nudge-grp');
+                if (gpEl) gpEl.classList.add('seed-nudge-gp');
+                recEl.classList.add('seed-nudge-rec');
                 recEl.textContent = team.w + '-' + team.otw + '-' + team.otl + '-' + team.l;
+            } else {
+                // ensure classes removed for non-top seeds
+                if (grpEl) grpEl.classList.remove('seed-nudge-grp');
+                const gpEl = row.querySelector('.seed-gp');
+                if (gpEl) gpEl.classList.remove('seed-nudge-gp');
+                if (recEl) recEl.classList.remove('seed-nudge-rec');
             }
             
             // For seeds 5-12, show GP
@@ -1240,6 +1408,14 @@ function updateSeeds(results, flagMap, teamGroups) {
             if (statEls.length >= 2) {
                 statEls[0].textContent = team.gd;
                 statEls[1].textContent = team.p;
+                // nudge GD and PTS for top 4 seeds to the right using classes
+                if (i < 4) {
+                    statEls[0].classList.add('seed-nudge-gd');
+                    statEls[1].classList.add('seed-nudge-pts');
+                } else {
+                    statEls[0].classList.remove('seed-nudge-gd');
+                    statEls[1].classList.remove('seed-nudge-pts');
+                }
             }
         }
     }
@@ -1261,6 +1437,8 @@ function updateSeeds(results, flagMap, teamGroups) {
                     homeName = allTeams[seedNum - 1].name;
                     homeFlag = flagMap[homeName];
                 }
+            } else {
+                homeFlag = flagMap[homeName] || '';
             }
             if (awayName.startsWith('Seed ')) {
                 const seedNum = parseInt(awayName.replace('Seed ', ''));
@@ -1268,6 +1446,8 @@ function updateSeeds(results, flagMap, teamGroups) {
                     awayName = allTeams[seedNum - 1].name;
                     awayFlag = flagMap[awayName];
                 }
+            } else {
+                awayFlag = flagMap[awayName] || '';
             }
             
             const tr = document.createElement('tr');
@@ -1275,18 +1455,18 @@ function updateSeeds(results, flagMap, teamGroups) {
                 '<td class="c-ven" style="padding:6px 4px; text-align:center; width:18px;">' + g.v + '</td>' +
                 '<td class="c-date" style="padding:6px 4px; text-align:center; width:68px;">' + g.d + '</td>' +
                 '<td class="c-time" style="padding:6px 4px; text-align:center; width:42px;">' + g.t + '</td>' +
-                '<td class="c-flag" style="padding:6px 7px 6px 12px; text-align:right; width:22px;">' +
+                '<td class="c-flag" style="padding:6px 6px 6px 8px; text-align:right; width:22px;">' +
                     (homeFlag ? '<img src="https://flagcdn.com/w20/' + homeFlag + '.png" class="flag-icon" style="vertical-align:middle;">' : '') +
                 '</td>' +
-                '<td class="c-match" style="padding:6px 5px; text-align:center;">' +
-                    '<span style="display:inline-block; min-width:80px; text-align:right; padding-right:5px;">' + homeName + '</span>' +
-                    '<span class="score-area">' +
+                '<td class="c-match" style="padding:6px 4px; text-align:center;">' +
+                    '<span style="display:inline-block; min-width:76px; text-align:right; padding-right:4px;">' + homeName + '</span>' +
+                    '<span class="score-area" style="display:inline-block; width:36px;">' +
                         '<span class="sb">' + (storedScores[g.id + '-h'] || '') + '</span>' +
                         '<span class="sb">' + (storedScores[g.id + '-a'] || '') + '</span>' +
                     '</span>' +
-                    '<span style="display:inline-block; min-width:80px; text-align:left; padding-left:5px;">' + awayName + '</span>' +
+                    '<span style="display:inline-block; min-width:76px; text-align:left; padding-left:4px;">' + awayName + '</span>' +
                 '</td>' +
-                '<td class="c-flag" style="padding:6px 3px; text-align:left; width:22px;">' +
+                '<td class="c-flag" style="padding:6px 2px 6px 3px; text-align:left; width:22px;">' +
                     (awayFlag ? '<img src="https://flagcdn.com/w20/' + awayFlag + '.png" class="flag-icon" style="vertical-align:middle;">' : '') +
                 '</td>';
             qualGames.appendChild(tr);

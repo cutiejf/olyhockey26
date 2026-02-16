@@ -74,4 +74,42 @@
     { "id": "p17", "g": "C", "d": "Sun Feb 15", "t": "01:10p", "h": "Denmark", "a": "Latvia", "v": "R" },
     { "id": "p18", "g": "C", "d": "Sun Feb 15", "t": "03:10p", "h": "USA", "a": "Germany", "v": "S" }
   ]
+  ,
+  "knockouts": [
+    { "header": "QUALIFICATION ROUND" },
+    { "id": "k1", "g": "Q", "d": "Tue Feb 17", "t": "06:10a", "h": "Germany", "a": "Denmark", "v": "R" },
+    { "id": "k2", "g": "Q", "d": "Tue Feb 17", "t": "10:40a", "h": "Sweden", "a": "Italy", "v": "S" },
+    { "id": "k3", "g": "Q", "d": "Tue Feb 17", "t": "12:10p", "h": "Switzerland", "a": "France", "v": "R" },
+    { "id": "k4", "g": "Q", "d": "Tue Feb 17", "t": "03:10p", "h": "Czechia", "a": "Latvia", "v": "S" },
+    { "header": "QUARTERFINALS" },
+    { "id": "k5", "g": "QF", "d": "Wed Feb 18", "t": "10:40a", "h": "Canada", "a": "Reseed 4", "v": "S" },
+    { "id": "k6", "g": "QF", "d": "Wed Feb 18", "t": "10:40a", "h": "USA", "a": "Reseed 3", "v": "R" },
+    { "id": "k7", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Slovakia", "a": "Reseed 2", "v": "S" },
+    { "id": "k8", "g": "QF", "d": "Wed Feb 18", "t": "03:10p", "h": "Finland", "a": "Reseed 1", "v": "R" },
+    { "header": "SEMIFINALS" },
+    { "id": "k9", "g": "SF", "d": "Fri Feb 20", "t": "10:40a", "h": "Win QF", "a": "Win QF", "v": "S" },
+    { "id": "k10", "g": "SF", "d": "Fri Feb 20", "t": "03:10p", "h": "Win QF", "a": "Win QF", "v": "S" },
+    { "header": "MEDAL GAMES" },
+    { "id": "k11", "g": "🥉", "d": "Sat Feb 21", "t": "02:40p", "h": "Lose SF1", "a": "Lose SF2", "v": "S" },
+    { "id": "k12", "g": "🥇🥈", "d": "Sun Feb 22", "t": "08:10a", "h": "Win SF1", "a": "Win SF2", "v": "S" }
+  ],
+  "historyData": [
+    ["2022", "fi", "FIN", "ru", "ROC", "sk", "SVK"],
+    ["2018", "ru", "OAR", "de", "GER", "ca", "CAN"],
+    ["2014", "ca", "CAN", "se", "SWE", "fi", "FIN"],
+    ["2010", "ca", "CAN", "us", "USA", "fi", "FIN"],
+    ["2006", "se", "SWE", "fi", "FIN", "cz", "CZE"],
+    ["2002", "ca", "CAN", "us", "USA", "ru", "RUS"],
+    ["1998", "cz", "CZE", "ru", "RUS", "fi", "FIN"]
+  ],
+  "teamGroups": {
+    "Canada": "A", "Czechia": "A", "Switzerland": "A", "France": "A",
+    "Finland": "B", "Sweden": "B", "Slovakia": "B", "Italy": "B",
+    "USA": "C", "Germany": "C", "Latvia": "C", "Denmark": "C"
+  },
+  "flagMap": {
+    "Canada": "ca", "Czechia": "cz", "Switzerland": "ch", "France": "fr",
+    "Finland": "fi", "Sweden": "se", "Slovakia": "sk", "Italy": "it",
+    "USA": "us", "Germany": "de", "Latvia": "lv", "Denmark": "dk"
+  }
 }

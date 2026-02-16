@@ -1,4 +1,5 @@
 /* Hockey Guide 2026 - Styles */
+
 :root {
     --panel-width: 5in;
     --p-w: var(--panel-width);
@@ -171,13 +172,17 @@ body {
     font-family: 'Poppins', 'Arial Narrow', 'Roboto Condensed', sans-serif;
 }
 
+.cover .panel {
+    padding: 0 !important;
+}
+
 /* Push Button Styles */
 [class*="push"] {
   position: fixed;
   bottom: 20px;
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   border: 0;
   outline: none;
   background-color: #c41e3a;
@@ -206,10 +211,10 @@ body {
   content: '';
   position: absolute;
   bottom: 4px;
-  left: 8px;
+  left: 6px;
   display: block;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border: 5.33px solid rgba(0, 0, 0, .3);
   border-width: 0 0 5.33px;
   border-radius: 50%;
@@ -270,22 +275,43 @@ body {
 
 .push--menu {
   right: 20px;
-  background-color: #0051ba;
+  background: linear-gradient(180deg, #0066cc, #004d99);
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
 }
 
 .push--menu:before {
-  content: '⋯';
+  content: '⋮';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 32px;
-  color: white;
-  font-weight: bold;
+  font-size: 24px;
+  color: rgba(255,255,255,0.95);
+  font-weight: 300;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.push--menu:hover {
+  background: linear-gradient(180deg, #0077ee, #0055aa);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 16px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
 }
 
 .push--menu:active {
-  background-color: #003d8f;
+  background: linear-gradient(180deg, #004d99, #003a75);
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 8px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    inset 0 -1px 0 rgba(0,0,0,0.4);
 }
 
 /* Page Display moved to flipbook.css */
@@ -323,6 +349,7 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   color: #333;
+  border-bottom: 1px solid #eee;
 }
 
 .menu-item:first-child {
@@ -331,6 +358,7 @@ body {
 
 .menu-item:last-child {
   border-radius: 0 0 8px 8px;
+  border-bottom: none;
 }
 
 .menu-item:hover {
@@ -394,18 +422,134 @@ body {
 
 .btn.save-btn { background: #27ae60; color: #fff; }
 
+/* Podium refinements: softened gold shadow, pressed edge/curb, lower gold block */
+#podium-gold {
+    background: #fff !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+    border-bottom: 2px solid rgba(0,0,0,0.06);
+}
+
+/* The colored podium block immediately follows the label node in the DOM
+     (label element + <div> block). Target that block to adjust shadow and edge. */
+#podium-gold + div {
+    position: relative !important;
+    /* reduce outer shadow intensity */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07) !important;
+    /* slightly lower the gold podium block to sit into the footer */
+    transform: translateY(4px) !important;
+    border: 1px solid rgba(184,134,11,0.45) !important;
+    overflow: visible !important;
+}
+
+/* pressed curb: subtle darker lower edge and inner contour */
+#podium-gold + div::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    bottom: 4px;
+    height: 6px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12));
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+#podium-gold + div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    /* subtle inset highlight to create a top-edge contour */
+    background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.06));
+    pointer-events: none;
+}
+
+/* Slightly lower and soften silver/bronze blocks for consistent feel */
+#podium-silver + div,
+#podium-bronze + div {
+    position: relative !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06) !important;
+    transform: translateY(3px) !important;
+    overflow: visible !important;
+}
+
+/* Tweak label borders so they feel inset rather than overly harsh */
+#podium-silver, #podium-bronze {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Arcade-style centered navigation controls below the book */
+.page-controls-arcade {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 8px 14px; /* arcade bezel */
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45), inset 0 2px 0 rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Reset positional offsets only for prev/next inside the arcade container */
+.page-controls-arcade .push--prev,
+.page-controls-arcade .push--next {
+    position: relative;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 64px;
+    height: 64px;
+}
+
+/* Keep the menu button as a fixed control (restores original position) */
+.push--menu { position: fixed; right: 20px; bottom: 20px; }
+
+/* Slightly reduce size on very small screens */
+@media (max-width: 640px) {
+    .page-controls-arcade { bottom: 10px; gap: 8px; padding: 6px 10px; }
+    .page-controls-arcade .push--prev,
+    .page-controls-arcade .push--next { width: 60px; height: 60px; }
+}
+
+/* Top-4 seed nudges (applied via JS for high specificity) */
+.seed-nudge-grp { transform: translateX(-15px) !important; }
+.seed-nudge-gp { transform: translateX(-10px) !important; }
+.seed-nudge-rec { transform: translateX(-5px) !important; }
+.seed-nudge-gd { transform: translateX(3px) !important; }
+.seed-nudge-pts { transform: translateX(2px) !important; }
+.seed-name-nudge { margin-left: 6px !important; }
 .btn:disabled {
     opacity: 0.1;
     cursor: not-allowed;
 }
 
-.page-num {
+.page-display {
     font-size: 16px;
     font-weight: 900;
     letter-spacing: 1px;
     color: #aaa;
     min-width: 60px;
     text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
 }
 
 .sync-status {
@@ -421,7 +565,7 @@ body {
 /* Full page layout */
 .page-layout-full {
     padding: 0;
-    background: #000;
+    background: #fff;
     display: flex;
     flex-direction: column;
     border: none;
@@ -451,17 +595,33 @@ body {
     color: #fff;
     font-weight: 400;
     text-transform: uppercase;
-    font-size: 27px;
-    letter-spacing: 0.5px;
     display: flex;
     align-items: center;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
     line-height: 1;
     white-space: nowrap;
+    margin-bottom: 5px;
 }
 
-.venue-title-perf b { font-weight: 900; }
-.venue-title-perf .divider { width: 1.5px; height: 18px; background: #fff; margin: 0 10px; opacity: 0.8; }
+.venue-main {
+    font-size: 28px;
+    font-weight: 900;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+}
+
+.venue-title-perf .divider {
+    width: 2px;
+    height: 22px;
+    background: #fff;
+    margin: 0 10px;
+    opacity: 0.6;
+}
+
+.venue-nick {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.85;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+}
 
 .venue-architect-perf {
     color: #fff;
@@ -477,17 +637,18 @@ body {
     position: absolute;
     background: rgba(0, 0, 0, 0.78);
     color: #fff;
-    padding: 10px 16px;
+    padding: 12px 18px;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     z-index: 10;
     width: 82%;
 }
 
-.pos-giulia { top: 380px; left: 0; }
-.pos-rho { bottom: 200px; right: 0; }
+.pos-giulia { bottom: 0; left: 0; }
+.pos-rho { bottom: 0; right: 0; text-align: right; align-items: flex-end; }
 
 .desc-text-perf {
     font-size: 16px;
@@ -501,7 +662,7 @@ body {
 /* Tina mascot layout */
 .tina-layout {
     background: #fff;
-    padding: 20px 22px 15px 22px;
+    padding: 15px 20px 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -510,18 +671,18 @@ body {
 }
 
 .tina-img-zone {
-    height: 345px;
+    height: 340px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     background: #fff;
     flex-shrink: 0;
 }
 
 .tina-img-zone img {
-    max-width: 90%;
+    max-width: 75%;
     max-height: 100%;
     object-fit: contain;
     margin-top: 5px;
@@ -530,7 +691,8 @@ body {
 .tina-title-banner {
     width: 100%;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    margin-top: 8px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -542,8 +704,8 @@ body {
 .tina-title-pipe { margin: 0 8px; color: #ccc; font-size: 20px; font-weight: 300; }
 .tina-title-sub { font-size: 13px; font-weight: bold; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; }
 
-.tina-text-box { height: 130px; flex-shrink: 0; width: 100%; }
-.tina-text-box .venue-desc { color: #444; font-size: 13.8px; line-height: 1.45; text-align: justify; margin: 0; text-shadow: none; }
+.tina-text-box { height: auto; flex: 1; width: 100%; overflow-y: auto; padding-bottom: 15px; }
+.tina-text-box .venue-desc { color: #444; font-size: 12.9px; line-height: 1.4; text-align: justify; margin: 0; text-shadow: none; }
 
 /* Tables */
 .flex-table-container {
@@ -586,48 +748,262 @@ th {
     color: #000;
 }
 
-td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #000; }
-
 .c-grp { width: 35px; text-align: center; font-weight: 900; font-size: 12px; }
 .c-ven { width: 18px; text-align: center; color: #777; font-size: 10px; }
 .c-date { width: 95px; color: #000; font-weight: bold; font-size: 11px; text-align: left; padding-left: 5px; white-space: nowrap; }
 .c-time { width: 55px; text-align: center; font-size: 11px; }
 
-.team-home { display: inline-block; width: 38%; text-align: right; font-weight: bold; overflow: hidden; white-space: nowrap; vertical-align: middle; padding-right: 1px; color: #000; }
-.team-away { display: inline-block; width: 38%; text-align: left; font-weight: bold; overflow: hidden; white-space: nowrap; vertical-align: middle; padding-left: 1px; color: #000; }
-.score-area { display: inline-block; width: 22%; text-align: center; white-space: nowrap; vertical-align: middle; font-size: 0; }
-.flag-icon { width: 14px; height: 10px; display: inline-block; vertical-align: middle; border: 0.5px solid #333; margin: 0 2px; }
+
+.team-home {
+    display: inline-flex;
+    width: 40%;
+    align-items: center;
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-right: 0;
+    color: #000;
+    gap: 1px;
+    justify-content: flex-end;
+}
+.team-away {
+    display: inline-flex;
+    width: 40%;
+    align-items: center;
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-left: 0;
+    color: #000;
+    gap: 1px;
+    justify-content: flex-start;
+}
+.score-area {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 0;
+}
+.flag-icon {
+    width: 14px;
+    height: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 0.5px solid #333;
+    margin-right: 2px;
+}
+
+/* Ensure knockout/qualification flag cells and match cell align consistently */
+td.c-flag, th.c-flag {
+    width: 22px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 6px 4px;
+}
+
+td.c-match, th.c-match {
+    text-align: center;
+    padding: 6px 6px;
+}
+
+/* Use flex inside match cell so names and score-area align vertically */
+.c-match > span, .c-match > div {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.c-flag img, .c-flag .flag-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 11px;
+}
+
+/* Ensure match cell layout aligns names and score squares consistently */
+td.c-match .score-area {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* adjusted for smaller score boxes */
+    vertical-align: middle;
+    margin: 0 10px; /* increased spacing to prevent touching */
+}
+
+td.c-match > span:first-child,
+td.c-match > span:last-child {
+    display: inline-flex;
+    min-width: 65px; /* consistent width for team names */
+    max-width: 65px; /* prevent overflow */
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center; /* center team names */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Slightly increase sb horizontal spacing inside score-area for clarity */
+.c-match .sb { 
+    margin: 0 1px !important; 
+    width: 16px !important;
+    height: 16px !important;
+    line-height: 14px !important;
+}
+
+/* Bring right-side flags closer to the match cell by applying a negative
+   horizontal margin to the right flag in each KO row. This overrides any
+   previous positive margins. */
+tr > td.c-flag:last-child img,
+tr > td.c-flag:last-child .flag-icon {
+    margin-left: -16px !important;
+    margin-right: 0 !important;
+}
+
+/* Also apply to any last .c-flag in qualification/prelims tables (not just KO) */
+table tbody tr td.c-flag:last-child img,
+table tbody tr td.c-flag:last-child .flag-icon {
+    margin-left: -16px !important;
+    margin-right: 0 !important;
+}
+
+/* Knockout quote color */
+.ko-quote { color: #800000; font-style: italic; }
+
+/* Reseed number style: only the number will be wrapped in .reseed */
+.reseed { color: #800000; font-weight: 700; display: inline-block; margin-left: 4px; font-size: 11px; }
+
+/* Reseed grid numbers (seed-num) maroon */
+.reseed-grid .seed-num {
+    color: #800000;
+    font-weight: 700;
+}
+
+/* Medal header styles */
+.medal-header { display:block; width:100%; box-sizing:border-box; text-align:center; font-weight:900; font-size:12px; padding:6px 0; }
+.medal-header.gold {
+    /* cleaner gold styling, less 3D */
+    background: linear-gradient(145deg, #FFD700 0%, #DAA520 100%);
+    border: 1px solid #B8860B;
+    border-radius: 4px;
+    /* subtle inset effect */
+    box-shadow: inset 1px 1px 3px rgba(255,255,255,0.6), inset -1px -1px 3px rgba(0,0,0,0.2);
+    transform: translateY(2px);
+    z-index: 3;
+}
+.medal-header.bronze {
+    color: #2b1706;
+    background: linear-gradient(90deg, #e6c6a6 0%, #c58b57 100%);
+    border-radius: 4px;
+}
+
+.medal-header.bronze .medal-title { font-size: 12px; }
+
+/* Title inside medal header: larger text only, not container */
+.medal-header .medal-title { font-size: 14px; font-weight: 900; color: #000; position: relative; display: inline-block; }
+
+/* subtle white flash sweep across the title */
+.medal-header.gold .medal-title::before {
+        content: '';
+        position: absolute;
+        left: -120%;
+        top: -5%;
+        height: 110%;
+        width: 40%;
+        /* white center, fade out to silver on edges */
+        background: linear-gradient(90deg, rgba(230,230,230,0) 0%, rgba(255,255,255,0.7) 50%, rgba(200,200,200,0.25) 70%, rgba(230,230,230,0) 100%);
+        transform: skewX(-20deg);
+        opacity: 0;
+        pointer-events: none;
+        animation: title-flash 3.6s ease-in-out infinite;
+}
+
+@keyframes title-flash {
+    0% { left: -120%; opacity: 0; }
+    35% { left: 5%; opacity: 0.55; }
+    55% { left: 55%; opacity: 0.25; }
+    100% { left: 120%; opacity: 0; }
+}
 
 .sb {
     display: inline-block;
-    width: 18px;
-    height: 18px;
+    width: 16px !important;
+    height: 16px !important;
     border: 1px solid #444;
     background: #fff;
     margin: 0 1px;
     vertical-align: middle;
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 900;
-    line-height: 18px;
+    line-height: 14px;
     outline: none;
     color: #000;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .sb[contenteditable="true"]:focus { background: #fffde7; border-color: #000; }
 
-.std-table td { border: 1px solid #ddd; text-align: center; font-size: 13px; height: 28px; }
-.std-table td:first-child { text-align: left; padding-left: 5px; font-weight: bold; width: 45%; }
+.std-table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.std-table td { border: 1px solid #ddd; text-align: center; font-size: 13px; height: 26px; padding: 2px 2px; overflow: hidden; }
+.std-table th { border: 1px solid #ddd; text-align: center; font-size: 11px; height: 26px; padding: 2px 2px; overflow: hidden; }
+.std-table td:first-child { text-align: center; font-weight: bold; }
+.std-table td:nth-child(2) { text-align: left; padding-left: 8px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Ensure header cells are centered except the Team header (2nd column) */
+.std-table thead tr:nth-child(2) th { text-align: center; }
+.std-table thead tr:nth-child(2) th:nth-child(2) { text-align: left; padding-left: 4px; }
+
+/* Column widths for standings table (centralized) */
+.std-table col.c-num { width: 22px; }
+.std-table col.c-team { width: calc(100% - 301px); }
+.std-table col.c-gp  { width: 29px; }
+.std-table col.c-w   { width: 29px; }
+.std-table col.c-otw { width: 33px; }
+.std-table col.c-otl { width: 33px; }
+.std-table col.c-l   { width: 29px; }
+.std-table col.c-gf  { width: 31px; }
+.std-table col.c-ga  { width: 31px; }
+.std-table col.c-gd  { width: 31px; }
+.std-table col.c-pts { width: 33px; }
 
 .th-A { background: var(--accent-red); color: #fff; }
 .th-B { background: var(--accent-blue); color: #fff; }
 .th-C { background: var(--accent-green); color: #fff; }
 
-.seed-row { display: flex; align-items: flex-end; font-size: 15px; flex-grow: 1; }
-.seed-num { width: 25px; font-weight: bold; color: #666; }
-.seed-name { flex-grow: 1; border-bottom: 1px solid #bbb; margin-right: 5px; height: 23px; }
-.seed-stat { width: 30px; border-bottom: 1px solid #bbb; margin-right: 2px; height: 23px; }
+/* Seed rows - clean but compact spacing */
+.seed-row { 
+    display: flex; 
+    align-items: center; 
+    font-size: 13px;
+    min-height: 20px;
+    margin-bottom: 1px;
+    padding: 2px 0;
+    background: rgba(255,255,255,0.5);
+}
+.seed-row:hover {
+    background: rgba(248,248,248,0.7);
+}
+.seed-num,
+.seed-name,
+.seed-grp,
+.seed-gp,
+.seed-record,
+.seed-stat { 
+    border-bottom: 1px solid #ddd;
+    padding: 2px 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.seed-name {
+    justify-content: flex-start;
+    padding-left: 6px;
+}
 
 .vert-label {
     writing-mode: vertical-rl;
@@ -673,13 +1049,24 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 
 /* Back cover specific positioning */
 .back.cover .bg-img {
-    top: -18px;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 5px);
+    object-fit: cover;
+}
+
+.back.cover {
+    background: #fff;
+    position: relative;
 }
 
 /* Cover overlays */
 .cover .front-overlay,
 .cover .back-overlay {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -687,7 +1074,7 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    padding: 15px;
+    padding: 20px 0;
     box-sizing: border-box;
 }
 
@@ -697,6 +1084,7 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 
 .back-overlay {
     background: transparent;
+    gap: 15px;
 }
 
 /* Olympic rings logo */
@@ -705,21 +1093,22 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
     height: auto;
     filter: brightness(0);
     flex-shrink: 0;
+    margin: 0;
+    transform: translateY(2px); /* Raise logo by 2px to center it */
 }
 
 .back-overlay .oly-logo {
-    margin-top: 30px;
-    margin-left: 5px;
+    margin: 0;
+    transform: translateY(2px); /* Raise logo by 2px to center it */
 }
 
 /* Back cover copyright */
 .back-copyright {
-    margin-top: auto;
-    margin-bottom: -3px;
+    margin: 0;
     font-size: 10px;
     color: #000;
     font-weight: bold;
-    padding-bottom: 15px;
+    padding: 0;
 }
 
 /* Introduction page */
@@ -882,16 +1271,35 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 
 /* Rules */
 .rules-main-list { display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; margin: 0; padding: 0; list-style: none; }
-.rule-block { margin-bottom: 8px; }
-.rule-block b { display: block; color: var(--accent-red); text-transform: uppercase; font-size: 13px; font-weight: 900; letter-spacing: 0.8px; margin-bottom: 1px; }
-.rule-block p { margin: 0; font-size: 16px; color: #111; line-height: 1.25; text-align: justify; }
+.rule-block { margin-bottom: 4px; }
+.rules-main-list .rule-block:first-child { margin-top: 6px; }
+.rule-block b { display: block; color: var(--accent-red); text-transform: uppercase; font-size: 12.5px; font-weight: 900; letter-spacing: 0.8px; margin-bottom: 0px; }
+.rule-block p { margin: 0; font-size: 12px; color: #111; line-height: 1.2; text-align: justify; }
 
-.ot-container { background: #f4f4f4; border: 2px solid var(--accent-blue); border-radius: 4px; padding: 8px 12px; margin-top: 5px; }
-.ot-container h3 { margin: 0 0 5px 0; font-size: 14px; color: var(--accent-blue); text-transform: uppercase; font-weight: 900; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
-.ot-sub-item { margin-bottom: 4px; }
+/* Rules page helpers */
+#page-p_rules h2 { margin-bottom: 2px; }
+#page-p_rules .ot-container h3 { margin: 0 0 3px 0; font-size: 13.5px; }
+#page-p_rules .ot-container { padding: 2px 6px; /* small padding */ }
+#page-p_rules .ot-sub-item p { margin: 0 0 2px 0; font-size: 12px; }
+
+/* Slightly increase readable spacing inside rules containers */
+#page-p_rules .ot-container, #page-p_rules .ot-container p, #page-p_rules .ot-container .ot-sub-item p {
+    line-height: 1.28;
+}
+
+/* Raise the Rules page containers visually by 4px without affecting layout (footer remains in flow) */
+#page-p_rules .ot-container { transform: translateY(-4px); }
+#page-p_rules .rules-main-list .rule-block { transform: translateY(-4px); }
+#page-p_rules .ot-container ul { list-style: none; margin: 0; padding-left: 0 !important; color: #222; }
+#page-p_rules .ot-container ul li { margin: 0 0 4px 0; padding: 0; }
+#page-p_rules .rules-footer { margin-top: auto; font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:2px; line-height:1.2; }
+
+.ot-container { background: #f4f4f4; border: 2px solid var(--accent-blue); border-radius: 4px; padding: 3px 6px; margin-top: 2px; }
+.ot-container h3 { margin: 0 0 3px 0; font-size: 13px; color: var(--accent-blue); text-transform: uppercase; font-weight: 900; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+.ot-sub-item { margin-bottom: 3px; }
 .ot-sub-item:last-child { margin-bottom: 0; }
-.ot-sub-item b { font-size: 13px; color: #333; text-transform: uppercase; }
-.ot-sub-item p { margin: 0; font-size: 15.5px; color: #111; line-height: 1.2; }
+.ot-sub-item b { font-size: 11px; color: #333; text-transform: uppercase; }
+.ot-sub-item p { margin: 0; font-size: 11px; color: #111; line-height: 1.2; }
 
 .star-card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; padding: 8px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 .star-name { font-weight: bold; font-size: 14px; color: #000; }
@@ -903,6 +1311,48 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
 }
 .front:active, .back:active {
     cursor: grabbing;
+}
+
+/* Page flip zones - visual hover areas on edges */
+.page-flip-zone {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    z-index: 1000;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+    pointer-events: none;
+    background: transparent;
+}
+
+.page-flip-left,
+.page-flip-right {
+    position: absolute;
+    top: 0;
+    width: 35%;
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: auto;
+    z-index: 1000;
+    background: transparent;
+    transition: background 0.2s ease-in-out;
+}
+
+.page-flip-left {
+    left: 0;
+}
+
+.page-flip-left:hover {
+    background: linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 100%);
+}
+
+.page-flip-right {
+    right: 0;
+}
+
+.page-flip-right:hover {
+    background: linear-gradient(to left, rgba(0,0,0,0.3) 0%, transparent 100%);
 }
 
 /* Drag cursor when zoomed */

@@ -80,7 +80,36 @@ $data.storedESPNStats = @{
 }
 
 # Save back to data.json
-$data | ConvertTo-Json -Depth 10 | Set-Content $dataPath -Encoding UTF8
+$data | ConvertTo-Json -Depth 12 | Set-Content $dataPath -Encoding UTF8
+
+# Merge inline HockeyData from index.html (knockouts, teamGroups, flagMap, prelims) if present
+try {
+    $indexPath = Join-Path $PSScriptRoot "index.html"
+    if (Test-Path $indexPath) {
+        $indexRaw = Get-Content $indexPath -Raw
+        $m = [regex]::Match($indexRaw, 'window\.HockeyData\s*=\s*(\{[\s\S]*?\});', [System.Text.RegularExpressions.RegexOptions]::Singleline)
+        if ($m.Success) {
+            $objText = $m.Groups[1].Value
+            # Remove trailing semicolons if any
+            $objText = $objText.TrimEnd(';',' ',"\r","\n")
+            try {
+                $hockey = $objText | ConvertFrom-Json -ErrorAction Stop
+                if ($hockey.knockouts) { $data.knockouts = $hockey.knockouts }
+                if ($hockey.teamGroups) { $data.teamGroups = $hockey.teamGroups }
+                if ($hockey.flagMap) { $data.flagMap = $hockey.flagMap }
+                if ($hockey.prelims) { $data.prelims = $hockey.prelims }
+                if ($hockey.storedScores) { $data.storedScores = [ordered]@{}; $data.storedScores = $hockey.storedScores }
+                # Persist merged data
+                $data | ConvertTo-Json -Depth 12 | Set-Content $dataPath -Encoding UTF8
+                Write-Host "Merged HockeyData from index.html into data.json" -ForegroundColor Green
+            } catch {
+                Write-Host "Failed to parse HockeyData JSON from index.html: $_" -ForegroundColor Yellow
+            }
+        }
+    }
+} catch {
+    Write-Host "Error while merging index.html HockeyData: $_" -ForegroundColor Yellow
+}
 
 Write-Host "`nTop 5 Scorers:" -ForegroundColor Green
 $scorersArray | ForEach-Object { Write-Host "  $($_.rank) $($_.name) ($($_.team)) - $($_.points) pts" }
