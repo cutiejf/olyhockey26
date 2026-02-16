@@ -26,7 +26,7 @@ body {
 .book {
     position: fixed;
     left: 50%;
-    top: calc(50% - 30px);
+    top: calc(50% - 35px);
     display: flex;
     width: var(--panel-width);
     height: var(--panel-height);
