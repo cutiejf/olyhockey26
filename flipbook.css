@@ -24,10 +24,10 @@ body {
 
 /* ========== FLIPBOOK CORE ========== */
 .book {
-    position: absolute;
+    position: fixed;
     left: 50%;
+    top: calc(50% - 30px);
     display: flex;
-    margin: 43px auto 20px;
     width: var(--panel-width);
     height: var(--panel-height);
     pointer-events: none;
@@ -37,8 +37,8 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    /* Initial: front cover centered (page extends RIGHT of spine) */
-    transform: translateX(calc(var(--panel-width) / -2));
+    /* Always center the book visually - offset up to account for bottom controls */
+    transform: translate(-50%, -50%);
 }
 
 .page {
