@@ -58,8 +58,9 @@ body {
     translate: calc(var(--i) * -100%) 0px 0px;
     transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.3px)));
     rotate: y calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
-    box-shadow: 0 0.5em 1em -0.2em rgba(0,0,0,0.2);
-    background: #111;
+    box-shadow: 0 0.5em 1em -0.2em rgba(0,0,0,0.2),
+                inset 8px 0 20px -4px rgba(139, 0, 0, 0.9);
+    background: #5a0000;
 }
 
 .book img {
@@ -88,13 +89,13 @@ body {
 }
 
 .front {
-    background: linear-gradient(to left, #f9f9f9 80%, #eee 100%);
+    background: linear-gradient(to left, #f9f9f9 60%, #8B0000 100%);
     border-radius: 0.1em 0.5em 0.5em 0.1em;
     border: 1px solid rgba(0,0,0,0.1);
 }
 
 .back {
-    background: linear-gradient(to right, #f9f9f9 80%, #eee 100%);
+    background: linear-gradient(to right, #f9f9f9 60%, #8B0000 100%);
     border-radius: 0.5em 0.1em 0.1em 0.5em;
     border: 1px solid rgba(0,0,0,0.1);
 }
