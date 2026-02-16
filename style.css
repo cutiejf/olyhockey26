@@ -442,15 +442,7 @@ body {
     position: relative;
 }
 
-.bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
+/* .bg-img moved to flipbook.css */
 
 .venue-header-overlay {
     position: absolute;
@@ -666,24 +658,7 @@ td { border-bottom: 1px solid #eee; padding: 0; vertical-align: middle; color: #
     color: #000;
 }
 
-/* Overlays */
-.front-overlay, .back-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.front-overlay { background: rgba(0,0,0,0.35); padding: 25px 10px 10px 10px; box-sizing: border-box; }
-.back-overlay { padding: 20px 10px 15px 10px; box-sizing: border-box; background: transparent; }
+/* Overlays moved to flipbook.css */
 
 /* Cover states */
 .is-closed {

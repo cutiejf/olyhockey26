@@ -319,6 +319,11 @@ h2 {
     z-index: 0;
 }
 
+/* Back cover specific positioning */
+.back .bg-img {
+    top: -13px;
+}
+
 .cover .front-overlay,
 .cover .back-overlay {
     position: relative;
@@ -339,6 +344,17 @@ h2 {
 
 .back-overlay {
     background: transparent;
+}
+
+/* Back cover Olympic rings positioning */
+.back-overlay .oly-logo {
+    margin-top: 35px;
+    margin-left: 5px;
+}
+
+/* Back cover copyright positioning */
+.back-overlay div {
+    margin-bottom: -3px;
 }
 
 .oly-logo {
