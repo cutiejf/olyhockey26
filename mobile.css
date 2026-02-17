@@ -1,0 +1,176 @@
+/* Mobile CSS */
+
+/* Hide mobile nav on desktop */
+.mobile-nav-btn {
+    display: none;
+}
+
+.mobile-page-bar {
+    display: none;
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 900px) {
+    
+    html, body {
+        height: 100% !important;
+        overflow: hidden !important;
+        background: #111 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Hide desktop nav except what we need */
+    .push--menu, 
+    .menu-dropdown, .page-display, #export-btn {
+        display: none !important;
+    }
+    
+    /* Hide arcade container but we'll show buttons separately */
+    .page-controls-arcade {
+        display: none !important;
+    }
+
+    img {
+        max-width: 100% !important;
+        object-fit: contain !important;
+    }
+}
+
+/* Portrait - individual panels with horizontal swipe */
+@media (max-width: 900px) and (orientation: portrait) {
+    html, body {
+        overflow: hidden !important;
+    }
+    
+    /* Make book a horizontal scroll container */
+    .book {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        height: calc(100vh - 70px) !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        perspective: none !important;
+        transform: none !important;
+        gap: 0 !important;
+        -webkit-overflow-scrolling: touch !important;
+        background: #111 !important;
+        /* Hide scrollbar */
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+    
+    .book::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+    
+    /* Flatten page wrappers */
+    .page {
+        display: contents !important;
+    }
+    
+    /* Each panel keeps its 5x6 size, centered with margins */
+    .front, .back {
+        position: relative !important;
+        flex: 0 0 auto !important;
+        width: 5in !important;
+        height: 6in !important;
+        zoom: 0.7 !important;
+        margin: 0 calc((100vw - 336px) / 2) !important;
+        scroll-snap-align: center !important;
+        transform: none !important;
+        translate: none !important;
+        rotate: none !important;
+        backface-visibility: visible !important;
+        overflow: hidden !important;
+    }
+    
+    /* Constrain bg-img inside panels */
+    .cover .bg-img,
+    .page-layout-full .bg-img {
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    /* Hide hover zones */
+    .page-flip-zone {
+        display: none !important;
+    }
+    
+    /* Show mobile nav buttons - slightly raised */
+    .mobile-nav-btn {
+        display: block !important;
+        position: fixed !important;
+        bottom: 30px !important;
+        width: 68px !important;
+        height: 68px !important;
+        z-index: 9999 !important;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        user-select: none !important;
+        /* push--flat handles the styling */
+    }
+    
+    .mobile-prev {
+        left: 20px !important;
+    }
+    
+    .mobile-prev:before {
+        content: '‹' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        font-size: 32px !important;
+        color: white !important;
+        font-weight: bold !important;
+    }
+    
+    .mobile-next {
+        right: 20px !important;
+    }
+    
+    .mobile-next:before {
+        content: '›' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        font-size: 32px !important;
+        color: white !important;
+        font-weight: bold !important;
+    }
+}
+
+/* Landscape - centered, cover on right */
+@media (max-width: 900px) and (orientation: landscape) {
+    .book {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) translate(2.5in, 0) !important;
+        zoom: 0.55 !important;
+    }
+    
+    .push--prev, .push--next {
+        display: none !important;
+    }
+    
+    /* Hide hover zones */
+    .page-flip-zone {
+        display: none !important;
+    }
+}

@@ -179,13 +179,13 @@ body {
 /* Push Button Styles */
 [class*="push"] {
   position: fixed;
-  bottom: 20px;
+  bottom: 14px;
   display: inline-block;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border: 0;
   outline: none;
-  background-color: #c41e3a;
+  background-color: #1a1a1a;
   border-radius: 50%;
   cursor: pointer;
   transition: box-shadow 200ms;
@@ -194,17 +194,17 @@ body {
 
 .push--flat {
   box-shadow: 
-    inset 0 2.5px 0 rgba(255,255,255,0.3),
-    inset 0 -2.5px 0 rgba(0,0,0,0.3),
-    inset 0 0 0 2.66px rgba(0,0,0,0.2),
-    inset 0 0 0 6.66px #c41e3a,
-    inset 0 0 0 8px rgba(0,0,0,0.5),
-    inset 0 0 0 8.7px rgba(0,0,0,0.8),
-    inset 0 0 0 10.66px rgba(255,255,255,0.3),
-    inset 0 0 0 14.54px #c41e3a,
-    inset 0 32px 10.66px rgba(0,0,0,0.3),
-    inset 0 0 8px 13.33px rgba(0,0,0,0.4),
-    0 4px 0 rgba(0, 0, 0, .3);
+    inset 0 2.5px 0 rgba(255,255,255,0.15),
+    inset 0 -2.5px 0 rgba(0,0,0,0.5),
+    inset 0 0 0 2.66px rgba(0,0,0,0.4),
+    inset 0 0 0 6.66px rgba(160,25,40,0.7),
+    inset 0 0 0 8px rgba(0,0,0,0.6),
+    inset 0 0 0 8.7px rgba(0,0,0,0.9),
+    inset 0 0 0 10.66px rgba(255,255,255,0.1),
+    inset 0 0 0 14.54px #1a1a1a,
+    inset 0 32px 10.66px rgba(0,0,0,0.5),
+    inset 0 0 8px 13.33px rgba(0,0,0,0.6),
+    0 4px 0 rgba(0, 0, 0, .5);
 }
 
 .push--flat:after {
@@ -223,18 +223,18 @@ body {
 
 .push--flat:active {
   box-shadow: 
-    inset 0 2.5px 0 rgba(255,255,255,0.3),
-    inset 0 -2.5px 0 rgba(0,0,0,0.3),
-    inset 0 0 0 2.66px rgba(0,0,0,0.2),
-    inset 0 0 0 6.66px #c41e3a,
-    inset 0 0 0 8px rgba(0,0,0,0.5),
-    inset 0 0 0 9.41px rgba(0,0,0,0.7),
-    inset 0 0 0 10.66px rgba(255,255,255,0.1),
-    inset 0 0 0 14.54px rgba(180,25,50,1),
-    inset 0 32px 10.66px rgba(0,0,0,0.4),
-    inset 0 0 8px 13.33px rgba(0,0,0,0.5),
-    0 4px 0 rgba(0, 0, 0, .3);
-  background-color: #a01729;
+    inset 0 2.5px 0 rgba(255,255,255,0.1),
+    inset 0 -2.5px 0 rgba(0,0,0,0.5),
+    inset 0 0 0 2.66px rgba(0,0,0,0.4),
+    inset 0 0 0 6.66px rgba(180,30,45,0.85),
+    inset 0 0 0 8px rgba(0,0,0,0.7),
+    inset 0 0 0 9.41px rgba(0,0,0,0.85),
+    inset 0 0 0 10.66px rgba(255,255,255,0.05),
+    inset 0 0 0 14.54px #111,
+    inset 0 32px 10.66px rgba(0,0,0,0.6),
+    inset 0 0 8px 13.33px rgba(0,0,0,0.7),
+    0 4px 0 rgba(0, 0, 0, .5);
+  background-color: #111;
 }
 
 .push--flat:active:after {
@@ -275,12 +275,12 @@ body {
 
 .push--menu {
   right: 20px;
-  background: linear-gradient(180deg, #0066cc, #004d99);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: linear-gradient(180deg, #2a2a2a, #111);
+  border: 1px solid rgba(160,25,40,0.4);
   box-shadow: 
-    0 4px 12px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.3),
-    inset 0 -1px 0 rgba(0,0,0,0.2);
+    0 4px 12px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 0 rgba(0,0,0,0.4);
   transition: all 0.2s ease;
 }
 
@@ -297,21 +297,21 @@ body {
 }
 
 .push--menu:hover {
-  background: linear-gradient(180deg, #0077ee, #0055aa);
+  background: linear-gradient(180deg, #333, #1a1a1a);
   transform: translateY(-1px);
   box-shadow: 
-    0 6px 16px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    inset 0 -1px 0 rgba(0,0,0,0.3);
+    0 6px 16px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 -1px 0 rgba(0,0,0,0.4);
 }
 
 .push--menu:active {
-  background: linear-gradient(180deg, #004d99, #003a75);
+  background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
   transform: translateY(1px);
   box-shadow: 
-    0 2px 8px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.2),
-    inset 0 -1px 0 rgba(0,0,0,0.4);
+    0 2px 8px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    inset 0 -1px 0 rgba(0,0,0,0.5);
 }
 
 /* Page Display moved to flipbook.css */
@@ -542,7 +542,7 @@ body {
     min-width: 60px;
     text-align: center;
     position: fixed;
-    top: 20px;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10000;
@@ -570,6 +570,7 @@ body {
     flex-direction: column;
     border: none;
     position: relative;
+    overflow: hidden;
 }
 
 /* .bg-img moved to flipbook.css */
@@ -592,63 +593,65 @@ body {
 .align-right { align-items: flex-end; text-align: right; }
 
 .venue-title-perf {
-    color: #fff;
+    color: #222;
     font-weight: 400;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     line-height: 1;
     white-space: nowrap;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .venue-main {
-    font-size: 28px;
+    font-size: 18px;
     font-weight: 900;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+    text-shadow: none;
 }
 
 .venue-title-perf .divider {
     width: 2px;
-    height: 22px;
-    background: #fff;
-    margin: 0 10px;
+    height: 14px;
+    background: #999;
+    margin: 0 8px;
     opacity: 0.6;
 }
 
 .venue-nick {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 400;
-    opacity: 0.85;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+    opacity: 0.7;
+    text-shadow: none;
 }
 
 .venue-architect-perf {
-    color: #fff;
-    font-size: 14px;
+    color: #555;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-top: 5px;
+    margin-top: 2px;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(0,0,0,1), 0 1px 2px rgba(0,0,0,1);
+    text-shadow: none;
 }
 
 .text-bottom-overlay {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.78);
-    color: #fff;
-    padding: 12px 18px;
+    position: relative;
+    background: #fff;
+    color: #222;
+    padding: 8px 14px;
+    margin-top: auto;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     z-index: 10;
-    width: 82%;
+    width: 100%;
+    border-top: 2px solid #eee;
 }
 
-.pos-giulia { bottom: 0; left: 0; }
-.pos-rho { bottom: 0; right: 0; text-align: right; align-items: flex-end; }
+.pos-giulia { left: 0; }
+.pos-rho { right: 0; text-align: right; align-items: flex-end; }
 
 .desc-text-perf {
     font-size: 16px;
@@ -1036,8 +1039,7 @@ table tbody tr td.c-flag:last-child .flag-icon {
 }
 
 /* Cover background images */
-.cover .bg-img,
-.page-layout-full .bg-img {
+.cover .bg-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -1045,6 +1047,18 @@ table tbody tr td.c-flag:last-child .flag-icon {
     height: 100%;
     object-fit: cover;
     z-index: 0;
+}
+
+/* Full-page layout images - respect padding */
+.page-layout-full .bg-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    display: block;
+    flex: 1;
+    min-height: 0;
 }
 
 /* Back cover specific positioning */
@@ -1279,7 +1293,7 @@ table tbody tr td.c-flag:last-child .flag-icon {
 /* Rules page helpers */
 #page-p_rules h2 { margin-bottom: 2px; }
 #page-p_rules .ot-container h3 { margin: 0 0 3px 0; font-size: 13.5px; }
-#page-p_rules .ot-container { padding: 2px 6px; /* small padding */ }
+#page-p_rules .ot-container { padding: 2px 6px; }
 #page-p_rules .ot-sub-item p { margin: 0 0 2px 0; font-size: 12px; }
 
 /* Slightly increase readable spacing inside rules containers */
@@ -1378,5 +1392,134 @@ table tbody tr td.c-flag:last-child .flag-icon {
     .controls {
         transform: scale(0.9);
         margin-top: -30px;
+    }
+}
+
+/* ================== EXPORT MODE - GRID LAYOUT ================== */
+/* Restyle existing panels in a scrollable grid instead of flipbook */
+
+:root {
+    --export-scale: 1;
+    --export-cols: 3;
+    --export-gap: 8px;
+    --print-cols: 2;
+    --print-rows: 4;
+}
+
+body.export-mode {
+    background: #000 !important;
+    margin: 0 !important;
+    padding: 60px 10px 10px 10px !important;
+    overflow: auto !important;
+    display: block !important;
+}
+
+/* Turn .book into a grid container */
+body.export-mode .book {
+    position: static !important;
+    display: grid !important;
+    grid-template-columns: repeat(var(--export-cols), 5in) !important;
+    grid-auto-rows: min-content !important;
+    gap: var(--export-gap) !important;
+    justify-content: start !important;
+    align-items: start !important;
+    width: max-content !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    perspective: none !important;
+    pointer-events: auto !important;
+    transform: scale(var(--export-scale)) !important;
+    transform-origin: top left !important;
+}
+
+/* Flatten .page wrappers */
+body.export-mode .page {
+    display: contents !important;
+}
+
+/* Style front/back panels as grid items */
+body.export-mode .front,
+body.export-mode .back {
+    position: static !important;
+    width: 5in !important;
+    height: 6in !important;
+    aspect-ratio: 5 / 6 !important;
+    transform-origin: center !important;
+    backface-visibility: visible !important;
+    translate: none !important;
+    rotate: none !important;
+    border: 1px solid #444 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+    /* Override mobile styles */
+    flex: none !important;
+    max-width: none !important;
+    max-height: none !important;
+    scroll-snap-align: unset !important;
+    overflow: hidden !important;
+    /* Top margin for print cutting */
+    margin-top: 1.75in !important;
+    margin-bottom: 10px !important;
+}
+
+/* Covers and full-page layouts in export mode */
+body.export-mode .cover,
+body.export-mode .page-layout-full {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+body.export-mode .cover .bg-img,
+body.export-mode .page-layout-full .bg-img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 1 !important;
+}
+
+body.export-mode .text-bottom-overlay,
+body.export-mode .back-overlay {
+    position: absolute !important;
+    z-index: 10 !important;
+}
+
+/* Hide flipbook navigation in export mode */
+body.export-mode .page-controls-arcade,
+body.export-mode .push--menu,
+body.export-mode .page-flip-zone,
+body.export-mode .page-flip-left,
+body.export-mode .page-flip-right,
+body.export-mode .prev,
+body.export-mode .next,
+body.export-mode .page-counter,
+body.export-mode .page-display,
+body.export-mode #export-btn {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Ensure zoom controls are always visible on top */
+#zoomControls {
+    z-index: 99999999 !important;
+}
+
+/* ================== PRINT STYLES ================== */
+@media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    #zoomControls, #export-btn { display: none !important; }
+    html { background: #fff !important; }
+    body { background: #fff !important; }
+    body.export-mode { background: #fff !important; }
+    .book-wrapper { background: #fff !important; }
+    .book { background: #fff !important; }
+    body.export-mode .book { background: #fff !important; }
+    body.export-mode .front,
+    body.export-mode .back {
+        margin-left: 0.25in !important;
     }
 }
