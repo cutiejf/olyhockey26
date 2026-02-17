@@ -213,9 +213,17 @@ function getTournamentState() {
         }
     }
     
-    // Check quarterfinals completion (k7-k10)
+    // Check qualifiers completion (k1-k4)
+    let qualifierComplete = true;
+    for (let i = 1; i <= 4; i++) {
+        if (!scores[`k${i}-h`] || !scores[`k${i}-a`]) {
+            qualifierComplete = false;
+            break;
+        }
+    }
+    // Check quarterfinals completion (k5-k8)
     let quarterComplete = true;
-    for (let i = 7; i <= 10; i++) {
+    for (let i = 5; i <= 8; i++) {
         if (!scores[`k${i}-h`] || !scores[`k${i}-a`]) {
             quarterComplete = false;
             break;
@@ -236,6 +244,7 @@ function getTournamentState() {
     
     return {
         prelimsComplete,
+        qualifierComplete,
         quarterComplete, 
         semiComplete,
         goldComplete,
