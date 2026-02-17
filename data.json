@@ -42,8 +42,8 @@
     "k2-a": "0",
     "k3-h": "",
     "k3-a": "",
-    "k4-h": "",
-    "k4-a": "",
+    "k4-h": "3",
+    "k4-a": "2",
     "k5-h": "",
     "k5-a": "",
     "k6-h": "",
@@ -64,99 +64,125 @@
   "storedESPNStats": {
     "scorers": [
       {
-        "rank": "1.",
-        "name": "Connor McDavid",
+        "name": "1. Connor McDavid",
         "team": "CAN",
-        "gp": "F",
+        "gp": "3",
+        "goals": "2",
+        "assists": "7",
+        "points": "9"
+      },
+      {
+        "name": "T2. Timo Meier",
+        "team": "SWI",
+        "gp": "4",
         "goals": "3",
-        "assists": "2",
+        "assists": "4",
         "points": "7"
       },
       {
-        "rank": "2.",
-        "name": "Timo Meier",
-        "team": "SUI",
-        "gp": "F",
-        "goals": "4",
-        "assists": "3",
-        "points": "4"
+        "name": "T2. Martin Necas",
+        "team": "CZE",
+        "gp": "4",
+        "goals": "3",
+        "assists": "4",
+        "points": "7"
       },
       {
-        "rank": "3.",
-        "name": "Sidney Crosby",
+        "name": "4. Macklin Celebrini",
         "team": "CAN",
-        "gp": "F",
-        "goals": "3",
-        "assists": "2",
-        "points": "4"
-      },
-      {
-        "rank": "4.",
-        "name": "Leon Draisaitl",
-        "team": "GER",
-        "gp": "F",
+        "gp": "3",
         "goals": "4",
         "assists": "2",
-        "points": "4"
+        "points": "6"
       },
       {
-        "rank": "5.",
-        "name": "Juraj Slafkovsky",
+        "name": "5. Tim Stutzle",
+        "team": "GER",
+        "gp": "4",
+        "goals": "4",
+        "assists": "2",
+        "points": "6"
+      },
+      {
+        "name": "6. Juraj Slafkovsky",
         "team": "SVK",
-        "gp": "F",
+        "gp": "3",
         "goals": "3",
         "assists": "3",
-        "points": "3"
+        "points": "6"
+      },
+      {
+        "name": "7. Sidney Crosby",
+        "team": "CAN",
+        "gp": "3",
+        "goals": "2",
+        "assists": "4",
+        "points": "6"
+      },
+      {
+        "name": "8. Leon Draisaitl",
+        "team": "GER",
+        "gp": "4",
+        "goals": "2",
+        "assists": "4",
+        "points": "6"
+      },
+      {
+        "name": "9. Nick Olesen",
+        "team": "DEN",
+        "gp": "4",
+        "goals": "4",
+        "assists": "1",
+        "points": "5"
+      },
+      {
+        "name": "10. Auston Matthews",
+        "team": "USA",
+        "gp": "3",
+        "goals": "3",
+        "assists": "2",
+        "points": "5"
       }
     ],
     "goalies": [
       {
         "rank": "1.",
+        "name": "Damian Clara",
+        "team": "ITA",
+        "gp": "4",
+        "wins": "0",
+        "gaa": "5.13",
+        "svp": "0.911"
+      },
+      {
+        "rank": "2.",
         "name": "Leonardo Genoni",
         "team": "SUI",
         "gp": "3",
         "wins": "3",
         "gaa": "0.99",
-        "svp": ".962"
-      },
-      {
-        "rank": "2.",
-        "name": "Logan Thompson",
-        "team": "CAN",
-        "gp": "1",
-        "wins": "1",
-        "gaa": "1.00",
-        "svp": ".960"
+        "svp": "0.962"
       },
       {
         "rank": "3.",
-        "name": "Connor Hellebuyck",
-        "team": "USA",
-        "gp": "2",
-        "wins": "2",
-        "gaa": "1.00",
-        "svp": ".952"
+        "name": "Lukas Dostal",
+        "team": "CZE",
+        "gp": "3",
+        "wins": "1",
+        "gaa": "3.65",
+        "svp": "0.879"
       },
       {
         "rank": "4.",
-        "name": "Jordan Binnington",
-        "team": "CAN",
-        "gp": "2",
-        "wins": "2",
-        "gaa": "1.00",
-        "svp": ".950"
-      },
-      {
-        "rank": "5.",
         "name": "Juuse Saros",
         "team": "FIN",
         "gp": "3",
         "wins": "2",
         "gaa": "1.34",
-        "svp": ".946"
+        "svp": "0.946"
       }
     ],
-    "lastFetch": "2026-02-17T17:19:16.526Z"
+    "lastFetch": "2026-02-17T18:24:40.704Z"
   },
   "prelims": [
     {
@@ -377,7 +403,8 @@
       "t": "03:10p",
       "h": "Czechia",
       "a": "Denmark",
-      "v": "S"
+      "v": "S",
+      "status": "F"
     },
     {
       "header": "QUARTERFINALS"
@@ -388,7 +415,7 @@
       "d": "Wed Feb 18",
       "t": "10:40a",
       "h": "Canada",
-      "a": "Czechia / Denmark",
+      "a": "CZE / DEN",
       "v": "S"
     },
     {
@@ -397,7 +424,7 @@
       "d": "Wed Feb 18",
       "t": "10:40a",
       "h": "USA",
-      "a": "Sweden / Latvia",
+      "a": "SWE / LAT",
       "v": "R"
     },
     {
@@ -554,5 +581,10 @@
     "Latvia": "lv",
     "Denmark": "dk"
   },
-  "lastUpdate": "2026-02-17T17:19:16.527Z"
+  "lastUpdate": "2026-02-17T18:24:40.885Z",
+  "storedIIHFScores": {
+    "players": [],
+    "teams": [],
+    "fetched": "2026-02-17T18:24:40.885Z"
+  }
 }
