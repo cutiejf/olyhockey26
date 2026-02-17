@@ -1380,7 +1380,7 @@ function updateSeeds(results, flagMap, teamGroups) {
     ];
     groupWinners.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
     
-    // 3. Seed 4: Best second-place team
+    // 3. Seeds 4-6: Group runners-up (tiered by position, then pts/GD/GF)
     const secondPlace = [
         groupStandings['A'][1],
         groupStandings['B'][1],
@@ -1388,17 +1388,37 @@ function updateSeeds(results, flagMap, teamGroups) {
     ];
     secondPlace.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
     
-    // 4. Seeds 5-12: Remaining teams sorted by pts/GD/GF
-    const remaining = [
-        secondPlace[1], secondPlace[2], // 2nd and 3rd best second-place
-        groupStandings['A'][2], groupStandings['A'][3],
-        groupStandings['B'][2], groupStandings['B'][3],
-        groupStandings['C'][2], groupStandings['C'][3]
+    // 4. Seeds 7-9: Group third-place teams sorted by pts/GD/GF
+    const thirdPlace = [
+        groupStandings['A'][2],
+        groupStandings['B'][2],
+        groupStandings['C'][2]
     ];
-    remaining.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
+    thirdPlace.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
     
-    // Combine all seeds in order
-    const allTeams = [...groupWinners, secondPlace[0], ...remaining];
+    // 5. Seeds 10-12: Group fourth-place teams sorted by pts/GD/GF
+    const fourthPlace = [
+        groupStandings['A'][3],
+        groupStandings['B'][3],
+        groupStandings['C'][3]
+    ];
+    fourthPlace.sort((a,b) => b.p - a.p || b.gd - a.gd || b.gf - a.gf);
+    
+    // Combine all seeds in user-specified order
+    const allTeams = [
+        groupStandings['A'][0], // Canada
+        groupStandings['C'][0], // USA
+        groupStandings['B'][0], // Slovakia
+        groupStandings['B'][1], // Finland
+        groupStandings['A'][1], // Switzerland
+        groupStandings['C'][1], // Germany
+        groupStandings['B'][2], // Sweden
+        groupStandings['A'][2], // Czechia
+        groupStandings['C'][2], // Denmark
+        groupStandings['C'][3], // Latvia
+        groupStandings['A'][3], // France
+        groupStandings['B'][3]  // Italy
+    ];
     
     // Populate seeds 1-12 (only on seeding page)
     const seedingPage = document.getElementById('page-p9');
