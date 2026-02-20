@@ -6,39 +6,46 @@ let window_data = {};
 // Track current panel index for portrait mobile horizontal scroll
 let mobileIndex = 0;
 
-// Load data.json from GitHub repo
+// Load data.json (prefer local copy so updates are visible immediately)
 async function loadData() {
+    // Try local first
     try {
-        // Try GitHub first (for latest updates)
-        const githubUrl = 'https://raw.githubusercontent.com/cutiejf/olyhockey26/main/data.json';
-        const response = await fetch(githubUrl);
-        window_data = await response.json();
-        console.log('✓ Data loaded from GitHub repo');
-        
-        // Auto-populate knockouts and update tournament state
-        autoPopulateKnockouts();
-        updateTournamentQuotes();
-        generateTournamentNotes();
-        
-        initBook();
-    } catch (error) {
-        console.error('Error loading from GitHub, trying local fallback:', error);
-        try {
-            // Fallback to local data.json if GitHub fails
-            const response = await fetch('data.json');
-            window_data = await response.json();
-            console.log('✓ Data loaded from local fallback');
-            
-            // Auto-populate knockouts and update tournament state
+        const localResp = await fetch('data.json');
+        if (localResp && localResp.ok) {
+            window_data = await localResp.json();
+            console.log('✓ Data loaded from local data.json');
             autoPopulateKnockouts();
             updateTournamentQuotes();
             generateTournamentNotes();
-            
             initBook();
-        } catch (fallbackError) {
-            console.error('Error loading data:', fallbackError);
-            initBook(); // Still initialize with empty data
+            renderContent();
+            return;
         }
+    } catch (e) {
+        console.log('Local data.json not available or failed to load:', e && e.message);
+    }
+
+    // Fallback to GitHub for latest remote copy
+    try {
+        const githubUrl = 'https://raw.githubusercontent.com/cutiejf/olyhockey26/main/data.json';
+        const response = await fetch(githubUrl);
+        if (response && response.ok) {
+            window_data = await response.json();
+            console.log('✓ Data loaded from GitHub repo');
+            autoPopulateKnockouts();
+            updateTournamentQuotes();
+            generateTournamentNotes();
+            initBook();
+            renderContent();
+            return;
+        }
+        throw new Error('GitHub response not OK');
+    } catch (error) {
+        console.error('Error loading data from GitHub:', error && error.message);
+        // Initialize with empty data to avoid UI break
+        window_data = {};
+        initBook();
+        renderContent();
     }
 }
 
@@ -165,22 +172,47 @@ function renderContent() {
     addGamesFrom(window_data.prelims);
     addGamesFrom(window_data.knockouts);
 
+    // Group games by date
+    const byDate = {};
+    games.forEach(g => {
+        const date = g.d;
+        if (!byDate[date]) byDate[date] = [];
+        byDate[date].push(g);
+    });
+
+    // Example: render today's games (replace with your actual logic/UI)
+    const today = new Date();
+    const todayStr = today.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).replace(',', '');
+    const todayGames = byDate[todayStr] || [];
+    let buzzHTML = '';
+    todayGames.forEach(g => {
+        const hScore = window_data.storedScores[`${g.id}-h`] || '';
+        const aScore = window_data.storedScores[`${g.id}-a`] || '';
+        // Determine finished status: prefer explicit status, fall back to presence of scores
+        const isFinished = (g.status === 'F') || (hScore !== '' && aScore !== '');
+        const statusLabel = isFinished ? 'Final' : g.t;
+        buzzHTML += `<div>${g.h} ${hScore} - ${aScore} ${g.a} <span style="color:#999; font-size:0.9em;">(${statusLabel})</span></div>`;
+    });
+    if (scoresDisplay) scoresDisplay.innerHTML = buzzHTML;
+
     // Display ESPN stats if available
     const stats = window_data.storedESPNStats || {};
     let statsHTML = '';
 
     if (stats.scorers && stats.scorers.length > 0) {
         statsHTML += '<div style="margin-bottom:10px;"><b>Top Scorers:</b><br>';
-        stats.scorers.slice(0, 3).forEach((s, i) => {
-            statsHTML += `<div style="font-size:9px; padding:2px 0;">${i+1}. ${s.name} (${s.team}) - ${s.points}pts</div>`;
+        stats.scorers.slice(0, 10).forEach((s, i) => {
+            const pts = s.points || '';
+            const name = (s.name || '').replace(/^\d+\.\s*/, '');
+            statsHTML += `<div style="font-size:11px; padding:2px 0;">${i+1}. ${name} ${s.team ? '(' + s.team + ')' : ''} - ${pts} pts</div>`;
         });
         statsHTML += '</div>';
     }
     
     if (stats.goalies && stats.goalies.length > 0) {
         statsHTML += '<div><b>Top Goalies:</b><br>';
-        stats.goalies.slice(0, 3).forEach((g, i) => {
-            statsHTML += `<div style="font-size:9px; padding:2px 0;">${i+1}. ${g.name} (${g.team}) - ${g.wins}W ${g.gaa}GAA</div>`;
+        stats.goalies.slice(0, 10).forEach((g, i) => {
+            statsHTML += `<div style="font-size:11px; padding:2px 0;">${i+1}. ${g.name} ${g.team ? '(' + g.team + ')' : ''} - ${g.gp || ''} GP ${g.gaa || ''} GAA ${g.svp || ''} SV%</div>`;
         });
         statsHTML += '</div>';
     }
