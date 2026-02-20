@@ -295,34 +295,9 @@
             </div>
         </div>
         <div class="back panel" id="page-p_new8" style="padding: 10px; background: #fdfdfd;">
-<<<<<<< HEAD
             <!-- Stats Section -->
             <div style="margin-top: 0px;">
               <div style="font-size: 11px; font-weight: 700; color: #fff; background: #1a1a1a; padding: 4px 4px; margin-bottom: 4px; text-transform: uppercase; letter-spacing:0.5px;">Top Scorers</div>
-=======
-            <h2>Global Contenders</h2>
-            <div style="margin-top: 0px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 6px; width: calc(100% - 10px); max-width: none; margin-left: 0; margin-right: auto; justify-items: start;">
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:4px; font-size:10px; padding:4px 6px; background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,248,248,0.6) 100%); border:1px solid #ddd; border-radius:4px; box-shadow:0 1px 2px rgba(0,0,0,0.08);">
-                <img src="https://flagcdn.com/w80/ca.png" style="width:20px; height:14px; border:1px solid #ccc; border-radius:2px; margin-right:2px; margin-left:0; object-fit: cover; flex-shrink:0;">
-                <div style="display:flex; flex-direction:column; justify-content:center; min-width:0; flex:1;">
-                  <div style="font-weight:900; color:#222; font-size:10px; margin-bottom:0px;">Canada</div>
-                  <div style="color:#666; font-size:8px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">McDavid, MacKinnon</div>
-                </div>
-              </div>
-
-              <div class="star-card" style="margin:0; display:flex; align-items:center; gap:4px; font-size:10px; padding:4px 6px; background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,248,248,0.6) 100%); border:1px solid #ddd; border-radius:4px; box-shadow:0 1px 2px rgba(0,0,0,0.08);">
-                <img src="https://flagcdn.com/w80/us.png" style="width:20px; height:14px; border:1px solid #ccc; border-radius:2px; margin-right:2px; margin-left:0; object-fit: cover; flex-shrink:0;">
-                <div style="display:flex; flex-direction:column; justify-content:center; min-width:0; flex:1;">
-                  <div style="font-weight:900; color:#222; font-size:10px; margin-bottom:0px;">USA</div>
-                  <div style="color:#666; font-size:8px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Matthews, Hughes</div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Stats Section -->
-            <div style="margin-top: 4px;">
-              <div style="font-size: 11px; font-weight: 900; color: #c0392b; margin-bottom: 2px; text-transform: uppercase; letter-spacing:0.5px;">Top 5 Points</div>
->>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
               <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; margin-bottom:8px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
@@ -394,11 +369,7 @@
                 </tbody>
               </table>
 
-<<<<<<< HEAD
               <div style="font-size: 11px; font-weight: 700; color: #fff; background: #1a1a1a; padding: 4px 4px; margin-bottom: 4px; text-transform: uppercase; letter-spacing:0.5px;">Top Goalies</div>
-=======
-              <div style="font-size: 11px; font-weight: 900; color: #2980b9; margin-bottom: 3px; text-transform: uppercase; letter-spacing:0.5px;">Top 5 Goalies</div>
->>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
               <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
@@ -950,11 +921,7 @@ window.HockeyData = {
     },
     "storedESPNStats": {
         "scorers": [
-<<<<<<< HEAD
             {"rank": "1.", "name": "Connor McDavid", "team": "CAN", "gp": "5", "goals": "2", "assists": "11", "points": "13"},
-=======
-            {"rank": "1.", "name": "Connor McDavid", "team": "CAN", "gp": "4", "goals": "2", "assists": "9", "points": "11"},
->>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
             {"rank": "2.", "name": "Macklin Celebrini", "team": "CAN", "gp": "4", "goals": "5", "assists": "4", "points": "9"},
             {"rank": "3.", "name": "Lucas Raymond", "team": "SWE", "gp": "5", "goals": "1", "assists": "8", "points": "9"},
             {"rank": "4.", "name": "Martin Necas", "team": "CZE", "gp": "5", "goals": "3", "assists": "5", "points": "8"},
@@ -1045,16 +1012,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function applyJson(jsonData) {
         if (jsonData && jsonData.storedScores) {
-<<<<<<< HEAD
             // Only merge non-empty values so stale remote data never overwrites hardcoded inline scores
             const incoming = {};
             Object.keys(jsonData.storedScores).forEach(function(k) {
                 if (jsonData.storedScores[k] !== '') incoming[k] = jsonData.storedScores[k];
             });
             window.HockeyData.storedScores = Object.assign({}, window.HockeyData.storedScores, incoming);
-=======
-            window.HockeyData.storedScores = Object.assign({}, window.HockeyData.storedScores, jsonData.storedScores);
->>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
         }
         if (jsonData && jsonData.storedESPNStats) {
             window.HockeyData.storedESPNStats = jsonData.storedESPNStats;
@@ -1204,7 +1167,6 @@ function injectTables() {
                     kBody.appendChild(spacerBelowGoldHeader);
                 }
 
-<<<<<<< HEAD
                 const sh = storedScores[g.id + '-h'] || '';
                 const sa = storedScores[g.id + '-a'] || '';
                 const hasResult = sh !== '' && sa !== '';
@@ -1230,49 +1192,12 @@ function injectTables() {
                     if (!isNaN(nh) && !isNaN(na)) {
                         if (nh > na) return qualGame.h;
                         if (na > nh) return qualGame.a;
-=======
-                var homeFlag = getKOFlag(g.h) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.h) + '.png" style="width:16px; height:11px; vertical-align:-1px;">' : '';
-                var awayFlag = getKOFlag(g.a) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.a) + '.png" style="width:16px; height:11px; vertical-align:-1px;">' : '';
-
-                // Resolve qualifier winners into quarter opponents when possible
-                function resolveQualifierOpponent(labelText) {
-                    // If label doesn't look like a qualifier pair 'A / B', return as-is
-                    if (!labelText || labelText.indexOf('/') === -1) return labelText;
-                    const parts = labelText.split('/').map(s => s.trim());
-                    if (parts.length !== 2) return labelText;
-                    // Map common 3-letter abbreviations back to full names for matching
-                    const abbrevMap = { 'CZE': 'Czechia', 'DEN': 'Denmark', 'SWE': 'Sweden', 'LAT': 'Latvia' };
-                    const fullParts = parts.map(p => {
-                        const up = p.toUpperCase();
-                        return abbrevMap[up] || p;
-                    });
-                    // Find the qualifier game (g === 'Q') whose teams match these two names
-                    const qualGame = knockouts.find(k => k.g === 'Q' && ((k.h === fullParts[0] && k.a === fullParts[1]) || (k.h === fullParts[1] && k.a === fullParts[0])));
-                    if (!qualGame) return labelText;
-                    const qid = qualGame.id;
-                    const sh = storedScores[qid + '-h'] || '';
-                    const sa = storedScores[qid + '-a'] || '';
-                    const nh = parseInt(sh, 10);
-                    const na = parseInt(sa, 10);
-                    if (!isNaN(nh) && !isNaN(na)) {
-                        if (nh > na) return qualGame.h;
-                        if (na > nh) return qualGame.a;
-                        return labelText;
->>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
                     }
                     return labelText;
                 }
 
-<<<<<<< HEAD
                 const homeLabel = highlightReseed(formatKOTeam(resolveQualifierOpponent(g.h)));
                 const awayLabel = highlightReseed(formatKOTeam(resolveQualifierOpponent(g.a)));
-=======
-                const homeResolved = resolveQualifierOpponent(g.h);
-                const awayResolved = resolveQualifierOpponent(g.a);
-
-                const homeLabel = highlightReseed(formatKOTeam(homeResolved));
-                const awayLabel = highlightReseed(formatKOTeam(awayResolved));
->>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
 
                 tr.innerHTML = '<td class="c-grp" style="padding:6px 2px;">' + g.g + '</td>' +
                     '<td class="c-ven" style="padding:6px 5px;">' + g.v + '</td>' +
