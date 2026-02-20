@@ -121,13 +121,21 @@
         }
         
         // Daily Buzz
-        var todayStr = 'Thu Feb 12';
-        var yesterdayStr = 'Wed Feb 11';
+        var _today = new Date();
+        var _yesterday = new Date(_today); _yesterday.setDate(_today.getDate() - 1);
+        var _tomorrow = new Date(_today); _tomorrow.setDate(_today.getDate() + 1);
+        function _fmtDate(d) {
+            return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).replace(',', '');
+        }
+        var todayStr = _fmtDate(_today);
+        var yesterdayStr = _fmtDate(_yesterday);
+        var tomorrowStr = _fmtDate(_tomorrow);
+        var allGames = (prelims || []).concat(knockouts || []).filter(function(g) { return g && g.id && !g.header; });
         
         var $yBuzz = $container.find('#yesterday-buzz-v');
         if ($yBuzz.length) {
             $yBuzz.empty();
-            prelims.filter(function(m) { return m.d === yesterdayStr; }).forEach(function(m) {
+            allGames.filter(function(m) { return m.d === yesterdayStr; }).forEach(function(m) {
                 var div = '<div style="display:flex; align-items:center; font-size:16px; font-weight:bold; color:#111;">' +
                     '<span style="width:50px;"><span style="background:#eee; padding:2px 4px; border-radius:2px; font-size:10px; color:#666;">GRP ' + m.g + '</span></span>' +
                     '<span style="flex:1; text-align:right;">' + m.h.substring(0,3).toUpperCase() + ' ' + window.getFlagImg(m.h) + '</span>' +
@@ -142,7 +150,7 @@
         var $tBuzz = $container.find('#today-buzz-v');
         if ($tBuzz.length) {
             $tBuzz.empty();
-            prelims.filter(function(m) { return m.d === todayStr; }).forEach(function(m) {
+            allGames.filter(function(m) { return m.d === todayStr; }).forEach(function(m) {
                 var div = '<div style="display:flex; align-items:center; font-size:16px; font-weight:bold; color:#111;">' +
                     '<span style="width:40px; text-align:left;"><span style="background:#eee; padding:2px 4px; border-radius:2px; font-size:10px; color:#666;">GRP ' + m.g + '</span></span>' +
                     '<span style="width:60px; font-size:14px; color:var(--accent-red); font-weight:900; text-align:center;">' + m.t + '</span>' +
