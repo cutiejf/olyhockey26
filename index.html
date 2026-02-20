@@ -1724,3 +1724,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cached.scorers && cached.scorers.length > 0) {
         console.log('Loading cached scorers:', cached.scorers);
         updateScoringTableData(cached.scorers);
+    }
+    
+    if (cached.goalies && cached.goalies.length > 0) {
+        console.log('Loading cached goalies:', cached.goalies);
+        updateGoalieTableData(cached.goalies);
+    }
+});
+</script>
+
+</body>
+</html>
