@@ -46,21 +46,92 @@
 
     <!-- Page 1: Daily Buzz + Groups (New Order: 3,4) -->
     <div class="page">
-        <div class="front panel" id="page-p5" style="padding: 12px 15px;">
+        <div class="front panel" id="page-p5" style="padding: 12px 15px; display: flex; flex-direction: column; min-height: 100%;">
             <h2 style="margin-bottom:8px;">Daily Buzz: Sunday, Feb 15</h2>
-            <div style="margin-bottom: 8px;">
-                <div style="font-size: 12px; font-weight: 900; color: #444; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px;">Yesterday's Scores</div>
-                <div id="yesterday-buzz-v" style="display: flex; flex-direction: column; gap: 2px;"></div>
+            <div style="flex: 1; overflow-y: auto;">
+                <div style="margin-bottom: 6px;">
+                    <div style="font-size: 12px; font-weight: 900; color: #444; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px;">Final Games</div>
+                    <div id="today-buzz-v" style="display: flex; flex-direction: column; gap: 2px;">
+                        <!-- SEMI FINALS -->
+                        <div style="font-size:12px; font-weight:700; color:#888; margin-bottom:4px; text-transform:uppercase;">FRI, FEB 20 &mdash; SEMI FINALS</div>
+                        <!-- k9: Canada 3-2 Finland -->
+                        <div style="display:flex; align-items:center; font-size:13px; font-weight:bold; padding:4px 0;">
+                            <span style="width:16px; text-align:center; font-weight:900; margin-right:2px; font-size:12px; color:#2980b9;">SF</span>
+                            <span style="width:14px; text-align:center; margin-right:2px; font-size:12px; color:#888;">S</span>
+                            <span style="width:62px; text-align:center; font-weight:900; margin-right:4px; font-size:12px; color:#c0392b;">F</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-right:1px;">
+                                <span style="display:inline-block; width:16px; text-align:left; margin-right:1px;"><img src="https://flagcdn.com/w20/ca.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;"></span>
+                                <span style="flex:1; text-align:right; padding-right:6px;">Canada</span>
+                            </span>
+                            <span style="margin:0 3px; background:#000; color:#fff; padding:3px 6px; border-radius:3px; min-width:38px; text-align:center; font-size:13px;">3-2</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-left:1px;">
+                                <span style="flex:1; text-align:left; padding-left:6px;">Finland</span>
+                                <span style="display:inline-block; width:16px; text-align:right; margin-left:1px; margin-right:8px;"><img src="https://flagcdn.com/w20/fi.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;"></span>
+                            </span>
+                        </div>
+                        <!-- k10: USA vs Slovakia -->
+                        <div style="display:flex; align-items:center; font-size:13px; font-weight:bold; padding:4px 0;">
+                            <span style="width:16px; text-align:center; font-weight:900; margin-right:2px; font-size:12px; color:#2980b9;">SF</span>
+                            <span style="width:14px; text-align:center; margin-right:2px; font-size:12px; color:#888;">S</span>
+                            <span style="width:62px; text-align:center; font-weight:900; margin-right:4px; font-size:12px; color:#2980b9;">3:10p</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-right:1px;">
+                                <span style="display:inline-block; width:16px; text-align:left; margin-right:1px;"><img src="https://flagcdn.com/w20/us.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;"></span>
+                                <span style="flex:1; text-align:right; padding-right:6px;">USA</span>
+                            </span>
+                            <span style="margin:0 3px; background:#f0f0f0; color:#666; padding:3px 6px; border-radius:3px; min-width:38px; text-align:center; font-size:13px;">vs</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-left:1px;">
+                                <span style="flex:1; text-align:left; padding-left:6px;">Slovakia</span>
+                                <span style="display:inline-block; width:16px; text-align:right; margin-left:1px; margin-right:8px;"><img src="https://flagcdn.com/w20/sk.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;"></span>
+                            </span>
+                        </div>
+                        <!-- BRONZE -->
+                        <div style="margin-top:8px; border-top:2px solid #eee; padding-top:6px; margin-bottom:4px;"></div>
+                        <div style="font-size:12px; font-weight:700; color:#888; margin-bottom:4px; text-transform:uppercase;">SAT, FEB 21 &mdash; BRONZE MEDAL</div>
+                        <!-- k11: Lose SF2 vs Finland -->
+                        <div style="display:flex; align-items:center; font-size:13px; font-weight:bold; padding:4px 0;">
+                            <span style="width:16px; text-align:center; font-weight:900; margin-right:2px; font-size:12px;">🥉</span>
+                            <span style="width:14px; text-align:center; margin-right:2px; font-size:12px; color:#888;">S</span>
+                            <span style="width:62px; text-align:center; font-weight:900; margin-right:4px; font-size:12px; color:#2980b9;">2:40p</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-right:1px;">
+                                <span style="display:inline-block; width:16px; text-align:left; margin-right:1px;"></span>
+                                <span style="flex:1; text-align:right; padding-right:6px;">Lose SF2</span>
+                            </span>
+                            <span style="margin:0 3px; background:#f0f0f0; color:#666; padding:3px 6px; border-radius:3px; min-width:38px; text-align:center; font-size:13px;">vs</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-left:1px;">
+                                <span style="flex:1; text-align:left; padding-left:6px;">Finland</span>
+                                <span style="display:inline-block; width:16px; text-align:right; margin-left:1px; margin-right:8px;"><img src="https://flagcdn.com/w20/fi.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;"></span>
+                            </span>
+                        </div>
+                        <!-- GOLD -->
+                        <div style="margin-top:8px; border-top:2px solid #eee; padding-top:6px; margin-bottom:4px;"></div>
+                        <div style="font-size:12px; font-weight:700; color:#c0392b; margin-bottom:4px; text-transform:uppercase;">SUN, FEB 22 &mdash; GOLD MEDAL</div>
+                        <!-- k12: Canada vs Win SF2 -->
+                        <div style="display:flex; align-items:center; font-size:13px; font-weight:bold; padding:4px 0;">
+                            <span style="width:16px; text-align:center; font-weight:900; margin-right:2px; font-size:12px;">🥇</span>
+                            <span style="width:14px; text-align:center; margin-right:2px; font-size:12px; color:#888;">S</span>
+                            <span style="width:62px; text-align:center; font-weight:900; margin-right:4px; font-size:12px; color:#2980b9;">8:10a</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-right:1px;">
+                                <span style="display:inline-block; width:16px; text-align:left; margin-right:1px;"><img src="https://flagcdn.com/w20/ca.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;"></span>
+                                <span style="flex:1; text-align:right; padding-right:6px;">Canada</span>
+                            </span>
+                            <span style="margin:0 3px; background:#f0f0f0; color:#666; padding:3px 6px; border-radius:3px; min-width:38px; text-align:center; font-size:13px;">vs</span>
+                            <span style="flex:1; display:flex; align-items:center; padding-left:1px;">
+                                <span style="flex:1; text-align:left; padding-left:6px;">Win SF2</span>
+                                <span style="display:inline-block; width:16px; text-align:right; margin-left:1px; margin-right:8px;"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div style="margin-bottom: 8px;">
-                <div style="font-size: 12px; font-weight: 900; color: #444; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px;">Today's Schedule</div>
-                <div id="today-buzz-v" style="display: flex; flex-direction: column; gap: 2px;"></div>
+            <div style="margin-top: auto; padding-top: 8px;">
+                <div style="margin-bottom: 8px; padding: 8px; background: #f0f8ff; border-left: 4px solid #2980b9; border-radius: 3px; font-size: 10px; line-height: 1.4;">
+                    <div style="font-weight: 700; color: #2980b9; margin-bottom: 4px;">💡 Did You Know?</div>
+                    <div style="color: #333; margin-bottom: 3px;"><b>Finland</b> is the defending champion (2022) and holds the record for most medals in NHL-era Olympic ice hockey with <b>5 total:</b> 1 Gold (2022), 2 Silver (1988, 2006), 2 Bronze (1994, 1998).</div>
+                    <div style="color: #333; margin-bottom: 3px;"><b>Connor McDavid</b> (CAN) has set a new record with <b>13 points</b> in a single tournament among active players, surpassing Finland's Eeli Tolvanen who set the previous record of 9 points in <b>2018</b>.</div>
+                    <div style="color: #333;"><b>Pierre-Édouard Bellemare</b> (FRA) is the oldest player in this tournament at <b>40 years old</b> and is also the oldest goal scorer.</div>
+                </div>
+                <div style="border-top: 1px dashed #ddd; padding-top: 6px; text-align: center; color: #bbb; font-size: 10px; font-style: italic;">"Gold isn't won on the ice, it's won in the heart."</div>
             </div>
-            <div style="margin-top:auto;">
-                <div style="font-size: 12px; font-weight: 900; color: #444; border-bottom: 2px solid #eee; padding-bottom: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px;">Tomorrow's Games</div>
-                <div id="tomorrow-buzz-v" style="display: flex; flex-direction: column; gap: 2px;"></div>
-            </div>
-            <div style="margin-top: auto; border-top: 1px dashed #ddd; padding-top: 6px; text-align: center; color: #bbb; font-size: 10px; font-style: italic;">"Gold isn't won on the ice, it's won in the heart."</div>
         </div>
         <div class="back panel" id="page-p7">
             <h2>Group Standings</h2>
@@ -76,7 +147,7 @@
         <div class="front panel" id="page-p8" style="padding: 12px 16px 8px 16px;">
             <h2 style="margin-bottom: 6px;">Preliminaries</h2>
             <div class="flex-table-container">
-                <table id="table-prelims" style="font-size: 13.1px; width: 100%; table-layout: fixed;">
+                <table id="table-prelims" style="font-size: 14.4px; width: 100%; table-layout: fixed;">
                     <colgroup>
                         <col style="width: 28px;">
                         <col style="width: 18px;">
@@ -224,6 +295,11 @@
             </div>
         </div>
         <div class="back panel" id="page-p_new8" style="padding: 10px; background: #fdfdfd;">
+<<<<<<< HEAD
+            <!-- Stats Section -->
+            <div style="margin-top: 0px;">
+              <div style="font-size: 11px; font-weight: 700; color: #fff; background: #1a1a1a; padding: 4px 4px; margin-bottom: 4px; text-transform: uppercase; letter-spacing:0.5px;">Top Scorers</div>
+=======
             <h2>Global Contenders</h2>
             <div style="margin-top: 0px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 6px; width: calc(100% - 10px); max-width: none; margin-left: 0; margin-right: auto; justify-items: start;">
               <div class="star-card" style="margin:0; display:flex; align-items:center; gap:4px; font-size:10px; padding:4px 6px; background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,248,248,0.6) 100%); border:1px solid #ddd; border-radius:4px; box-shadow:0 1px 2px rgba(0,0,0,0.08);">
@@ -246,6 +322,7 @@
             <!-- Stats Section -->
             <div style="margin-top: 4px;">
               <div style="font-size: 11px; font-weight: 900; color: #c0392b; margin-bottom: 2px; text-transform: uppercase; letter-spacing:0.5px;">Top 5 Points</div>
+>>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
               <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; margin-bottom:8px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
@@ -317,7 +394,11 @@
                 </tbody>
               </table>
 
+<<<<<<< HEAD
+              <div style="font-size: 11px; font-weight: 700; color: #fff; background: #1a1a1a; padding: 4px 4px; margin-bottom: 4px; text-transform: uppercase; letter-spacing:0.5px;">Top Goalies</div>
+=======
               <div style="font-size: 11px; font-weight: 900; color: #2980b9; margin-bottom: 3px; text-transform: uppercase; letter-spacing:0.5px;">Top 5 Goalies</div>
+>>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
               <table style="width:100%; font-size:11px; border-collapse:separate; border-spacing:0 3px; table-layout:fixed;">
                 <thead style="background:#eee;">
                   <tr>
@@ -392,7 +473,8 @@
             
             <div style="margin-top: auto; font-size: 12px; line-height: 1.4; color: #555; background: #fff; padding: 10px; border: 1px solid #eee;">
                 <div style="margin-bottom:6px;"><b>The Verdict:</b> Milan 2026 marks the first "Best-on-Best" tournament in over a decade. While Canada remains the favorite, the gap has closed, with the USA and Sweden bringing perhaps their fastest rosters in Olympic history.</div>
-                <div style="font-size:10px; color:#666;">Official game statistics can be found <a href="https://www.iihf.com/en/events/2026/olympic-m/tournamentinfo/officialdocuments" target="_blank" style="color:#2980b9; text-decoration:underline;">here</a>.</div>
+                <div style="font-size:10px; color:#999; font-style:italic; margin-top:4px;"><b>Note:</b> Sidney Crosby (CAN) will not play today due to injury.</div>
+                <div style="font-size:10px; color:#666; margin-top:4px;">Official game statistics can be found <a href="https://www.iihf.com/en/events/2026/olympic-m/tournamentinfo/officialdocuments" target="_blank" style="color:#2980b9; text-decoration:underline;">here</a>.</div>
             </div>
         </div>
     </div>
@@ -858,11 +940,21 @@ window.HockeyData = {
         "p11-h": "5", "p11-a": "3", "p12-h": "3", "p12-a": "4",
         "p13-h": "11", "p13-a": "0", "p14-h": "6", "p14-a": "3",
         "p15-h": "4", "p15-a": "3*", "p16-h": "10", "p16-a": "2",
-        "p17-h": "4", "p17-a": "2", "p18-h": "5", "p18-a": "1"
+        "p17-h": "4", "p17-a": "2", "p18-h": "5", "p18-a": "1",
+        "k1-h": "5", "k1-a": "1", "k2-h": "3", "k2-a": "0",
+        "k3-h": "5", "k3-a": "1", "k4-h": "3", "k4-a": "2",
+        "k5-h": "4", "k5-a": "3", "k6-h": "2", "k6-a": "1",
+        "k7-h": "6", "k7-a": "2", "k8-h": "3", "k8-a": "2",
+        "k9-h": "3", "k9-a": "2",
+        "k10-h": "", "k10-a": "", "k11-h": "", "k11-a": "", "k12-h": "", "k12-a": ""
     },
     "storedESPNStats": {
         "scorers": [
+<<<<<<< HEAD
+            {"rank": "1.", "name": "Connor McDavid", "team": "CAN", "gp": "5", "goals": "2", "assists": "11", "points": "13"},
+=======
             {"rank": "1.", "name": "Connor McDavid", "team": "CAN", "gp": "4", "goals": "2", "assists": "9", "points": "11"},
+>>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
             {"rank": "2.", "name": "Macklin Celebrini", "team": "CAN", "gp": "4", "goals": "5", "assists": "4", "points": "9"},
             {"rank": "3.", "name": "Lucas Raymond", "team": "SWE", "gp": "5", "goals": "1", "assists": "8", "points": "9"},
             {"rank": "4.", "name": "Martin Necas", "team": "CZE", "gp": "5", "goals": "3", "assists": "5", "points": "8"},
@@ -923,8 +1015,8 @@ window.HockeyData = {
         { "id": "k9", "g": "SF", "d": "Fri Feb 20", "t": "10:40a", "h": "Canada", "a": "Finland", "v": "S" },
         { "id": "k10", "g": "SF", "d": "Fri Feb 20", "t": "03:10p", "h": "USA", "a": "Slovakia", "v": "S" },
         { "header": "MEDAL GAMES" },
-        { "id": "k11", "g": "🥉", "d": "Sat Feb 21", "t": "02:40p", "h": "Lose SF1", "a": "Lose SF2", "v": "S" },
-        { "id": "k12", "g": "🥇🥈", "d": "Sun Feb 22", "t": "08:10a", "h": "Win SF1", "a": "Win SF2", "v": "S" }
+        { "id": "k11", "g": "🥉", "d": "Sat Feb 21", "t": "02:40p", "h": "Lose SF2", "a": "Finland", "v": "S" },
+        { "id": "k12", "g": "🥇🥈", "d": "Sun Feb 22", "t": "08:10a", "h": "Canada", "a": "Win SF2", "v": "S" }
     ],
     "historyData": [
         ["2022", "fi", "FIN", "ru", "ROC", "sk", "SVK"],
@@ -953,7 +1045,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function applyJson(jsonData) {
         if (jsonData && jsonData.storedScores) {
+<<<<<<< HEAD
+            // Only merge non-empty values so stale remote data never overwrites hardcoded inline scores
+            const incoming = {};
+            Object.keys(jsonData.storedScores).forEach(function(k) {
+                if (jsonData.storedScores[k] !== '') incoming[k] = jsonData.storedScores[k];
+            });
+            window.HockeyData.storedScores = Object.assign({}, window.HockeyData.storedScores, incoming);
+=======
             window.HockeyData.storedScores = Object.assign({}, window.HockeyData.storedScores, jsonData.storedScores);
+>>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
         }
         if (jsonData && jsonData.storedESPNStats) {
             window.HockeyData.storedESPNStats = jsonData.storedESPNStats;
@@ -1001,7 +1102,7 @@ function injectTables() {
             if (name.indexOf(key) !== -1) { code = flagMap[key]; break; }
         }
         if (!code) return '';
-        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 2px;">';
+        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:20px; height:13px; border-radius:2px; border:1px solid #bbb; vertical-align:middle; margin:0 1px;">';
     };
     const getFlagImg = (name) => {
         let code = null;
@@ -1009,7 +1110,7 @@ function injectTables() {
             if (name.indexOf(key) !== -1) { code = flagMap[key]; break; }
         }
         if (!code) return ''; // No flag for placeholders like "Reseed 1", "Win QF", etc.
-        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:16px; height:11px; vertical-align:-1px; margin:0 -16px;">';
+        return '<img src="https://flagcdn.com/w20/' + code + '.png" style="width:20px; height:13px; border-radius:2px; border:1px solid #bbb; vertical-align:middle; margin:0 1px;">';
     };
     // Highlight 'Reseed N' substrings so we can style them
     const highlightReseed = (s) => {
@@ -1037,16 +1138,18 @@ function injectTables() {
         pBody.innerHTML = '';
         prelims.forEach(g => {
             const tr = document.createElement('tr');
-            tr.innerHTML = '<td class="c-grp" style="padding:5px 8px; color:' + getGrpColor(g.g) + '">' + g.g + '</td>' +
-                '<td class="c-ven" style="padding:5px 8px;">' + g.v + '</td>' +
-                '<td class="c-date" style="padding:5px 8px;">' + g.d + '</td>' +
-                '<td class="c-time" style="padding:5px 8px;">' + g.t + '</td>' +
-                '<td class="c-match" style="padding:5px 8px;">' +
+            const ph = storedScores[g.id + '-h'] || '';
+            const pa = storedScores[g.id + '-a'] || '';
+            const pScore = (ph !== '' && pa !== '')
+                ? '<span style="display:inline-block; background:#000; color:#fff; padding:1px 0; border-radius:3px; font-size:12.3px; font-weight:900; letter-spacing:0.5px; width:34px; text-align:center;">' + ph + '&ndash;' + pa + '</span>'
+                : '<span class="sb" data-key="' + g.id + '-h">' + ph + '</span><span class="sb" data-key="' + g.id + '-a">' + pa + '</span>';
+            tr.innerHTML = '<td class="c-grp" style="padding:4px 8px; color:' + getGrpColor(g.g) + '">' + g.g + '</td>' +
+                '<td class="c-ven" style="padding:4px 8px;">' + g.v + '</td>' +
+                '<td class="c-date" style="padding:4px 8px;">' + g.d + '</td>' +
+                '<td class="c-time" style="padding:4px 8px;">' + g.t + '</td>' +
+                '<td class="c-match" style="padding:4px 8px;">' +
                     '<span class="team-home" style="display:inline-flex; align-items:center; width:60px; justify-content:flex-start;"><span style="display:inline-block; width:18px; text-align:center; vertical-align:middle;">' + getFlagImg(g.h) + '</span><span style="text-align:right; padding-right:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;">' + g.h.substring(0,3).toUpperCase() + '</span></span>' +
-                    '<span class="score-area" style="display:inline-flex; align-items:center; width:44px; justify-content:center; margin:0 6px;">' +
-                        '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
-                        '<span class="sb" contenteditable="true" data-key="' + g.id + '-a">' + (storedScores[g.id + '-a'] || '') + '</span>' +
-                    '</span>' +
+                    '<span class="score-area" style="display:inline-flex; align-items:center; justify-content:center; width:36px; margin:0 4px;">' + pScore + '</span>' +
                     '<span class="team-away" style="display:inline-flex; align-items:center; width:60px; justify-content:flex-end;"><span style="text-align:left; padding-left:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;">' + g.a.substring(0,3).toUpperCase() + '</span><span style="display:inline-block; width:18px; text-align:center; vertical-align:middle;">' + getFlagImg(g.a) + '</span></span>' +
                 '</td>';
             pBody.appendChild(tr);
@@ -1101,6 +1204,33 @@ function injectTables() {
                     kBody.appendChild(spacerBelowGoldHeader);
                 }
 
+<<<<<<< HEAD
+                const sh = storedScores[g.id + '-h'] || '';
+                const sa = storedScores[g.id + '-a'] || '';
+                const hasResult = sh !== '' && sa !== '';
+                const scoreDisplay = hasResult
+                    ? '<span style="display:inline-block; background:#000; color:#fff; padding:1px 0; border-radius:3px; font-size:12.3px; font-weight:900; letter-spacing:0.5px; width:34px; text-align:center;">' + sh + '&ndash;' + sa + '</span>'
+                    : '<span class="sb" data-key="' + g.id + '-h">' + sh + '</span><span class="sb" data-key="' + g.id + '-a">' + sa + '</span>';
+
+                var homeFlag = getKOFlag(g.h) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.h) + '.png" style="width:20px; height:13px; border-radius:2px; border:1px solid #bbb; vertical-align:middle;">' : '';
+                var awayFlag = getKOFlag(g.a) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.a) + '.png" style="width:20px; height:13px; border-radius:2px; border:1px solid #bbb; vertical-align:middle;">' : '';
+
+                function resolveQualifierOpponent(labelText) {
+                    if (!labelText || labelText.indexOf('/') === -1) return labelText;
+                    const parts = labelText.split('/').map(s => s.trim());
+                    if (parts.length !== 2) return labelText;
+                    const abbrevMap = { 'CZE': 'Czechia', 'DEN': 'Denmark', 'SWE': 'Sweden', 'LAT': 'Latvia' };
+                    const fullParts = parts.map(p => { const up = p.toUpperCase(); return abbrevMap[up] || p; });
+                    const qualGame = knockouts.find(k => k.g === 'Q' && ((k.h === fullParts[0] && k.a === fullParts[1]) || (k.h === fullParts[1] && k.a === fullParts[0])));
+                    if (!qualGame) return labelText;
+                    const qid = qualGame.id;
+                    const qsh = storedScores[qid + '-h'] || '';
+                    const qsa = storedScores[qid + '-a'] || '';
+                    const nh = parseInt(qsh, 10); const na = parseInt(qsa, 10);
+                    if (!isNaN(nh) && !isNaN(na)) {
+                        if (nh > na) return qualGame.h;
+                        if (na > nh) return qualGame.a;
+=======
                 var homeFlag = getKOFlag(g.h) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.h) + '.png" style="width:16px; height:11px; vertical-align:-1px;">' : '';
                 var awayFlag = getKOFlag(g.a) ? '<img src="https://flagcdn.com/w20/' + getKOFlag(g.a) + '.png" style="width:16px; height:11px; vertical-align:-1px;">' : '';
 
@@ -1128,31 +1258,33 @@ function injectTables() {
                         if (nh > na) return qualGame.h;
                         if (na > nh) return qualGame.a;
                         return labelText;
+>>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
                     }
                     return labelText;
                 }
 
+<<<<<<< HEAD
+                const homeLabel = highlightReseed(formatKOTeam(resolveQualifierOpponent(g.h)));
+                const awayLabel = highlightReseed(formatKOTeam(resolveQualifierOpponent(g.a)));
+=======
                 const homeResolved = resolveQualifierOpponent(g.h);
                 const awayResolved = resolveQualifierOpponent(g.a);
 
                 const homeLabel = highlightReseed(formatKOTeam(homeResolved));
                 const awayLabel = highlightReseed(formatKOTeam(awayResolved));
+>>>>>>> 09616ba83cba76c177e63ebe96bf8c2aa11fc896
 
                 tr.innerHTML = '<td class="c-grp" style="padding:6px 2px;">' + g.g + '</td>' +
                     '<td class="c-ven" style="padding:6px 5px;">' + g.v + '</td>' +
                     '<td class="c-date" style="padding:6px 5px;">' + g.d + '</td>' +
                     '<td class="c-time" style="padding:6px 5px;">' + g.t + '</td>' +
-                    // Qualification-style flags: left flag cell (right-aligned), match cell, right flag cell (left-aligned)
-                    '<td class="c-flag" style="padding:6px 6px 6px 8px; text-align:right; width:22px;">' + (homeFlag ? homeFlag : '') + '</td>' +
+                    '<td class="c-flag" style="padding:6px 6px 6px 8px; text-align:right; width:22px;">' + (homeFlag || '') + '</td>' +
                     '<td class="c-match" style="padding:6px 4px; text-align:center;">' +
                         '<span style="display:inline-block; min-width:64px; text-align:right; padding-right:4px;">' + homeLabel + '</span>' +
-                        '<span class="score-area" style="display:inline-block; width:36px;">' +
-                            '<span class="sb" contenteditable="true" data-key="' + g.id + '-h">' + (storedScores[g.id + '-h'] || '') + '</span>' +
-                            '<span class="sb" contenteditable="true" data-key="' + g.id + '-a">' + (storedScores[g.id + '-a'] || '') + '</span>' +
-                        '</span>' +
+                        '<span class="score-area" style="display:inline-block; width:auto; text-align:center;">' + scoreDisplay + '</span>' +
                         '<span style="display:inline-block; min-width:64px; text-align:left; padding-left:4px;">' + awayLabel + '</span>' +
                     '</td>' +
-                    '<td class="c-flag" style="padding:6px 2px 6px 3px; text-align:left; width:22px;">' + (awayFlag ? awayFlag : '') + '</td>';
+                    '<td class="c-flag" style="padding:6px 2px 6px 3px; text-align:left; width:22px;">' + (awayFlag || '') + '</td>';
             }
             kBody.appendChild(tr);
         });
@@ -1294,13 +1426,7 @@ const parseDataDate = (s) => {
         });
     };
 
-    // Fill containers
-    const yBuzz = document.getElementById('yesterday-buzz-v');
-    renderBuzzList(yBuzz, yesterdayKey, 'past');
-    const tBuzz = document.getElementById('today-buzz-v');
-    renderBuzzList(tBuzz, todayKey, 'mixed');
-    const tmBuzz = document.getElementById('tomorrow-buzz-v');
-    renderBuzzList(tmBuzz, tomorrowKey, 'upcoming');
+    // Buzz section is hardcoded HTML - no JS rendering needed
 
     // (NEXT GAME DAY summary removed - showing only Yesterday/Today/Tomorrow)
 
@@ -1577,6 +1703,11 @@ function updateSeeds(results, flagMap, teamGroups) {
                 awayFlag = flagMap[awayName] || '';
             }
             
+            const qh = storedScores[g.id + '-h'] || '';
+            const qa = storedScores[g.id + '-a'] || '';
+            const qScore = (qh !== '' && qa !== '')
+                ? '<span style="display:inline-block; background:#000; color:#fff; padding:1px 0; border-radius:3px; font-size:12.3px; font-weight:900; letter-spacing:0.5px; width:34px; text-align:center;">' + qh + '&ndash;' + qa + '</span>'
+                : '<span class="sb" data-key="' + g.id + '-h">' + qh + '</span><span class="sb" data-key="' + g.id + '-a">' + qa + '</span>';
             const tr = document.createElement('tr');
             tr.innerHTML = '<td class="c-grp" style="padding:6px 4px; text-align:center; width:18px;">' + g.g + '</td>' +
                 '<td class="c-ven" style="padding:6px 4px; text-align:center; width:18px;">' + g.v + '</td>' +
@@ -1587,10 +1718,7 @@ function updateSeeds(results, flagMap, teamGroups) {
                 '</td>' +
                 '<td class="c-match" style="padding:6px 4px; text-align:center;">' +
                     '<span style="display:inline-block; min-width:76px; text-align:right; padding-right:4px;">' + homeName + '</span>' +
-                    '<span class="score-area" style="display:inline-block; width:36px;">' +
-                        '<span class="sb">' + (storedScores[g.id + '-h'] || '') + '</span>' +
-                        '<span class="sb">' + (storedScores[g.id + '-a'] || '') + '</span>' +
-                    '</span>' +
+                    '<span class="score-area" style="display:inline-block; width:auto; text-align:center;">' + qScore + '</span>' +
                     '<span style="display:inline-block; min-width:76px; text-align:left; padding-left:4px;">' + awayName + '</span>' +
                 '</td>' +
                 '<td class="c-flag" style="padding:6px 2px 6px 3px; text-align:left; width:22px;">' +
@@ -1729,6 +1857,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cached.goalies && cached.goalies.length > 0) {
         console.log('Loading cached goalies:', cached.goalies);
         updateGoalieTableData(cached.goalies);
+    }
+    
+    // Add interactive gold glare effect to cover
+    const coverElement = document.querySelector('.front.cover');
+    if (coverElement) {
+        coverElement.addEventListener('mousemove', function(e) {
+            const rect = coverElement.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const xPercent = (x / rect.width) * 100;
+            
+            // Position glare based on mouse X position (0-100%)
+            const glarePosition = (xPercent / 100) * 400 - 200; // Convert to background-position range
+            coverElement.style.setProperty('--glare-pos', glarePosition + '%');
+            
+            // Add random opacity variation
+            const randomOpacity = 0.3 + (Math.random() * 0.4);
+            coverElement.style.setProperty('--glare-opacity', randomOpacity);
+        });
+        
+        // Random animation speed
+        const randomDuration = (3 + Math.random() * 2).toFixed(2);
+        coverElement.style.setProperty('--anim-duration', randomDuration + 's');
     }
 });
 </script>
