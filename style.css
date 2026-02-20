@@ -790,12 +790,12 @@ th {
     font-size: 0;
 }
 .flag-icon {
-    width: 14px;
-    height: 10px;
+    width: 20px;
+    height: 13px;
     display: inline-block;
     vertical-align: middle;
-    border: 0.5px solid #333;
-    margin-right: 2px;
+    border-radius: 2px;
+    border: 1px solid #bbb;
 }
 
 /* Ensure knockout/qualification flag cells and match cell align consistently */
@@ -821,8 +821,10 @@ td.c-match, th.c-match {
 .c-flag img, .c-flag .flag-icon {
     display: inline-block;
     vertical-align: middle;
-    width: 16px;
-    height: 11px;
+    width: 20px;
+    height: 13px;
+    border-radius: 2px;
+    border: 1px solid #bbb;
 }
 
 /* Ensure match cell layout aligns names and score squares consistently */
@@ -857,19 +859,17 @@ td.c-match > span:last-child {
     line-height: 14px !important;
 }
 
-/* Bring right-side flags closer to the match cell by applying a negative
-   horizontal margin to the right flag in each KO row. This overrides any
-   previous positive margins. */
+/* Flags stay in place — no negative margin offsets */
 tr > td.c-flag:last-child img,
 tr > td.c-flag:last-child .flag-icon {
-    margin-left: -16px !important;
+    margin-left: 0 !important;
     margin-right: 0 !important;
 }
 
-/* Also apply to any last .c-flag in qualification/prelims tables (not just KO) */
+/* Also apply to any last .c-flag in qualification/prelims tables */
 table tbody tr td.c-flag:last-child img,
 table tbody tr td.c-flag:last-child .flag-icon {
-    margin-left: -16px !important;
+    margin-left: 0 !important;
     margin-right: 0 !important;
 }
 
@@ -1036,6 +1036,37 @@ table tbody tr td.c-flag:last-child .flag-icon {
     align-items: center;
     padding: 0;
     position: relative;
+}
+
+/* Gold gloss shine animation on front cover */
+.front.cover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.2) 25%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 215, 0, 0.2) 75%, 
+        transparent 100%);
+    background-size: 200% 100%;
+    background-position: var(--glare-pos, 0%);
+    z-index: 1;
+    pointer-events: none;
+    animation: goldGlare var(--anim-duration, 4s) infinite ease-in-out;
+    opacity: var(--glare-opacity, 0.5);
+    transition: background-position 0.1s ease-out;
+}
+
+@keyframes goldGlare {
+    0% { background-position: -200% 0; opacity: 0.3; }
+    25% { opacity: 0.5; }
+    50% { background-position: 200% 0; opacity: 0.7; }
+    75% { opacity: 0.4; }
+    100% { background-position: -200% 0; opacity: 0.3; }
 }
 
 /* Cover background images */
@@ -1285,7 +1316,7 @@ table tbody tr td.c-flag:last-child .flag-icon {
 
 /* Rules */
 .rules-main-list { display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; margin: 0; padding: 0; list-style: none; }
-.rule-block { margin-bottom: 4px; }
+.rule-block { margin-bottom: 8px; }
 .rules-main-list .rule-block:first-child { margin-top: 6px; }
 .rule-block b { display: block; color: var(--accent-red); text-transform: uppercase; font-size: 12.5px; font-weight: 900; letter-spacing: 0.8px; margin-bottom: 0px; }
 .rule-block p { margin: 0; font-size: 12px; color: #111; line-height: 1.2; text-align: justify; }
@@ -1308,8 +1339,8 @@ table tbody tr td.c-flag:last-child .flag-icon {
 #page-p_rules .ot-container ul li { margin: 0 0 4px 0; padding: 0; }
 #page-p_rules .rules-footer { margin-top: auto; font-size:9.5px; color:#000; border-top:1px solid #ddd; padding-top:2px; line-height:1.2; }
 
-.ot-container { background: #f4f4f4; border: 2px solid var(--accent-blue); border-radius: 4px; padding: 3px 6px; margin-top: 2px; }
-.ot-container h3 { margin: 0 0 3px 0; font-size: 13px; color: var(--accent-blue); text-transform: uppercase; font-weight: 900; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+.ot-container { background: #f0f8ff; border-left: 4px solid #2980b9; border-radius: 3px; padding: 6px; margin-top: 4px; }
+.ot-container h3 { margin: 0 0 3px 0; font-size: 12px; color: #2980b9; text-transform: uppercase; font-weight: 700; border-bottom: none; padding-bottom: 0; }
 .ot-sub-item { margin-bottom: 3px; }
 .ot-sub-item:last-child { margin-bottom: 0; }
 .ot-sub-item b { font-size: 11px; color: #333; text-transform: uppercase; }
